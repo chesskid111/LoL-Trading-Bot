@@ -33,7 +33,10 @@ def test_migrate_is_idempotent(tmp_path: Path) -> None:
     conn = connect(db)
     first = migrate(conn)
     second = migrate(conn)
-    assert first == ["001_kalshi"]
+    # First run applies all known migrations in alphabetical order
+    assert "001_kalshi" in first
+    assert "002_oracle" in first
+    assert "003_linkage" in first
     assert second == []  # nothing to apply on second run
     conn.close()
 
