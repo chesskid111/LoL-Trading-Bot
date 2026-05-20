@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtualenvs
+.venv/
+venv/
+
+# Data, models, logs, secrets — never commit
+data/
+models/
+logs/
+*.pem
+*.key
+.kalshi/
+
+# Pre-existing nested git repo (kept untouched per user)
+LoL-Trading-Bot/
+
+# Research output (large JSON dumps)
+research/out/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Notebooks
+.ipynb_checkpoints/
