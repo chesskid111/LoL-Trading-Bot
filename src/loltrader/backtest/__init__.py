@@ -1,1 +1,1 @@
-"""Backtest framework — walk-forward, realistic execution modeling."""
+"""Backtest framework: replay historical Kalshi data against the model."""
