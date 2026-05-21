@@ -13,6 +13,7 @@ from __future__ import annotations
 import sqlite3
 from datetime import datetime
 
+from loltrader.features.draft import draft_features
 from loltrader.features.matchup import matchup_features
 from loltrader.features.meta import meta_features
 from loltrader.features.recent_form import recent_form_features
@@ -74,6 +75,14 @@ def compute_features(
         as_of_date=as_of_date,
     ))
     features.update(schedule_features(conn, team_a_id, team_b_id, as_of_date))
+    features.update(draft_features(
+        conn,
+        match_id=match_id,
+        team_a_id=team_a_id,
+        team_b_id=team_b_id,
+        patch_id=patch_id,
+        as_of_date=as_of_date,
+    ))
 
     return features
 
