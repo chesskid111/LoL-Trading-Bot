@@ -110,11 +110,13 @@ def parse_ticker_date(event_ticker: str | None) -> date | None:
 def parse_ticker_game_time_unix(event_ticker: str | None) -> int | None:
     """Extract the actual game time (Unix seconds, UTC) from the ticker.
 
-    Kalshi encodes ``YYMmmDDhhmm`` after the series prefix. Example:
-    ``KXLOLGAME-26MAY220400DRXDNF`` → 2026-05-22 04:00 UTC.
+    Kalshi encodes ``YYMmmDDhhmm`` after the series prefix. The encoded
+    time is in **Eastern Time** (America/New_York) — Kalshi is US-based
+    and uses ET as its native exchange timezone. ``zoneinfo`` handles
+    EST↔EDT automatically.
 
-    This is more reliable than ``kalshi_markets.close_time`` for active
-    markets, where Kalshi often puts a far-future placeholder.
+    Example: ``KXLOLGAME-26MAY220400DRXDNF`` → 2026-05-22 04:00 EDT
+    = 2026-05-22 08:00 UTC = 2026-05-22 01:00 PDT.
     """
     if not event_ticker:
         return None
@@ -129,11 +131,10 @@ def parse_ticker_game_time_unix(event_ticker: str | None) -> int | None:
     if mon not in _MONTH_MAP:
         return None
     try:
+        from zoneinfo import ZoneInfo
+        eastern = ZoneInfo("America/New_York")
         dt = datetime(2000 + int(yy), _MONTH_MAP[mon], int(dd),
-                      int(hh), int(mm), tzinfo=None)
-        # The encoded time is UTC
-        from datetime import timezone
-        dt = dt.replace(tzinfo=timezone.utc)
+                      int(hh), int(mm), tzinfo=eastern)
         return int(dt.timestamp())
     except ValueError:
         return None
