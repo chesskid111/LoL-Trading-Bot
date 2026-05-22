@@ -120,7 +120,8 @@ def _upcoming_markets_with_predictions(conn, model: Model | None, limit: int = 2
     if model is None:
         return pd.DataFrame()
     from loltrader.kalshi.linkage import parse_ticker_game_time_unix
-    now = int(datetime.utcnow().timestamp())
+    import time as _time
+    now = int(_time.time())
     horizon = now + 48 * 3600
     all_rows = conn.execute(
         """
@@ -253,5 +254,6 @@ else:
 
 # Auto-refresh
 st.markdown("---")
-st.caption(f"Last refresh: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC. "
+from datetime import timezone as _tz
+st.caption(f"Last refresh: {datetime.now(_tz.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC. "
            "Refresh manually for now (Streamlit's auto-refresh requires extra config).")
