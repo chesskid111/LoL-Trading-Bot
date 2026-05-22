@@ -293,12 +293,64 @@ def snapshot_candles(
     return upserts
 
 
+def refresh_market_state_from_candles(conn: sqlite3.Connection) -> int:
+    """Update ``kalshi_markets.yes_bid_cents`` / ``yes_ask_cents`` /
+    ``last_price_cents`` from the most recent candle per market.
+
+    Kalshi's bulk ``/markets`` endpoint often returns NULL for these
+    fields on actively-trading markets, even though the candle endpoint
+    has live prices. This function fills the gap so the trader and UI
+    see real prices without a separate orderbook call per market.
+
+    Returns the number of markets updated.
+    """
+    now = int(time.time())
+    rows = conn.execute(
+        """
+        WITH latest AS (
+            SELECT market_ticker, MAX(end_period_ts) AS max_ts
+            FROM kalshi_candles
+            GROUP BY market_ticker
+        )
+        SELECT
+            c.market_ticker,
+            c.yes_bid_close_cents,
+            c.yes_ask_close_cents,
+            c.price_close_cents
+        FROM kalshi_candles c
+        JOIN latest l ON l.market_ticker = c.market_ticker
+                     AND l.max_ts = c.end_period_ts
+        WHERE c.yes_bid_close_cents IS NOT NULL
+           OR c.yes_ask_close_cents IS NOT NULL
+        """
+    ).fetchall()
+    n = 0
+    for r in rows:
+        conn.execute(
+            """
+            UPDATE kalshi_markets
+            SET yes_bid_cents = COALESCE(?, yes_bid_cents),
+                yes_ask_cents = COALESCE(?, yes_ask_cents),
+                last_price_cents = COALESCE(?, last_price_cents),
+                last_seen_at = ?
+            WHERE market_ticker = ?
+            """,
+            (r["yes_bid_close_cents"], r["yes_ask_close_cents"],
+             r["price_close_cents"], now, r["market_ticker"]),
+        )
+        n += 1
+    conn.commit()
+    log.info("refresh_market_state_from_candles: %d markets updated", n)
+    return n
+
+
 def snapshot_all_lol_markets(
     client: KalshiClient | None = None,
     conn: sqlite3.Connection | None = None,
     period_interval: int = DEFAULT_CANDLE_INTERVAL_MIN,
 ) -> dict[str, int]:
-    """Top-level entry: events -> markets -> candles. Returns counts per stage."""
+    """Top-level entry: events -> markets -> candles -> refresh bid/ask
+    from latest candle. Returns counts per stage."""
     if client is None:
         client = KalshiClient()
     if conn is None:
@@ -309,4 +361,5 @@ def snapshot_all_lol_markets(
         "events": snapshot_events(client, conn),
         "markets": snapshot_markets(client, conn),
         "candles": snapshot_candles(client, conn, period_interval),
+        "market_refresh": refresh_market_state_from_candles(conn),
     }

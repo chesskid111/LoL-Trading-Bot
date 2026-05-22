@@ -42,6 +42,8 @@ _WILL_WIN_RE = re.compile(
     re.IGNORECASE,
 )
 _TICKER_DATE_RE = re.compile(r"(\d{2})([A-Z]{3})(\d{2})")
+# Full game-time encoding in the ticker: YYmmmDDhhmm
+_TICKER_FULL_TIME_RE = re.compile(r"(\d{2})([A-Z]{3})(\d{2})(\d{2})(\d{2})")
 
 _MONTH_MAP = {
     "JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6,
@@ -101,6 +103,38 @@ def parse_ticker_date(event_ticker: str | None) -> date | None:
         return None
     try:
         return date(2000 + int(yy), _MONTH_MAP[mon], int(dd))
+    except ValueError:
+        return None
+
+
+def parse_ticker_game_time_unix(event_ticker: str | None) -> int | None:
+    """Extract the actual game time (Unix seconds, UTC) from the ticker.
+
+    Kalshi encodes ``YYMmmDDhhmm`` after the series prefix. Example:
+    ``KXLOLGAME-26MAY220400DRXDNF`` → 2026-05-22 04:00 UTC.
+
+    This is more reliable than ``kalshi_markets.close_time`` for active
+    markets, where Kalshi often puts a far-future placeholder.
+    """
+    if not event_ticker:
+        return None
+    parts = event_ticker.split("-")
+    if len(parts) < 2:
+        return None
+    payload = parts[1]
+    m = _TICKER_FULL_TIME_RE.match(payload)
+    if not m:
+        return None
+    yy, mon, dd, hh, mm = m.groups()
+    if mon not in _MONTH_MAP:
+        return None
+    try:
+        dt = datetime(2000 + int(yy), _MONTH_MAP[mon], int(dd),
+                      int(hh), int(mm), tzinfo=None)
+        # The encoded time is UTC
+        from datetime import timezone
+        dt = dt.replace(tzinfo=timezone.utc)
+        return int(dt.timestamp())
     except ValueError:
         return None
 
@@ -170,6 +204,58 @@ def _find_match(
         elif abs((d - target_date).days) == 1:
             near.append(r)
     return exact, near
+
+
+def _create_placeholder_match(
+    conn: sqlite3.Connection,
+    canon_a: str, canon_b: str, target_date: date,
+) -> int | None:
+    """Insert a placeholder match row for an upcoming game whose teams
+    we know but whose result hasn't been recorded by Oracle yet.
+
+    Used for INFERENCE on future games: the model needs ``match_id`` to
+    look up team Glicko + form features. ``series_winner_id`` is left
+    NULL until Oracle updates and we can fill in the outcome.
+
+    Returns the new match_id, or None if either team isn't in the
+    teams table.
+    """
+    # Look up team IDs
+    a_row = conn.execute(
+        "SELECT team_id FROM teams WHERE canonical_name = ?", (canon_a,)
+    ).fetchone()
+    b_row = conn.execute(
+        "SELECT team_id FROM teams WHERE canonical_name = ?", (canon_b,)
+    ).fetchone()
+    if not a_row or not b_row:
+        return None
+    a_id, b_id = a_row["team_id"], b_row["team_id"]
+    # Lex-sort for the match_key
+    if canon_a <= canon_b:
+        team_a_id, team_b_id = a_id, b_id
+        match_key = f"{target_date.isoformat()}|{canon_a}|{canon_b}"
+    else:
+        team_a_id, team_b_id = b_id, a_id
+        match_key = f"{target_date.isoformat()}|{canon_b}|{canon_a}"
+
+    # Idempotent: if it already exists, return its id
+    existing = conn.execute(
+        "SELECT match_id FROM matches WHERE match_key = ?", (match_key,)
+    ).fetchone()
+    if existing:
+        return existing["match_id"]
+    conn.execute(
+        """
+        INSERT INTO matches
+            (match_key, date, league, team_a_id, team_b_id, bo_format)
+        VALUES (?, ?, NULL, ?, ?, 1)
+        """,
+        (match_key, target_date.isoformat(), team_a_id, team_b_id),
+    )
+    new_id = conn.execute(
+        "SELECT match_id FROM matches WHERE match_key = ?", (match_key,)
+    ).fetchone()["match_id"]
+    return new_id
 
 
 def _resolve_side(
@@ -263,6 +349,38 @@ def link_market(conn: sqlite3.Connection, market_row: sqlite3.Row) -> LinkResult
             used_alias=used_alias,
             parsed_team_a=canon_a, parsed_team_b=canon_b, parsed_date=target_date,
         )
+
+    # No match in Oracle's data yet. For future games where the result
+    # hasn't been recorded, create a placeholder match so the bot can
+    # still compute features for inference. We tag this with confidence
+    # 0.75 (just above the 0.7 trader gate) but mark it so the backtest
+    # can exclude it.
+    today = date.today()
+    if target_date >= today:
+        placeholder_id = _create_placeholder_match(conn, canon_a, canon_b, target_date)
+        if placeholder_id is not None:
+            # Look up the placeholder's team_a/team_b for side resolution
+            ph = conn.execute(
+                """
+                SELECT m.match_id, ta.canonical_name AS ta_name, tb.canonical_name AS tb_name
+                FROM matches m
+                JOIN teams ta ON m.team_a_id = ta.team_id
+                JOIN teams tb ON m.team_b_id = tb.team_id
+                WHERE m.match_id = ?
+                """,
+                (placeholder_id,),
+            ).fetchone()
+            side = None
+            if ph and yes_team_raw and series_ticker in ("KXLOLGAME", "KXLOLMAP"):
+                yes_canon = resolve_team_name(conn, yes_team_raw)[0] if yes_team_raw else None
+                side = _resolve_side(conn, ph, yes_canon)
+            return LinkResult(
+                match_id=placeholder_id, game_id=None, side=side,
+                confidence=0.75 if not used_alias else 0.7,
+                reason="placeholder_future_match" if not used_alias else "placeholder_via_alias",
+                used_alias=used_alias,
+                parsed_team_a=canon_a, parsed_team_b=canon_b, parsed_date=target_date,
+            )
 
     return LinkResult(
         match_id=None, game_id=None, side=None, confidence=0.0,

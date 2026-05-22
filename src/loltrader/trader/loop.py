@@ -66,9 +66,18 @@ class TraderConfig:
 
 
 def _candidate_markets(conn: sqlite3.Connection, now_ts: int, horizon_hours: int) -> list[sqlite3.Row]:
-    """Markets that are open, linked confidently, and closing within horizon."""
-    horizon_ts = now_ts + horizon_hours * 3600
-    return conn.execute(
+    """Markets that are open, linked confidently, with live prices, and
+    whose game time (parsed from ticker) is within ``horizon_hours``
+    from now.
+
+    Note: Kalshi's ``close_time`` field is a far-future placeholder on
+    actively-trading markets, so we parse the ticker (e.g.,
+    ``KXLOLGAME-26MAY220400DRXDNF`` -> 2026-05-22 04:00 UTC) for the
+    real game time.
+    """
+    from loltrader.kalshi.linkage import parse_ticker_game_time_unix
+
+    rows = conn.execute(
         """
         SELECT
             m.market_ticker, m.event_ticker, m.series_ticker,
@@ -82,12 +91,20 @@ def _candidate_markets(conn: sqlite3.Connection, now_ts: int, horizon_hours: int
         WHERE m.status IN ('active', 'open')
           AND m.series_ticker IN ('KXLOLGAME')
           AND l.confidence >= 0.7
-          AND m.close_time_unix BETWEEN ? AND ?
           AND m.yes_ask_cents BETWEEN 5 AND 95
           AND m.yes_bid_cents BETWEEN 1 AND 95
         """,
-        (now_ts, horizon_ts),
     ).fetchall()
+    # Filter by parsed game time
+    horizon_ts = now_ts + horizon_hours * 3600
+    out: list[sqlite3.Row] = []
+    for r in rows:
+        gt = parse_ticker_game_time_unix(r["event_ticker"])
+        if gt is None:
+            continue
+        if now_ts <= gt <= horizon_ts:
+            out.append(r)
+    return out
 
 
 def _has_open_position(conn: sqlite3.Connection, market_ticker: str) -> bool:

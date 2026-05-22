@@ -119,9 +119,10 @@ def _recent_decisions(conn, limit: int = 40) -> pd.DataFrame:
 def _upcoming_markets_with_predictions(conn, model: Model | None, limit: int = 20) -> pd.DataFrame:
     if model is None:
         return pd.DataFrame()
+    from loltrader.kalshi.linkage import parse_ticker_game_time_unix
     now = int(datetime.utcnow().timestamp())
     horizon = now + 48 * 3600
-    rows = conn.execute(
+    all_rows = conn.execute(
         """
         SELECT
             m.market_ticker, m.event_ticker, m.title,
@@ -134,19 +135,26 @@ def _upcoming_markets_with_predictions(conn, model: Model | None, limit: int = 2
         WHERE m.status IN ('active', 'open')
           AND m.series_ticker = 'KXLOLGAME'
           AND l.confidence >= 0.7
-          AND m.close_time_unix BETWEEN ? AND ?
           AND m.yes_ask_cents BETWEEN 5 AND 95
-        ORDER BY m.close_time_unix ASC
-        LIMIT ?
-        """,
-        (now, horizon, limit),
+        """
     ).fetchall()
+    # Filter by ticker-parsed game time, sort, take first N
+    enriched = []
+    for r in all_rows:
+        gt = parse_ticker_game_time_unix(r["event_ticker"])
+        if gt is None or not (now <= gt <= horizon):
+            continue
+        enriched.append((gt, r))
+    enriched.sort(key=lambda x: x[0])
+    rows = [r for _, r in enriched[:limit]]
     if not rows:
         return pd.DataFrame()
 
     today = datetime.utcfromtimestamp(now).strftime("%Y-%m-%d")
     out_rows = []
     for r in rows:
+        # Parse ticker game time for display
+        gt = parse_ticker_game_time_unix(r["event_ticker"])
         try:
             feats = compute_features(conn, r["match_id"], as_of_date=today)
             pred = model.predict_dict(feats)
@@ -165,7 +173,7 @@ def _upcoming_markets_with_predictions(conn, model: Model | None, limit: int = 2
         suggested = "BUY_YES" if edge_yes > 0.03 else ("BUY_NO" if edge_no > 0.03 else "HOLD")
 
         out_rows.append({
-            "close_time": datetime.utcfromtimestamp(r["close_time_unix"]).strftime("%m-%d %H:%M"),
+            "game_time": datetime.utcfromtimestamp(gt).strftime("%a %m-%d %H:%M UTC") if gt else "?",
             "title": r["title"][:60],
             "model": f"{p_yes:.2f}" if p_yes == p_yes else "n/a",
             "p10-p90": f"{p10:.2f}-{p90:.2f}" if p10 == p10 else "n/a",
