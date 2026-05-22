@@ -16,11 +16,18 @@ from loltrader.config import load_config
 
 
 def connect(db_path: Path | None = None) -> sqlite3.Connection:
-    """Open a SQLite connection with WAL mode + foreign keys enabled."""
+    """Open a SQLite connection with WAL mode + foreign keys enabled.
+
+    ``check_same_thread=False`` is set because Streamlit re-renders each
+    page in a different thread (cached resources get reused across them).
+    Safe here because WAL mode + the GIL prevent data corruption from
+    interleaved access, and writes only happen from single-threaded
+    paths (the trader loop and the daily_logger process).
+    """
     if db_path is None:
         db_path = load_config().db_path
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(str(db_path))
+    conn = sqlite3.connect(str(db_path), check_same_thread=False)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode = WAL;")
     conn.execute("PRAGMA foreign_keys = ON;")
