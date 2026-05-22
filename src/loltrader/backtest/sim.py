@@ -29,6 +29,11 @@ from loltrader.backtest.fees import kalshi_fee_cents, slippage_cents
 from loltrader.backtest.portfolio import Portfolio, Position
 from loltrader.features import compute_features
 from loltrader.model.serve import Model
+from loltrader.trader.paper import (
+    execute_paper_fill,
+    log_decision,
+    settle_paper_trade,
+)
 
 log = logging.getLogger(__name__)
 
@@ -108,6 +113,32 @@ def _model_yes_prob_for_market(model_p_team_a: float, link_side: int | None) -> 
     return float("nan")
 
 
+def _clear_existing_backtest_rows(
+    conn: sqlite3.Connection, start_date: str, end_date: str
+) -> int:
+    """Idempotency: remove any prior backtest decisions/paper_trades in
+    this window. Returns count of rows deleted."""
+    start_ts = int(datetime.fromisoformat(start_date).timestamp())
+    end_ts = int(datetime.fromisoformat(end_date).timestamp()) + 86400  # end-of-day
+    # Find decision_ids first so we can delete paper_trades by FK
+    rows = conn.execute(
+        """
+        SELECT decision_id FROM decisions
+        WHERE made_by = 'backtest' AND decision_ts BETWEEN ? AND ?
+        """,
+        (start_ts, end_ts),
+    ).fetchall()
+    ids = [r["decision_id"] for r in rows]
+    if not ids:
+        return 0
+    placeholders = ",".join("?" * len(ids))
+    conn.execute(f"DELETE FROM paper_trades WHERE decision_id IN ({placeholders})", ids)
+    conn.execute(f"DELETE FROM decisions WHERE decision_id IN ({placeholders})", ids)
+    conn.commit()
+    log.info("Cleared %d prior backtest decisions in window", len(ids))
+    return len(ids)
+
+
 def run_backtest(
     conn: sqlite3.Connection,
     model: Model,
@@ -116,8 +147,15 @@ def run_backtest(
     starting_bankroll_cents: int = 200_000,        # $2,000
     base_edge_threshold: float = DEFAULT_BASE_EDGE_THRESHOLD,
     kelly_fraction: float = 0.25,
+    persist_to_db: bool = False,
 ) -> BacktestResult:
     """Run the v1 backtest over the date window.
+
+    Args:
+        persist_to_db: if True, write decisions + paper_trades rows with
+            ``made_by='backtest'`` so the dashboard and trade-count metrics
+            include these samples. Idempotent — clears prior backtest rows
+            for the same window before inserting.
 
     Returns a BacktestResult with the closed portfolio + skip counters.
     """
@@ -125,8 +163,14 @@ def run_backtest(
         starting_bankroll_cents=starting_bankroll_cents,
         kelly_fraction=kelly_fraction,
     )
+
+    if persist_to_db:
+        _clear_existing_backtest_rows(conn, start_date, end_date)
+
     candles = _eligible_candles_for_backtest(conn, start_date, end_date)
     log.info("Backtest window %s -> %s: %d eligible candles", start_date, end_date, len(candles))
+
+    model_version = model.metadata.get("trained_at_utc", "unknown")
 
     seen_markets: set[str] = set()
     settled_pending: dict[str, Position] = {}  # market_ticker -> open Position
@@ -190,6 +234,20 @@ def run_backtest(
             edge_at_entry = edge_no
         else:
             skipped_no_edge += 1
+            if persist_to_db:
+                log_decision(
+                    conn,
+                    market_ticker=mt, match_id=c["match_id"],
+                    model_version=model_version,
+                    model_prob=p_yes, p10=pred.p10, p90=pred.p90,
+                    market_yes_bid_cents=c["yes_bid_close_cents"],
+                    market_yes_ask_cents=c["yes_ask_close_cents"],
+                    edge=max(edge_yes, edge_no),
+                    edge_threshold=threshold,
+                    action="HOLD", gate_reason="edge_below_threshold",
+                    made_by="backtest",
+                    decision_ts=int(c["end_period_ts"]),
+                )
             seen_markets.add(mt)
             continue
 
@@ -236,6 +294,33 @@ def run_backtest(
         settled_pending[mt] = pos
         seen_markets.add(mt)
 
+        # Optionally persist to DB so the dashboard sees these trades
+        if persist_to_db:
+            decision_id = log_decision(
+                conn,
+                market_ticker=mt, match_id=c["match_id"],
+                model_version=model_version,
+                model_prob=p_yes, p10=pred.p10, p90=pred.p90,
+                market_yes_bid_cents=c["yes_bid_close_cents"],
+                market_yes_ask_cents=c["yes_ask_close_cents"],
+                edge=edge_at_entry, edge_threshold=threshold,
+                action=f"BUY_{side}",
+                gate_reason=None,
+                made_by="backtest",
+                decision_ts=int(c["end_period_ts"]),
+            )
+            fill = execute_paper_fill(
+                conn,
+                decision_id=decision_id,
+                side=side,
+                contracts=allowed,
+                market_yes_ask_cents=c["yes_ask_close_cents"],
+                market_yes_bid_cents=c["yes_bid_close_cents"],
+                fill_ts=int(c["end_period_ts"]),
+            )
+            # Stash trade_id so we can settle it below
+            pos.trade_id = fill.trade_id  # type: ignore
+
         trade_log.append({
             "candle_ts": int(c["end_period_ts"]),
             "candle_date": candle_date,
@@ -265,6 +350,16 @@ def run_backtest(
         else:
             yes_won = not team_a_won
         portfolio.settle_position(pos, yes_won, c["match_date"])
+
+        # If we persisted to DB, settle there too
+        if persist_to_db and hasattr(pos, "trade_id"):
+            settled_ts = int(datetime.fromisoformat(c["match_date"]).timestamp())
+            settle_paper_trade(
+                conn,
+                trade_id=pos.trade_id,
+                yes_won=yes_won,
+                settled_ts=settled_ts,
+            )
 
     log.info(
         "Backtest done: %d decisions, %d trades, "

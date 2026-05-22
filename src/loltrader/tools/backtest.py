@@ -51,6 +51,11 @@ def main() -> int:
                         help="Base edge threshold (default: 0.03 = 3%%)")
     parser.add_argument("--kelly-fraction", type=float, default=0.25,
                         help="Fraction of Kelly (default: 0.25)")
+    parser.add_argument("--persist", action="store_true",
+                        help="Write decisions + paper_trades to DB with "
+                             "made_by='backtest' (idempotent within window). "
+                             "Use this to accumulate paper-trade samples "
+                             "without running the live bot during games.")
     args = parser.parse_args()
 
     log = _setup_logging()
@@ -88,6 +93,7 @@ def main() -> int:
             starting_bankroll_cents=args.bankroll,
             base_edge_threshold=args.edge_threshold,
             kelly_fraction=args.kelly_fraction,
+            persist_to_db=args.persist,
         )
 
         metrics = compute_metrics(result.portfolio, result.trade_log)
