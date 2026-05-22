@@ -15,6 +15,7 @@ training_metadata}.
 """
 from __future__ import annotations
 
+import json
 import logging
 import sqlite3
 import time
@@ -74,6 +75,21 @@ def _train_one_model(
     return clf
 
 
+def _load_tuned_params() -> dict | None:
+    """Load tuned hyperparameters from models/best_params.json if it exists.
+    Returns None if not found, in which case DEFAULT_XGB_PARAMS is used."""
+    from loltrader.config import load_config
+    cfg = load_config()
+    path = cfg.models_dir / "best_params.json"
+    if not path.exists():
+        return None
+    try:
+        data = json.loads(path.read_text())
+        return data.get("best_params")
+    except Exception:
+        return None
+
+
 def _time_decay_weights(
     df: pd.DataFrame, decay_half_life_days: float = 180.0
 ) -> np.ndarray:
@@ -110,6 +126,13 @@ def train(
     if df_all.empty:
         raise RuntimeError("No training data — corpus is empty or filters too strict.")
 
+    # Use tuned params if available; else fall back to defaults
+    xgb_params = _load_tuned_params() or DEFAULT_XGB_PARAMS
+    if xgb_params is not DEFAULT_XGB_PARAMS:
+        log.info("Using TUNED hyperparameters from models/best_params.json")
+    else:
+        log.info("Using DEFAULT hyperparameters (run tune_model first for better results)")
+
     # Reserve final holdout_days as a one-shot validation set
     df_all = df_all.sort_values("date").reset_index(drop=True)
     latest_date = pd.to_datetime(df_all["date"]).max()
@@ -139,7 +162,7 @@ def train(
         X_te, y_te, _ = split_xy(test_df, feature_cols)
         w_tr = _time_decay_weights(train_df, decay_half_life_days)
 
-        clf = _train_one_model(X_tr, y_tr, sample_weight=w_tr)
+        clf = _train_one_model(X_tr, y_tr, sample_weight=w_tr, params=xgb_params)
         p_te = clf.predict_proba(X_te)[:, 1]
 
         fm = calibration_metrics(y_te, p_te)
@@ -172,7 +195,7 @@ def train(
     # --- Final model: trained on ALL CV data (no test holdout shown yet) --
     X_full, y_full, feature_cols = split_xy(df_cv, feature_cols)
     w_full = _time_decay_weights(df_cv, decay_half_life_days)
-    final_model = _train_one_model(X_full, y_full, sample_weight=w_full)
+    final_model = _train_one_model(X_full, y_full, sample_weight=w_full, params=xgb_params)
 
     # --- Bootstrap ensemble for uncertainty -------------------------------
     log.info("Training %d-model bootstrap ensemble", ensemble_size)

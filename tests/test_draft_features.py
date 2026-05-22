@@ -114,17 +114,18 @@ def test_draft_features_full_shape(draft_db):
         conn, match_id=match_id, team_a_id=ta, team_b_id=tb,
         patch_id=patch_id, as_of_date="2024-06-01",
     )
-    # 6 tags × 3 (team_a, team_b, diff) = 18
-    # + 3 winrate features
-    # + 2 n_picks
-    # = 23 features
-    assert len(feats) == 23
-    # Should have specific keys
+    # Expect at least: 18 tag features + 3 winrate + 2 n_picks + 12 archetype
+    assert len(feats) >= 35
+    # Spot-check keys
     assert "team_a_has_fighter" in feats
     assert "team_b_has_mage" in feats
     assert "tag_diff_has_marksman" in feats
     assert "team_a_avg_pick_winrate_patch" in feats
     assert "pick_winrate_diff" in feats
+    # New v1.6 archetype features
+    assert "team_a_arch_scaling" in feats
+    assert "team_b_arch_teamfight" in feats
+    assert "arch_diff_pick" in feats
 
 
 def test_draft_features_empty_match(draft_db, tmp_path: Path):
@@ -150,13 +151,17 @@ def test_draft_features_empty_match(draft_db, tmp_path: Path):
 
 
 def test_compute_features_includes_drafts(draft_db):
-    """Top-level compute_features should now include draft features."""
+    """Top-level compute_features should include all the v1.6 features."""
     conn, match_id, _, _, _ = draft_db
-    # We need glicko snapshots for compute_features to work
     from loltrader.features import compute_features
     from loltrader.features.team_strength import rebuild_team_glicko
     rebuild_team_glicko(conn)
     feats = compute_features(conn, match_id)
-    # Pre-draft: 43 features; with drafts: 43 + 23 = 66
-    assert len(feats) == 43 + 23
-    assert "team_a_has_fighter" in feats
+    # v1: 43, +drafts: 66, +archetype: 78, +player-champ: 86, +lane: 95+
+    assert len(feats) >= 90
+    # Spot-check across categories
+    assert "team_a_has_fighter" in feats               # draft tags
+    assert "team_a_arch_scaling" in feats              # archetype (D)
+    assert "team_a_pcwr_alltime" in feats              # player-on-champion (C)
+    assert "lane_total_advantage" in feats             # lane matchup (B)
+    assert "team_a_recent_roster_change" in feats      # roster reset (I)

@@ -19,6 +19,40 @@ TAG_COLUMNS = (
     "has_marksman", "has_tank", "has_support",
 )
 
+# Archetypes — derived from tag counts. A team can score on multiple
+# archetypes (they're not mutually exclusive), but exactly one will be
+# the "dominant" one based on a priority order.
+ARCHETYPES = ("scaling", "teamfight", "pick", "balanced")
+
+
+def classify_archetype(tag_counts: dict[str, int]) -> dict[str, int]:
+    """Return one-hot archetype indicators from tag counts.
+
+    Heuristic rules (hand-coded based on pro LoL convention):
+      - scaling:   >=3 of {Mage, Marksman}  (carries that need time)
+      - teamfight: >=3 of {Fighter, Tank}   (frontline + sustained DPS)
+      - pick:      >=2 Assassin             (burst + mobility playstyle)
+      - balanced:  none of the above        (default)
+
+    The dominant archetype is the first rule that matches (priority order:
+    scaling > teamfight > pick > balanced). Returns one-hot indicators
+    PLUS continuous counts (so the model can see both).
+    """
+    out = {a: 0 for a in ARCHETYPES}
+    scaling_count = tag_counts.get("has_mage", 0) + tag_counts.get("has_marksman", 0)
+    teamfight_count = tag_counts.get("has_fighter", 0) + tag_counts.get("has_tank", 0)
+    pick_count = tag_counts.get("has_assassin", 0)
+
+    if scaling_count >= 3:
+        out["scaling"] = 1
+    elif teamfight_count >= 3:
+        out["teamfight"] = 1
+    elif pick_count >= 2:
+        out["pick"] = 1
+    else:
+        out["balanced"] = 1
+    return out
+
 
 def _team_picks_for_match(
     conn: sqlite3.Connection,
@@ -132,6 +166,14 @@ def draft_features(
     feats["team_a_avg_pick_winrate_patch"] = a_wr
     feats["team_b_avg_pick_winrate_patch"] = b_wr
     feats["pick_winrate_diff"] = a_wr - b_wr
+
+    # D: Composition archetype one-hots (derived from tag counts)
+    a_arch = classify_archetype(a_tags)
+    b_arch = classify_archetype(b_tags)
+    for arch in ARCHETYPES:
+        feats[f"team_a_arch_{arch}"] = float(a_arch[arch])
+        feats[f"team_b_arch_{arch}"] = float(b_arch[arch])
+        feats[f"arch_diff_{arch}"] = float(a_arch[arch] - b_arch[arch])
 
     # Number of picks we actually found (debug / data-quality)
     feats["team_a_n_picks"] = float(len(a_picks))

@@ -34,10 +34,9 @@ def test_migrate_is_idempotent(tmp_path: Path) -> None:
     first = migrate(conn)
     second = migrate(conn)
     # First run applies all known migrations in alphabetical order
-    assert "001_kalshi" in first
-    assert "002_oracle" in first
-    assert "003_linkage" in first
-    assert "004_features" in first
+    for v in ("001_kalshi", "002_oracle", "003_linkage", "004_features",
+              "005_champions", "006_trader", "007_perf_indexes"):
+        assert v in first, f"missing migration: {v}"
     assert second == []  # nothing to apply on second run
     conn.close()
 
