@@ -16,7 +16,9 @@ dist/
 venv/
 
 # Data, models, logs, secrets — never commit
-data/
+data/*
+!data/cv_references/
+data/cv_references/_*/        # but skip any temp/scratch dirs under there
 models/
 logs/
 *.pem
