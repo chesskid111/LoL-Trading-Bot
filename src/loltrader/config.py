@@ -36,6 +36,10 @@ class Config:
         return self.project_root / "data" / "lol.db"
 
     @property
+    def data_dir(self) -> Path:
+        return self.project_root / "data"
+
+    @property
     def logs_dir(self) -> Path:
         return self.project_root / "logs"
 

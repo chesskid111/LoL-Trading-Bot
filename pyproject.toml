@@ -19,6 +19,12 @@ dependencies = [
     "streamlit>=1.32",
     "python-dateutil>=2.9",
     "matplotlib>=3.8",
+    # v2 live trading deps
+    "streamlink>=6.7",
+    "opencv-python>=4.10",
+    "pytesseract>=0.3.10",
+    "Pillow>=10.3",
+    "yt-dlp>=2024.5.27",
 ]
 
 [project.optional-dependencies]
