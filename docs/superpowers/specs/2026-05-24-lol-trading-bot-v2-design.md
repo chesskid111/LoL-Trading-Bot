@@ -137,9 +137,21 @@ Total to LCK at full sizing: ~5–6 months from v2.0 kickoff.
 
 ## 6. Live data layer
 
-**Data source priority (revised after empirical findings — see §1 and §10):** CV-from-broadcast is the *primary* numerical and positional source because it's at stream speed (~15–25s behind game truth, matching what viewers see). Riot livestats API is the *secondary* cross-check / ground-truth source — same numerical fields, but ~30–45s behind game truth (~10–15s behind CV). Trader makes decisions on the freshest available data; livestats is for validation, retraining ground-truth, and fallback when CV degrades.
+**Data source priority (further revised after Phase 4 empirical findings — see §10.7):**
 
-### 6.1 Riot livestats (numerical, secondary)
+| Field type | Primary source | Notes |
+|---|---|---|
+| **Numerical state** (gold, kills, towers, dragons, barons, inhibs) | **Riot livestats** | 30-45s broadcast-calibrated delay; reliable; complete |
+| **Positional / qualitative** (minimap positions, item builds, vision) | **CV from broadcast** | Not available in livestats at all |
+| **Game timer** | Either (timer is in livestats; can also OCR clean broadcast clock) | Both usable when sane |
+
+The original spec stance was "CV primary for everything numerical, livestats as cross-check." Phase 4 calibration revealed Tesseract OCR on the LCK broadcast font achieves only ~50-70% accuracy with frequent gross errors (e.g. 244K read instead of 2.4K). Pulling in a heavyweight engine (EasyOCR / PaddleOCR) for ~10-15s freshness gain was judged not worth the dep weight + setup complexity.
+
+**The real value of CV is positional features that no API provides** — minimap dot tracking, item builds per player, vision-control estimation. Livestats covers numerical state more reliably than CV-OCR ever could on the current font.
+
+CV-OCR remains useful as an optional cross-check (§6.3 watchdog still applies when OCR returns parseable values) but is not load-bearing.
+
+### 6.1 Riot livestats (numerical, primary)
 
 - **Endpoint:** `https://feed.lolesports.com/livestats/v1/window/{gameId}?startingTime=<UTC ISO timestamp aligned to 10s boundary>`
 - **Auth:** public API key `0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z` (widely known, no rate-limit penalty)
@@ -149,13 +161,15 @@ Total to LCK at full sizing: ~5–6 months from v2.0 kickoff.
 - **Schema:** `live_frames` table (frame_id PK, game_id, frame_ts_unix, raw_json BLOB, parsed JSON fields…) — migration `008_v2_live_data.sql`.
 - **Game start timestamp caching:** when `game_discovery` first sees a game in `state=in_game`, persist that frame's `rfc460Timestamp` to a `games_live` table (game_id PK, game_start_ts_unix, first_seen_ts_unix). All in-game-clock calculations downstream read from this cached value — **never re-probed retrospectively**, because the window endpoint only serves a recent slice and walking back via binary search is wasteful and produces drift between runs (verified empirically 2026-05-24: a naive linear-scan heuristic gave game-times off by ~10 minutes). The cache is set-once per game.
 
-### 6.2 Computer vision (primary numerical + positional, Twitch broadcast)
+### 6.2 Computer vision (positional features, Twitch broadcast)
 
-CV serves **two** roles in v2, not one:
-1. **Primary numerical source:** OCR the gold totals, kills, towers, dragons, baron count, game timer directly off the broadcast scoreboard region. This data is at stream speed (~15–25s behind game truth), faster than livestats by ~10–15s. The trader makes decisions on these values, not the livestats values.
-2. **Positional / qualitative source (the v1-to-v2 differentiator):** minimap dot tracking, vision control estimation, item build progression, lane-state inference — features that are not in any free API at any speed.
+CV's role in v2 (refined after Phase 4 empirical findings):
+1. **Positional / qualitative source (the v1-to-v2 differentiator):** minimap dot tracking, vision-control estimation, item-build progression, lane-state inference — features that are not in any free API at any speed. THIS is where CV is load-bearing.
+2. **Optional numerical cross-check via OCR:** when Tesseract returns parseable values for gold/timer, feed them to the OCR-vs-livestats watchdog (§6.3) as one more sanity check. Not relied upon for trading decisions.
 
-The CV pipeline must be reliable for v2 to have any edge. Livestats is the cross-check, not the primary.
+OCR scope decision: gold + game_timer are the only fields with text big enough to OCR reliably (~50-70% of frames; Tesseract struggles with the LCK font's "2"/"9" digits and gold-coin icons get misread as "0"). Kills/towers/dragons/barons/inhibitors are too small to OCR cleanly and come from livestats. This is documented in [src/loltrader/cv/regions.py](../../src/loltrader/cv/regions.py).
+
+If a future LCK season uses a more OCR-friendly font, or we adopt PaddleOCR / EasyOCR (spec §17 #4), revisit and potentially restore CV-numerical primacy.
 
 - **Source:** `twitch.tv/lck` — user is subscribed to this channel, so ad-free playback works for user's session cookie.
 - **Auth:** browser session cookie `auth-token` stored in `data/twitch_creds.json` (gitignored, file ACL restricted to user). Revoke from "Disconnect all sessions" if leaked.
@@ -287,7 +301,24 @@ Building a "what's the current in-game minute?" function via retrospective probi
 
 ### 10.6 Data-freshness reality check
 
-Riot livestats minimum delays (30s LCS, 45s LCK) are calibrated to match broadcast delays. This means **the livestats API does not give us a data-freshness edge over stream viewers**. CV from the broadcast itself runs at viewer-speed (~15–25s behind game truth, vs livestats' ~30–45s), making CV faster than the API by ~10–15s. This finding caused the v2 architecture to reorganize CV as primary numerical source and livestats as ground-truth cross-check (see §1 and §6).
+Riot livestats minimum delays (30s LCS, 45s LCK) are calibrated to match broadcast delays. This means **the livestats API does not give us a data-freshness edge over stream viewers**. CV from the broadcast itself runs at viewer-speed (~15–25s behind game truth, vs livestats' ~30–45s), making CV faster than the API by ~10–15s. This finding initially drove the v2 architecture to reorganize CV as primary numerical source — but see §10.7 for the further revision after empirical OCR calibration.
+
+### 10.7 OCR reliability is the binding constraint
+
+Phase 4 calibration measured Tesseract OCR against the LCK broadcast font across 20 known-in_game frames at varied gold values:
+
+- **blue_gold: 50% parseable, frequent gross errors** (e.g. "39.91" parsed when actual value was ~5000)
+- **red_gold: 55% parseable, similar error mode**
+- **game_timer: 70% parseable** (the timer's larger font + simpler "M:SS" pattern is easier)
+
+Tesseract's English model misreads the LCK font's stylized "2" and "9" digits as "e<" and "I" respectively. The gold-coin icon is misread as "0". Pulling in a heavyweight OCR engine (EasyOCR / PaddleOCR, ~500MB models) would likely improve this but adds dep weight + setup complexity for marginal benefit (the freshness gain over livestats was already only ~10-15s).
+
+**Architectural consequence (§6 updated):**
+- Numerical state (gold/kills/towers/etc) → **livestats primary**, not CV
+- Positional features (minimap/items/vision) → **CV primary** (the real v2 differentiator)
+- CV-OCR remains useful as an opportunistic cross-check via the watchdog in §6.3 but is not load-bearing
+
+This is honest engineering, not a CV failure. CV does what it's good at (extracting structure from pixels that aren't in any API); livestats does what it's good at (parsed numerical state).
 
 ---
 
