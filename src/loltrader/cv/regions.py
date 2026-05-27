@@ -83,7 +83,10 @@ LCK_BROADCAST_2026 = BroadcastRegions(
     blue_gold=FractionalBox(0.400, 0.028, 0.439, 0.056),
     red_gold=FractionalBox(0.570, 0.028, 0.604, 0.056),
     objective_timer=FractionalBox(0.922, 0.021, 0.984, 0.063),
-    minimap=FractionalBox(0.789, 0.708, 1.0, 1.0),
+    # Minimap tightened to actual map area (excludes player webcams and
+    # broadcast graphics that were captured in the looser bound).
+    # orig pixels: x=1057-1275, y=495-705 in 1280x720 broadcast.
+    minimap=FractionalBox(0.826, 0.688, 0.996, 0.979),
 )
 
 

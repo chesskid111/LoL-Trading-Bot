@@ -195,65 +195,82 @@ cfg = load_config()
 conn = _get_conn()
 model = _get_model()
 
-# Session status banner
+# Compact top-bar: session + P&L + kill switch all in one strip
 session = _session_status(conn)
 pnl = _closed_pnl(conn)
 total_pnl_cents = pnl["total_pnl"] or 0
 starting = session["starting_bankroll_cents"] or 0
-current_equity = starting + total_pnl_cents
 
-col_a, col_b, col_c, col_d, col_e = st.columns(5)
-col_a.metric("Session", str(session["session_id"]) if session["session_id"] else "—")
-col_b.metric("Starting", f"${starting/100:,.2f}")
-col_c.metric("Closed PnL", f"${total_pnl_cents/100:+,.2f}")
-col_d.metric("Trades", f"{pnl['n']} ({pnl['wins'] or 0} W)")
-col_e.metric("Model loaded", "yes" if model else "no")
+top_cols = st.columns([1, 1, 1, 1, 1, 1])
+top_cols[0].metric("Session", str(session["session_id"]) if session["session_id"] else "—")
+top_cols[1].metric("Starting", f"${starting/100:,.2f}")
+top_cols[2].metric("Closed PnL", f"${total_pnl_cents/100:+,.2f}")
+top_cols[3].metric("Trades", f"{pnl['n']} ({pnl['wins'] or 0} W)")
+top_cols[4].metric("Model loaded", "yes" if model else "no")
 
-# Kill switch
-st.subheader("Manual kill switch")
+# Kill switch lives in the top bar so it's always one click away
 kill_file = cfg.project_root / "data" / "KILL_SWITCH"
 kill_present = kill_file.exists()
-col1, col2 = st.columns(2)
-if kill_present:
-    col1.error(f"KILL_SWITCH file present at {kill_file}. Bot is SOFT-killed.")
-    if col2.button("Remove kill file (resume)"):
-        kill_file.unlink()
-        st.success("Kill file removed. Bot will resume on next iteration.")
-        st.rerun()
-else:
-    col1.success("No kill file. Bot can open new positions.")
-    if col2.button("Trigger soft kill"):
-        kill_file.parent.mkdir(parents=True, exist_ok=True)
-        kill_file.touch()
-        st.warning("Kill file written. Bot will stop opening new positions within ~5s.")
-        st.rerun()
+with top_cols[5]:
+    if kill_present:
+        if st.button("Resume (rm kill)", use_container_width=True):
+            kill_file.unlink()
+            st.rerun()
+        st.error("KILL ON")
+    else:
+        if st.button("KILL", use_container_width=True, type="primary"):
+            kill_file.parent.mkdir(parents=True, exist_ok=True)
+            kill_file.touch()
+            st.rerun()
 
-# Upcoming markets
-st.subheader("Upcoming tradable markets (next 48h)")
-upcoming = _upcoming_markets_with_predictions(conn, model)
-if not upcoming.empty:
-    st.dataframe(upcoming, hide_index=True, use_container_width=True)
-else:
-    st.info("No tradable markets within trading window (no open KXLOLGAME markets with confident linkage and active prices).")
+st.divider()
 
-# Open positions
-st.subheader("Open positions")
-open_pos = _open_positions(conn)
-if not open_pos.empty:
-    st.dataframe(open_pos, hide_index=True, use_container_width=True)
-else:
-    st.info("No open positions.")
 
-# Recent decisions
-st.subheader("Recent decisions (last 40)")
-decisions = _recent_decisions(conn)
-if not decisions.empty:
-    st.dataframe(decisions, hide_index=True, use_container_width=True)
-else:
-    st.info("No decisions logged yet.")
+# Tabs: Live Trading (v2.0a primary view) | Pre-game (v1 legacy) | Positions | History
+tab_live, tab_pregame, tab_positions, tab_history = st.tabs(
+    ["🔴 Live Trading", "📅 Pre-game (next 48h)", "📊 Positions", "📜 History"]
+)
 
-# Auto-refresh
+
+with tab_live:
+    from loltrader.ui.live_view import render_live_view
+    render_live_view(conn)
+
+
+with tab_pregame:
+    st.subheader("Upcoming tradable markets (next 48h)")
+    upcoming = _upcoming_markets_with_predictions(conn, model)
+    if not upcoming.empty:
+        st.dataframe(upcoming, hide_index=True, use_container_width=True)
+    else:
+        st.info(
+            "No tradable markets within trading window (no open KXLOLGAME markets "
+            "with confident linkage and active prices)."
+        )
+
+
+with tab_positions:
+    st.subheader("Open positions")
+    open_pos = _open_positions(conn)
+    if not open_pos.empty:
+        st.dataframe(open_pos, hide_index=True, use_container_width=True)
+    else:
+        st.info("No open positions.")
+
+
+with tab_history:
+    st.subheader("Recent decisions (last 40)")
+    decisions = _recent_decisions(conn)
+    if not decisions.empty:
+        st.dataframe(decisions, hide_index=True, use_container_width=True)
+    else:
+        st.info("No decisions logged yet.")
+
+
+# Footer
 st.markdown("---")
 from datetime import timezone as _tz
-st.caption(f"Last refresh: {datetime.now(_tz.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC. "
-           "Refresh manually for now (Streamlit's auto-refresh requires extra config).")
+st.caption(
+    f"Last refresh: {datetime.now(_tz.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC. "
+    "Auto-refresh every 5s on the Live Trading tab during active games."
+)

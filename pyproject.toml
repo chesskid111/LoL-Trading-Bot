@@ -25,6 +25,7 @@ dependencies = [
     "pytesseract>=0.3.10",
     "Pillow>=10.3",
     "yt-dlp>=2024.5.27",
+    "streamlit-autorefresh>=1.0",
 ]
 
 [project.optional-dependencies]
