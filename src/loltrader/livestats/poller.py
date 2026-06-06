@@ -71,9 +71,26 @@ def run_poller(game_id: str, league_slug: str, project_root: Path,
     log.info("livestats_poller starting", extra={"game_id": game_id})
 
     # Probe adaptive delay once at startup. Cache it on games_live.
-    delay = discovery.probe_minimum_delay(game_id)
+    # Retry while the game is still in pick/ban or loading — getLive can flip
+    # to "inProgress" several minutes before in_game frames appear.
+    delay = None
+    probe_attempts = 0
+    PROBE_RETRY_BUDGET = 60      # ~60 * 15s = 15 minutes
+    PROBE_RETRY_INTERVAL = 15
+    while delay is None and probe_attempts < PROBE_RETRY_BUDGET:
+        delay = discovery.probe_minimum_delay(game_id)
+        if delay is not None:
+            break
+        probe_attempts += 1
+        if probe_attempts == 1:
+            log.info("No in_game frames yet (probably champ select); retrying every %ds",
+                     PROBE_RETRY_INTERVAL, extra={"game_id": game_id})
+        time.sleep(PROBE_RETRY_INTERVAL)
+        if max_runtime_sec is not None and (time.time() - stats.started_ts) > max_runtime_sec:
+            break
     if delay is None:
-        log.error("Cannot probe delay for game; aborting", extra={"game_id": game_id})
+        log.error("Cannot probe delay after %d attempts; aborting",
+                  probe_attempts, extra={"game_id": game_id})
         return stats
     if delay > discovery.MAX_DELAY_SEC:
         log.error("Probed delay %ds exceeds MAX_DELAY_SEC %ds; aborting",
@@ -133,6 +150,15 @@ def run_poller(game_id: str, league_slug: str, project_root: Path,
                     stats.frames_inserted += 1
                 else:
                     stats.frames_skipped_dup += 1
+
+                # Also fetch /details for items/stats/runes. Best-effort: a
+                # details failure does not abort the window-fetch loop.
+                try:
+                    details_frame = discovery.get_details_frame(game_id, delay)
+                    if details_frame is not None:
+                        storage.write_frame_details(conn, game_id, details_frame)
+                except discovery.RiotApiError as e:
+                    log.debug("details fetch failed for %s: %s", game_id, e)
 
                 # Track game-finished state for graceful exit.
                 if frame.get("gameState") == "finished":

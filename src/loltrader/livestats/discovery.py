@@ -106,12 +106,18 @@ def find_live_games(league_slugs: list[str] | None = None) -> list[LiveGame]:
         )
         if not details:
             continue
-        match = details.get("data", {}).get("event", {}).get("match", {})
-        teams = match.get("teams", [])
+        # Riot sometimes returns data.event = null for non-LoL events or events
+        # that have not yet been hydrated. Each .get(...) below can therefore
+        # return None, so use explicit fallbacks instead of chained .get with
+        # default dicts.
+        data = details.get("data") or {}
+        event = data.get("event") or {}
+        match = event.get("match") or {}
+        teams = match.get("teams") or []
         team_names = [t.get("name", "?") for t in teams]
         if len(team_names) < 2:
             continue
-        for g in match.get("games", []):
+        for g in (match.get("games") or []):
             if g.get("state") != "inProgress":
                 continue
             out.append(LiveGame(
@@ -133,6 +139,23 @@ def get_frame(game_id: str, delay_sec: int) -> dict[str, Any] | None:
     """
     d = _floor_to_10s(datetime.now(timezone.utc) - timedelta(seconds=delay_sec))
     data = _get_json(f"{LIVE}/window/{game_id}", params={"startingTime": _fmt_ts(d)})
+    if not data:
+        return None
+    frames = data.get("frames") or []
+    return frames[-1] if frames else None
+
+
+def get_details_frame(game_id: str, delay_sec: int) -> dict[str, Any] | None:
+    """Return the most-recent /details frame at the given delay.
+
+    /details includes per-player items, runes, stats, ability allocation, ward
+    counts, kill participation, and damage share — strictly richer than
+    /window. Same broadcast embargo applies.
+
+    Returns None if no frame is available. Raises RiotApiError on transport failure.
+    """
+    d = _floor_to_10s(datetime.now(timezone.utc) - timedelta(seconds=delay_sec))
+    data = _get_json(f"{LIVE}/details/{game_id}", params={"startingTime": _fmt_ts(d)})
     if not data:
         return None
     frames = data.get("frames") or []

@@ -163,6 +163,71 @@ def write_frame(
     return inserted
 
 
+def write_frame_details(
+    conn: sqlite3.Connection,
+    game_id: str,
+    frame: dict[str, Any],
+) -> int:
+    """Upsert one /details frame into live_frames_details.
+
+    Each /details frame contains 10 participants (5 per team). Writes one row
+    per participant, deduping on (game_id, frame_ts_unix, participant_id).
+
+    Returns the number of new rows actually inserted.
+    """
+    ts_str = frame.get("rfc460Timestamp")
+    if not ts_str:
+        return 0
+    try:
+        frame_ts_unix = parse_rfc460_to_unix(ts_str)
+    except ValueError:
+        return 0
+
+    fetched_ts = int(time.time())
+    inserted = 0
+
+    # /details returns participants flat under "participants"; partition by
+    # participantId (1-5 = blue, 6-10 = red — Riot's standard convention).
+    participants = frame.get("participants") or []
+    for p in participants:
+        pid = p.get("participantId")
+        if pid is None:
+            continue
+        side = "blue" if pid <= 5 else "red"
+        cursor = conn.execute(
+            """
+            INSERT INTO live_frames_details (
+                game_id, frame_ts_unix, fetched_ts_unix, side, participant_id,
+                level, kills, deaths, assists, total_gold, creep_score,
+                kill_participation, champion_damage_share,
+                wards_placed, wards_destroyed,
+                attack_damage, ability_power, armor, magic_resistance,
+                attack_speed, critical_chance, life_steal, tenacity,
+                items_json, perks_json, abilities_json
+            ) VALUES (?, ?, ?, ?, ?,  ?, ?, ?, ?, ?, ?,  ?, ?,  ?, ?,
+                      ?, ?, ?, ?,  ?, ?, ?, ?,  ?, ?, ?)
+            ON CONFLICT(game_id, frame_ts_unix, participant_id) DO NOTHING
+            """,
+            (
+                game_id, frame_ts_unix, fetched_ts, side, pid,
+                p.get("level"), p.get("kills"), p.get("deaths"), p.get("assists"),
+                p.get("totalGoldEarned"), p.get("creepScore"),
+                p.get("killParticipation"), p.get("championDamageShare"),
+                p.get("wardsPlaced"), p.get("wardsDestroyed"),
+                p.get("attackDamage"), p.get("abilityPower"),
+                p.get("armor"), p.get("magicResistance"),
+                p.get("attackSpeed"), p.get("criticalChance"),
+                p.get("lifeSteal"), p.get("tenacity"),
+                json.dumps(p.get("items") or []),
+                json.dumps(p.get("perkMetadata") or {}),
+                json.dumps(p.get("abilities") or []),
+            ),
+        )
+        inserted += cursor.rowcount
+    conn.commit()
+    return inserted
+
+
 def get_latest_frame_ts(conn: sqlite3.Connection, game_id: str) -> int | None:
     """Return the latest frame_ts_unix observed for a game, or None."""
     row = conn.execute(
