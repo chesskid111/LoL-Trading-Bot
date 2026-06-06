@@ -35,6 +35,11 @@ from loltrader.comp.llm_curator import (
     result_to_profile,
 )
 from loltrader.comp.profiles import load_profiles, save_profiles
+from loltrader.comp.draft_patterns import (
+    format_patterns_for_prompt,
+    get_draft_patterns,
+)
+from loltrader.db import connect
 
 
 def _manual_provider_factory(directory: Path):
@@ -84,6 +89,18 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--backend", default="manual",
                    choices=["anthropic", "openai", "manual"])
     p.add_argument("--model", default=None, help="Override default model name")
+    p.add_argument("--web-search", action="store_true",
+                   help="Enable Anthropic server-side web search (anthropic backend only). "
+                        "~2x cost but dramatically better for post-cutoff champions + meta shifts.")
+    p.add_argument("--draft-patterns-patches", default="16.1,16.08,16.04,16.01",
+                   help="Comma-separated patches to aggregate pro draft patterns from. "
+                        "Defaults to last 4 patches in DB.")
+    p.add_argument("--no-draft-patterns", action="store_true",
+                   help="Skip injection of pro draft patterns from local DB.")
+    p.add_argument("--checkpoint-every", type=int, default=5,
+                   help="Write partial output every N champions so interruption doesn't lose progress.")
+    p.add_argument("--resume", action="store_true",
+                   help="If output file exists, skip champions already curated.")
     p.add_argument("--manual-dir", default="data/llm_seed",
                    help="Directory of {Champion}.json files for manual backend")
     p.add_argument("--stats", default="data/patch_stats.json")
@@ -116,22 +133,60 @@ def main(argv: list[str] | None = None) -> int:
         backend=args.backend,
         model=args.model,
         manual_provider=manual_provider,
+        enable_web_search=args.web_search,
     )
 
     last_updated = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     profiles: dict = {}
     errors: list[tuple[str, str]] = []
 
-    for champion, pickrate, winrate in selection:
-        try:
-            result = curator.curate_one(
-                champion, args.patch, args.league, pickrate, winrate,
-            )
-            profile = result_to_profile(result, args.patch, last_updated)
-            profiles[champion] = profile
-        except Exception as e:
-            log.error("Failed to curate %s: %s", champion, e)
-            errors.append((champion, str(e)))
+    # Resume support — reload prior partial output if requested
+    if args.resume and Path(args.out).exists():
+        profiles = load_profiles(args.out)
+        log.info("Resume: loaded %d profiles from %s; will skip those",
+                 len(profiles), args.out)
+
+    # Optionally compute draft patterns from local DB and pass to the curator.
+    patterns_patches = (
+        [p.strip() for p in args.draft_patterns_patches.split(",") if p.strip()]
+        if not args.no_draft_patterns else []
+    )
+    db_conn = None
+    if patterns_patches:
+        db_conn = connect()
+        log.info("Injecting pro draft patterns from patches: %s", patterns_patches)
+
+    try:
+        for i, (champion, pickrate, winrate) in enumerate(selection, start=1):
+            if champion in profiles:
+                log.info("[%d/%d] skipping %s (already in resume set)",
+                         i, len(selection), champion)
+                continue
+            try:
+                patterns_str = None
+                if db_conn:
+                    patterns = get_draft_patterns(db_conn, champion, patterns_patches,
+                                                   league=args.league)
+                    patterns_str = format_patterns_for_prompt(patterns)
+                result = curator.curate_one(
+                    champion, args.patch, args.league, pickrate, winrate,
+                    draft_patterns=patterns_str,
+                )
+                profile = result_to_profile(result, args.patch, last_updated)
+                profiles[champion] = profile
+                log.info("[%d/%d] curated %s (cost so far $%.2f)",
+                         i, len(selection), champion, curator.total_cost_usd)
+            except Exception as e:
+                log.error("[%d/%d] failed %s: %s", i, len(selection), champion, e)
+                errors.append((champion, str(e)))
+
+            # Checkpoint partial progress every N champions
+            if profiles and (i % args.checkpoint_every == 0):
+                save_profiles(profiles, args.out)
+                log.info("Checkpoint: %d profiles saved to %s", len(profiles), args.out)
+    finally:
+        if db_conn:
+            db_conn.close()
 
     if not profiles:
         log.error("No profiles produced; aborting")

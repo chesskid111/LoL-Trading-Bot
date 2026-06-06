@@ -55,12 +55,19 @@ def build_prompt(
     league: str | None = None,
     pickrate: float | None = None,
     winrate: float | None = None,
+    draft_patterns: str | None = None,
 ) -> str:
     """Build the prompt for one champion's qualitative profile.
 
-    Passes the champion's current pro stats (if known) so the LLM can ground
-    its qualitative reasoning in actual usage data — a Caitlyn with 50%
-    pickrate looks very different from a Caitlyn with 5%.
+    Passes the champion's pro stats and (optionally) factual draft patterns
+    extracted from our local DB. The patterns include actual top teammates,
+    actual lane matchups with winrates, and player-on-champion comfort —
+    grounding the LLM's qualitative scoring in evidence rather than
+    training-data bias (which is heavily solo-queue-weighted).
+
+    When draft_patterns is provided, the LLM is instructed to derive
+    common_partners and common_counters from the data block rather than
+    guessing.
     """
     league_str = f" for the {league} region" if league else ""
     stats_str = ""
@@ -71,11 +78,26 @@ def build_prompt(
 
     sources_str = "\n".join(f"  - {s}" for s in PRO_SOURCES)
 
+    # Conditional draft-patterns block — only included if we have local data
+    if draft_patterns:
+        patterns_block = f"""
+Factual pro draft data from our local DB (use this to derive synergies and counters
+rather than guessing — the data is unambiguously pro, not solo queue):
+
+{draft_patterns}
+
+When you output ``common_partners`` and ``common_counters``, prefer champions
+that appear in the data above. Only add others if you have strong reason to.
+"""
+    else:
+        patterns_block = ""
+
     return f"""You are aggregating pro LoL meta analysis for patch {patch}{league_str}.
 
 Champion to analyze: {champion}
-{stats_str}
-Find recent analysis (last 14 days) from these sources:
+{stats_str}{patterns_block}
+For qualitative dimensions you can't infer from the data above, look up recent
+analysis (last 14 days) from these sources via web_search:
 {sources_str}
 
 Output JSON conforming to this schema:
@@ -186,8 +208,24 @@ def _parse_response(champion: str, response_text: str) -> CurationResult:
     )
 
 
-def _call_anthropic(prompt: str, api_key: str, model: str = "claude-sonnet-4-6") -> tuple[str, float]:
-    """Call Anthropic API; returns (response_text, usd_cost)."""
+def _call_anthropic(
+    prompt: str,
+    api_key: str,
+    model: str = "claude-sonnet-4-6",
+    enable_web_search: bool = False,
+    max_searches: int = 3,
+) -> tuple[str, float]:
+    """Call Anthropic API; returns (response_text, usd_cost).
+
+    When ``enable_web_search`` is True, the model can use Anthropic's
+    server-side web search tool to look up current-patch content. This is
+    important for champions released after the training cutoff (e.g.,
+    Ambessa, Aurora, Yunara) and for current-patch meta shifts that the
+    model wouldn't otherwise know about.
+
+    Web search adds ~$0.01 per search to the cost, and the model typically
+    issues 1-3 searches per champion when enabled.
+    """
     try:
         import anthropic
     except ImportError as e:
@@ -197,17 +235,43 @@ def _call_anthropic(prompt: str, api_key: str, model: str = "claude-sonnet-4-6")
         ) from e
 
     client = anthropic.Anthropic(api_key=api_key)
-    msg = client.messages.create(
-        model=model,
-        max_tokens=2000,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    text = msg.content[0].text  # type: ignore[union-attr]
-    # Rough cost estimate (Sonnet pricing as of 2025-2026)
+    create_kwargs: dict = {
+        "model": model,
+        "max_tokens": 4000 if enable_web_search else 2000,
+        "messages": [{"role": "user", "content": prompt}],
+    }
+    if enable_web_search:
+        create_kwargs["tools"] = [{
+            "type": "web_search_20250305",
+            "name": "web_search",
+            "max_uses": max_searches,
+        }]
+
+    msg = client.messages.create(**create_kwargs)
+
+    # When tools are involved, the response can have multiple content blocks:
+    # tool_use blocks for searches and text blocks for prose. We want the
+    # final assistant text — typically the last text block.
+    text_chunks = [
+        b.text for b in msg.content  # type: ignore[attr-defined]
+        if getattr(b, "type", None) == "text" and getattr(b, "text", None)
+    ]
+    if not text_chunks:
+        raise RuntimeError(f"Anthropic returned no text content for prompt")
+    text = text_chunks[-1]
+
+    # Token-based cost. Sonnet 4.6: $3/M input, $15/M output. Web search adds
+    # ~$0.01/search via server_tool_use, billed in addition. Estimate
+    # conservatively: count search invocations in the response.
     in_tokens = msg.usage.input_tokens
     out_tokens = msg.usage.output_tokens
-    cost = (in_tokens * 3.0 + out_tokens * 15.0) / 1_000_000
-    return text, cost
+    token_cost = (in_tokens * 3.0 + out_tokens * 15.0) / 1_000_000
+    n_searches = sum(
+        1 for b in msg.content  # type: ignore[attr-defined]
+        if getattr(b, "type", None) == "server_tool_use"
+    )
+    search_cost = n_searches * 0.01
+    return text, token_cost + search_cost
 
 
 def _call_openai(prompt: str, api_key: str, model: str = "gpt-4o-mini") -> tuple[str, float]:
@@ -246,6 +310,7 @@ class LLMCurator:
         api_key: str | None = None,
         model: str | None = None,
         manual_provider: Callable[[str, str], str] | None = None,
+        enable_web_search: bool = False,
     ) -> None:
         self.backend = backend
         self.api_key = api_key or os.environ.get(
@@ -253,12 +318,17 @@ class LLMCurator:
         )
         self.model = model
         self.manual_provider = manual_provider
+        self.enable_web_search = enable_web_search
         self.total_cost_usd = 0.0
         self.call_count = 0
 
         if backend != "manual" and not self.api_key:
             raise RuntimeError(
                 f"Backend '{backend}' requires an API key (set env var or pass api_key=)"
+            )
+        if enable_web_search and backend != "anthropic":
+            raise RuntimeError(
+                "Web search is only supported with the anthropic backend"
             )
 
     def curate_one(
@@ -268,9 +338,10 @@ class LLMCurator:
         league: str | None = None,
         pickrate: float | None = None,
         winrate: float | None = None,
+        draft_patterns: str | None = None,
     ) -> CurationResult:
         """Run the LLM on one champion and return the parsed result."""
-        prompt = build_prompt(champion, patch, league, pickrate, winrate)
+        prompt = build_prompt(champion, patch, league, pickrate, winrate, draft_patterns)
 
         if self.backend == "manual":
             if not self.manual_provider:
@@ -278,8 +349,11 @@ class LLMCurator:
             text = self.manual_provider(champion, prompt)
             cost = 0.0
         elif self.backend == "anthropic":
-            text, cost = _call_anthropic(prompt, self.api_key,
-                                          self.model or "claude-sonnet-4-6")
+            text, cost = _call_anthropic(
+                prompt, self.api_key,
+                model=self.model or "claude-sonnet-4-6",
+                enable_web_search=self.enable_web_search,
+            )
         elif self.backend == "openai":
             text, cost = _call_openai(prompt, self.api_key,
                                        self.model or "gpt-4o-mini")
