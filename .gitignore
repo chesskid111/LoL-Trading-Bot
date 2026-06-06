@@ -19,6 +19,11 @@ venv/
 data/*
 !data/cv_references/
 data/cv_references/_*/        # but skip any temp/scratch dirs under there
+# Comp evaluation engine data files — tracked because they're project data, not secrets
+!data/champion_profiles.json
+!data/lane_matchups.json
+!data/patch_stats.json
+!data/synergies.json
 models/
 logs/
 *.pem
