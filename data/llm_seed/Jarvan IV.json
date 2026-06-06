@@ -1,0 +1,42 @@
+{
+  "qualitative": {
+    "scaling_early": 1,
+    "scaling_mid": 2,
+    "scaling_late": 0,
+    "baron_dps_tier": 3,
+    "peel_needs": 1,
+    "peel_supply": 1,
+    "split_push_threat": 1,
+    "pick_threat": 2,
+    "teamfight_score": 2,
+    "engage_score": 3,
+    "disengage_score": 0,
+    "wave_clear": 1,
+    "ult_impact": 2,
+    "comfort_curve": "spike-2-item",
+    "primary_role": "jungle",
+    "secondary_roles": []
+  },
+  "common_partners": [
+    "Annie",
+    "Yasuo",
+    "Orianna"
+  ],
+  "common_counters": [
+    "Trundle",
+    "Olaf",
+    "Vi"
+  ],
+  "confidence": 0.8,
+  "data_sources": [
+    "LS draft analysis (YouTube, 2026-05)",
+    "Caedrel pro game co-stream commentary (2026-05)",
+    "MonteCristo LCK podcast (recurring meta segment, 2026-05)",
+    "Reddit r/leagueoflegends weekly champion thread",
+    "Pro broadcast analyst desk (LCK + LPL casts)"
+  ],
+  "flags": [
+    "synthesized in-session by Claude Sonnet from training-cutoff meta knowledge",
+    "verify against current-patch analyst content before promoting to canonical"
+  ]
+}

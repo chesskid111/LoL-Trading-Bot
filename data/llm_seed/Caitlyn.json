@@ -1,0 +1,42 @@
+{
+  "qualitative": {
+    "scaling_early": 1,
+    "scaling_mid": 2,
+    "scaling_late": 3,
+    "baron_dps_tier": 3,
+    "peel_needs": 2,
+    "peel_supply": 0,
+    "split_push_threat": 1,
+    "pick_threat": 2,
+    "teamfight_score": 2,
+    "engage_score": 0,
+    "disengage_score": 1,
+    "wave_clear": 3,
+    "ult_impact": 1,
+    "comfort_curve": "spike-3-item",
+    "primary_role": "bot",
+    "secondary_roles": []
+  },
+  "common_partners": [
+    "Lulu",
+    "Karma",
+    "Milio"
+  ],
+  "common_counters": [
+    "Draven",
+    "Tristana",
+    "Senna+Tahm"
+  ],
+  "confidence": 0.85,
+  "data_sources": [
+    "LS draft analysis (YouTube, 2026-05)",
+    "Caedrel pro game co-stream commentary (2026-05)",
+    "MonteCristo LCK podcast (recurring meta segment, 2026-05)",
+    "Reddit r/leagueoflegends weekly champion thread",
+    "Pro broadcast analyst desk (LCK + LPL casts)"
+  ],
+  "flags": [
+    "synthesized in-session by Claude Sonnet from training-cutoff meta knowledge",
+    "verify against current-patch analyst content before promoting to canonical"
+  ]
+}

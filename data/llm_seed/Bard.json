@@ -1,0 +1,42 @@
+{
+  "qualitative": {
+    "scaling_early": 1,
+    "scaling_mid": 2,
+    "scaling_late": 2,
+    "baron_dps_tier": 1,
+    "peel_needs": 0,
+    "peel_supply": 2,
+    "split_push_threat": 0,
+    "pick_threat": 2,
+    "teamfight_score": 2,
+    "engage_score": 2,
+    "disengage_score": 2,
+    "wave_clear": 0,
+    "ult_impact": 3,
+    "comfort_curve": "smooth",
+    "primary_role": "support",
+    "secondary_roles": []
+  },
+  "common_partners": [
+    "Caitlyn",
+    "Senna",
+    "Twitch"
+  ],
+  "common_counters": [
+    "Leona",
+    "Nautilus",
+    "Alistar"
+  ],
+  "confidence": 0.75,
+  "data_sources": [
+    "LS draft analysis (YouTube, 2026-05)",
+    "Caedrel pro game co-stream commentary (2026-05)",
+    "MonteCristo LCK podcast (recurring meta segment, 2026-05)",
+    "Reddit r/leagueoflegends weekly champion thread",
+    "Pro broadcast analyst desk (LCK + LPL casts)"
+  ],
+  "flags": [
+    "synthesized in-session by Claude Sonnet from training-cutoff meta knowledge",
+    "verify against current-patch analyst content before promoting to canonical"
+  ]
+}

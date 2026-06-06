@@ -21,11 +21,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2432,
-      "banrate_30d": 0.1622,
-      "winrate_30d": 0.5556,
-      "priority_score": 2.03,
-      "games_sampled": 9
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Jarvan IV",
@@ -73,11 +73,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2703,
-      "banrate_30d": 0.2432,
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
       "winrate_30d": 0.5,
-      "priority_score": 2.57,
-      "games_sampled": 10
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Maokai",
@@ -125,11 +125,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2703,
-      "banrate_30d": 0.3243,
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
       "winrate_30d": 0.5,
-      "priority_score": 2.97,
-      "games_sampled": 10
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Caitlyn",
@@ -177,11 +177,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2432,
-      "banrate_30d": 0.2432,
-      "winrate_30d": 0.2222,
-      "priority_score": 2.43,
-      "games_sampled": 9
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Lulu",
@@ -229,11 +229,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2432,
-      "banrate_30d": 0.2973,
-      "winrate_30d": 0.4444,
-      "priority_score": 2.7,
-      "games_sampled": 9
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Lulu",
@@ -281,11 +281,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2703,
-      "banrate_30d": 0.1351,
-      "winrate_30d": 0.6,
-      "priority_score": 2.03,
-      "games_sampled": 10
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Karma",
@@ -333,11 +333,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2162,
-      "banrate_30d": 0.1622,
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
       "winrate_30d": 0.5,
-      "priority_score": 1.89,
-      "games_sampled": 8
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Lee Sin",
@@ -385,11 +385,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2703,
-      "banrate_30d": 0.3784,
-      "winrate_30d": 0.8,
-      "priority_score": 3.24,
-      "games_sampled": 10
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Annie",
@@ -439,11 +439,11 @@
       ]
     },
     "pro_stats": {
-      "pickrate_30d": 0.2432,
-      "banrate_30d": 0.1622,
-      "winrate_30d": 0.4444,
-      "priority_score": 2.03,
-      "games_sampled": 9
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Lee Sin",
@@ -491,11 +491,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2162,
-      "banrate_30d": 0.0811,
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
       "winrate_30d": 0.5,
-      "priority_score": 1.49,
-      "games_sampled": 8
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Senna",
@@ -545,11 +545,11 @@
       ]
     },
     "pro_stats": {
-      "pickrate_30d": 0.2432,
-      "banrate_30d": 0.5135,
-      "winrate_30d": 0.4444,
-      "priority_score": 3.78,
-      "games_sampled": 9
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Ezreal",
@@ -597,11 +597,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2432,
-      "banrate_30d": 0.2973,
-      "winrate_30d": 0.5556,
-      "priority_score": 2.7,
-      "games_sampled": 9
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Nami",
@@ -649,11 +649,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2703,
+      "pickrate_30d": 0.0,
       "banrate_30d": 0.0,
       "winrate_30d": 0.5,
-      "priority_score": 1.35,
-      "games_sampled": 10
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Lucian",
@@ -703,11 +703,11 @@
       ]
     },
     "pro_stats": {
-      "pickrate_30d": 0.2162,
-      "banrate_30d": 0.1351,
-      "winrate_30d": 0.375,
-      "priority_score": 1.76,
-      "games_sampled": 8
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Annie",
@@ -759,11 +759,11 @@
       ]
     },
     "pro_stats": {
-      "pickrate_30d": 0.2162,
-      "banrate_30d": 0.2973,
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
       "winrate_30d": 0.5,
-      "priority_score": 2.57,
-      "games_sampled": 8
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Senna",
@@ -813,11 +813,11 @@
       ]
     },
     "pro_stats": {
-      "pickrate_30d": 0.2432,
-      "banrate_30d": 0.4595,
-      "winrate_30d": 0.2222,
-      "priority_score": 3.51,
-      "games_sampled": 9
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Trundle",
@@ -865,11 +865,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2973,
-      "banrate_30d": 0.1081,
-      "winrate_30d": 0.4545,
-      "priority_score": 2.03,
-      "games_sampled": 11
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Lulu",
@@ -919,11 +919,11 @@
       ]
     },
     "pro_stats": {
-      "pickrate_30d": 0.2703,
-      "banrate_30d": 0.1081,
-      "winrate_30d": 0.6,
-      "priority_score": 1.89,
-      "games_sampled": 10
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Ashe",
@@ -971,11 +971,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2973,
-      "banrate_30d": 0.0811,
-      "winrate_30d": 0.7273,
-      "priority_score": 1.89,
-      "games_sampled": 11
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Senna",
@@ -1023,11 +1023,11 @@
       "secondary_roles": []
     },
     "pro_stats": {
-      "pickrate_30d": 0.2162,
-      "banrate_30d": 0.1892,
-      "winrate_30d": 0.125,
-      "priority_score": 2.03,
-      "games_sampled": 8
+      "pickrate_30d": 0.0,
+      "banrate_30d": 0.0,
+      "winrate_30d": 0.5,
+      "priority_score": 0.0,
+      "games_sampled": 0
     },
     "common_partners": [
       "Akali",

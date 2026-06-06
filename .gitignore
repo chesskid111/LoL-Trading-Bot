@@ -21,9 +21,12 @@ data/*
 data/cv_references/_*/        # but skip any temp/scratch dirs under there
 # Comp evaluation engine data files — tracked because they're project data, not secrets
 !data/champion_profiles.json
+!data/champion_profiles_llm_draft.json
 !data/lane_matchups.json
 !data/patch_stats.json
 !data/synergies.json
+!data/llm_seed/
+!data/llm_seed/*
 models/
 logs/
 *.pem
