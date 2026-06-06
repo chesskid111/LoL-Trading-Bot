@@ -1,1 +1,5132 @@
-{}
+{
+  "bot|Aphelios|Corki": {
+    "champion_a": "Aphelios",
+    "champion_b": "Corki",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "bot|Aphelios|Lucian": {
+    "champion_a": "Aphelios",
+    "champion_b": "Lucian",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "bot",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "bot|Aphelios|Sivir": {
+    "champion_a": "Aphelios",
+    "champion_b": "Sivir",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "bot|Aphelios|Yunara": {
+    "champion_a": "Aphelios",
+    "champion_b": "Yunara",
+    "games": 17,
+    "raw_winrate_a": 0.7647,
+    "role": "bot",
+    "shrunk_winrate_a": 0.7045,
+    "wins_a": 13
+  },
+  "bot|Aphelios|Ziggs": {
+    "champion_a": "Aphelios",
+    "champion_b": "Ziggs",
+    "games": 5,
+    "raw_winrate_a": 0.8,
+    "role": "bot",
+    "shrunk_winrate_a": 0.65,
+    "wins_a": 4
+  },
+  "bot|Ashe|Caitlyn": {
+    "champion_a": "Ashe",
+    "champion_b": "Caitlyn",
+    "games": 9,
+    "raw_winrate_a": 0.3333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3929,
+    "wins_a": 3
+  },
+  "bot|Ashe|Corki": {
+    "champion_a": "Ashe",
+    "champion_b": "Corki",
+    "games": 7,
+    "raw_winrate_a": 0.8571,
+    "role": "bot",
+    "shrunk_winrate_a": 0.7083,
+    "wins_a": 6
+  },
+  "bot|Ashe|Ezreal": {
+    "champion_a": "Ashe",
+    "champion_b": "Ezreal",
+    "games": 30,
+    "raw_winrate_a": 0.5667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5571,
+    "wins_a": 17
+  },
+  "bot|Ashe|Jhin": {
+    "champion_a": "Ashe",
+    "champion_b": "Jhin",
+    "games": 17,
+    "raw_winrate_a": 0.7059,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6591,
+    "wins_a": 12
+  },
+  "bot|Ashe|Kai'Sa": {
+    "champion_a": "Ashe",
+    "champion_b": "Kai'Sa",
+    "games": 4,
+    "raw_winrate_a": 1.0,
+    "role": "bot",
+    "shrunk_winrate_a": 0.7222,
+    "wins_a": 4
+  },
+  "bot|Ashe|Lucian": {
+    "champion_a": "Ashe",
+    "champion_b": "Lucian",
+    "games": 8,
+    "raw_winrate_a": 0.5,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 4
+  },
+  "bot|Ashe|Mel": {
+    "champion_a": "Ashe",
+    "champion_b": "Mel",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "bot",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "bot|Ashe|Miss Fortune": {
+    "champion_a": "Ashe",
+    "champion_b": "Miss Fortune",
+    "games": 6,
+    "raw_winrate_a": 0.8333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6818,
+    "wins_a": 5
+  },
+  "bot|Ashe|Varus": {
+    "champion_a": "Ashe",
+    "champion_b": "Varus",
+    "games": 8,
+    "raw_winrate_a": 0.375,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4231,
+    "wins_a": 3
+  },
+  "bot|Ashe|Yunara": {
+    "champion_a": "Ashe",
+    "champion_b": "Yunara",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "bot|Ashe|Ziggs": {
+    "champion_a": "Ashe",
+    "champion_b": "Ziggs",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "bot|Caitlyn|Ashe": {
+    "champion_a": "Caitlyn",
+    "champion_b": "Ashe",
+    "games": 9,
+    "raw_winrate_a": 0.6667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6071,
+    "wins_a": 6
+  },
+  "bot|Caitlyn|Corki": {
+    "champion_a": "Caitlyn",
+    "champion_b": "Corki",
+    "games": 6,
+    "raw_winrate_a": 0.6667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5909,
+    "wins_a": 4
+  },
+  "bot|Caitlyn|Ezreal": {
+    "champion_a": "Caitlyn",
+    "champion_b": "Ezreal",
+    "games": 16,
+    "raw_winrate_a": 0.4375,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4524,
+    "wins_a": 7
+  },
+  "bot|Caitlyn|Jhin": {
+    "champion_a": "Caitlyn",
+    "champion_b": "Jhin",
+    "games": 8,
+    "raw_winrate_a": 0.25,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3462,
+    "wins_a": 2
+  },
+  "bot|Caitlyn|Lucian": {
+    "champion_a": "Caitlyn",
+    "champion_b": "Lucian",
+    "games": 7,
+    "raw_winrate_a": 0.4286,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4583,
+    "wins_a": 3
+  },
+  "bot|Caitlyn|Varus": {
+    "champion_a": "Caitlyn",
+    "champion_b": "Varus",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "bot|Caitlyn|Yunara": {
+    "champion_a": "Caitlyn",
+    "champion_b": "Yunara",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "bot",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "bot|Corki|Aphelios": {
+    "champion_a": "Corki",
+    "champion_b": "Aphelios",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "bot|Corki|Ashe": {
+    "champion_a": "Corki",
+    "champion_b": "Ashe",
+    "games": 7,
+    "raw_winrate_a": 0.1429,
+    "role": "bot",
+    "shrunk_winrate_a": 0.2917,
+    "wins_a": 1
+  },
+  "bot|Corki|Caitlyn": {
+    "champion_a": "Corki",
+    "champion_b": "Caitlyn",
+    "games": 6,
+    "raw_winrate_a": 0.3333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4091,
+    "wins_a": 2
+  },
+  "bot|Corki|Ezreal": {
+    "champion_a": "Corki",
+    "champion_b": "Ezreal",
+    "games": 9,
+    "raw_winrate_a": 0.3333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3929,
+    "wins_a": 3
+  },
+  "bot|Corki|Jhin": {
+    "champion_a": "Corki",
+    "champion_b": "Jhin",
+    "games": 6,
+    "raw_winrate_a": 0.5,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 3
+  },
+  "bot|Corki|Kai'Sa": {
+    "champion_a": "Corki",
+    "champion_b": "Kai'Sa",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "bot|Corki|Kalista": {
+    "champion_a": "Corki",
+    "champion_b": "Kalista",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "bot|Corki|Lucian": {
+    "champion_a": "Corki",
+    "champion_b": "Lucian",
+    "games": 16,
+    "raw_winrate_a": 0.4375,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4524,
+    "wins_a": 7
+  },
+  "bot|Corki|Miss Fortune": {
+    "champion_a": "Corki",
+    "champion_b": "Miss Fortune",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "bot|Corki|Varus": {
+    "champion_a": "Corki",
+    "champion_b": "Varus",
+    "games": 8,
+    "raw_winrate_a": 0.5,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 4
+  },
+  "bot|Corki|Yunara": {
+    "champion_a": "Corki",
+    "champion_b": "Yunara",
+    "games": 35,
+    "raw_winrate_a": 0.4,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4125,
+    "wins_a": 14
+  },
+  "bot|Ezreal|Ashe": {
+    "champion_a": "Ezreal",
+    "champion_b": "Ashe",
+    "games": 30,
+    "raw_winrate_a": 0.4333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4429,
+    "wins_a": 13
+  },
+  "bot|Ezreal|Caitlyn": {
+    "champion_a": "Ezreal",
+    "champion_b": "Caitlyn",
+    "games": 16,
+    "raw_winrate_a": 0.5625,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5476,
+    "wins_a": 9
+  },
+  "bot|Ezreal|Corki": {
+    "champion_a": "Ezreal",
+    "champion_b": "Corki",
+    "games": 9,
+    "raw_winrate_a": 0.6667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6071,
+    "wins_a": 6
+  },
+  "bot|Ezreal|Jhin": {
+    "champion_a": "Ezreal",
+    "champion_b": "Jhin",
+    "games": 12,
+    "raw_winrate_a": 0.4167,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4412,
+    "wins_a": 5
+  },
+  "bot|Ezreal|Kai'Sa": {
+    "champion_a": "Ezreal",
+    "champion_b": "Kai'Sa",
+    "games": 12,
+    "raw_winrate_a": 0.4167,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4412,
+    "wins_a": 5
+  },
+  "bot|Ezreal|Lucian": {
+    "champion_a": "Ezreal",
+    "champion_b": "Lucian",
+    "games": 6,
+    "raw_winrate_a": 1.0,
+    "role": "bot",
+    "shrunk_winrate_a": 0.7727,
+    "wins_a": 6
+  },
+  "bot|Ezreal|Miss Fortune": {
+    "champion_a": "Ezreal",
+    "champion_b": "Miss Fortune",
+    "games": 7,
+    "raw_winrate_a": 0.5714,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5417,
+    "wins_a": 4
+  },
+  "bot|Ezreal|Sivir": {
+    "champion_a": "Ezreal",
+    "champion_b": "Sivir",
+    "games": 14,
+    "raw_winrate_a": 0.2857,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3421,
+    "wins_a": 4
+  },
+  "bot|Ezreal|Varus": {
+    "champion_a": "Ezreal",
+    "champion_b": "Varus",
+    "games": 16,
+    "raw_winrate_a": 0.375,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4048,
+    "wins_a": 6
+  },
+  "bot|Ezreal|Xayah": {
+    "champion_a": "Ezreal",
+    "champion_b": "Xayah",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "bot",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "bot|Ezreal|Yunara": {
+    "champion_a": "Ezreal",
+    "champion_b": "Yunara",
+    "games": 12,
+    "raw_winrate_a": 0.75,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6765,
+    "wins_a": 9
+  },
+  "bot|Jhin|Ashe": {
+    "champion_a": "Jhin",
+    "champion_b": "Ashe",
+    "games": 17,
+    "raw_winrate_a": 0.2941,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3409,
+    "wins_a": 5
+  },
+  "bot|Jhin|Caitlyn": {
+    "champion_a": "Jhin",
+    "champion_b": "Caitlyn",
+    "games": 8,
+    "raw_winrate_a": 0.75,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6538,
+    "wins_a": 6
+  },
+  "bot|Jhin|Corki": {
+    "champion_a": "Jhin",
+    "champion_b": "Corki",
+    "games": 6,
+    "raw_winrate_a": 0.5,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 3
+  },
+  "bot|Jhin|Ezreal": {
+    "champion_a": "Jhin",
+    "champion_b": "Ezreal",
+    "games": 12,
+    "raw_winrate_a": 0.5833,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5588,
+    "wins_a": 7
+  },
+  "bot|Jhin|Kai'Sa": {
+    "champion_a": "Jhin",
+    "champion_b": "Kai'Sa",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "bot",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "bot|Jhin|Miss Fortune": {
+    "champion_a": "Jhin",
+    "champion_b": "Miss Fortune",
+    "games": 7,
+    "raw_winrate_a": 0.2857,
+    "role": "bot",
+    "shrunk_winrate_a": 0.375,
+    "wins_a": 2
+  },
+  "bot|Jhin|Sivir": {
+    "champion_a": "Jhin",
+    "champion_b": "Sivir",
+    "games": 6,
+    "raw_winrate_a": 0.3333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4091,
+    "wins_a": 2
+  },
+  "bot|Jhin|Varus": {
+    "champion_a": "Jhin",
+    "champion_b": "Varus",
+    "games": 17,
+    "raw_winrate_a": 0.2353,
+    "role": "bot",
+    "shrunk_winrate_a": 0.2955,
+    "wins_a": 4
+  },
+  "bot|Jhin|Yunara": {
+    "champion_a": "Jhin",
+    "champion_b": "Yunara",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "bot|Kai'Sa|Ashe": {
+    "champion_a": "Kai'Sa",
+    "champion_b": "Ashe",
+    "games": 4,
+    "raw_winrate_a": 0.0,
+    "role": "bot",
+    "shrunk_winrate_a": 0.2778,
+    "wins_a": 0
+  },
+  "bot|Kai'Sa|Corki": {
+    "champion_a": "Kai'Sa",
+    "champion_b": "Corki",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "bot|Kai'Sa|Ezreal": {
+    "champion_a": "Kai'Sa",
+    "champion_b": "Ezreal",
+    "games": 12,
+    "raw_winrate_a": 0.5833,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5588,
+    "wins_a": 7
+  },
+  "bot|Kai'Sa|Jhin": {
+    "champion_a": "Kai'Sa",
+    "champion_b": "Jhin",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "bot",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "bot|Kai'Sa|Lucian": {
+    "champion_a": "Kai'Sa",
+    "champion_b": "Lucian",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "bot|Kai'Sa|Sivir": {
+    "champion_a": "Kai'Sa",
+    "champion_b": "Sivir",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "bot|Kai'Sa|Xayah": {
+    "champion_a": "Kai'Sa",
+    "champion_b": "Xayah",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "bot",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "bot|Kai'Sa|Yunara": {
+    "champion_a": "Kai'Sa",
+    "champion_b": "Yunara",
+    "games": 8,
+    "raw_winrate_a": 0.375,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4231,
+    "wins_a": 3
+  },
+  "bot|Kalista|Corki": {
+    "champion_a": "Kalista",
+    "champion_b": "Corki",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "bot|Kalista|Lucian": {
+    "champion_a": "Kalista",
+    "champion_b": "Lucian",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "bot|Lucian|Aphelios": {
+    "champion_a": "Lucian",
+    "champion_b": "Aphelios",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "bot",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "bot|Lucian|Ashe": {
+    "champion_a": "Lucian",
+    "champion_b": "Ashe",
+    "games": 8,
+    "raw_winrate_a": 0.5,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 4
+  },
+  "bot|Lucian|Caitlyn": {
+    "champion_a": "Lucian",
+    "champion_b": "Caitlyn",
+    "games": 7,
+    "raw_winrate_a": 0.5714,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5417,
+    "wins_a": 4
+  },
+  "bot|Lucian|Corki": {
+    "champion_a": "Lucian",
+    "champion_b": "Corki",
+    "games": 16,
+    "raw_winrate_a": 0.5625,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5476,
+    "wins_a": 9
+  },
+  "bot|Lucian|Ezreal": {
+    "champion_a": "Lucian",
+    "champion_b": "Ezreal",
+    "games": 6,
+    "raw_winrate_a": 0.0,
+    "role": "bot",
+    "shrunk_winrate_a": 0.2273,
+    "wins_a": 0
+  },
+  "bot|Lucian|Kai'Sa": {
+    "champion_a": "Lucian",
+    "champion_b": "Kai'Sa",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "bot|Lucian|Kalista": {
+    "champion_a": "Lucian",
+    "champion_b": "Kalista",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "bot|Lucian|Varus": {
+    "champion_a": "Lucian",
+    "champion_b": "Varus",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "bot|Lucian|Yunara": {
+    "champion_a": "Lucian",
+    "champion_b": "Yunara",
+    "games": 20,
+    "raw_winrate_a": 0.7,
+    "role": "bot",
+    "shrunk_winrate_a": 0.66,
+    "wins_a": 14
+  },
+  "bot|Mel|Ashe": {
+    "champion_a": "Mel",
+    "champion_b": "Ashe",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "bot",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "bot|Miss Fortune|Ashe": {
+    "champion_a": "Miss Fortune",
+    "champion_b": "Ashe",
+    "games": 6,
+    "raw_winrate_a": 0.1667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3182,
+    "wins_a": 1
+  },
+  "bot|Miss Fortune|Corki": {
+    "champion_a": "Miss Fortune",
+    "champion_b": "Corki",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "bot|Miss Fortune|Ezreal": {
+    "champion_a": "Miss Fortune",
+    "champion_b": "Ezreal",
+    "games": 7,
+    "raw_winrate_a": 0.4286,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4583,
+    "wins_a": 3
+  },
+  "bot|Miss Fortune|Jhin": {
+    "champion_a": "Miss Fortune",
+    "champion_b": "Jhin",
+    "games": 7,
+    "raw_winrate_a": 0.7143,
+    "role": "bot",
+    "shrunk_winrate_a": 0.625,
+    "wins_a": 5
+  },
+  "bot|Miss Fortune|Sivir": {
+    "champion_a": "Miss Fortune",
+    "champion_b": "Sivir",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "bot|Miss Fortune|Varus": {
+    "champion_a": "Miss Fortune",
+    "champion_b": "Varus",
+    "games": 6,
+    "raw_winrate_a": 0.3333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4091,
+    "wins_a": 2
+  },
+  "bot|Sivir|Aphelios": {
+    "champion_a": "Sivir",
+    "champion_b": "Aphelios",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "bot|Sivir|Ezreal": {
+    "champion_a": "Sivir",
+    "champion_b": "Ezreal",
+    "games": 14,
+    "raw_winrate_a": 0.7143,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6579,
+    "wins_a": 10
+  },
+  "bot|Sivir|Jhin": {
+    "champion_a": "Sivir",
+    "champion_b": "Jhin",
+    "games": 6,
+    "raw_winrate_a": 0.6667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5909,
+    "wins_a": 4
+  },
+  "bot|Sivir|Kai'Sa": {
+    "champion_a": "Sivir",
+    "champion_b": "Kai'Sa",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "bot|Sivir|Miss Fortune": {
+    "champion_a": "Sivir",
+    "champion_b": "Miss Fortune",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "bot|Sivir|Varus": {
+    "champion_a": "Sivir",
+    "champion_b": "Varus",
+    "games": 18,
+    "raw_winrate_a": 0.4444,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4565,
+    "wins_a": 8
+  },
+  "bot|Sivir|Xayah": {
+    "champion_a": "Sivir",
+    "champion_b": "Xayah",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "bot|Sivir|Yunara": {
+    "champion_a": "Sivir",
+    "champion_b": "Yunara",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "bot",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "bot|Varus|Ashe": {
+    "champion_a": "Varus",
+    "champion_b": "Ashe",
+    "games": 8,
+    "raw_winrate_a": 0.625,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5769,
+    "wins_a": 5
+  },
+  "bot|Varus|Caitlyn": {
+    "champion_a": "Varus",
+    "champion_b": "Caitlyn",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "bot|Varus|Corki": {
+    "champion_a": "Varus",
+    "champion_b": "Corki",
+    "games": 8,
+    "raw_winrate_a": 0.5,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 4
+  },
+  "bot|Varus|Ezreal": {
+    "champion_a": "Varus",
+    "champion_b": "Ezreal",
+    "games": 16,
+    "raw_winrate_a": 0.625,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5952,
+    "wins_a": 10
+  },
+  "bot|Varus|Jhin": {
+    "champion_a": "Varus",
+    "champion_b": "Jhin",
+    "games": 17,
+    "raw_winrate_a": 0.7647,
+    "role": "bot",
+    "shrunk_winrate_a": 0.7045,
+    "wins_a": 13
+  },
+  "bot|Varus|Lucian": {
+    "champion_a": "Varus",
+    "champion_b": "Lucian",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "bot",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "bot|Varus|Miss Fortune": {
+    "champion_a": "Varus",
+    "champion_b": "Miss Fortune",
+    "games": 6,
+    "raw_winrate_a": 0.6667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5909,
+    "wins_a": 4
+  },
+  "bot|Varus|Sivir": {
+    "champion_a": "Varus",
+    "champion_b": "Sivir",
+    "games": 18,
+    "raw_winrate_a": 0.5556,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5435,
+    "wins_a": 10
+  },
+  "bot|Varus|Yunara": {
+    "champion_a": "Varus",
+    "champion_b": "Yunara",
+    "games": 15,
+    "raw_winrate_a": 0.4667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.475,
+    "wins_a": 7
+  },
+  "bot|Xayah|Ezreal": {
+    "champion_a": "Xayah",
+    "champion_b": "Ezreal",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "bot",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "bot|Xayah|Kai'Sa": {
+    "champion_a": "Xayah",
+    "champion_b": "Kai'Sa",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "bot",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "bot|Xayah|Sivir": {
+    "champion_a": "Xayah",
+    "champion_b": "Sivir",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "bot|Xayah|Yunara": {
+    "champion_a": "Xayah",
+    "champion_b": "Yunara",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "bot|Yunara|Aphelios": {
+    "champion_a": "Yunara",
+    "champion_b": "Aphelios",
+    "games": 17,
+    "raw_winrate_a": 0.2353,
+    "role": "bot",
+    "shrunk_winrate_a": 0.2955,
+    "wins_a": 4
+  },
+  "bot|Yunara|Ashe": {
+    "champion_a": "Yunara",
+    "champion_b": "Ashe",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "bot|Yunara|Caitlyn": {
+    "champion_a": "Yunara",
+    "champion_b": "Caitlyn",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "bot",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "bot|Yunara|Corki": {
+    "champion_a": "Yunara",
+    "champion_b": "Corki",
+    "games": 35,
+    "raw_winrate_a": 0.6,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5875,
+    "wins_a": 21
+  },
+  "bot|Yunara|Ezreal": {
+    "champion_a": "Yunara",
+    "champion_b": "Ezreal",
+    "games": 12,
+    "raw_winrate_a": 0.25,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3235,
+    "wins_a": 3
+  },
+  "bot|Yunara|Jhin": {
+    "champion_a": "Yunara",
+    "champion_b": "Jhin",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "bot",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "bot|Yunara|Kai'Sa": {
+    "champion_a": "Yunara",
+    "champion_b": "Kai'Sa",
+    "games": 8,
+    "raw_winrate_a": 0.625,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5769,
+    "wins_a": 5
+  },
+  "bot|Yunara|Lucian": {
+    "champion_a": "Yunara",
+    "champion_b": "Lucian",
+    "games": 20,
+    "raw_winrate_a": 0.3,
+    "role": "bot",
+    "shrunk_winrate_a": 0.34,
+    "wins_a": 6
+  },
+  "bot|Yunara|Sivir": {
+    "champion_a": "Yunara",
+    "champion_b": "Sivir",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "bot",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "bot|Yunara|Varus": {
+    "champion_a": "Yunara",
+    "champion_b": "Varus",
+    "games": 15,
+    "raw_winrate_a": 0.5333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.525,
+    "wins_a": 8
+  },
+  "bot|Yunara|Xayah": {
+    "champion_a": "Yunara",
+    "champion_b": "Xayah",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "bot",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "bot|Ziggs|Aphelios": {
+    "champion_a": "Ziggs",
+    "champion_b": "Aphelios",
+    "games": 5,
+    "raw_winrate_a": 0.2,
+    "role": "bot",
+    "shrunk_winrate_a": 0.35,
+    "wins_a": 1
+  },
+  "bot|Ziggs|Ashe": {
+    "champion_a": "Ziggs",
+    "champion_b": "Ashe",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "bot",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Aatrox|Jarvan IV": {
+    "champion_a": "Aatrox",
+    "champion_b": "Jarvan IV",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "jng|Aatrox|Naafiri": {
+    "champion_a": "Aatrox",
+    "champion_b": "Naafiri",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Aatrox|Pantheon": {
+    "champion_a": "Aatrox",
+    "champion_b": "Pantheon",
+    "games": 4,
+    "raw_winrate_a": 0.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.2778,
+    "wins_a": 0
+  },
+  "jng|Aatrox|Xin Zhao": {
+    "champion_a": "Aatrox",
+    "champion_b": "Xin Zhao",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "jng|Ambessa|Jarvan IV": {
+    "champion_a": "Ambessa",
+    "champion_b": "Jarvan IV",
+    "games": 7,
+    "raw_winrate_a": 0.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.2083,
+    "wins_a": 0
+  },
+  "jng|Ambessa|Vi": {
+    "champion_a": "Ambessa",
+    "champion_b": "Vi",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "jng|Ambessa|Wukong": {
+    "champion_a": "Ambessa",
+    "champion_b": "Wukong",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "jng|Ambessa|Xin Zhao": {
+    "champion_a": "Ambessa",
+    "champion_b": "Xin Zhao",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Dr. Mundo|Malphite": {
+    "champion_a": "Dr. Mundo",
+    "champion_b": "Malphite",
+    "games": 9,
+    "raw_winrate_a": 0.4444,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4643,
+    "wins_a": 4
+  },
+  "jng|Dr. Mundo|Nocturne": {
+    "champion_a": "Dr. Mundo",
+    "champion_b": "Nocturne",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "jng|Dr. Mundo|Vi": {
+    "champion_a": "Dr. Mundo",
+    "champion_b": "Vi",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "jng|Graves|Xin Zhao": {
+    "champion_a": "Graves",
+    "champion_b": "Xin Zhao",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Jarvan IV|Aatrox": {
+    "champion_a": "Jarvan IV",
+    "champion_b": "Aatrox",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "jng|Jarvan IV|Ambessa": {
+    "champion_a": "Jarvan IV",
+    "champion_b": "Ambessa",
+    "games": 7,
+    "raw_winrate_a": 1.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.7917,
+    "wins_a": 7
+  },
+  "jng|Jarvan IV|Lee Sin": {
+    "champion_a": "Jarvan IV",
+    "champion_b": "Lee Sin",
+    "games": 11,
+    "raw_winrate_a": 0.4545,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4688,
+    "wins_a": 5
+  },
+  "jng|Jarvan IV|Naafiri": {
+    "champion_a": "Jarvan IV",
+    "champion_b": "Naafiri",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "jng|Jarvan IV|Nidalee": {
+    "champion_a": "Jarvan IV",
+    "champion_b": "Nidalee",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Jarvan IV|Nocturne": {
+    "champion_a": "Jarvan IV",
+    "champion_b": "Nocturne",
+    "games": 16,
+    "raw_winrate_a": 0.5625,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5476,
+    "wins_a": 9
+  },
+  "jng|Jarvan IV|Pantheon": {
+    "champion_a": "Jarvan IV",
+    "champion_b": "Pantheon",
+    "games": 26,
+    "raw_winrate_a": 0.6923,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6613,
+    "wins_a": 18
+  },
+  "jng|Jarvan IV|Qiyana": {
+    "champion_a": "Jarvan IV",
+    "champion_b": "Qiyana",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "jng|Jarvan IV|Sejuani": {
+    "champion_a": "Jarvan IV",
+    "champion_b": "Sejuani",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Jarvan IV|Skarner": {
+    "champion_a": "Jarvan IV",
+    "champion_b": "Skarner",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "jng|Jarvan IV|Vi": {
+    "champion_a": "Jarvan IV",
+    "champion_b": "Vi",
+    "games": 16,
+    "raw_winrate_a": 0.6875,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6429,
+    "wins_a": 11
+  },
+  "jng|Jarvan IV|Wukong": {
+    "champion_a": "Jarvan IV",
+    "champion_b": "Wukong",
+    "games": 19,
+    "raw_winrate_a": 0.6842,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6458,
+    "wins_a": 13
+  },
+  "jng|Jarvan IV|Xin Zhao": {
+    "champion_a": "Jarvan IV",
+    "champion_b": "Xin Zhao",
+    "games": 39,
+    "raw_winrate_a": 0.6154,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6023,
+    "wins_a": 24
+  },
+  "jng|Jax|Xin Zhao": {
+    "champion_a": "Jax",
+    "champion_b": "Xin Zhao",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Jayce|Vi": {
+    "champion_a": "Jayce",
+    "champion_b": "Vi",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "jng|Kha'Zix|Xin Zhao": {
+    "champion_a": "Kha'Zix",
+    "champion_b": "Xin Zhao",
+    "games": 4,
+    "raw_winrate_a": 1.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.7222,
+    "wins_a": 4
+  },
+  "jng|Lee Sin|Jarvan IV": {
+    "champion_a": "Lee Sin",
+    "champion_b": "Jarvan IV",
+    "games": 11,
+    "raw_winrate_a": 0.5455,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5312,
+    "wins_a": 6
+  },
+  "jng|Lee Sin|Naafiri": {
+    "champion_a": "Lee Sin",
+    "champion_b": "Naafiri",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Lee Sin|Pantheon": {
+    "champion_a": "Lee Sin",
+    "champion_b": "Pantheon",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "jng",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "jng|Lee Sin|Xin Zhao": {
+    "champion_a": "Lee Sin",
+    "champion_b": "Xin Zhao",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "jng|Lee Sin|Zaahen": {
+    "champion_a": "Lee Sin",
+    "champion_b": "Zaahen",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Malphite|Dr. Mundo": {
+    "champion_a": "Malphite",
+    "champion_b": "Dr. Mundo",
+    "games": 9,
+    "raw_winrate_a": 0.5556,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5357,
+    "wins_a": 5
+  },
+  "jng|Malphite|Trundle": {
+    "champion_a": "Malphite",
+    "champion_b": "Trundle",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Naafiri|Aatrox": {
+    "champion_a": "Naafiri",
+    "champion_b": "Aatrox",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Naafiri|Jarvan IV": {
+    "champion_a": "Naafiri",
+    "champion_b": "Jarvan IV",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "jng|Naafiri|Lee Sin": {
+    "champion_a": "Naafiri",
+    "champion_b": "Lee Sin",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Naafiri|Nocturne": {
+    "champion_a": "Naafiri",
+    "champion_b": "Nocturne",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "jng|Naafiri|Pantheon": {
+    "champion_a": "Naafiri",
+    "champion_b": "Pantheon",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Naafiri|Skarner": {
+    "champion_a": "Naafiri",
+    "champion_b": "Skarner",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Naafiri|Vi": {
+    "champion_a": "Naafiri",
+    "champion_b": "Vi",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "jng|Nidalee|Jarvan IV": {
+    "champion_a": "Nidalee",
+    "champion_b": "Jarvan IV",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Nocturne|Dr. Mundo": {
+    "champion_a": "Nocturne",
+    "champion_b": "Dr. Mundo",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "jng|Nocturne|Jarvan IV": {
+    "champion_a": "Nocturne",
+    "champion_b": "Jarvan IV",
+    "games": 16,
+    "raw_winrate_a": 0.4375,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4524,
+    "wins_a": 7
+  },
+  "jng|Nocturne|Naafiri": {
+    "champion_a": "Nocturne",
+    "champion_b": "Naafiri",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "jng|Nocturne|Pantheon": {
+    "champion_a": "Nocturne",
+    "champion_b": "Pantheon",
+    "games": 9,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3929,
+    "wins_a": 3
+  },
+  "jng|Nocturne|Qiyana": {
+    "champion_a": "Nocturne",
+    "champion_b": "Qiyana",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "jng|Nocturne|Trundle": {
+    "champion_a": "Nocturne",
+    "champion_b": "Trundle",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Nocturne|Vi": {
+    "champion_a": "Nocturne",
+    "champion_b": "Vi",
+    "games": 8,
+    "raw_winrate_a": 0.625,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5769,
+    "wins_a": 5
+  },
+  "jng|Nocturne|Wukong": {
+    "champion_a": "Nocturne",
+    "champion_b": "Wukong",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "jng",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "jng|Nocturne|Xin Zhao": {
+    "champion_a": "Nocturne",
+    "champion_b": "Xin Zhao",
+    "games": 12,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6176,
+    "wins_a": 8
+  },
+  "jng|Pantheon|Aatrox": {
+    "champion_a": "Pantheon",
+    "champion_b": "Aatrox",
+    "games": 4,
+    "raw_winrate_a": 1.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.7222,
+    "wins_a": 4
+  },
+  "jng|Pantheon|Jarvan IV": {
+    "champion_a": "Pantheon",
+    "champion_b": "Jarvan IV",
+    "games": 26,
+    "raw_winrate_a": 0.3077,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3387,
+    "wins_a": 8
+  },
+  "jng|Pantheon|Lee Sin": {
+    "champion_a": "Pantheon",
+    "champion_b": "Lee Sin",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "jng",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "jng|Pantheon|Naafiri": {
+    "champion_a": "Pantheon",
+    "champion_b": "Naafiri",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Pantheon|Nocturne": {
+    "champion_a": "Pantheon",
+    "champion_b": "Nocturne",
+    "games": 9,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6071,
+    "wins_a": 6
+  },
+  "jng|Pantheon|Qiyana": {
+    "champion_a": "Pantheon",
+    "champion_b": "Qiyana",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Pantheon|Skarner": {
+    "champion_a": "Pantheon",
+    "champion_b": "Skarner",
+    "games": 8,
+    "raw_winrate_a": 0.5,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 4
+  },
+  "jng|Pantheon|Trundle": {
+    "champion_a": "Pantheon",
+    "champion_b": "Trundle",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "jng|Pantheon|Vi": {
+    "champion_a": "Pantheon",
+    "champion_b": "Vi",
+    "games": 17,
+    "raw_winrate_a": 0.2353,
+    "role": "jng",
+    "shrunk_winrate_a": 0.2955,
+    "wins_a": 4
+  },
+  "jng|Pantheon|Wukong": {
+    "champion_a": "Pantheon",
+    "champion_b": "Wukong",
+    "games": 15,
+    "raw_winrate_a": 0.4667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.475,
+    "wins_a": 7
+  },
+  "jng|Pantheon|Xin Zhao": {
+    "champion_a": "Pantheon",
+    "champion_b": "Xin Zhao",
+    "games": 19,
+    "raw_winrate_a": 0.7368,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 14
+  },
+  "jng|Poppy|Wukong": {
+    "champion_a": "Poppy",
+    "champion_b": "Wukong",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Qiyana|Jarvan IV": {
+    "champion_a": "Qiyana",
+    "champion_b": "Jarvan IV",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "jng|Qiyana|Nocturne": {
+    "champion_a": "Qiyana",
+    "champion_b": "Nocturne",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "jng|Qiyana|Pantheon": {
+    "champion_a": "Qiyana",
+    "champion_b": "Pantheon",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Qiyana|Vi": {
+    "champion_a": "Qiyana",
+    "champion_b": "Vi",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "jng|Qiyana|Wukong": {
+    "champion_a": "Qiyana",
+    "champion_b": "Wukong",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Qiyana|Xin Zhao": {
+    "champion_a": "Qiyana",
+    "champion_b": "Xin Zhao",
+    "games": 8,
+    "raw_winrate_a": 0.375,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4231,
+    "wins_a": 3
+  },
+  "jng|Rek'Sai|Xin Zhao": {
+    "champion_a": "Rek'Sai",
+    "champion_b": "Xin Zhao",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "jng|Sejuani|Jarvan IV": {
+    "champion_a": "Sejuani",
+    "champion_b": "Jarvan IV",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Skarner|Jarvan IV": {
+    "champion_a": "Skarner",
+    "champion_b": "Jarvan IV",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "jng|Skarner|Naafiri": {
+    "champion_a": "Skarner",
+    "champion_b": "Naafiri",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Skarner|Pantheon": {
+    "champion_a": "Skarner",
+    "champion_b": "Pantheon",
+    "games": 8,
+    "raw_winrate_a": 0.5,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 4
+  },
+  "jng|Skarner|Xin Zhao": {
+    "champion_a": "Skarner",
+    "champion_b": "Xin Zhao",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "jng|Trundle|Malphite": {
+    "champion_a": "Trundle",
+    "champion_b": "Malphite",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Trundle|Nocturne": {
+    "champion_a": "Trundle",
+    "champion_b": "Nocturne",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "jng|Trundle|Pantheon": {
+    "champion_a": "Trundle",
+    "champion_b": "Pantheon",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "jng|Trundle|Xin Zhao": {
+    "champion_a": "Trundle",
+    "champion_b": "Xin Zhao",
+    "games": 14,
+    "raw_winrate_a": 0.7143,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6579,
+    "wins_a": 10
+  },
+  "jng|Vi|Ambessa": {
+    "champion_a": "Vi",
+    "champion_b": "Ambessa",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "jng|Vi|Dr. Mundo": {
+    "champion_a": "Vi",
+    "champion_b": "Dr. Mundo",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "jng|Vi|Jarvan IV": {
+    "champion_a": "Vi",
+    "champion_b": "Jarvan IV",
+    "games": 16,
+    "raw_winrate_a": 0.3125,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3571,
+    "wins_a": 5
+  },
+  "jng|Vi|Jayce": {
+    "champion_a": "Vi",
+    "champion_b": "Jayce",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "jng|Vi|Naafiri": {
+    "champion_a": "Vi",
+    "champion_b": "Naafiri",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "jng|Vi|Nocturne": {
+    "champion_a": "Vi",
+    "champion_b": "Nocturne",
+    "games": 8,
+    "raw_winrate_a": 0.375,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4231,
+    "wins_a": 3
+  },
+  "jng|Vi|Pantheon": {
+    "champion_a": "Vi",
+    "champion_b": "Pantheon",
+    "games": 17,
+    "raw_winrate_a": 0.7647,
+    "role": "jng",
+    "shrunk_winrate_a": 0.7045,
+    "wins_a": 13
+  },
+  "jng|Vi|Qiyana": {
+    "champion_a": "Vi",
+    "champion_b": "Qiyana",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "jng|Vi|Wukong": {
+    "champion_a": "Vi",
+    "champion_b": "Wukong",
+    "games": 19,
+    "raw_winrate_a": 0.3158,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3542,
+    "wins_a": 6
+  },
+  "jng|Vi|Xin Zhao": {
+    "champion_a": "Vi",
+    "champion_b": "Xin Zhao",
+    "games": 15,
+    "raw_winrate_a": 0.4,
+    "role": "jng",
+    "shrunk_winrate_a": 0.425,
+    "wins_a": 6
+  },
+  "jng|Wukong|Ambessa": {
+    "champion_a": "Wukong",
+    "champion_b": "Ambessa",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "jng|Wukong|Jarvan IV": {
+    "champion_a": "Wukong",
+    "champion_b": "Jarvan IV",
+    "games": 19,
+    "raw_winrate_a": 0.3158,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3542,
+    "wins_a": 6
+  },
+  "jng|Wukong|Nocturne": {
+    "champion_a": "Wukong",
+    "champion_b": "Nocturne",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "jng",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "jng|Wukong|Pantheon": {
+    "champion_a": "Wukong",
+    "champion_b": "Pantheon",
+    "games": 15,
+    "raw_winrate_a": 0.5333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.525,
+    "wins_a": 8
+  },
+  "jng|Wukong|Poppy": {
+    "champion_a": "Wukong",
+    "champion_b": "Poppy",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Wukong|Qiyana": {
+    "champion_a": "Wukong",
+    "champion_b": "Qiyana",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Wukong|Vi": {
+    "champion_a": "Wukong",
+    "champion_b": "Vi",
+    "games": 19,
+    "raw_winrate_a": 0.6842,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6458,
+    "wins_a": 13
+  },
+  "jng|Wukong|Xin Zhao": {
+    "champion_a": "Wukong",
+    "champion_b": "Xin Zhao",
+    "games": 12,
+    "raw_winrate_a": 0.4167,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4412,
+    "wins_a": 5
+  },
+  "jng|Xin Zhao|Aatrox": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Aatrox",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "jng",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "jng|Xin Zhao|Ambessa": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Ambessa",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Xin Zhao|Graves": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Graves",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Xin Zhao|Jarvan IV": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Jarvan IV",
+    "games": 39,
+    "raw_winrate_a": 0.3846,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3977,
+    "wins_a": 15
+  },
+  "jng|Xin Zhao|Jax": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Jax",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "jng|Xin Zhao|Kha'Zix": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Kha'Zix",
+    "games": 4,
+    "raw_winrate_a": 0.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.2778,
+    "wins_a": 0
+  },
+  "jng|Xin Zhao|Lee Sin": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Lee Sin",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "jng|Xin Zhao|Nocturne": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Nocturne",
+    "games": 12,
+    "raw_winrate_a": 0.3333,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3824,
+    "wins_a": 4
+  },
+  "jng|Xin Zhao|Pantheon": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Pantheon",
+    "games": 19,
+    "raw_winrate_a": 0.2632,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 5
+  },
+  "jng|Xin Zhao|Qiyana": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Qiyana",
+    "games": 8,
+    "raw_winrate_a": 0.625,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5769,
+    "wins_a": 5
+  },
+  "jng|Xin Zhao|Rek'Sai": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Rek'Sai",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "jng|Xin Zhao|Skarner": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Skarner",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "jng|Xin Zhao|Trundle": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Trundle",
+    "games": 14,
+    "raw_winrate_a": 0.2857,
+    "role": "jng",
+    "shrunk_winrate_a": 0.3421,
+    "wins_a": 4
+  },
+  "jng|Xin Zhao|Vi": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Vi",
+    "games": 15,
+    "raw_winrate_a": 0.6,
+    "role": "jng",
+    "shrunk_winrate_a": 0.575,
+    "wins_a": 9
+  },
+  "jng|Xin Zhao|Wukong": {
+    "champion_a": "Xin Zhao",
+    "champion_b": "Wukong",
+    "games": 12,
+    "raw_winrate_a": 0.5833,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5588,
+    "wins_a": 7
+  },
+  "jng|Zaahen|Lee Sin": {
+    "champion_a": "Zaahen",
+    "champion_b": "Lee Sin",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "jng",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "mid|Ahri|Annie": {
+    "champion_a": "Ahri",
+    "champion_b": "Annie",
+    "games": 7,
+    "raw_winrate_a": 0.5714,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5417,
+    "wins_a": 4
+  },
+  "mid|Ahri|Aurora": {
+    "champion_a": "Ahri",
+    "champion_b": "Aurora",
+    "games": 18,
+    "raw_winrate_a": 0.5556,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5435,
+    "wins_a": 10
+  },
+  "mid|Ahri|Galio": {
+    "champion_a": "Ahri",
+    "champion_b": "Galio",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Ahri|Lissandra": {
+    "champion_a": "Ahri",
+    "champion_b": "Lissandra",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Ahri|Orianna": {
+    "champion_a": "Ahri",
+    "champion_b": "Orianna",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Ahri|Ryze": {
+    "champion_a": "Ahri",
+    "champion_b": "Ryze",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "mid|Ahri|Sylas": {
+    "champion_a": "Ahri",
+    "champion_b": "Sylas",
+    "games": 10,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 5
+  },
+  "mid|Ahri|Syndra": {
+    "champion_a": "Ahri",
+    "champion_b": "Syndra",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "mid|Ahri|Taliyah": {
+    "champion_a": "Ahri",
+    "champion_b": "Taliyah",
+    "games": 16,
+    "raw_winrate_a": 0.75,
+    "role": "mid",
+    "shrunk_winrate_a": 0.6905,
+    "wins_a": 12
+  },
+  "mid|Ahri|Viktor": {
+    "champion_a": "Ahri",
+    "champion_b": "Viktor",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "mid",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "mid|Akali|Annie": {
+    "champion_a": "Akali",
+    "champion_b": "Annie",
+    "games": 5,
+    "raw_winrate_a": 0.2,
+    "role": "mid",
+    "shrunk_winrate_a": 0.35,
+    "wins_a": 1
+  },
+  "mid|Akali|Aurora": {
+    "champion_a": "Akali",
+    "champion_b": "Aurora",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "mid",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "mid|Akali|Azir": {
+    "champion_a": "Akali",
+    "champion_b": "Azir",
+    "games": 8,
+    "raw_winrate_a": 0.25,
+    "role": "mid",
+    "shrunk_winrate_a": 0.3462,
+    "wins_a": 2
+  },
+  "mid|Akali|Orianna": {
+    "champion_a": "Akali",
+    "champion_b": "Orianna",
+    "games": 18,
+    "raw_winrate_a": 0.5556,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5435,
+    "wins_a": 10
+  },
+  "mid|Akali|Ryze": {
+    "champion_a": "Akali",
+    "champion_b": "Ryze",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "mid",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "mid|Anivia|Annie": {
+    "champion_a": "Anivia",
+    "champion_b": "Annie",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "mid|Anivia|Ryze": {
+    "champion_a": "Anivia",
+    "champion_b": "Ryze",
+    "games": 28,
+    "raw_winrate_a": 0.5714,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5606,
+    "wins_a": 16
+  },
+  "mid|Annie|Ahri": {
+    "champion_a": "Annie",
+    "champion_b": "Ahri",
+    "games": 7,
+    "raw_winrate_a": 0.4286,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4583,
+    "wins_a": 3
+  },
+  "mid|Annie|Akali": {
+    "champion_a": "Annie",
+    "champion_b": "Akali",
+    "games": 5,
+    "raw_winrate_a": 0.8,
+    "role": "mid",
+    "shrunk_winrate_a": 0.65,
+    "wins_a": 4
+  },
+  "mid|Annie|Anivia": {
+    "champion_a": "Annie",
+    "champion_b": "Anivia",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "mid|Annie|Aurora": {
+    "champion_a": "Annie",
+    "champion_b": "Aurora",
+    "games": 16,
+    "raw_winrate_a": 0.75,
+    "role": "mid",
+    "shrunk_winrate_a": 0.6905,
+    "wins_a": 12
+  },
+  "mid|Annie|Azir": {
+    "champion_a": "Annie",
+    "champion_b": "Azir",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "mid",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "mid|Annie|Galio": {
+    "champion_a": "Annie",
+    "champion_b": "Galio",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "mid|Annie|Hwei": {
+    "champion_a": "Annie",
+    "champion_b": "Hwei",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "mid",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "mid|Annie|Mel": {
+    "champion_a": "Annie",
+    "champion_b": "Mel",
+    "games": 6,
+    "raw_winrate_a": 0.8333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.6818,
+    "wins_a": 5
+  },
+  "mid|Annie|Ryze": {
+    "champion_a": "Annie",
+    "champion_b": "Ryze",
+    "games": 13,
+    "raw_winrate_a": 0.4615,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4722,
+    "wins_a": 6
+  },
+  "mid|Annie|Viktor": {
+    "champion_a": "Annie",
+    "champion_b": "Viktor",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Aurora|Ahri": {
+    "champion_a": "Aurora",
+    "champion_b": "Ahri",
+    "games": 18,
+    "raw_winrate_a": 0.4444,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4565,
+    "wins_a": 8
+  },
+  "mid|Aurora|Akali": {
+    "champion_a": "Aurora",
+    "champion_b": "Akali",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "mid",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "mid|Aurora|Annie": {
+    "champion_a": "Aurora",
+    "champion_b": "Annie",
+    "games": 16,
+    "raw_winrate_a": 0.25,
+    "role": "mid",
+    "shrunk_winrate_a": 0.3095,
+    "wins_a": 4
+  },
+  "mid|Aurora|Azir": {
+    "champion_a": "Aurora",
+    "champion_b": "Azir",
+    "games": 7,
+    "raw_winrate_a": 0.2857,
+    "role": "mid",
+    "shrunk_winrate_a": 0.375,
+    "wins_a": 2
+  },
+  "mid|Aurora|Galio": {
+    "champion_a": "Aurora",
+    "champion_b": "Galio",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Aurora|LeBlanc": {
+    "champion_a": "Aurora",
+    "champion_b": "LeBlanc",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "mid|Aurora|Mel": {
+    "champion_a": "Aurora",
+    "champion_b": "Mel",
+    "games": 6,
+    "raw_winrate_a": 0.6667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5909,
+    "wins_a": 4
+  },
+  "mid|Aurora|Orianna": {
+    "champion_a": "Aurora",
+    "champion_b": "Orianna",
+    "games": 7,
+    "raw_winrate_a": 0.4286,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4583,
+    "wins_a": 3
+  },
+  "mid|Aurora|Ryze": {
+    "champion_a": "Aurora",
+    "champion_b": "Ryze",
+    "games": 8,
+    "raw_winrate_a": 1.0,
+    "role": "mid",
+    "shrunk_winrate_a": 0.8077,
+    "wins_a": 8
+  },
+  "mid|Aurora|Syndra": {
+    "champion_a": "Aurora",
+    "champion_b": "Syndra",
+    "games": 6,
+    "raw_winrate_a": 0.3333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4091,
+    "wins_a": 2
+  },
+  "mid|Aurora|Taliyah": {
+    "champion_a": "Aurora",
+    "champion_b": "Taliyah",
+    "games": 5,
+    "raw_winrate_a": 0.8,
+    "role": "mid",
+    "shrunk_winrate_a": 0.65,
+    "wins_a": 4
+  },
+  "mid|Aurora|Viktor": {
+    "champion_a": "Aurora",
+    "champion_b": "Viktor",
+    "games": 7,
+    "raw_winrate_a": 0.5714,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5417,
+    "wins_a": 4
+  },
+  "mid|Aurora|Zoe": {
+    "champion_a": "Aurora",
+    "champion_b": "Zoe",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Azir|Akali": {
+    "champion_a": "Azir",
+    "champion_b": "Akali",
+    "games": 8,
+    "raw_winrate_a": 0.75,
+    "role": "mid",
+    "shrunk_winrate_a": 0.6538,
+    "wins_a": 6
+  },
+  "mid|Azir|Annie": {
+    "champion_a": "Azir",
+    "champion_b": "Annie",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "mid",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "mid|Azir|Aurora": {
+    "champion_a": "Azir",
+    "champion_b": "Aurora",
+    "games": 7,
+    "raw_winrate_a": 0.7143,
+    "role": "mid",
+    "shrunk_winrate_a": 0.625,
+    "wins_a": 5
+  },
+  "mid|Azir|LeBlanc": {
+    "champion_a": "Azir",
+    "champion_b": "LeBlanc",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "mid",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "mid|Azir|Orianna": {
+    "champion_a": "Azir",
+    "champion_b": "Orianna",
+    "games": 36,
+    "raw_winrate_a": 0.5556,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5488,
+    "wins_a": 20
+  },
+  "mid|Azir|Ryze": {
+    "champion_a": "Azir",
+    "champion_b": "Ryze",
+    "games": 11,
+    "raw_winrate_a": 0.3636,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4062,
+    "wins_a": 4
+  },
+  "mid|Azir|Sylas": {
+    "champion_a": "Azir",
+    "champion_b": "Sylas",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Azir|Syndra": {
+    "champion_a": "Azir",
+    "champion_b": "Syndra",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Azir|Taliyah": {
+    "champion_a": "Azir",
+    "champion_b": "Taliyah",
+    "games": 11,
+    "raw_winrate_a": 0.7273,
+    "role": "mid",
+    "shrunk_winrate_a": 0.6562,
+    "wins_a": 8
+  },
+  "mid|Azir|Yone": {
+    "champion_a": "Azir",
+    "champion_b": "Yone",
+    "games": 8,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 4
+  },
+  "mid|Azir|Ziggs": {
+    "champion_a": "Azir",
+    "champion_b": "Ziggs",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Cassiopeia|Ryze": {
+    "champion_a": "Cassiopeia",
+    "champion_b": "Ryze",
+    "games": 16,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 8
+  },
+  "mid|Galio|Ahri": {
+    "champion_a": "Galio",
+    "champion_b": "Ahri",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Galio|Annie": {
+    "champion_a": "Galio",
+    "champion_b": "Annie",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "mid|Galio|Aurora": {
+    "champion_a": "Galio",
+    "champion_b": "Aurora",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Hwei|Annie": {
+    "champion_a": "Hwei",
+    "champion_b": "Annie",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "mid",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "mid|Hwei|Ryze": {
+    "champion_a": "Hwei",
+    "champion_b": "Ryze",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "mid",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "mid|Hwei|Viktor": {
+    "champion_a": "Hwei",
+    "champion_b": "Viktor",
+    "games": 4,
+    "raw_winrate_a": 0.0,
+    "role": "mid",
+    "shrunk_winrate_a": 0.2778,
+    "wins_a": 0
+  },
+  "mid|LeBlanc|Aurora": {
+    "champion_a": "LeBlanc",
+    "champion_b": "Aurora",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "mid|LeBlanc|Azir": {
+    "champion_a": "LeBlanc",
+    "champion_b": "Azir",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "mid",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "mid|LeBlanc|Orianna": {
+    "champion_a": "LeBlanc",
+    "champion_b": "Orianna",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "mid|Lissandra|Ahri": {
+    "champion_a": "Lissandra",
+    "champion_b": "Ahri",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Malzahar|Ryze": {
+    "champion_a": "Malzahar",
+    "champion_b": "Ryze",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "mid|Mel|Annie": {
+    "champion_a": "Mel",
+    "champion_b": "Annie",
+    "games": 6,
+    "raw_winrate_a": 0.1667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.3182,
+    "wins_a": 1
+  },
+  "mid|Mel|Aurora": {
+    "champion_a": "Mel",
+    "champion_b": "Aurora",
+    "games": 6,
+    "raw_winrate_a": 0.3333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4091,
+    "wins_a": 2
+  },
+  "mid|Orianna|Ahri": {
+    "champion_a": "Orianna",
+    "champion_b": "Ahri",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Orianna|Akali": {
+    "champion_a": "Orianna",
+    "champion_b": "Akali",
+    "games": 18,
+    "raw_winrate_a": 0.4444,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4565,
+    "wins_a": 8
+  },
+  "mid|Orianna|Aurora": {
+    "champion_a": "Orianna",
+    "champion_b": "Aurora",
+    "games": 7,
+    "raw_winrate_a": 0.5714,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5417,
+    "wins_a": 4
+  },
+  "mid|Orianna|Azir": {
+    "champion_a": "Orianna",
+    "champion_b": "Azir",
+    "games": 36,
+    "raw_winrate_a": 0.4444,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4512,
+    "wins_a": 16
+  },
+  "mid|Orianna|LeBlanc": {
+    "champion_a": "Orianna",
+    "champion_b": "LeBlanc",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "mid|Orianna|Ryze": {
+    "champion_a": "Orianna",
+    "champion_b": "Ryze",
+    "games": 9,
+    "raw_winrate_a": 0.6667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.6071,
+    "wins_a": 6
+  },
+  "mid|Orianna|Sylas": {
+    "champion_a": "Orianna",
+    "champion_b": "Sylas",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "mid",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "mid|Orianna|Viktor": {
+    "champion_a": "Orianna",
+    "champion_b": "Viktor",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "mid",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "mid|Ryze|Ahri": {
+    "champion_a": "Ryze",
+    "champion_b": "Ahri",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "mid|Ryze|Akali": {
+    "champion_a": "Ryze",
+    "champion_b": "Akali",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "mid",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "mid|Ryze|Anivia": {
+    "champion_a": "Ryze",
+    "champion_b": "Anivia",
+    "games": 28,
+    "raw_winrate_a": 0.4286,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4394,
+    "wins_a": 12
+  },
+  "mid|Ryze|Annie": {
+    "champion_a": "Ryze",
+    "champion_b": "Annie",
+    "games": 13,
+    "raw_winrate_a": 0.5385,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5278,
+    "wins_a": 7
+  },
+  "mid|Ryze|Aurora": {
+    "champion_a": "Ryze",
+    "champion_b": "Aurora",
+    "games": 8,
+    "raw_winrate_a": 0.0,
+    "role": "mid",
+    "shrunk_winrate_a": 0.1923,
+    "wins_a": 0
+  },
+  "mid|Ryze|Azir": {
+    "champion_a": "Ryze",
+    "champion_b": "Azir",
+    "games": 11,
+    "raw_winrate_a": 0.6364,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5938,
+    "wins_a": 7
+  },
+  "mid|Ryze|Cassiopeia": {
+    "champion_a": "Ryze",
+    "champion_b": "Cassiopeia",
+    "games": 16,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 8
+  },
+  "mid|Ryze|Hwei": {
+    "champion_a": "Ryze",
+    "champion_b": "Hwei",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "mid",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "mid|Ryze|Malzahar": {
+    "champion_a": "Ryze",
+    "champion_b": "Malzahar",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "mid|Ryze|Orianna": {
+    "champion_a": "Ryze",
+    "champion_b": "Orianna",
+    "games": 9,
+    "raw_winrate_a": 0.3333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.3929,
+    "wins_a": 3
+  },
+  "mid|Ryze|Syndra": {
+    "champion_a": "Ryze",
+    "champion_b": "Syndra",
+    "games": 11,
+    "raw_winrate_a": 0.4545,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4688,
+    "wins_a": 5
+  },
+  "mid|Ryze|Taliyah": {
+    "champion_a": "Ryze",
+    "champion_b": "Taliyah",
+    "games": 29,
+    "raw_winrate_a": 0.5172,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5147,
+    "wins_a": 15
+  },
+  "mid|Ryze|Viktor": {
+    "champion_a": "Ryze",
+    "champion_b": "Viktor",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "mid|Ryze|Yone": {
+    "champion_a": "Ryze",
+    "champion_b": "Yone",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "mid",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "mid|Sylas|Ahri": {
+    "champion_a": "Sylas",
+    "champion_b": "Ahri",
+    "games": 10,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 5
+  },
+  "mid|Sylas|Azir": {
+    "champion_a": "Sylas",
+    "champion_b": "Azir",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Sylas|Orianna": {
+    "champion_a": "Sylas",
+    "champion_b": "Orianna",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "mid",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "mid|Sylas|Viktor": {
+    "champion_a": "Sylas",
+    "champion_b": "Viktor",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "mid|Syndra|Ahri": {
+    "champion_a": "Syndra",
+    "champion_b": "Ahri",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "mid|Syndra|Aurora": {
+    "champion_a": "Syndra",
+    "champion_b": "Aurora",
+    "games": 6,
+    "raw_winrate_a": 0.6667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5909,
+    "wins_a": 4
+  },
+  "mid|Syndra|Azir": {
+    "champion_a": "Syndra",
+    "champion_b": "Azir",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Syndra|Ryze": {
+    "champion_a": "Syndra",
+    "champion_b": "Ryze",
+    "games": 11,
+    "raw_winrate_a": 0.5455,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5312,
+    "wins_a": 6
+  },
+  "mid|Syndra|Yone": {
+    "champion_a": "Syndra",
+    "champion_b": "Yone",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "mid|Taliyah|Ahri": {
+    "champion_a": "Taliyah",
+    "champion_b": "Ahri",
+    "games": 16,
+    "raw_winrate_a": 0.25,
+    "role": "mid",
+    "shrunk_winrate_a": 0.3095,
+    "wins_a": 4
+  },
+  "mid|Taliyah|Aurora": {
+    "champion_a": "Taliyah",
+    "champion_b": "Aurora",
+    "games": 5,
+    "raw_winrate_a": 0.2,
+    "role": "mid",
+    "shrunk_winrate_a": 0.35,
+    "wins_a": 1
+  },
+  "mid|Taliyah|Azir": {
+    "champion_a": "Taliyah",
+    "champion_b": "Azir",
+    "games": 11,
+    "raw_winrate_a": 0.2727,
+    "role": "mid",
+    "shrunk_winrate_a": 0.3438,
+    "wins_a": 3
+  },
+  "mid|Taliyah|Ryze": {
+    "champion_a": "Taliyah",
+    "champion_b": "Ryze",
+    "games": 29,
+    "raw_winrate_a": 0.4828,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4853,
+    "wins_a": 14
+  },
+  "mid|Viktor|Ahri": {
+    "champion_a": "Viktor",
+    "champion_b": "Ahri",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "mid",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "mid|Viktor|Annie": {
+    "champion_a": "Viktor",
+    "champion_b": "Annie",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Viktor|Aurora": {
+    "champion_a": "Viktor",
+    "champion_b": "Aurora",
+    "games": 7,
+    "raw_winrate_a": 0.4286,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4583,
+    "wins_a": 3
+  },
+  "mid|Viktor|Hwei": {
+    "champion_a": "Viktor",
+    "champion_b": "Hwei",
+    "games": 4,
+    "raw_winrate_a": 1.0,
+    "role": "mid",
+    "shrunk_winrate_a": 0.7222,
+    "wins_a": 4
+  },
+  "mid|Viktor|Orianna": {
+    "champion_a": "Viktor",
+    "champion_b": "Orianna",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "mid",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "mid|Viktor|Ryze": {
+    "champion_a": "Viktor",
+    "champion_b": "Ryze",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "mid|Viktor|Sylas": {
+    "champion_a": "Viktor",
+    "champion_b": "Sylas",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "mid|Viktor|Yone": {
+    "champion_a": "Viktor",
+    "champion_b": "Yone",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "mid",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "mid|Yone|Azir": {
+    "champion_a": "Yone",
+    "champion_b": "Azir",
+    "games": 8,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 4
+  },
+  "mid|Yone|Ryze": {
+    "champion_a": "Yone",
+    "champion_b": "Ryze",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "mid",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "mid|Yone|Syndra": {
+    "champion_a": "Yone",
+    "champion_b": "Syndra",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "mid",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "mid|Yone|Viktor": {
+    "champion_a": "Yone",
+    "champion_b": "Viktor",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "mid",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "mid|Ziggs|Azir": {
+    "champion_a": "Ziggs",
+    "champion_b": "Azir",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "mid|Zoe|Aurora": {
+    "champion_a": "Zoe",
+    "champion_b": "Aurora",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "mid",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "sup|Alistar|Bard": {
+    "champion_a": "Alistar",
+    "champion_b": "Bard",
+    "games": 9,
+    "raw_winrate_a": 0.4444,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4643,
+    "wins_a": 4
+  },
+  "sup|Alistar|Braum": {
+    "champion_a": "Alistar",
+    "champion_b": "Braum",
+    "games": 7,
+    "raw_winrate_a": 0.7143,
+    "role": "sup",
+    "shrunk_winrate_a": 0.625,
+    "wins_a": 5
+  },
+  "sup|Alistar|Leona": {
+    "champion_a": "Alistar",
+    "champion_b": "Leona",
+    "games": 7,
+    "raw_winrate_a": 0.5714,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5417,
+    "wins_a": 4
+  },
+  "sup|Alistar|Lulu": {
+    "champion_a": "Alistar",
+    "champion_b": "Lulu",
+    "games": 4,
+    "raw_winrate_a": 0.0,
+    "role": "sup",
+    "shrunk_winrate_a": 0.2778,
+    "wins_a": 0
+  },
+  "sup|Alistar|Milio": {
+    "champion_a": "Alistar",
+    "champion_b": "Milio",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "sup|Alistar|Nami": {
+    "champion_a": "Alistar",
+    "champion_b": "Nami",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "sup|Alistar|Nautilus": {
+    "champion_a": "Alistar",
+    "champion_b": "Nautilus",
+    "games": 12,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.6176,
+    "wins_a": 8
+  },
+  "sup|Alistar|Neeko": {
+    "champion_a": "Alistar",
+    "champion_b": "Neeko",
+    "games": 6,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 3
+  },
+  "sup|Alistar|Poppy": {
+    "champion_a": "Alistar",
+    "champion_b": "Poppy",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "sup",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "sup|Alistar|Rakan": {
+    "champion_a": "Alistar",
+    "champion_b": "Rakan",
+    "games": 11,
+    "raw_winrate_a": 0.4545,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4688,
+    "wins_a": 5
+  },
+  "sup|Alistar|Rell": {
+    "champion_a": "Alistar",
+    "champion_b": "Rell",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "sup",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "sup|Bard|Alistar": {
+    "champion_a": "Bard",
+    "champion_b": "Alistar",
+    "games": 9,
+    "raw_winrate_a": 0.5556,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5357,
+    "wins_a": 5
+  },
+  "sup|Bard|Elise": {
+    "champion_a": "Bard",
+    "champion_b": "Elise",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "sup",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "sup|Bard|Karma": {
+    "champion_a": "Bard",
+    "champion_b": "Karma",
+    "games": 19,
+    "raw_winrate_a": 0.6316,
+    "role": "sup",
+    "shrunk_winrate_a": 0.6042,
+    "wins_a": 12
+  },
+  "sup|Bard|Lulu": {
+    "champion_a": "Bard",
+    "champion_b": "Lulu",
+    "games": 6,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4091,
+    "wins_a": 2
+  },
+  "sup|Bard|Milio": {
+    "champion_a": "Bard",
+    "champion_b": "Milio",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "sup|Bard|Nami": {
+    "champion_a": "Bard",
+    "champion_b": "Nami",
+    "games": 7,
+    "raw_winrate_a": 0.7143,
+    "role": "sup",
+    "shrunk_winrate_a": 0.625,
+    "wins_a": 5
+  },
+  "sup|Bard|Nautilus": {
+    "champion_a": "Bard",
+    "champion_b": "Nautilus",
+    "games": 12,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 6
+  },
+  "sup|Bard|Neeko": {
+    "champion_a": "Bard",
+    "champion_b": "Neeko",
+    "games": 17,
+    "raw_winrate_a": 0.4706,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4773,
+    "wins_a": 8
+  },
+  "sup|Bard|Rakan": {
+    "champion_a": "Bard",
+    "champion_b": "Rakan",
+    "games": 7,
+    "raw_winrate_a": 0.1429,
+    "role": "sup",
+    "shrunk_winrate_a": 0.2917,
+    "wins_a": 1
+  },
+  "sup|Bard|Rell": {
+    "champion_a": "Bard",
+    "champion_b": "Rell",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "sup",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "sup|Bard|Seraphine": {
+    "champion_a": "Bard",
+    "champion_b": "Seraphine",
+    "games": 18,
+    "raw_winrate_a": 0.5556,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5435,
+    "wins_a": 10
+  },
+  "sup|Braum|Alistar": {
+    "champion_a": "Braum",
+    "champion_b": "Alistar",
+    "games": 7,
+    "raw_winrate_a": 0.2857,
+    "role": "sup",
+    "shrunk_winrate_a": 0.375,
+    "wins_a": 2
+  },
+  "sup|Braum|Nautilus": {
+    "champion_a": "Braum",
+    "champion_b": "Nautilus",
+    "games": 6,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 3
+  },
+  "sup|Braum|Rakan": {
+    "champion_a": "Braum",
+    "champion_b": "Rakan",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "sup|Braum|Rell": {
+    "champion_a": "Braum",
+    "champion_b": "Rell",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "sup",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "sup|Elise|Bard": {
+    "champion_a": "Elise",
+    "champion_b": "Bard",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "sup",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "sup|Karma|Bard": {
+    "champion_a": "Karma",
+    "champion_b": "Bard",
+    "games": 19,
+    "raw_winrate_a": 0.3684,
+    "role": "sup",
+    "shrunk_winrate_a": 0.3958,
+    "wins_a": 7
+  },
+  "sup|Karma|Lulu": {
+    "champion_a": "Karma",
+    "champion_b": "Lulu",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "sup",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "sup|Karma|Nami": {
+    "champion_a": "Karma",
+    "champion_b": "Nami",
+    "games": 11,
+    "raw_winrate_a": 0.7273,
+    "role": "sup",
+    "shrunk_winrate_a": 0.6562,
+    "wins_a": 8
+  },
+  "sup|Karma|Nautilus": {
+    "champion_a": "Karma",
+    "champion_b": "Nautilus",
+    "games": 14,
+    "raw_winrate_a": 0.2143,
+    "role": "sup",
+    "shrunk_winrate_a": 0.2895,
+    "wins_a": 3
+  },
+  "sup|Karma|Neeko": {
+    "champion_a": "Karma",
+    "champion_b": "Neeko",
+    "games": 8,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 4
+  },
+  "sup|Karma|Rakan": {
+    "champion_a": "Karma",
+    "champion_b": "Rakan",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "sup|Karma|Rell": {
+    "champion_a": "Karma",
+    "champion_b": "Rell",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "sup",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "sup|Karma|Seraphine": {
+    "champion_a": "Karma",
+    "champion_b": "Seraphine",
+    "games": 13,
+    "raw_winrate_a": 0.3846,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4167,
+    "wins_a": 5
+  },
+  "sup|Leona|Alistar": {
+    "champion_a": "Leona",
+    "champion_b": "Alistar",
+    "games": 7,
+    "raw_winrate_a": 0.4286,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4583,
+    "wins_a": 3
+  },
+  "sup|Leona|Nautilus": {
+    "champion_a": "Leona",
+    "champion_b": "Nautilus",
+    "games": 6,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 3
+  },
+  "sup|Leona|Neeko": {
+    "champion_a": "Leona",
+    "champion_b": "Neeko",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "sup|Leona|Rakan": {
+    "champion_a": "Leona",
+    "champion_b": "Rakan",
+    "games": 8,
+    "raw_winrate_a": 0.375,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4231,
+    "wins_a": 3
+  },
+  "sup|Leona|Renata Glasc": {
+    "champion_a": "Leona",
+    "champion_b": "Renata Glasc",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "sup|Lulu|Alistar": {
+    "champion_a": "Lulu",
+    "champion_b": "Alistar",
+    "games": 4,
+    "raw_winrate_a": 1.0,
+    "role": "sup",
+    "shrunk_winrate_a": 0.7222,
+    "wins_a": 4
+  },
+  "sup|Lulu|Bard": {
+    "champion_a": "Lulu",
+    "champion_b": "Bard",
+    "games": 6,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5909,
+    "wins_a": 4
+  },
+  "sup|Lulu|Karma": {
+    "champion_a": "Lulu",
+    "champion_b": "Karma",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "sup",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "sup|Lulu|Milio": {
+    "champion_a": "Lulu",
+    "champion_b": "Milio",
+    "games": 14,
+    "raw_winrate_a": 0.1429,
+    "role": "sup",
+    "shrunk_winrate_a": 0.2368,
+    "wins_a": 2
+  },
+  "sup|Lulu|Nami": {
+    "champion_a": "Lulu",
+    "champion_b": "Nami",
+    "games": 16,
+    "raw_winrate_a": 0.625,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5952,
+    "wins_a": 10
+  },
+  "sup|Lulu|Nautilus": {
+    "champion_a": "Lulu",
+    "champion_b": "Nautilus",
+    "games": 8,
+    "raw_winrate_a": 0.375,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4231,
+    "wins_a": 3
+  },
+  "sup|Lulu|Neeko": {
+    "champion_a": "Lulu",
+    "champion_b": "Neeko",
+    "games": 12,
+    "raw_winrate_a": 0.5833,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5588,
+    "wins_a": 7
+  },
+  "sup|Lulu|Rakan": {
+    "champion_a": "Lulu",
+    "champion_b": "Rakan",
+    "games": 6,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5909,
+    "wins_a": 4
+  },
+  "sup|Lulu|Rell": {
+    "champion_a": "Lulu",
+    "champion_b": "Rell",
+    "games": 5,
+    "raw_winrate_a": 1.0,
+    "role": "sup",
+    "shrunk_winrate_a": 0.75,
+    "wins_a": 5
+  },
+  "sup|Lulu|Seraphine": {
+    "champion_a": "Lulu",
+    "champion_b": "Seraphine",
+    "games": 12,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 6
+  },
+  "sup|Lulu|Thresh": {
+    "champion_a": "Lulu",
+    "champion_b": "Thresh",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "sup",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "sup|Milio|Alistar": {
+    "champion_a": "Milio",
+    "champion_b": "Alistar",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "sup|Milio|Bard": {
+    "champion_a": "Milio",
+    "champion_b": "Bard",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "sup|Milio|Lulu": {
+    "champion_a": "Milio",
+    "champion_b": "Lulu",
+    "games": 14,
+    "raw_winrate_a": 0.8571,
+    "role": "sup",
+    "shrunk_winrate_a": 0.7632,
+    "wins_a": 12
+  },
+  "sup|Milio|Nami": {
+    "champion_a": "Milio",
+    "champion_b": "Nami",
+    "games": 13,
+    "raw_winrate_a": 0.6154,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5833,
+    "wins_a": 8
+  },
+  "sup|Milio|Nautilus": {
+    "champion_a": "Milio",
+    "champion_b": "Nautilus",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "sup",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "sup|Milio|Seraphine": {
+    "champion_a": "Milio",
+    "champion_b": "Seraphine",
+    "games": 8,
+    "raw_winrate_a": 0.375,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4231,
+    "wins_a": 3
+  },
+  "sup|Nami|Alistar": {
+    "champion_a": "Nami",
+    "champion_b": "Alistar",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "sup|Nami|Bard": {
+    "champion_a": "Nami",
+    "champion_b": "Bard",
+    "games": 7,
+    "raw_winrate_a": 0.2857,
+    "role": "sup",
+    "shrunk_winrate_a": 0.375,
+    "wins_a": 2
+  },
+  "sup|Nami|Karma": {
+    "champion_a": "Nami",
+    "champion_b": "Karma",
+    "games": 11,
+    "raw_winrate_a": 0.2727,
+    "role": "sup",
+    "shrunk_winrate_a": 0.3438,
+    "wins_a": 3
+  },
+  "sup|Nami|Lulu": {
+    "champion_a": "Nami",
+    "champion_b": "Lulu",
+    "games": 16,
+    "raw_winrate_a": 0.375,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4048,
+    "wins_a": 6
+  },
+  "sup|Nami|Milio": {
+    "champion_a": "Nami",
+    "champion_b": "Milio",
+    "games": 13,
+    "raw_winrate_a": 0.3846,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4167,
+    "wins_a": 5
+  },
+  "sup|Nami|Nautilus": {
+    "champion_a": "Nami",
+    "champion_b": "Nautilus",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "sup|Nami|Neeko": {
+    "champion_a": "Nami",
+    "champion_b": "Neeko",
+    "games": 13,
+    "raw_winrate_a": 0.3077,
+    "role": "sup",
+    "shrunk_winrate_a": 0.3611,
+    "wins_a": 4
+  },
+  "sup|Nami|Rakan": {
+    "champion_a": "Nami",
+    "champion_b": "Rakan",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "sup|Nami|Seraphine": {
+    "champion_a": "Nami",
+    "champion_b": "Seraphine",
+    "games": 6,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4091,
+    "wins_a": 2
+  },
+  "sup|Nautilus|Alistar": {
+    "champion_a": "Nautilus",
+    "champion_b": "Alistar",
+    "games": 12,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.3824,
+    "wins_a": 4
+  },
+  "sup|Nautilus|Bard": {
+    "champion_a": "Nautilus",
+    "champion_b": "Bard",
+    "games": 12,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 6
+  },
+  "sup|Nautilus|Braum": {
+    "champion_a": "Nautilus",
+    "champion_b": "Braum",
+    "games": 6,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 3
+  },
+  "sup|Nautilus|Karma": {
+    "champion_a": "Nautilus",
+    "champion_b": "Karma",
+    "games": 14,
+    "raw_winrate_a": 0.7857,
+    "role": "sup",
+    "shrunk_winrate_a": 0.7105,
+    "wins_a": 11
+  },
+  "sup|Nautilus|Leona": {
+    "champion_a": "Nautilus",
+    "champion_b": "Leona",
+    "games": 6,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 3
+  },
+  "sup|Nautilus|Lulu": {
+    "champion_a": "Nautilus",
+    "champion_b": "Lulu",
+    "games": 8,
+    "raw_winrate_a": 0.625,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5769,
+    "wins_a": 5
+  },
+  "sup|Nautilus|Milio": {
+    "champion_a": "Nautilus",
+    "champion_b": "Milio",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "sup",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "sup|Nautilus|Nami": {
+    "champion_a": "Nautilus",
+    "champion_b": "Nami",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "sup|Nautilus|Neeko": {
+    "champion_a": "Nautilus",
+    "champion_b": "Neeko",
+    "games": 7,
+    "raw_winrate_a": 0.2857,
+    "role": "sup",
+    "shrunk_winrate_a": 0.375,
+    "wins_a": 2
+  },
+  "sup|Nautilus|Rakan": {
+    "champion_a": "Nautilus",
+    "champion_b": "Rakan",
+    "games": 6,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5909,
+    "wins_a": 4
+  },
+  "sup|Nautilus|Rell": {
+    "champion_a": "Nautilus",
+    "champion_b": "Rell",
+    "games": 7,
+    "raw_winrate_a": 0.1429,
+    "role": "sup",
+    "shrunk_winrate_a": 0.2917,
+    "wins_a": 1
+  },
+  "sup|Nautilus|Seraphine": {
+    "champion_a": "Nautilus",
+    "champion_b": "Seraphine",
+    "games": 13,
+    "raw_winrate_a": 0.3077,
+    "role": "sup",
+    "shrunk_winrate_a": 0.3611,
+    "wins_a": 4
+  },
+  "sup|Nautilus|Thresh": {
+    "champion_a": "Nautilus",
+    "champion_b": "Thresh",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "sup|Neeko|Alistar": {
+    "champion_a": "Neeko",
+    "champion_b": "Alistar",
+    "games": 6,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 3
+  },
+  "sup|Neeko|Bard": {
+    "champion_a": "Neeko",
+    "champion_b": "Bard",
+    "games": 17,
+    "raw_winrate_a": 0.5294,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5227,
+    "wins_a": 9
+  },
+  "sup|Neeko|Karma": {
+    "champion_a": "Neeko",
+    "champion_b": "Karma",
+    "games": 8,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 4
+  },
+  "sup|Neeko|Leona": {
+    "champion_a": "Neeko",
+    "champion_b": "Leona",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "sup|Neeko|Lulu": {
+    "champion_a": "Neeko",
+    "champion_b": "Lulu",
+    "games": 12,
+    "raw_winrate_a": 0.4167,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4412,
+    "wins_a": 5
+  },
+  "sup|Neeko|Nami": {
+    "champion_a": "Neeko",
+    "champion_b": "Nami",
+    "games": 13,
+    "raw_winrate_a": 0.6923,
+    "role": "sup",
+    "shrunk_winrate_a": 0.6389,
+    "wins_a": 9
+  },
+  "sup|Neeko|Nautilus": {
+    "champion_a": "Neeko",
+    "champion_b": "Nautilus",
+    "games": 7,
+    "raw_winrate_a": 0.7143,
+    "role": "sup",
+    "shrunk_winrate_a": 0.625,
+    "wins_a": 5
+  },
+  "sup|Neeko|Rakan": {
+    "champion_a": "Neeko",
+    "champion_b": "Rakan",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "sup|Neeko|Rell": {
+    "champion_a": "Neeko",
+    "champion_b": "Rell",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "sup|Neeko|Seraphine": {
+    "champion_a": "Neeko",
+    "champion_b": "Seraphine",
+    "games": 13,
+    "raw_winrate_a": 0.2308,
+    "role": "sup",
+    "shrunk_winrate_a": 0.3056,
+    "wins_a": 3
+  },
+  "sup|Poppy|Alistar": {
+    "champion_a": "Poppy",
+    "champion_b": "Alistar",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "sup",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "sup|Poppy|Rakan": {
+    "champion_a": "Poppy",
+    "champion_b": "Rakan",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "sup|Poppy|Rell": {
+    "champion_a": "Poppy",
+    "champion_b": "Rell",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "sup|Pyke|Seraphine": {
+    "champion_a": "Pyke",
+    "champion_b": "Seraphine",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "sup",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "sup|Rakan|Alistar": {
+    "champion_a": "Rakan",
+    "champion_b": "Alistar",
+    "games": 11,
+    "raw_winrate_a": 0.5455,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5312,
+    "wins_a": 6
+  },
+  "sup|Rakan|Bard": {
+    "champion_a": "Rakan",
+    "champion_b": "Bard",
+    "games": 7,
+    "raw_winrate_a": 0.8571,
+    "role": "sup",
+    "shrunk_winrate_a": 0.7083,
+    "wins_a": 6
+  },
+  "sup|Rakan|Braum": {
+    "champion_a": "Rakan",
+    "champion_b": "Braum",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "sup|Rakan|Karma": {
+    "champion_a": "Rakan",
+    "champion_b": "Karma",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "sup|Rakan|Leona": {
+    "champion_a": "Rakan",
+    "champion_b": "Leona",
+    "games": 8,
+    "raw_winrate_a": 0.625,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5769,
+    "wins_a": 5
+  },
+  "sup|Rakan|Lulu": {
+    "champion_a": "Rakan",
+    "champion_b": "Lulu",
+    "games": 6,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4091,
+    "wins_a": 2
+  },
+  "sup|Rakan|Nami": {
+    "champion_a": "Rakan",
+    "champion_b": "Nami",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "sup|Rakan|Nautilus": {
+    "champion_a": "Rakan",
+    "champion_b": "Nautilus",
+    "games": 6,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4091,
+    "wins_a": 2
+  },
+  "sup|Rakan|Neeko": {
+    "champion_a": "Rakan",
+    "champion_b": "Neeko",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "sup|Rakan|Poppy": {
+    "champion_a": "Rakan",
+    "champion_b": "Poppy",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "sup|Rakan|Rell": {
+    "champion_a": "Rakan",
+    "champion_b": "Rell",
+    "games": 6,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5909,
+    "wins_a": 4
+  },
+  "sup|Rell|Alistar": {
+    "champion_a": "Rell",
+    "champion_b": "Alistar",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "sup",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "sup|Rell|Bard": {
+    "champion_a": "Rell",
+    "champion_b": "Bard",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "sup",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "sup|Rell|Braum": {
+    "champion_a": "Rell",
+    "champion_b": "Braum",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "sup",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "sup|Rell|Karma": {
+    "champion_a": "Rell",
+    "champion_b": "Karma",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "sup",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "sup|Rell|Lulu": {
+    "champion_a": "Rell",
+    "champion_b": "Lulu",
+    "games": 5,
+    "raw_winrate_a": 0.0,
+    "role": "sup",
+    "shrunk_winrate_a": 0.25,
+    "wins_a": 0
+  },
+  "sup|Rell|Nautilus": {
+    "champion_a": "Rell",
+    "champion_b": "Nautilus",
+    "games": 7,
+    "raw_winrate_a": 0.8571,
+    "role": "sup",
+    "shrunk_winrate_a": 0.7083,
+    "wins_a": 6
+  },
+  "sup|Rell|Neeko": {
+    "champion_a": "Rell",
+    "champion_b": "Neeko",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "sup|Rell|Poppy": {
+    "champion_a": "Rell",
+    "champion_b": "Poppy",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "sup|Rell|Rakan": {
+    "champion_a": "Rell",
+    "champion_b": "Rakan",
+    "games": 6,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4091,
+    "wins_a": 2
+  },
+  "sup|Renata Glasc|Leona": {
+    "champion_a": "Renata Glasc",
+    "champion_b": "Leona",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "sup|Seraphine|Bard": {
+    "champion_a": "Seraphine",
+    "champion_b": "Bard",
+    "games": 18,
+    "raw_winrate_a": 0.4444,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4565,
+    "wins_a": 8
+  },
+  "sup|Seraphine|Karma": {
+    "champion_a": "Seraphine",
+    "champion_b": "Karma",
+    "games": 13,
+    "raw_winrate_a": 0.6154,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5833,
+    "wins_a": 8
+  },
+  "sup|Seraphine|Lulu": {
+    "champion_a": "Seraphine",
+    "champion_b": "Lulu",
+    "games": 12,
+    "raw_winrate_a": 0.5,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 6
+  },
+  "sup|Seraphine|Milio": {
+    "champion_a": "Seraphine",
+    "champion_b": "Milio",
+    "games": 8,
+    "raw_winrate_a": 0.625,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5769,
+    "wins_a": 5
+  },
+  "sup|Seraphine|Nami": {
+    "champion_a": "Seraphine",
+    "champion_b": "Nami",
+    "games": 6,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5909,
+    "wins_a": 4
+  },
+  "sup|Seraphine|Nautilus": {
+    "champion_a": "Seraphine",
+    "champion_b": "Nautilus",
+    "games": 13,
+    "raw_winrate_a": 0.6923,
+    "role": "sup",
+    "shrunk_winrate_a": 0.6389,
+    "wins_a": 9
+  },
+  "sup|Seraphine|Neeko": {
+    "champion_a": "Seraphine",
+    "champion_b": "Neeko",
+    "games": 13,
+    "raw_winrate_a": 0.7692,
+    "role": "sup",
+    "shrunk_winrate_a": 0.6944,
+    "wins_a": 10
+  },
+  "sup|Seraphine|Pyke": {
+    "champion_a": "Seraphine",
+    "champion_b": "Pyke",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "sup",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "sup|Seraphine|Shen": {
+    "champion_a": "Seraphine",
+    "champion_b": "Shen",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "sup|Shen|Seraphine": {
+    "champion_a": "Shen",
+    "champion_b": "Seraphine",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "sup",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "sup|Thresh|Lulu": {
+    "champion_a": "Thresh",
+    "champion_b": "Lulu",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "sup",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "sup|Thresh|Nautilus": {
+    "champion_a": "Thresh",
+    "champion_b": "Nautilus",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "sup",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "top|Aatrox|Ambessa": {
+    "champion_a": "Aatrox",
+    "champion_b": "Ambessa",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "top",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "top|Aatrox|Sion": {
+    "champion_a": "Aatrox",
+    "champion_b": "Sion",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "top|Ambessa|Aatrox": {
+    "champion_a": "Ambessa",
+    "champion_b": "Aatrox",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "top",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "top|Ambessa|Gnar": {
+    "champion_a": "Ambessa",
+    "champion_b": "Gnar",
+    "games": 16,
+    "raw_winrate_a": 0.625,
+    "role": "top",
+    "shrunk_winrate_a": 0.5952,
+    "wins_a": 10
+  },
+  "top|Ambessa|Gwen": {
+    "champion_a": "Ambessa",
+    "champion_b": "Gwen",
+    "games": 8,
+    "raw_winrate_a": 0.375,
+    "role": "top",
+    "shrunk_winrate_a": 0.4231,
+    "wins_a": 3
+  },
+  "top|Ambessa|Illaoi": {
+    "champion_a": "Ambessa",
+    "champion_b": "Illaoi",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "top|Ambessa|Jax": {
+    "champion_a": "Ambessa",
+    "champion_b": "Jax",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "top",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "top|Ambessa|K'Sante": {
+    "champion_a": "Ambessa",
+    "champion_b": "K'Sante",
+    "games": 8,
+    "raw_winrate_a": 0.625,
+    "role": "top",
+    "shrunk_winrate_a": 0.5769,
+    "wins_a": 5
+  },
+  "top|Ambessa|Rek'Sai": {
+    "champion_a": "Ambessa",
+    "champion_b": "Rek'Sai",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "top",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "top|Ambessa|Renekton": {
+    "champion_a": "Ambessa",
+    "champion_b": "Renekton",
+    "games": 6,
+    "raw_winrate_a": 0.1667,
+    "role": "top",
+    "shrunk_winrate_a": 0.3182,
+    "wins_a": 1
+  },
+  "top|Ambessa|Rumble": {
+    "champion_a": "Ambessa",
+    "champion_b": "Rumble",
+    "games": 22,
+    "raw_winrate_a": 0.5909,
+    "role": "top",
+    "shrunk_winrate_a": 0.5741,
+    "wins_a": 13
+  },
+  "top|Ambessa|Sion": {
+    "champion_a": "Ambessa",
+    "champion_b": "Sion",
+    "games": 8,
+    "raw_winrate_a": 0.75,
+    "role": "top",
+    "shrunk_winrate_a": 0.6538,
+    "wins_a": 6
+  },
+  "top|Ambessa|Zaahen": {
+    "champion_a": "Ambessa",
+    "champion_b": "Zaahen",
+    "games": 9,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.6071,
+    "wins_a": 6
+  },
+  "top|Aurora|Renekton": {
+    "champion_a": "Aurora",
+    "champion_b": "Renekton",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "top|Aurora|Rumble": {
+    "champion_a": "Aurora",
+    "champion_b": "Rumble",
+    "games": 11,
+    "raw_winrate_a": 0.4545,
+    "role": "top",
+    "shrunk_winrate_a": 0.4688,
+    "wins_a": 5
+  },
+  "top|Galio|Rumble": {
+    "champion_a": "Galio",
+    "champion_b": "Rumble",
+    "games": 6,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.4091,
+    "wins_a": 2
+  },
+  "top|Gnar|Ambessa": {
+    "champion_a": "Gnar",
+    "champion_b": "Ambessa",
+    "games": 16,
+    "raw_winrate_a": 0.375,
+    "role": "top",
+    "shrunk_winrate_a": 0.4048,
+    "wins_a": 6
+  },
+  "top|Gnar|Irelia": {
+    "champion_a": "Gnar",
+    "champion_b": "Irelia",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "top",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "top|Gnar|K'Sante": {
+    "champion_a": "Gnar",
+    "champion_b": "K'Sante",
+    "games": 11,
+    "raw_winrate_a": 0.5455,
+    "role": "top",
+    "shrunk_winrate_a": 0.5312,
+    "wins_a": 6
+  },
+  "top|Gnar|Renekton": {
+    "champion_a": "Gnar",
+    "champion_b": "Renekton",
+    "games": 33,
+    "raw_winrate_a": 0.7273,
+    "role": "top",
+    "shrunk_winrate_a": 0.6974,
+    "wins_a": 24
+  },
+  "top|Gnar|Rumble": {
+    "champion_a": "Gnar",
+    "champion_b": "Rumble",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "top|Gnar|Sion": {
+    "champion_a": "Gnar",
+    "champion_b": "Sion",
+    "games": 12,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.3824,
+    "wins_a": 4
+  },
+  "top|Gnar|Vayne": {
+    "champion_a": "Gnar",
+    "champion_b": "Vayne",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "top",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "top|Gnar|Yorick": {
+    "champion_a": "Gnar",
+    "champion_b": "Yorick",
+    "games": 9,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.3929,
+    "wins_a": 3
+  },
+  "top|Gwen|Ambessa": {
+    "champion_a": "Gwen",
+    "champion_b": "Ambessa",
+    "games": 8,
+    "raw_winrate_a": 0.625,
+    "role": "top",
+    "shrunk_winrate_a": 0.5769,
+    "wins_a": 5
+  },
+  "top|Gwen|K'Sante": {
+    "champion_a": "Gwen",
+    "champion_b": "K'Sante",
+    "games": 6,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 3
+  },
+  "top|Gwen|Sion": {
+    "champion_a": "Gwen",
+    "champion_b": "Sion",
+    "games": 6,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.4091,
+    "wins_a": 2
+  },
+  "top|Illaoi|Ambessa": {
+    "champion_a": "Illaoi",
+    "champion_b": "Ambessa",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "top|Irelia|Gnar": {
+    "champion_a": "Irelia",
+    "champion_b": "Gnar",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "top",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "top|Irelia|Sion": {
+    "champion_a": "Irelia",
+    "champion_b": "Sion",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "top",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "top|Jax|Ambessa": {
+    "champion_a": "Jax",
+    "champion_b": "Ambessa",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "top",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "top|Jax|Kennen": {
+    "champion_a": "Jax",
+    "champion_b": "Kennen",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "top",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "top|Jax|Renekton": {
+    "champion_a": "Jax",
+    "champion_b": "Renekton",
+    "games": 6,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 3
+  },
+  "top|Jax|Zaahen": {
+    "champion_a": "Jax",
+    "champion_b": "Zaahen",
+    "games": 5,
+    "raw_winrate_a": 0.8,
+    "role": "top",
+    "shrunk_winrate_a": 0.65,
+    "wins_a": 4
+  },
+  "top|Jayce|K'Sante": {
+    "champion_a": "Jayce",
+    "champion_b": "K'Sante",
+    "games": 11,
+    "raw_winrate_a": 0.4545,
+    "role": "top",
+    "shrunk_winrate_a": 0.4688,
+    "wins_a": 5
+  },
+  "top|Jayce|Renekton": {
+    "champion_a": "Jayce",
+    "champion_b": "Renekton",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "top|Jayce|Rumble": {
+    "champion_a": "Jayce",
+    "champion_b": "Rumble",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "top",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "top|Jayce|Sion": {
+    "champion_a": "Jayce",
+    "champion_b": "Sion",
+    "games": 15,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.375,
+    "wins_a": 5
+  },
+  "top|Jayce|Vayne": {
+    "champion_a": "Jayce",
+    "champion_b": "Vayne",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "top",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "top|Jayce|Yorick": {
+    "champion_a": "Jayce",
+    "champion_b": "Yorick",
+    "games": 8,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 4
+  },
+  "top|K'Sante|Ambessa": {
+    "champion_a": "K'Sante",
+    "champion_b": "Ambessa",
+    "games": 8,
+    "raw_winrate_a": 0.375,
+    "role": "top",
+    "shrunk_winrate_a": 0.4231,
+    "wins_a": 3
+  },
+  "top|K'Sante|Gnar": {
+    "champion_a": "K'Sante",
+    "champion_b": "Gnar",
+    "games": 11,
+    "raw_winrate_a": 0.4545,
+    "role": "top",
+    "shrunk_winrate_a": 0.4688,
+    "wins_a": 5
+  },
+  "top|K'Sante|Gwen": {
+    "champion_a": "K'Sante",
+    "champion_b": "Gwen",
+    "games": 6,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 3
+  },
+  "top|K'Sante|Jayce": {
+    "champion_a": "K'Sante",
+    "champion_b": "Jayce",
+    "games": 11,
+    "raw_winrate_a": 0.5455,
+    "role": "top",
+    "shrunk_winrate_a": 0.5312,
+    "wins_a": 6
+  },
+  "top|K'Sante|Renekton": {
+    "champion_a": "K'Sante",
+    "champion_b": "Renekton",
+    "games": 12,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 6
+  },
+  "top|K'Sante|Rumble": {
+    "champion_a": "K'Sante",
+    "champion_b": "Rumble",
+    "games": 51,
+    "raw_winrate_a": 0.5294,
+    "role": "top",
+    "shrunk_winrate_a": 0.5268,
+    "wins_a": 27
+  },
+  "top|K'Sante|Sion": {
+    "champion_a": "K'Sante",
+    "champion_b": "Sion",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "top",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "top|K'Sante|Zaahen": {
+    "champion_a": "K'Sante",
+    "champion_b": "Zaahen",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "top|Kennen|Jax": {
+    "champion_a": "Kennen",
+    "champion_b": "Jax",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "top",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "top|Kennen|Renekton": {
+    "champion_a": "Kennen",
+    "champion_b": "Renekton",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "top|Ornn|Renekton": {
+    "champion_a": "Ornn",
+    "champion_b": "Renekton",
+    "games": 9,
+    "raw_winrate_a": 0.5556,
+    "role": "top",
+    "shrunk_winrate_a": 0.5357,
+    "wins_a": 5
+  },
+  "top|Ornn|Rumble": {
+    "champion_a": "Ornn",
+    "champion_b": "Rumble",
+    "games": 12,
+    "raw_winrate_a": 0.5833,
+    "role": "top",
+    "shrunk_winrate_a": 0.5588,
+    "wins_a": 7
+  },
+  "top|Rek'Sai|Ambessa": {
+    "champion_a": "Rek'Sai",
+    "champion_b": "Ambessa",
+    "games": 4,
+    "raw_winrate_a": 0.75,
+    "role": "top",
+    "shrunk_winrate_a": 0.6111,
+    "wins_a": 3
+  },
+  "top|Rek'Sai|Renekton": {
+    "champion_a": "Rek'Sai",
+    "champion_b": "Renekton",
+    "games": 5,
+    "raw_winrate_a": 0.8,
+    "role": "top",
+    "shrunk_winrate_a": 0.65,
+    "wins_a": 4
+  },
+  "top|Rek'Sai|Sion": {
+    "champion_a": "Rek'Sai",
+    "champion_b": "Sion",
+    "games": 11,
+    "raw_winrate_a": 0.4545,
+    "role": "top",
+    "shrunk_winrate_a": 0.4688,
+    "wins_a": 5
+  },
+  "top|Renekton|Ambessa": {
+    "champion_a": "Renekton",
+    "champion_b": "Ambessa",
+    "games": 6,
+    "raw_winrate_a": 0.8333,
+    "role": "top",
+    "shrunk_winrate_a": 0.6818,
+    "wins_a": 5
+  },
+  "top|Renekton|Aurora": {
+    "champion_a": "Renekton",
+    "champion_b": "Aurora",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "top|Renekton|Gnar": {
+    "champion_a": "Renekton",
+    "champion_b": "Gnar",
+    "games": 33,
+    "raw_winrate_a": 0.2727,
+    "role": "top",
+    "shrunk_winrate_a": 0.3026,
+    "wins_a": 9
+  },
+  "top|Renekton|Jax": {
+    "champion_a": "Renekton",
+    "champion_b": "Jax",
+    "games": 6,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 3
+  },
+  "top|Renekton|Jayce": {
+    "champion_a": "Renekton",
+    "champion_b": "Jayce",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "top|Renekton|K'Sante": {
+    "champion_a": "Renekton",
+    "champion_b": "K'Sante",
+    "games": 12,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 6
+  },
+  "top|Renekton|Kennen": {
+    "champion_a": "Renekton",
+    "champion_b": "Kennen",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "top|Renekton|Ornn": {
+    "champion_a": "Renekton",
+    "champion_b": "Ornn",
+    "games": 9,
+    "raw_winrate_a": 0.4444,
+    "role": "top",
+    "shrunk_winrate_a": 0.4643,
+    "wins_a": 4
+  },
+  "top|Renekton|Rek'Sai": {
+    "champion_a": "Renekton",
+    "champion_b": "Rek'Sai",
+    "games": 5,
+    "raw_winrate_a": 0.2,
+    "role": "top",
+    "shrunk_winrate_a": 0.35,
+    "wins_a": 1
+  },
+  "top|Renekton|Sion": {
+    "champion_a": "Renekton",
+    "champion_b": "Sion",
+    "games": 17,
+    "raw_winrate_a": 0.4118,
+    "role": "top",
+    "shrunk_winrate_a": 0.4318,
+    "wins_a": 7
+  },
+  "top|Renekton|Varus": {
+    "champion_a": "Renekton",
+    "champion_b": "Varus",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "top|Renekton|Zaahen": {
+    "champion_a": "Renekton",
+    "champion_b": "Zaahen",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "top|Rumble|Ambessa": {
+    "champion_a": "Rumble",
+    "champion_b": "Ambessa",
+    "games": 22,
+    "raw_winrate_a": 0.4091,
+    "role": "top",
+    "shrunk_winrate_a": 0.4259,
+    "wins_a": 9
+  },
+  "top|Rumble|Aurora": {
+    "champion_a": "Rumble",
+    "champion_b": "Aurora",
+    "games": 11,
+    "raw_winrate_a": 0.5455,
+    "role": "top",
+    "shrunk_winrate_a": 0.5312,
+    "wins_a": 6
+  },
+  "top|Rumble|Galio": {
+    "champion_a": "Rumble",
+    "champion_b": "Galio",
+    "games": 6,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.5909,
+    "wins_a": 4
+  },
+  "top|Rumble|Gnar": {
+    "champion_a": "Rumble",
+    "champion_b": "Gnar",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "top|Rumble|Jayce": {
+    "champion_a": "Rumble",
+    "champion_b": "Jayce",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "top",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "top|Rumble|K'Sante": {
+    "champion_a": "Rumble",
+    "champion_b": "K'Sante",
+    "games": 51,
+    "raw_winrate_a": 0.4706,
+    "role": "top",
+    "shrunk_winrate_a": 0.4732,
+    "wins_a": 24
+  },
+  "top|Rumble|Ornn": {
+    "champion_a": "Rumble",
+    "champion_b": "Ornn",
+    "games": 12,
+    "raw_winrate_a": 0.4167,
+    "role": "top",
+    "shrunk_winrate_a": 0.4412,
+    "wins_a": 5
+  },
+  "top|Rumble|Sion": {
+    "champion_a": "Rumble",
+    "champion_b": "Sion",
+    "games": 15,
+    "raw_winrate_a": 0.4667,
+    "role": "top",
+    "shrunk_winrate_a": 0.475,
+    "wins_a": 7
+  },
+  "top|Rumble|Yorick": {
+    "champion_a": "Rumble",
+    "champion_b": "Yorick",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "top|Shen|Sion": {
+    "champion_a": "Shen",
+    "champion_b": "Sion",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "top|Sion|Aatrox": {
+    "champion_a": "Sion",
+    "champion_b": "Aatrox",
+    "games": 4,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 2
+  },
+  "top|Sion|Ambessa": {
+    "champion_a": "Sion",
+    "champion_b": "Ambessa",
+    "games": 8,
+    "raw_winrate_a": 0.25,
+    "role": "top",
+    "shrunk_winrate_a": 0.3462,
+    "wins_a": 2
+  },
+  "top|Sion|Gnar": {
+    "champion_a": "Sion",
+    "champion_b": "Gnar",
+    "games": 12,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.6176,
+    "wins_a": 8
+  },
+  "top|Sion|Gwen": {
+    "champion_a": "Sion",
+    "champion_b": "Gwen",
+    "games": 6,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.5909,
+    "wins_a": 4
+  },
+  "top|Sion|Irelia": {
+    "champion_a": "Sion",
+    "champion_b": "Irelia",
+    "games": 4,
+    "raw_winrate_a": 0.25,
+    "role": "top",
+    "shrunk_winrate_a": 0.3889,
+    "wins_a": 1
+  },
+  "top|Sion|Jayce": {
+    "champion_a": "Sion",
+    "champion_b": "Jayce",
+    "games": 15,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.625,
+    "wins_a": 10
+  },
+  "top|Sion|K'Sante": {
+    "champion_a": "Sion",
+    "champion_b": "K'Sante",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "top",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  },
+  "top|Sion|Rek'Sai": {
+    "champion_a": "Sion",
+    "champion_b": "Rek'Sai",
+    "games": 11,
+    "raw_winrate_a": 0.5455,
+    "role": "top",
+    "shrunk_winrate_a": 0.5312,
+    "wins_a": 6
+  },
+  "top|Sion|Renekton": {
+    "champion_a": "Sion",
+    "champion_b": "Renekton",
+    "games": 17,
+    "raw_winrate_a": 0.5882,
+    "role": "top",
+    "shrunk_winrate_a": 0.5682,
+    "wins_a": 10
+  },
+  "top|Sion|Rumble": {
+    "champion_a": "Sion",
+    "champion_b": "Rumble",
+    "games": 15,
+    "raw_winrate_a": 0.5333,
+    "role": "top",
+    "shrunk_winrate_a": 0.525,
+    "wins_a": 8
+  },
+  "top|Sion|Shen": {
+    "champion_a": "Sion",
+    "champion_b": "Shen",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "top|Sion|Yone": {
+    "champion_a": "Sion",
+    "champion_b": "Yone",
+    "games": 3,
+    "raw_winrate_a": 0.0,
+    "role": "top",
+    "shrunk_winrate_a": 0.3125,
+    "wins_a": 0
+  },
+  "top|Sion|Zaahen": {
+    "champion_a": "Sion",
+    "champion_b": "Zaahen",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "top",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "top|Varus|Renekton": {
+    "champion_a": "Varus",
+    "champion_b": "Renekton",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "top|Vayne|Gnar": {
+    "champion_a": "Vayne",
+    "champion_b": "Gnar",
+    "games": 5,
+    "raw_winrate_a": 0.6,
+    "role": "top",
+    "shrunk_winrate_a": 0.55,
+    "wins_a": 3
+  },
+  "top|Vayne|Jayce": {
+    "champion_a": "Vayne",
+    "champion_b": "Jayce",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "top",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "top|Yone|Sion": {
+    "champion_a": "Yone",
+    "champion_b": "Sion",
+    "games": 3,
+    "raw_winrate_a": 1.0,
+    "role": "top",
+    "shrunk_winrate_a": 0.6875,
+    "wins_a": 3
+  },
+  "top|Yorick|Gnar": {
+    "champion_a": "Yorick",
+    "champion_b": "Gnar",
+    "games": 9,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.6071,
+    "wins_a": 6
+  },
+  "top|Yorick|Jayce": {
+    "champion_a": "Yorick",
+    "champion_b": "Jayce",
+    "games": 8,
+    "raw_winrate_a": 0.5,
+    "role": "top",
+    "shrunk_winrate_a": 0.5,
+    "wins_a": 4
+  },
+  "top|Yorick|Rumble": {
+    "champion_a": "Yorick",
+    "champion_b": "Rumble",
+    "games": 3,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.4375,
+    "wins_a": 1
+  },
+  "top|Zaahen|Ambessa": {
+    "champion_a": "Zaahen",
+    "champion_b": "Ambessa",
+    "games": 9,
+    "raw_winrate_a": 0.3333,
+    "role": "top",
+    "shrunk_winrate_a": 0.3929,
+    "wins_a": 3
+  },
+  "top|Zaahen|Jax": {
+    "champion_a": "Zaahen",
+    "champion_b": "Jax",
+    "games": 5,
+    "raw_winrate_a": 0.2,
+    "role": "top",
+    "shrunk_winrate_a": 0.35,
+    "wins_a": 1
+  },
+  "top|Zaahen|K'Sante": {
+    "champion_a": "Zaahen",
+    "champion_b": "K'Sante",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "top|Zaahen|Renekton": {
+    "champion_a": "Zaahen",
+    "champion_b": "Renekton",
+    "games": 3,
+    "raw_winrate_a": 0.6667,
+    "role": "top",
+    "shrunk_winrate_a": 0.5625,
+    "wins_a": 2
+  },
+  "top|Zaahen|Sion": {
+    "champion_a": "Zaahen",
+    "champion_b": "Sion",
+    "games": 5,
+    "raw_winrate_a": 0.4,
+    "role": "top",
+    "shrunk_winrate_a": 0.45,
+    "wins_a": 2
+  }
+}
