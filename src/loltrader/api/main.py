@@ -47,9 +47,45 @@ app = FastAPI(title="LoL Trader (v3.0)", lifespan=lifespan)
 
 # --- REST endpoints --------------------------------------------------------
 
+_MONTHS = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6,
+           "JUL": 7, "AUG": 8, "SEP": 9, "OCT": 10, "NOV": 11, "DEC": 12}
+
+
+def _parse_game_start_unix(ticker: str) -> int | None:
+    """Extract the game start time (UTC) encoded in the market ticker.
+
+    Format: KXLOL{TYPE}-YYMMMDDHHMM<teams>-<side>
+    Example: KXLOLGAME-26JUN070400DKKT-DK -> 2026-06-07 04:00 UTC
+    """
+    import datetime as _dt
+    parts = ticker.split("-")
+    if len(parts) < 2:
+        return None
+    body = parts[1]
+    if len(body) < 11:
+        return None
+    try:
+        yy = int(body[0:2])
+        mon = _MONTHS.get(body[2:5])
+        if mon is None:
+            return None
+        dd = int(body[5:7])
+        hh = int(body[7:9])
+        mm = int(body[9:11])
+        return int(_dt.datetime(2000 + yy, mon, dd, hh, mm,
+                                 tzinfo=_dt.timezone.utc).timestamp())
+    except (ValueError, TypeError):
+        return None
+
+
 @app.get("/api/markets")
 async def list_markets(league: str | None = None, limit: int = 100) -> dict:
-    """List active LoL markets, optionally filtered by league."""
+    """List active LoL markets, optionally filtered by league.
+
+    Sorted by game start time (parsed from ticker), with currently-live games
+    first, then upcoming soonest, then recently-finished. Kalshi's close_time
+    is a 2-week-ahead expiry deadline and not useful for ordering.
+    """
     from loltrader.ui.leagues import league_for_match
 
     with connect() as c:
@@ -57,27 +93,24 @@ async def list_markets(league: str | None = None, limit: int = 100) -> dict:
             """
             SELECT m.market_ticker, m.event_ticker, m.title AS market_title,
                    m.status, m.yes_bid_cents, m.yes_ask_cents, m.last_price_cents,
-                   m.close_time_unix, m.volume_24h,
+                   m.close_time_unix, m.open_time_unix, m.volume_24h,
                    e.title AS event_title, e.sub_title AS event_sub
             FROM kalshi_markets m
             LEFT JOIN kalshi_events e ON e.event_ticker = m.event_ticker
             WHERE m.status IN ('active', 'open')
               AND (m.series_ticker = 'KXLOLGAME' OR m.market_ticker LIKE 'KXLOLGAME-%')
               AND m.yes_ask_cents IS NOT NULL
-            -- Order by recent activity first (volume + last-seen), since Kalshi
-            -- sets close_time to a 2-week-ahead expiry deadline that isn't the
-            -- actual game time. Markets being actively traded right now bubble up.
-            ORDER BY
-              -- open_time_unix encodes when Kalshi posted the market — for
-              -- LoL games this is ~hours before kickoff. Sorting DESC puts
-              -- tonight's games at top, regardless of the far-future
-              -- close_time deadline.
-              COALESCE(m.open_time_unix, 0) DESC,
-              COALESCE(m.close_time_unix, 0) ASC
+            ORDER BY COALESCE(m.open_time_unix, 0) DESC
             LIMIT ?
             """,
-            (limit * 3,),  # over-fetch then filter
+            (max(limit * 3, 200),),  # over-fetch for sort + filter
         ).fetchall()
+
+    now_unix = int(time.time())
+    # Window past which a game is considered "stale" (probably settled but the
+    # market not yet finalized) — drop these from the live view.
+    LIVE_WINDOW_BACK = 6 * 3600        # 6h ago — still feasibly mid-game
+    LIVE_WINDOW_FWD = 7 * 86400        # 7 days ahead
 
     out = []
     for r in rows:
@@ -86,9 +119,27 @@ async def list_markets(league: str | None = None, limit: int = 100) -> dict:
                                        d.get("event_sub"))
         if league and d["league"] != league:
             continue
+
+        game_start = _parse_game_start_unix(d["market_ticker"])
+        d["game_start_unix"] = game_start
+        if game_start is None:
+            d["_sort_key"] = (3, 0)
+        elif now_unix - LIVE_WINDOW_BACK <= game_start <= now_unix:
+            # Live or very recently kicked off — top priority
+            d["_sort_key"] = (0, -game_start)
+        elif now_unix < game_start <= now_unix + LIVE_WINDOW_FWD:
+            # Upcoming — sort by soonest first
+            d["_sort_key"] = (1, game_start)
+        else:
+            d["_sort_key"] = (2, abs(game_start - now_unix))
+
         out.append(d)
-        if len(out) >= limit:
-            break
+
+    out.sort(key=lambda x: x["_sort_key"])
+    # Strip helper before returning
+    for d in out:
+        d.pop("_sort_key", None)
+    out = out[:limit]
     return {"markets": out, "count": len(out)}
 
 
