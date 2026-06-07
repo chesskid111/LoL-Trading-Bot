@@ -102,9 +102,27 @@ function setIndicator(status, text) {
     elements.wsText.textContent = text;
 }
 
+/** Live clock — wall-clock time + 'Xs ago' for last WS tick. Ticks every 1s. */
+function updateClock() {
+    const now = Date.now();
+    const wallTime = new Date(now).toLocaleTimeString([], {
+        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
+    });
+    let suffix = '';
+    if (state.lastTickTs > 0) {
+        const ageSec = Math.max(0, Math.floor((now - state.lastTickTs) / 1000));
+        if (ageSec === 0) suffix = ' · just now';
+        else if (ageSec < 60) suffix = ` · ${ageSec}s ago`;
+        else suffix = ` · ${Math.floor(ageSec/60)}m ago`;
+    }
+    elements.tickTime.textContent = wallTime + suffix;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
 function handleWsMessage(msg) {
     state.lastTickTs = msg.ts || Date.now();
-    elements.tickTime.textContent = new Date(state.lastTickTs).toLocaleTimeString();
+    updateClock();
 
     if (msg.type === 'ticker') {
         updateTickerInUI(msg);
