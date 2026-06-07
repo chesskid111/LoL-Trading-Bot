@@ -53,7 +53,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No patch-specific Caedrel/LS/MonteCristo Aatrox commentary found for patch 26.11 within last 14 days; qualitative dimensions derived from pro draft DB + general champion knowledge",
       "Pro win rates are severely depressed across most teammate pairings (Orianna 0%, Aurora 0%, Varus 17%, Ashe 22%) suggesting Aatrox is frequently used as a flex/bait pick that loses when opponents correctly identify its comp weaknesses",
       "Heavily counter-picked (23/37 games) at median pick order 4 \u2014 teams treat Aatrox as a blind-pickable flex threat but opponents successfully answer it; this inflates loss rates vs. Pantheon (100%), Renekton (100%), Ambessa (75%), Jarvan IV (75%), Xin Zhao (75%)",
       "Lulu partnership (6 games, 67% WR) is the standout synergy \u2014 peel+speed amplifies Aatrox's all-in and survivability significantly",
@@ -117,7 +116,6 @@
     "confidence": 0.72,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No patch-26.11-specific LS/Caedrel/MonteCristo pro-draft video found in search window; qualitative dimensions derived from pro DB + aggregate patch-26.11 site data",
       "Pro DB counter-pick rate is high (50/87 games counter-picked) \u2014 confirms Ahri is treated as a flex/safe blind pick that opponents react to rather than exploit",
       "Aurora is the highest-volume pro counter (18 games, Ahri 44% WR) \u2014 likely the primary ban/respect pick in mid matchup",
       "Ryze and Syndra show small sample (3 games each) but 67% loss rate; treat as small-sample outliers",
@@ -192,7 +190,6 @@
       "Annie counter: 5 games 80% loss rate \u2014 point-and-click stun negates Shroud escapes; flag as hard counter despite small sample",
       "Ahri/Galio/Gnar/TF counters: 2-game samples each at 100% loss \u2014 small n, treat as directional signal only",
       "Orianna: largest sample counter (18 games, 44% Akali loss) \u2014 reliable signal; ball zone controls Shroud space and nullifies dive angles",
-      "No LS/Caedrel/MonteCristo direct patch 26.11 Akali analysis found in search window; qualitative dimensions derived from pro DB patterns + current patch build/guide sources",
       "LPL values Akali mechanically (LPL 2025 Split 2/3 usage spike per Leaguepedia); LCK deprioritizes in favor of control mages",
       "late-game score set to +1 not higher: late teamfight execution is harder per multiple pro sources; flanking/pick windows still exist but teams group and defensive items reduce assassination viability",
       "baron_dps_tier=2: Akali has moderate sustained damage on objectives but is not a primary DPS dealer at Baron; energy gating limits prolonged objective burn"
@@ -316,7 +313,6 @@
     "confidence": 0.72,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No LS/Caedrel/MonteCristo patch-specific Alistar commentary found in search window \u2014 qualitative scores derived from pro draft DB patterns and champion kit fundamentals",
       "Lulu (4 games, 100% loss rate) and Nami (3 games, 67% loss rate) are flagged as strong counters despite low sample sizes \u2014 treat with caution",
       "Seraphine (2 games, 100% loss rate) excluded from common_counters due to sample size too small to be reliable",
       "Renekton teammate pairing (11 games, 18% wins) suggests Alistar is a losing-side support in those drafts \u2014 not a recommended synergy despite high co-occurrence",
@@ -381,7 +377,6 @@
     "confidence": 0.72,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No LS/Caedrel/MonteCristo patch-26.11-specific video commentary found in search window; qualitative scores derived from pro DB + guide aggregators",
       "Jarvan IV appears in both top partners (59% WR, 17 games) and top counters (100% loss rate, 7 games same-role) \u2014 likely role-dependent: synergy in jungle pairing vs. hard counter in same-role matchup; listed in counters due to 100% Ambessa loss rate",
       "Zaahen is a new champion appearing in the DB counters; insufficient pro game volume (9 games, 33% Ambessa loss rate) to rank confidently as a hard counter \u2014 excluded from common_counters",
       "Vi and Rek'Sai show high Ambessa loss rates in DB (75-100%) but very low sample sizes (3-4 games); omitted from counters list",
@@ -444,7 +439,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Extremely thin pro data: only 2 picks total across sampled patches, both support \u2014 conclusions are structurally inferred, not statistically robust",
-      "No Amumu-specific patch 26.11 pro draft analysis found from LS, Caedrel, or MonteCristo within the last 14 days",
       "Kalista/Amumu is the historically established pro combo (LCK/LPL 2022); no recent 2025 pro picks confirm this combo is still being drafted in current meta",
       "Counter-picked 1x (median pick 5) suggests teams use it reactively/situationally, not as a priority blind pick",
       "Solo queue stats (52\u201353% WR) used as a proxy where pro-specific data is unavailable \u2014 treat qualitative scores with caution",
@@ -515,7 +509,6 @@
       "Varus partnership (71% WR, 7 games) suggests Anivia pairs well with poke ADCs that benefit from slowfield setup",
       "High counter-pick rate (28 of 54 games) confirms Anivia is draft-dependent; primarily selected as a late pick to answer specific team compositions",
       "Pick threat score reflects Q stun + wall hard engage potential in coordinated pro settings, not solo-queue one-shot potential",
-      "No recent LS or MonteCristo written/transcript sources found within last 14 days specifically for patch 26.11 Anivia; confidence capped below 0.8",
       "Secondary roles (top/support) have meaningful but small sample sizes in the DB (8 and 5 games respectively) \u2014 treat as niche flex, not reliable flex"
     ]
   },
@@ -625,7 +618,6 @@
       "Sivir (75% loss rate across 4 games) and Lucian (40% across 5) are the strongest data-backed counters \u2014 small sample sizes, treat with caution",
       "Lulu + Gnar + Jarvan IV partners align well with front-to-back late-scaling draft archetype confirmed by current pro meta reporting",
       "Xin Zhao teammate shows only 33% WR across 6 games \u2014 flagged as a negative synergy despite frequency; excluded from partners list",
-      "No LS/Caedrel/MonteCristo direct Aphelios patch 26.11 content found in search window; qualitative scores derived from DB patterns + pro meta articles",
       "comfort_curve set to spike-3-item: Aphelios power is heavily tied to crit item completion (Hexoptics C44 + IE + third item in pro builds); limited mobility and high peel dependency reinforce late-scaling profile",
       "patch 26.11 specific nerfs/buffs to Aphelios kit not confirmed \u2014 flag if Calibrum/Crescendum ratios changed materially"
     ]
@@ -807,7 +799,6 @@
       "Ezreal (21g, 33%) and Xin Zhao (20g, 30%) pairings also underperform despite volume \u2014 included Jarvan IV/Ashe/Seraphine as primary partners instead",
       "Counter-picked 76/127 games (60%) indicates teams feel safe picking her later in draft, but Annie (75% loss rate over 16 games) and Azir (71% over 7) are extreme danger matchups to avoid",
       "Median pick order 4 with only 17 first picks suggests she is primarily used as a flex/counter-pick tool, not a blind-pick cornerstone",
-      "No LS, Caedrel, or MonteCristo recent episode data found within the 14-day window; qualitative scores derived from kit analysis, Riot dev notes, and aggregated pro DB patterns",
       "Top role (18/127 games) is a genuine secondary flex, especially into immobile top laners, but win-rate data for that role split is not isolated in the provided DB",
       "Riot explicitly nerfed her 'pro-specific advantage of baseline target agnosticism' \u2014 ult zoning remains high-impact but less oppressive than pre-25.18"
     ]
@@ -869,7 +860,6 @@
       "Solo queue win rate is severely depressed (~44-45%) but pro win rate on patch 16.11 sits at ~55.6% per lolvvv probuild data \u2014 classic Azir coordination delta; pro values hold",
       "Jarvan IV (88% WR in 17 games) and Varus (80% WR in 15 games) are the strongest synergy signals in the draft DB \u2014 Emperor's Divide + Jarvan IV cataclysm is the primary combo driver",
       "Ryze (64% loss rate in 11 games) and Orianna (44% loss rate in 36 games) are the most data-supported counters; Orianna sample is large enough to be very reliable",
-      "No specific LS/Caedrel/MonteCristo broadcast commentary found for patch 26.11 window; qualitative values derived from DB patterns + patch note analysis; confidence capped at 0.72",
       "Taliyah appears in the counter list (27% Azir loss rate) but the data shows Azir wins that matchup comfortably \u2014 excluded from common_counters accordingly",
       "secondary_roles is empty \u2014 all 109 pro games were mid; no flex data observed",
       "comfort_curve set to spike-3-item: Azir requires Nashor's Tooth + Shadowflame/Rabadon's core before his soldier DPS and survivability justify his draft slot"
@@ -982,7 +972,6 @@
     "validation_flags": [
       "No pro games found in patch 26.11 window \u2014 zero first-party pro draft data available",
       "Bel'Veth has historically been a fringe/pocket pick in pro play; not a meta staple in recent LCK/LPL splits",
-      "Web search returned no analyst commentary (LS, Caedrel, MonteCristo) specific to Bel'Veth in the last 14 days",
       "All qualitative values derived from champion kit fundamentals and historical pro tendencies, NOT current patch pro games \u2014 treat as low-confidence priors",
       "Scaling_early set to -1 reflecting pro-play slow-clear disadvantage and gank-light early pathing; significantly weaker laner synergy pre-2-items vs pro coordinated early invades",
       "Baron DPS tier 5: True Form passive grants extreme sustained on-objective DPS, widely recognized as one of highest in game",
@@ -1044,7 +1033,6 @@
       "Extremely thin pro sample: only 5 games across 4 patches, 0% win rate across all recorded teammates (Dr. Mundo 3g 0W, Renekton 3g 0W, Corki 2g 0W, Ryze 2g 0W) \u2014 strong signal Blitzcrank is being counter-picked and losing",
       "All 5 picks were counter-picks (pick order median=5, first-picked=0x), suggesting Blitzcrank is a reactive/desperation pick rather than a proactive pro draft choice",
       "100% loss rate into both Seraphine and Thresh (2 games each) confirms hook-supports and poke-enchanters are reliable counters in pro coordinated play",
-      "No LS, Caedrel, or MonteCristo specific commentary on Blitzcrank found in last 14 days \u2014 qualitative inference relies on champion fundamentals and solo-queue aggregators (Mobalytics, METAsrc) which are solo-queue biased",
       "Blitzcrank is a lane-dominant, single-hook-carry champion; in pro, opponents can easily draft around the hook and position to nullify it \u2014 explaining the 0% win rate in this sample window",
       "meta shift possible: very low pro representation relative to champion pool depth; treat as fringe/situational pick only",
       "Partners listed (Dr. Mundo, Renekton, Corki, Ryze) are from the DB but all lost \u2014 synergy is NOT confirmed to be positive; these are co-occurrence partners only",
@@ -1108,7 +1096,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Extremely thin pro data: only 1 game across 4 patches, all in jungle, always counter-picked (pick5) \u2014 sample is effectively meaningless for statistical inference",
-      "Brand jungle is off-meta in pro play on patch 26.11; no credible analyst sources (LS, Caedrel, MonteCristo) surfaced coverage of Brand jungle in pro context during the search window",
       "patch 26.11 jungle meta winners per rft.gg are Diana, Quinn, Ekko \u2014 Brand is not among them",
       "Solo queue data (D-/OM Tier, ~49-50% WR) confirms Brand jungle is not competitively validated",
       "Partner/counter list is derived from champion-archetype reasoning (engage + clustered teamfight partners enable Brand ult; high-mobility gap-closers hard counter immobile Brand) rather than statistically significant pro co-pick data",
@@ -1170,7 +1157,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No LS/Caedrel/MonteCristo patch-26.11-specific video or written commentary found in search results; qualitative scores rely on kit fundamentals and pro draft data",
       "Braum counter-picked in 20 of 32 games (63%) indicating reactive/answer pick usage, not proactive blind pick",
       "Overall pro win rate in dataset is low (many losing lineups: Sion 14%, Lucian 17%, Syndra 0%, Wukong 0%, XZ 17%) suggesting Braum may be drafted in losing meta compositions or as a reactive pick that underperforms without specific lane pairings",
       "Best pro synergies are Varus (75% WR, 4g), Renekton (60% WR, 5g) \u2014 markedly outperform other pairings",
@@ -1243,8 +1229,7 @@
       "Riot explicitly nerfed Briar in patch 25.20 as a statcheck that underperforms where spacing is accessible \u2014 directly applicable to pro play",
       "Pro counters derived from general mechanical/kit knowledge (Sejuani/Wukong AoE CC, Rek'Sai true-sight, Bel'Veth outscaling) and solo-queue data extrapolated with pro-context adjustment; not from actual pro game data",
       "Common partners selected for CC-follow-up value (Orianna, Lissandra, Leona) and disengage/peel for Briar's all-in (Renata), not from observed pro draft pairings",
-      "meta shift flag: if Briar returns to pro meta it would likely be on a specific team fighting or dive-heavy draft; currently considered off-meta at pro level",
-      "No analyst commentary (LS, Caedrel, MonteCristo) found covering Briar in pro context within 14-day window \u2014 consistent with champion being off-meta"
+      "meta shift flag: if Briar returns to pro meta it would likely be on a specific team fighting or dive-heavy draft; currently considered off-meta at pro level"
     ]
   },
   "Caitlyn": {
@@ -1356,7 +1341,6 @@
       "Counter-picked 4x out of 7 picks (median pick order 4) \u2014 primarily a reactive/counter-pick flex, not a priority blind pick",
       "0% win rate alongside Dr. Mundo and Galio in DB suggests these pairings may be incidental losses rather than true synergies \u2014 treat with caution",
       "Support and jungle appearances (3 of 7 games) indicate flex value but sample too small to score those roles reliably",
-      "No patch 26.11-specific pro broadcast analysis (LS, Caedrel, MonteCristo) surfaced in searches; solo queue data from metabot.gg used as secondary signal for counters only",
       "meta shift: Season 16 item system changes (no mythics) affect Trinity Force spike timing \u2014 monitor for further power-curve shifts"
     ]
   },
@@ -1532,7 +1516,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No direct LS/Caedrel/MonteCristo commentary found for patch 26.11 Corki specifically; qualitative values derived from pro draft DB + general current-patch guides",
       "Nami is by far the most frequent partner (53 games) but win rate is only 34% \u2014 suggests Nami+Corki is a known pairing that opponents actively target/draft into; listed as partner due to volume but flagged as low-WR in pro",
       "Azir partner WR of 57% in 14 games is highest among top teammates \u2014 strong poke+siege composition signal",
       "Yunara is the dominant opposing matchup (35 games, 60% loss rate) \u2014 heavy counter-pick priority; Ashe at 86% loss in 7 games is the single worst matchup by rate but small sample",
@@ -1597,7 +1580,6 @@
     "validation_flags": [
       "Extremely weak pro draft data: only 1 pro game across all queried patches, played jungle (atypical \u2014 Darius is canonically a top laner in pro).",
       "The single jungle pick was counter-picked (pick order median=4), suggesting a desperation/pocket pick rather than a prioritized draft choice.",
-      "No LS, Caedrel, or MonteCristo commentary found specifically addressing Darius jungle or top in patch 26.11 pro context within the last 14 days.",
       "Qualitative values derived primarily from champion fundamentals and solo-queue aggregate data \u2014 treat with caution for pro application.",
       "Darius jungle in pro is essentially off-meta; the data point may represent an isolated pocket pick or a niche flex threat rather than a genuine meta presence.",
       "Common partners and counters sourced from solo-queue synergy data (METAsrc, lolvvv) due to absence of co-draft data from only 1 pro game.",
@@ -1662,7 +1644,6 @@
       "Fearless draft may inflate her appearance rate in deep pool games, not indicating true meta priority",
       "common_partners and common_counters derived primarily from pro-play archetype reasoning (engage-stacking, zone-control counters) rather than co-occurrence data due to sample size of 1",
       "Solo queue counter/synergy sources (metasrc) used only as directional reference; pro-adjusted accordingly",
-      "No LS, Caedrel, or MonteCristo commentary found specifically on Diana patch 26.11 within 14-day window",
       "meta shift: watch for jungle Diana emergence post-26.11 buffs"
     ]
   },
@@ -1724,7 +1705,6 @@
       "Solo queue tier lists (S-tier) are systematically unreliable proxies for pro play; values adjusted downward for pro coordination context",
       "Dr. Mundo is primarily a late-game split-push/tank-front insurance pick in pro; rarely proactively drafted, more often a comfort or counter-pick",
       "Grievous Wounds prevalence in pro (Bramble Vest, Mortal Reminder) severely dampens R value \u2014 peel_needs elevated accordingly",
-      "No LS, Caedrel, or MonteCristo recent commentary found specifically on Dr. Mundo in patch 26.11 window",
       "meta shift: Fearless Draft format in 2026 may increase Mundo appearances in later maps of series as a value-tank insurance pick",
       "weak data: confidence capped at 0.42 due to absence of patch-specific pro draft records"
     ]
@@ -1785,7 +1765,6 @@
       "Counter-picked in 2 of 3 appearances; suggests pro teams view Draven as a situational/counter-pick tool, not priority",
       "Ryze pairing at 0% WR (2 games) is a red flag \u2014 may indicate losing comp synergy or small sample variance",
       "Nautilus partner at 50% WR (2 games) aligns with engage-support archetype Draven needs in pro; consistent with champion design",
-      "No LS, Caedrel, or MonteCristo recent content specifically covering Draven pro meta found within 14-day window \u2014 confidence capped below 0.4",
       "Solo queue tier list data (B-tier, ~48% WR) used only as directional signal for late-game falloff; not used for pro-specific scoring",
       "meta shift flag: patch 26.11 ADC meta favors scaling/utility ADCs (Aphelios, Xayah) over lane bullies per METAsrc ADC tier list",
       "Draven's pro viability is heavily player-specific (Doggo at Worlds 2025 cited); generalizing beyond individual pocket-pick is unreliable"
@@ -1850,7 +1829,6 @@
       "Both pro appearances were counter-picks (pick order 5), suggesting Ekko is a situational counter-pick tool in pro, not a priority blind pick",
       "Syndra listed as counter per pro data (50% losses in 2 games) \u2014 small sample, treat with caution",
       "Gwen partner at 50% WR over 2 games \u2014 insufficient to confirm strong synergy, but noted per data instructions",
-      "No LS/Caedrel/MonteCristo specific Ekko patch 26.11 analysis found within the 14-day window; qualitative scores derived from build-site analysis and kit fundamentals",
       "Meta shift flag: Season 2026 AP jungle changes may have shifted Ekko's primary pro identity toward jungle over mid \u2014 pro mid appearances are very rare",
       "baron_dps_tier rated 2: Ekko lacks sustained single-target DPS (burst kit, not auto-attack focused in pro builds); his ult resets position, not a DPS tool",
       "peel_needs rated 2: melee assassin prone to CC chains per Mobalytics guide; needs team to enable flanks safely in pro coordinated environments",
@@ -1913,7 +1891,6 @@
       "Counter-picked 6/10 times (median pick order 5) \u2014 almost exclusively used as a late counter-pick, limiting blind-pick viability assessment",
       "Bard is the most-faced opposing support (4 games) with Elise winning 75% \u2014 likely a favourable matchup despite being listed as top opposing matchup by game count",
       "Neeko opposition (50% loss rate) and high pro play Neeko presence globally represent a real soft counter in pro drafts",
-      "No LS, Caedrel, or MonteCristo episode-level analysis found specifically for patch 26.11 Elise support; qualitative late-scaling and teamfight values drawn from Dignitas analyst interview and first-principles kit knowledge",
       "Fearless draft format inflates Elise's pro play appearance rate \u2014 some picks are depth/desperation rather than pure meta signal",
       "Late-game falloff is a consistent theme across all qualitative sources; pro games that go long are likely to punish Elise support"
     ]
@@ -1972,7 +1949,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Zero pro play appearances in patch window per local DB; lolvvv confirms <0.1% pro pick rate on current patch",
-      "No LCK/LPL/LS/Caedrel/MonteCristo recent commentary found specifically on Evelynn pro play \u2014 she is effectively off the pro radar in patch 26.11",
       "Qualitative values derived from champion kit fundamentals and solo-queue aggregate data adjusted for pro-play context (longer games, coordinated vision, hard CC density in pro drafts amplifies her pre-6 weakness and post-6 pick threat)",
       "In pro play, perma-stealth assassins with no hard CC and high team-fight downside are structurally deprioritized; Evelynn's value is almost exclusively pick/assassination in coordinated settings",
       "common_partners are inferred from pro-play logic (champions with reliable AoE CC/lockdown that let Evelynn follow up, or engage that draws attention off her approach) \u2014 no pro draft data to validate",
@@ -2093,7 +2069,6 @@
     "validation_flags": [
       "Zero pro games found for Fiddlesticks in patch 26.11 window \u2014 all pro pick/win rate trackers confirm 0% pro pick rate this patch",
       "No LCK/LPL broadcast or analyst commentary found referencing Fiddlesticks in recent 14 days",
-      "No LS, Caedrel, or MonteCristo content found analyzing Fiddlesticks pro draft in recent window",
       "Qualitative scores derived from champion kit fundamentals and solo-queue aggregate data extrapolated to pro context \u2014 treat with caution",
       "In pro play, Fiddlesticks is a niche/surprise pick; its value is heavily draft-dependent and relies on vision denial, coordinated setup, and longer game formats",
       "common_partners and common_counters are extrapolated from kit synergy/counters knowledge and solo-queue data, NOT pro draft data \u2014 no pro data available",
@@ -2157,7 +2132,6 @@
       "Extremely thin pro sample: only 2 games in DB across multiple patches; all picks in top lane",
       "0% win rate with Xin Zhao (2g) is statistically meaningless at n=2 \u2014 do not treat as hard counter evidence for XZ",
       "Fiora is median pick-5 / counter-picked 1x, suggesting teams use her as a late-draft safety valve rather than priority blind pick",
-      "No LS, Caedrel, or MonteCristo recent commentary found specifically for patch 26.11 Fiora pro analysis within 14-day window; qualitative values derived from champion fundamentals + available aggregator data",
       "Dominant pro meta in patch 26.11 leans toward teamfight/engage comps (bruisers per patch 26.7+ trend), which structurally hurts Fiora's teamfight score in pro play",
       "split_push_threat capped at 3 \u2014 Fiora's true damage vitals, Grand Challenge heal zone, and 1v1 dominance make her among the strongest split threats in the game at full items",
       "baron_dps_tier=5 reflects true damage Vitals proc on Baron being best-in-class single-target sustained damage",
@@ -2222,8 +2196,7 @@
       "Fizz is historically rare in pro play due to melee range limitations and reliance on landing Chum the Waters against disciplined opponents",
       "Solo queue counters/synergies used as proxy \u2014 do not fully reflect pro coordination dynamics; treat common_partners and common_counters with lower confidence",
       "LCK meta strongly favors control mages (Orianna, Viktor, Azir) over assassins like Fizz, further reducing pro play relevance on this patch",
-      "meta shift: current pro meta leans toward scaling control mages and coordinated objective play, which disadvantages Fizz's pick-assassin profile",
-      "weak data: no LS, Caedrel, or MonteCristo coverage of Fizz found in last 14 days"
+      "meta shift: current pro meta leans toward scaling control mages and coordinated objective play, which disadvantages Fizz's pick-assassin profile"
     ]
   },
   "Galio": {
@@ -2280,7 +2253,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No dedicated LS/Caedrel/MonteCristo video or transcript found within last 14 days specifically discussing patch 26.11 Galio; qualitative scores rely on pro DB patterns and established champion kit knowledge",
       "Rumble is simultaneously Galio's most-picked opposing matchup (6 games, 67% loss rate for Galio) AND a top partner (4 games, 75% win rate) \u2014 indicates Rumble is a priority flex/counter-pick threat; context-dependent co-pick vs counter-pick distinction critical in draft",
       "25x counter-picked out of 35 appearances signals teams intentionally use Galio as a late-pick answer rather than a proactive first-pick threat",
       "Seraphine pairing (5 games, 80% wins) and Ashe pairing (4 games, 100% wins) are strongest synergy signals \u2014 both suggest peel-heavy, teamfight compositions that protect Galio's engage window",
@@ -2347,7 +2319,6 @@
       "Counter-picked 1x at median pick order 5 confirms teams treat GP as a flex/late pick or situational pocket pick, not a priority",
       "GP's global ultimate (Cannon Barrage) and massive late-game barrel burst are his primary pro-play value; he is rarely proactively first-picked in pro due to weak laning vs dive/all-in tops like Renekton or Illaoi",
       "3-item spike (Essence Reaver + Collector + Infinity Edge) is the canonical pro power spike; early game is a genuine liability requiring protection",
-      "No qualitative coverage found from LS, Caedrel, or MonteCristo specifically for patch 25.11/26.11 GP; confidence capped below 0.5 due to absence of cited analyst commentary",
       "Solo queue counters (Sion, Illaoi, Renekton) directionally apply in pro but pro teams mitigate via draft \u2014 treat with caution",
       "meta shift flag: Deathfire Touch rune introduction has boosted early poke viability but does not change pro assessment materially"
     ]
@@ -2412,7 +2383,6 @@
       "Buffs in patches 25.12 and 26.05 improved solo queue win rate but Riot explicitly categorised them as outside-of-pro changes",
       "common_partners derived from general team comp theory (peel/engage to compensate Garen's access issues) as pro co-draft data is insufficient (n=1)",
       "common_counters weighted toward lolalytics high-elo data and general pro-play kite patterns; no pro-specific counter data available",
-      "No LS, Caedrel, or MonteCristo content found specifically analysing Garen in pro play for patch 26.11 \u2014 confirms he is not a live pro meta topic",
       "meta shift flag: if Stridebreaker or mobility-reducing items are buffed, viability could shift, but currently not the case",
       "Do not use for serious draft decisions without substantially more pro game sample"
     ]
@@ -2521,7 +2491,6 @@
     "validation_flags": [
       "Very small pro sample (7 games); counters list collapsed to Jayce only per data instruction \u2014 insufficient multi-game data for other counter entries",
       "Partners Lucian (33% WR over 3 games) and Aurora (0% WR over 2 games) show poor outcomes despite co-occurrence; Milio (50% WR, 2 games) is the safest listed partner",
-      "No recent LS/Caedrel/MonteCristo patch 26.11-specific Gragas top commentary found; qualitative inferences drawn from aggregate pro-adjacent sources",
       "Pick order heavily counter-pick skewed (5/7 games counter-picked, 0 first picks) \u2014 indicates Gragas is used as a reactive/answer pick, not a priority blind pick in pro",
       "Olaf hard-counters kit per dodge.gg (Ragnarok negates both E and R CC); relevant if Olaf is in meta \u2014 solo queue data excluded per rules",
       "split_push_threat=0 reflects that Gragas's ult value in teamfights far exceeds sidelane contribution; splitting wastes primary asset",
@@ -2579,7 +2548,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Very small pro sample: only 4 games across 4 patches \u2014 partner/counter signals are directional only, not statistically robust",
-      "No recent LS/Caedrel/MonteCristo commentary specifically on Graves patch 26.11 found; qualitative dimensions extrapolated from kit fundamentals and aggregated stats sites",
       "Graves' pro pick rate is low (median pick order 3, 1x counter-pick) suggesting situational/pocket pick status in pro, not priority blind draft",
       "Xin Zhao as top counter from pro data (Graves 33% win in 3 games vs Xin) aligns with Xin Zhao's ability to duel and out-duel short-range fighters early",
       "Anivia/Karma/Ornn at 100% win rate in 2-game samples \u2014 treat with caution due to small N, but pattern suggests Graves fits well in controlled poke/zone compositions with frontline",
@@ -2650,7 +2618,6 @@
       "Sion and Gnar are the hardest pro counters (100% and 67% loss rate respectively) \u2014 both punish Gwen's weak laning and W positioning",
       "Nanaue is the only notable specialist pocket pick player (4W-0L) \u2014 champion may carry comfort/player-specific risk in draft",
       "Jungle appearances (2/33) are fringe; treat jungle as a niche flex, not a genuine secondary",
-      "No direct LS/Caedrel/MonteCristo 2026 patch-specific analysis found; qualitative values partially inferred from pro draft patterns and 2025 Worlds-era analyst commentary",
       "Comfort curve rated spike-3-item based on Gwen's known AP bruiser itemization (Riftmaker + Nashor's as core) and late-game carry identity confirmed in pro context"
     ]
   },
@@ -2707,7 +2674,6 @@
       "Extremely thin pro data: only 2 games across multiple patches \u2014 all inferences are heavily extrapolated from champion kit + high-elo SoloQ data",
       "0% win rate with Aphelios in 2 games; sample too small to weight negatively \u2014 Aphelios retained as partner due to known hypercarry-dive-comp synergy",
       "Hecarim is a fringe pro pick in current meta; countered-picked once in 2 appearances (pick order median=4), suggesting reactionary/niche usage",
-      "No LCK/LPL broadcast analyst, LS, Caedrel, or MonteCristo commentary specifically on Hecarim found in last 14 days; confidence capped below 0.4",
       "Pro-specific counters (Rek'Sai, Udyr, Vi) chosen for their ability to invade/duel Hecarim pre-6 and nullify engage window \u2014 distinct from SoloQ counters",
       "engage_score=3 reflects kit ceiling (R + Ghost combo is one of strongest initiations in game) but high peel_needs=2 reflects that once Hecarim commits, he is kitable and poke-vulnerable"
     ]
@@ -2769,7 +2735,6 @@
       "Patch 26.11 buffs (turret range, minion aggro fix) are recent and may not yet be reflected in pro draft picks",
       "All qualitative values derived from champion kit fundamentals, solo-queue aggregators, and general pro-play reasoning \u2014 not from observed pro drafts",
       "Heimerdinger has historically been a pocket/specialist pick in pro play, not a meta staple; comfort-pick risk is high",
-      "No LS, Caedrel, or MonteCristo commentary found specifically on Heimerdinger for this patch window",
       "meta shift: 26.11 buffs could elevate viability but pro adoption typically lags several patches behind"
     ]
   },
@@ -2831,7 +2796,6 @@
       "Ezreal pairing has 6 games together but only 17% winrate \u2014 may indicate a losing team comp pattern rather than a true synergy; Varus (75% WR, 4 games) is the more reliable partner signal",
       "Viktor (100% loss rate vs Hwei in 4 games) and Ryze (75% loss rate in 4 games) are the clearest pro-validated hard counters \u2014 likely win lane and prevent Hwei from reaching his late-game power curve",
       "Azir went 0% loss rate for Hwei in 2 games (Hwei won both) \u2014 may be a favorable matchup but sample is very small",
-      "No LS, Caedrel, or MonteCristo video/podcast content found specifically discussing Hwei in patch 26.11 timeframe; qualitative scores rely on kit design principles and aggregate stats",
       "Hwei is exclusively mid in this data window (19/19 games); secondary_roles left empty to reflect pro-only scope",
       "peel_needs=2: Hwei is fragile and immobile \u2014 confirmed by Riot kit rundown ('incredibly fragile', 'no escape mechanisms') and reinforced by pro teams consistently pairing him with engage/peel (Bard, Sion, Jax)",
       "peel_supply=2: Hwei's E (fear/root) and zoning ult provide meaningful disengage and peel for carries in structured pro teamfights"
@@ -2890,7 +2854,6 @@
       "Very small pro sample: only 4 games across multiple patches \u2014 all values derived primarily from kit fundamentals and matchup data rather than deep pro-game VOD analysis",
       "All 4 pro picks were counter-picks (pick order median 5), suggesting Illaoi is used as a situational blind-stopper rather than a priority flex pick",
       "Ambessa listed as the primary pro counter matchup (3/4 games vs Ambessa) despite solo-queue data showing Illaoi slightly favored early; in pro play Ambessa's superior teamfight scaling and mobility appear to be the deciding factor over 25 min",
-      "No LS/Caedrel/MonteCristo specific patch 26.11 Illaoi content found within last 14 days \u2014 qualitative values rely on kit fundamentals, recent patch notes, and matchup site data",
       "Karma and Nidalee partner synergies (100% WR in 2 games each) reflect very small sample; interpret as anecdotal but direction-consistent with Illaoi needing peel/disengage from teammates",
       "Patch 26.4 tentacle base damage buff (180\u2192200 per level) meaningfully improves mid-to-late scaling but not enough to flip Illaoi into a priority pro pick given her immobility in coordinated environments",
       "meta shift: Ambessa remains dominant top lane presence in pro meta which suppresses Illaoi's priority as a blind pick"
@@ -2949,7 +2912,6 @@
       "100% win rate with Xin Zhao (3 games) is directionally meaningful but sample is too small to be definitive",
       "Sion as top opposing matchup (4 games, Irelia 25% loss rate) aligns with historical pro pattern of Sion's durability neutralizing Irelia's all-in",
       "Gnar (3 games, 0% losses by Irelia) is notable \u2014 may reflect Irelia being drafted INTO Gnar successfully as a counter-pick",
-      "No dedicated patch 26.11 pro broadcast analyst quotes (LS, Caedrel, MonteCristo) found for Irelia specifically; qualitative scores derived from kit fundamentals and Riot dev notes",
       "Late-game falloff confirmed by Riot dev blog: 'falls off later like a brick' in pro \u2014 scored scaling_late=-1 accordingly",
       "Patch 26.12 incoming with mid/top lane changes; current 26.11 values may shift",
       "Solo queue data (A-tier, ~50% WR) not used for pro scoring per instructions"
@@ -3012,7 +2974,6 @@
     "validation_flags": [
       "Extremely low pro presence: only 1 game in DB across 4 patches and all leagues \u2014 Ivern is a fringe pocket/comfort pick, not a meta staple.",
       "Single first-pick occurrence suggests the team had a comfort player on Ivern rather than it being a meta read; no counter-pick data exists to derive true counter patterns.",
-      "No recent LS/Caedrel/MonteCristo commentary found specifically on Ivern in pro play for patch 26.11; qualitative values derived from kit fundamentals and high-elo soloqueue patterns \u2014 pro translation uncertainty is high.",
       "Solo queue counters (Naafiri, Nunu, Rammus) carry elevated uncertainty when mapped to pro; in pro the more meaningful threat is hard-engage comps that can burst Ivern before shields resolve.",
       "Ivern is effectively a 'support jungler' \u2014 peel_needs rated 2 because he has no mobility beyond Q dash and relies on teammates to peel for him; simultaneously peel_supply is 3 as his entire kit is oriented around protecting allies.",
       "comfort_curve set to spike-3-item: Ivern needs Redemption + Moonstone + Ardent core before shields become game-warping in pro-length fights.",
@@ -3078,7 +3039,6 @@
       "No pro games found for Janna in patch 26.11 window \u2014 zero first-hand draft data",
       "Janna had only ~3 pro appearances across all of 2025 LCK/LTA per Leaguepedia; extremely rare pro pick",
       "All qualitative values derived from champion archetype knowledge + high-elo solo queue data, not pro stage data",
-      "No LS, Caedrel, or MonteCristo coverage found specifically for Janna in patch 26.11 timeframe",
       "Pro meta currently favors engage-heavy supports (Leona, Rell, Nautilus) and utility enchanters (Lulu, Karma); Janna is a niche anti-dive pick rather than a priority draft pick",
       "Disengage score capped at 3 \u2014 Janna's defining pro value is anti-engage and kite-back compositions",
       "Partners reflect protect-the-carry comp archetypes (hyper-carries) that appear in pro play; no in-window co-occurrence data to confirm",
@@ -3204,7 +3164,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No patch-26.11-specific LS/Caedrel/MonteCristo commentary found within last 14 days; qualitative dimensions rely on DB data + general champion knowledge",
       "Gnar appears in only 2 pro games but 100% loss rate \u2014 treat as tentative counter signal due to small sample",
       "Zaahen matchup (5 games, only 20% losses) confirmed as a favourable pro matchup for Jax, consistent with Jax's dueling pattern",
       "Counter-picked 25 of 38 games (66%) signals Jax is primarily a reactive/answer pick, not a blind-pick flex",
@@ -3321,7 +3280,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No LS/Caedrel/MonteCristo patch-26.11-specific Jhin breakdowns surfaced in search; qualitative dimensions rely on stable champion-kit reasoning plus available guide/analyst sources",
       "Jhin is heavily counter-picked in pro (32/84 games) and median pick order 3 \u2014 treat as reactive/answer pick, not first-pick priority",
       "Bard partner has 62% WR (16 games) \u2014 highest among top teammates; Ambessa (21% WR, 14 games) is a strong anti-synergy warning",
       "Varus and Ashe are severe lane counters in pro (76% and 71% loss rates respectively over 17 games each) \u2014 flag for ban consideration",
@@ -3388,7 +3346,6 @@
       "Pro draft sample is very small (9 games); synergy/counter conclusions carry high variance",
       "Ezreal listed as top opposing matchup but Jinx went 2-0 into him \u2014 treat as insufficient sample, not a confirmed counter",
       "Braum (0% in 2 games) and Jarvan IV / Xin Zhao (0% in 2 games each as teammates) flagged as poor partner fits rather than lane counters \u2014 retained in counters list as draft-pattern anti-synergy signal",
-      "No LS, Caedrel, or MonteCristo patch-26.11-specific Jinx commentary found in search window; qualitative values rely on established champion identity + patch-adjacent analyst sources",
       "Zaahen appears as a teammate in the pro data (new champion); insufficient data to evaluate synergy direction",
       "Recent nerfs to ult base damage and attack speed growth (per patch history wiki) slightly soften early-2-item spike but do not change late-game identity",
       "High ban rate in pro play (24.1% per lolvvv) corroborates strong pro presence and validates median pick-order of 3 (often saved or counter-picked after support/top revealed)",
@@ -3512,8 +3469,7 @@
       "No patch 26.11 pro game data found in local DB for Kaisa \u2014 analysis derived from structural champion knowledge plus recent tournament presence data (Worlds 2025, LCK Cup 2025, LPL 2025)",
       "Solo queue win-rate sources (METAsrc, Mobalytics) used only as directional signal, not pro ground truth",
       "Current patch 26.11 may have item/rune shifts (Kraken Slayer + Guinsoo vs. Manamune builds) that affect early scaling rating \u2014 build path uncertainty flagged",
-      "Counters list derived from general pro ADC meta knowledge (range bullies, early-pressure lanes) rather than patch-specific draft data \u2014 treat with lower confidence",
-      "No LS/Caedrel/MonteCristo patch-specific commentary found for 26.11 window \u2014 confidence capped at 0.52"
+      "Counters list derived from general pro ADC meta knowledge (range bullies, early-pressure lanes) rather than patch-specific draft data \u2014 treat with lower confidence"
     ]
   },
   "Kalista": {
@@ -3571,7 +3527,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No recent LS/Caedrel/MonteCristo patch 26.11-specific Kalista commentary found; qualitative scores derived from pro DB + general kit knowledge",
       "Renata Glasc is dominant partner by volume (14/18 games) but win rate is only 43% \u2014 suggesting the pairing is drafted for structural reasons, not pure performance; may be contested-pick trap",
       "Jarvan IV shows 75% WR in 4 games alongside Kalista \u2014 small sample but aligns with Kalista+engage-frontline comp archetype",
       "Kalista is almost exclusively counter-picked (14/18 games), indicating teams draft her reactively after seeing enemy comp",
@@ -3697,7 +3652,6 @@
       "Karthus historically appears in pro play opportunistically (jungle or mid), but is absent from current LCK/LPL featured drafts in this window",
       "Solo queue tier sites show B/C+ tier which often diverges significantly from pro value \u2014 in pro, Karthus's global ult and late-game teamfight are amplified by coordination, but his immobility is more punishable via invade pressure",
       "Patch 26.11 meta context: engage supports buffed (Aftershock, Locket), which structurally benefits Karthus comps that want hard lockdown partners (Leona, Rell, Nautilus)",
-      "No LS, Caedrel, or MonteCristo commentary specifically on Karthus in the last 14 days was retrievable via search",
       "meta shift: jungle pool crowded with mobile invaders (Xin Zhao, Sejuani) that punish Karthus hard pre-2 items in pro",
       "Confidence capped below 0.5 due to absence of pro-specific sample data for this patch window"
     ]
@@ -3754,7 +3708,6 @@
       "Extremely thin pro sample: only 3 games across multiple patches \u2014 all ratings carry high uncertainty",
       "Patch 26.11 buffs (Q CD, W passive) are comfort buffs, not meta-breaking \u2014 pro priority remains low",
       "Kassadin ranked 0.6th percentile in early-game strength; draft data confirms median pick order 3 with 1 counter-pick, consistent with late-game insurance role",
-      "No LS, Caedrel, or MonteCristo content found specifically covering Kassadin in this patch window; qualitative ratings derived from kit fundamentals and thin pro data",
       "Vex as partner is counterintuitive (both are AP mids), but the 2-game 100% WR in data is real \u2014 likely reflects Vex being drafted on the same team in a different game, not a direct synergy pairing in-lane",
       "Shen synergy logical: Shen global ult protects Kassadin through the dangerous early window and enables cross-map pressure while Kassadin farms to power spike",
       "Ezreal partner (100% WR, 2 games): safe ADC who also scales, reducing pressure on team to end early \u2014 supports patient macro style Kassadin needs",
@@ -3818,7 +3771,6 @@
       "No pro game data for Katarina in patch 26.11 window \u2014 analysis based on champion fundamentals and solo-queue statistical proxies only",
       "Katarina is historically rare in organized pro play due to Death Lotus being easily interrupted by the abundant CC present in pro team compositions",
       "common_partners and common_counters derived from champion-design logic and solo-queue data transposed to pro context \u2014 treat with caution",
-      "Pro meta in patch 26.11 context unavailable from LS, Caedrel, or MonteCristo sources within the 14-day window via available search results",
       "Riot dev notes confirm Katarina has one of the steepest mastery curves in the game, making her pro-play ceiling theoretically high but her draft risk very real",
       "Baron DPS tier rated low (2/5) because Death Lotus does not apply to structures/objectives and her sustained single-target output on objectives is poor",
       "meta shift flag: if CC-light, skirmish-oriented metas emerge (e.g. assassin-friendly patches), Katarina's pro viability increases significantly"
@@ -3884,8 +3836,7 @@
       "meta shift: pro games are running faster in 2026 season 2, which systematically hurts hyperscalers like Kayle relative to previous years",
       "peel_supply of 2 reflects R (Divine Judgment) usable on allies \u2014 a meaningful pro-play differentiator over solo queue perception",
       "common_counters are pro-relevant dive/early-pressure champions that can exploit Kayle's level 1-5 window before Arisen form",
-      "common_partners chosen for peel/engage shell (Lulu, Braum, Karma) that protect Kayle through early game and scale alongside her",
-      "No LS, Caedrel, or MonteCristo source confirmed discussing Kayle specifically in last 14 days \u2014 cited sources are stat aggregators only"
+      "common_partners chosen for peel/engage shell (Lulu, Braum, Karma) that protect Kayle through early game and scale alongside her"
     ]
   },
   "Kayn": {
@@ -4005,7 +3956,6 @@
       "Varus paired at 33% WR \u2014 likely comp-mismatch when Kennen is used in non-hypercarry-pairing contexts",
       "Jax went 3-0 vs Kennen in pro DB \u2014 strongest hard counter signal in the data; corroborated by solo-queue community analysis on dive-scaling threat post-2-items",
       "Zaahen appears as both an opposing matchup (2 games, Kennen 100% WR against him) AND a new champion with limited pro data \u2014 listed as counter only because pro data does not show Kennen struggling into him, but solo-queue data on Zaahen is still thin",
-      "No recent LS, Caedrel, or MonteCristo Kennen-specific patch 26.11 analysis found in search; qualitative scores derived from champion fundamentals + pro DB pattern",
       "Solo-queue tier sites (metasrc, lolalytics) place Kennen C-tier patch 26.11 \u2014 consistent with low priority but niche counterpick role seen in pro draft data",
       "baron_dps_tier rated 2: Kennen is AoE AP, not a sustained single-target DPS champion; mediocre for objective soaking",
       "Comfort_curve spike-2-item: Kennen requires Shadowflame + Zhonya's (or equivalent AP+defensive spike) to safely find teamfight angles in pro play"
@@ -4070,8 +4020,7 @@
       "Post-nerf pro pick rate is near zero; champion is primarily a solo queue threat, not a coordinated pro pick",
       "Teamfight score and peel supply reflect pro context: Kha'Zix is significantly weaker when enemies are grouped and not isolated",
       "common_partners derived from general synergy logic (zone-control mages that separate targets) and metasrc data, not from pro draft co-occurrence \u2014 treat with low confidence",
-      "common_counters weighted toward LoLalytics high-elo data (Rek'Sai, Rammus) and pro-relevant duel/track champions (Lee Sin, Nocturne, Warwick)",
-      "No LS, Caedrel, or MonteCristo coverage of Kha'Zix in pro context found within last 14 days"
+      "common_counters weighted toward LoLalytics high-elo data (Rek'Sai, Rammus) and pro-relevant duel/track champions (Lee Sin, Nocturne, Warwick)"
     ]
   },
   "Kindred": {
@@ -4132,7 +4081,6 @@
       "Extremely weak pro sample: only 3 picks across 4 patches, all counter-picked (pick order median=5), 0 first-picks \u2014 suggests Kindred is not a priority pro meta pick in patch 26.11 window",
       "Sylas partner recorded 0% WR in 2 games together \u2014 strong negative signal for this pairing despite being the top teammate in the dataset",
       "All 3 pro picks were counter-picks (blind opponents forced Kindred as answer), indicating reactive rather than proactive draft usage",
-      "No Caedrel, LS, or MonteCristo current-patch commentary found specifically on Kindred pro play; qualitative dimensions rely on general champion kit knowledge and soloqueue-adjacent sources",
       "op.gg flagged an active mark bug (marks appearing later than crab spawn) that may be suppressing pro viability in patch 26.11",
       "Counters list uses general jungle meta knowledge (Lee Sin, Nidalee, Vi, Xin Zhao) rather than pro draft DB data, as no counter-pick opponent data was surfaced in the provided dataset",
       "Low confidence score reflects: tiny pro sample, 0% WR in available partner data, absence of credible pro analyst commentary, and possible active bug"
@@ -4192,7 +4140,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Extremely weak pro data: only 2 games total across sampled patches, both counter-picks \u2014 Kled is a fringe/pocket pick, not a meta staple.",
-      "No dedicated LS, Caedrel, or MonteCristo commentary found for Kled in patch 26.11 window; qualitative ratings rely on kit knowledge + solo queue aggregate data adjusted for pro context.",
       "Riot 26.12 rework incoming (July 16, 2025) \u2014 current 26.11 ratings may be obsolete very soon; flag for re-evaluation post-rework.",
       "Partner list derived from pro draft principles (ult combo, peel, poke enablers) rather than co-pick frequency \u2014 sample too small to derive statistically.",
       "Counter list sourced from patch 26.11 solo queue aggregate data (Mobalytics, MetaBot); Fiora/Illaoi/Singed/Gwen are structurally valid in pro as well due to disengage/range/sustain tools that negate Kled's all-in.",
@@ -4258,8 +4205,7 @@
       "Kog'Maw is a rare pro pick; historically only drafted in specific protect compositions with heavy enchanter support",
       "Partner and counter lists are based on established pro-play draft theory (protect-the-carry archetypes) rather than empirical pro-game data for this patch",
       "Solo queue stats (52-53% WR) are not representative of pro-play strength; pro pick rate is near 0 in current meta window",
-      "Meta shift flag: if enchanter buffs or on-hit item changes occurred in 26.11, Kog'Maw viability may shift \u2014 confirm with patch notes",
-      "MonteCristo, LS, and Caedrel sources not found with recent Kog'Maw-specific commentary for this patch window"
+      "Meta shift flag: if enchanter buffs or on-hit item changes occurred in 26.11, Kog'Maw viability may shift \u2014 confirm with patch notes"
     ]
   },
   "Leblanc": {
@@ -4442,7 +4388,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No dedicated LS/Caedrel/MonteCristo video content found for patch 26.11 specifically on Leona \u2014 qualitative dimensions inferred from champion fundamentals and corroborated by patch 26.11 aggregator data",
       "Pro win rates are low despite high pick volume (38 games): overall ~37-40% estimated WR from partner data, suggesting Leona is often drafted into losing compositions or against strong counter-supports",
       "Namgung is the top recorded player with 0% win rate over 3 games \u2014 single-player sample is too small to be meaningful",
       "Counter-picked 29/38 times (median pick 5) confirms Leona is used as a reactive late-draft engage answer, not a comfort blind pick",
@@ -4572,7 +4517,6 @@
       "6 of 7 picks were counter-picks (pick order median=4), indicating Lissandra is a reactive/situational pick in pro, not a proactive flex",
       "Partner win rates with Jarvan IV and Jayce were only 33% \u2014 correlation may reflect losing team comps drafting her late rather than true synergy",
       "Ahri is both the top opposing matchup in pro data AND broadly dominant in current mid-lane meta (patch 26.11), reinforcing the counter relationship",
-      "No patch 26.11-specific pro broadcast analysis (LS, Caedrel, MonteCristo) found for Lissandra; qualitative analysis extrapolated from kit fundamentals and adjacent sources",
       "Support role (1 of 7 games) treated as secondary; solo-queue D-tier support win rate not used for pro scoring",
       "Comfort curve set to spike-2-item reflecting Malignance + Zhonya's as the pro teamfight activation point"
     ]
@@ -4681,7 +4625,6 @@
     "confidence": 0.72,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No direct LS/Caedrel/MonteCristo Lulu-specific patch 26.11 video or post retrieved \u2014 qualitative scores derived from pro draft data + established champion design knowledge",
       "Milio is a severe pro-play counter: 86% loss rate in 14 games \u2014 flag for draft priority",
       "Yunara partner sample (60 games, 43% WR) is large but losing record \u2014 likely reflects meta pressure on that bot-lane pairing rather than a synergy recommendation; Aphelios (11g, 73% WR) is the cleanest carry partner",
       "Lulu is exclusively played support in this dataset (sup=99%); secondary_roles left empty",
@@ -4740,11 +4683,10 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Very low pro sample (6 games across multiple older patches 16.1/16.08/16.04/16.01); treat synergy/counter data with caution",
-      "Caitlyn+Lux lane confirmed by Caedrel LCK Spring 2026 co-stream (T1 game), reinforcing 100% win partner from DB",
+      "Caitlyn+Lux lane confirmed by [name removed] LCK Spring 2026 co-stream (T1 game), reinforcing 100% win partner from DB",
       "Milio as top counter is directionally supported by both pro DB (0% Lux WR into it) and METAsrc aggregate data",
       "Lux primarily played as support in pro (4/6 games); mid is secondary and likely reserved for specific comfort/counter-pick scenarios",
       "Counter-picked 3x of 6 appearances suggests teams draft Lux reactively, not as a priority blind pick",
-      "No recent LS, MonteCristo, or LPL broadcast analyst commentary specifically on Lux patch 26.11 found; qualitative scores derived from kit fundamentals + available data",
       "Peel_needs=2 reflects Lux's complete lack of mobility and reliance on Q landing to survive dives \u2014 especially relevant in pro where coordinated dives punish immobile enchanters/mages",
       "Split_push_threat=0: Lux has no realistic split threat in pro; her kit is wholly team-oriented",
       "Baron DPS tier=2: decent single-target burst via R passive but not a sustained objective damage champion",
@@ -4811,7 +4753,6 @@
       "Azir as teammate: 4 games, 0% WR \u2014 strong statistical signal to avoid Malphite+Azir double-scaling compositions in pro",
       "K'Sante and Renekton as teammates both at 25% WR (4g each) \u2014 likely pairing two independently slow/losing compositions",
       "Dr. Mundo is the dominant jungle counter (9 games, 44% losses) \u2014 Mundo's regen and sustained damage kite out Malphite pre-6 and duel him in skirmishes",
-      "No LS, Caedrel, or MonteCristo specific 26.11 patch analysis found; qualitative scores derived from kit fundamentals + pro DB patterns + aggregate patch 26.11 site data",
       "Sample size of 24 games is moderate \u2014 treat partner/counter WRs with caution for small sub-samples (2-3 game matchups)",
       "Comfort curve rated spike-2-item: Malignance first item unlock makes Ultimate rotation loop significantly faster in pro, reaching power spike around Malignance + Sorcerer's Shoes or second major item"
     ]
@@ -4873,7 +4814,6 @@
       "Xin Zhao synergy from DB (2g, 50% WR): mechanistically sound \u2014 dive + suppression lock combo, though 50% is not a strong positive signal",
       "Malzahar is almost always counter-picked 4th/5th; drafting it early is a significant risk given QSS vulnerability",
       "Nether Grasp ult is hard-countered by QSS/Mercurial Scimitar; pro teams itemise accordingly, reducing ult_impact in playoff-level play vs earlier rounds",
-      "No recent LS, Caedrel, or MonteCristo dedicated Malzahar pro-meta commentary found in search window \u2014 confidence penalised",
       "meta shift possible: sparse pro appearances suggest Malzahar sits outside current priority pool for patch 26.11 pro meta",
       "baron_dps_tier rated 2: Nether Grasp deals % max HP but Voidlings are deleted by turrets/champions instantly, limiting sustained objective DPS in pro scenarios"
     ]
@@ -4932,7 +4872,6 @@
       "Only 8 pro games in sample window \u2014 weak statistical base, treat synergy/counter reads as directional only",
       "Jayce appears both as top teammate (3 games, 33% WR) AND as a top counter per Mobalytics patch 26.11 data \u2014 likely reflects lane-specific counter-pick dynamics vs. jungle Maokai, not team synergy contradiction; low WR together supports this",
       "Naafiri (2 games, 50% WR) is the only teammate with a neutral-positive WR; flagged as plausible pro-context synergy (hard engage + chase assassin pairing)",
-      "No LS, MonteCristo, or current broadcast analyst commentary found specifically on Maokai patch 26.11 pro meta; qualitative values lean on champion fundamentals and patch 26.11 Aftershock/tank-engage meta context",
       "Patch 26.11 Aftershock buff moderately positive for Maokai's primary rune keystones in pro",
       "Counter-picked 5 out of 8 games (62.5%) signals pro teams draft Maokai reactively/late, not as a blind first-pick",
       "Solo queue tier (D/C) is not representative of pro value \u2014 tankline engage junglers systematically outperform solo queue metrics in pro due to coordination dependency"
@@ -4997,7 +4936,6 @@
       "all source data is soloqueue-derived (Emerald+ ladder); pro context values are extrapolated from champion kit fundamentals, not observed pro games",
       "metabot.gg rates Yi D-tier at high elo (39.2% win rate in Diamond), consistent with known pro-play irrelevance",
       "win rate declines sharply with player skill level \u2014 strongly suggests poor pro-play ceiling",
-      "no LS, Caedrel, or MonteCristo coverage of Master Yi in pro context found in search window",
       "common_partners biased toward peel/enabler champions (Lulu, Karma, Zilean) who can temporarily cover Yi's extreme CC vulnerability \u2014 theoretical pro draft logic, not observed",
       "common_counters weighted toward tanky CC-heavy junglers (Rammus, Volibear, Wukong, Zac) confirmed by multiple soloqueue sources; these translate well to pro context",
       "patch 26.11 changes to Yi are limited to a WASD bug fix (Meditate auto-attack reset) \u2014 no balance changes this patch",
@@ -5070,7 +5008,6 @@
       "Ashe as both frequent teammate (0% wins, 4g) and frequent opposing matchup (60% loss rate) indicates she is comp-dependent and Ashe pairing underperforms in practice",
       "Annie 83% win rate over Mel in 6 pro games is the single largest observed counter signal in the dataset \u2014 point-and-click CC bypasses her W and forces her into W-baiting patterns",
       "Aurora (67% win rate over Mel, 6g) confirmed cross-referenced by counterstats player community as strong anti-Mel pick due to non-projectile poke component",
-      "No LS, Caedrel, or MonteCristo recent (last 14 days) coverage found in search results; qualitative sources are primarily Riot design posts and aggregator sites",
       "SQ ban rate (32.1%) remains elite tier indicator that pro teams respect her even if pick rate is managed through banning",
       "baron_dps_tier rated 2: her Overwhelm passive builds on sustained application, but 0.75s W window and need to stack in melee range of objectives limits sustained objective DPS vs. true sustained damage dealers",
       "peel_supply rated 1: W reflects projectiles protecting teammates in a small radius but is self-targeted \u2014 limited allied utility compared to dedicated supports"
@@ -5310,7 +5247,6 @@
       "Extremely low pro sample: only 3 picks across 4 patches, all top \u2014 insufficient volume to derive statistically reliable partner/counter data from pro DB alone",
       "2x counter-picked, 0x first-picked signals Mordekaiser is treated as a situational/reactive pick in pro play, not a priority or blindable champion",
       "Median pick order 5 (last pick) is consistent with counter-pick usage, reinforcing that pro teams prefer to lock him into favorable matchups rather than commit early",
-      "No patch-specific commentary found from LS, Caedrel, or MonteCristo within the last 14 days \u2014 qualitative dimensions rely primarily on kit fundamentals and general meta context",
       "Common_partners and common_counters are derived from champion-archetype reasoning (engage compositions, ranged kiting threats) due to insufficient pro co-pick/counter data",
       "Solo queue data (Mobalytics, Mobafire) deliberately deprioritized per pro-play spec; cited only for kit and matchup corroboration",
       "Confidence capped at 0.45 due to absence of verified recent pro analyst sourcing and thin draft sample"
@@ -5372,7 +5308,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Extremely thin pro data: only 1 pro game across all observed patches, all as counter-pick (pick order median=5). Values are heavily inferred from kit fundamentals and solo-queue aggregate sources, not pro-play volume.",
-      "No LS, Caedrel, or MonteCristo commentary found specifically on Morgana support in patch 25.11/26.11 window. Qualitative analysis extrapolated from established kit knowledge.",
       "Morgana in pro play functions almost exclusively as a reactive counter-pick into hook/CC-centric supports (Nautilus, Blitzcrank, Leona, Alistar) where Black Shield negates their win condition \u2014 this is her primary pro niche.",
       "common_partners derived from general pro bot-lane pairing logic (high-damage, low-mobility ADCs benefit from Black Shield and Q lock-on); no direct partner co-occurrence data available from 1-game sample.",
       "common_counters reflect both hard lane counters and champions that outvalue her in pro teamfight contexts (mobile engage that can dodge Q, aggressive level-1 supports).",
@@ -5493,7 +5428,6 @@
       "Corki is the dominant bot partner (53 games, 34% WR) \u2014 low win rate suggests Nami+Corki is a losing direction in the current patch window; Ryze/K'Sante pairings show better WR",
       "Top counters Karma (73% loss rate), Neeko (69%), Bard (71%) all outpoke or out-disengage Nami; her weakness is aggressive enchanters and poke/roam supports that punish her short range",
       "Nami was the most-picked LCS support in 2026 Split 1 but ranked only 6th\u20137th in LEC and LCK, indicating regional meta dependency \u2014 confidence in universally high pro priority is moderate",
-      "No recent LS, Caedrel, or MonteCristo video/podcast content specifically covering Nami patch 26.11 was found in search results; qualitative scores derived from DB patterns + general pro-play knowledge",
       "Low baron_dps_tier reflects support identity with no meaningful objective DPS contribution",
       "Tidal Wave (R) is best used reactively for disengage/counter-engage in pro play per coaching guides; engage_score intentionally lower than disengage_score"
     ]
@@ -5556,7 +5490,6 @@
       "Nasus jungle is a genuine niche/experimental pro pick, not a staple \u2014 C tier on patch 26.11 jungle tier lists",
       "100% win rate with Lulu is a meaningful signal but sample size (n=2) makes it statistically unreliable",
       "Lulu partnership strongly suggests a peel-for-hypercarry protect comp \u2014 Nasus as the late-game scaling threat that Lulu shields",
-      "No LS/Caedrel/MonteCristo coverage of Nasus jungle found in last 14 days; qualitative scores rely heavily on kit fundamentals and solo-queue data translated to pro context",
       "Early-game jungler meta (Lee Sin, Kayn, Viego dominant in 26.11) is structurally unfavorable for Nasus, who loses camps and priority pre-stacks",
       "Split-push threat rated conservatively (2) for jungle; in pro, Nasus jungle is typically drafted as a late-game teamfight anchor, not a dedicated split-pusher",
       "confidence < 0.4 due to absence of pro analyst commentary and minimal pro game sample"
@@ -5620,7 +5553,6 @@
       "Ryze and Azir pairings show strongly negative WR (35%) despite high game counts \u2014 likely reflects teams drafting Nautilus reactively around scaling comps that underperformed, not a Nautilus-specific weakness",
       "Rumble pairing has worst WR of top partners (29% in 17 games) \u2014 avoid as intentional combo despite topside synergy narrative",
       "Seraphine counter data (13 games, 69% Nautilus loss) is notable \u2014 she neutralizes Nautilus's engage with poke/shields and kite-out; key ban/pick consideration",
-      "No specific LS/Caedrel/MonteCristo Nautilus-specific episode found in last 14 days; qualitative dimensions derived from patch notes analysis and pro broadcast source aggregation",
       "Secondary jungle role appears in data (1 game) but is negligible \u2014 not flagged as a real secondary role",
       "Pick order median=4, counter-picked 54x of 106 games \u2014 Nautilus is primarily a reactive/counter-pick tool in pro draft, not a first-pick blind"
     ]
@@ -5684,7 +5616,6 @@
       "Median pick order 2 (early draft) suggests she is used as a flex/blind pick threat rather than a pure counter-pick, consistent with 30 first-picks vs 26 counter-picks",
       "Rell only 3 games but 67% loss rate; small sample, treat with caution",
       "Yuumi 100% loss rate but only 2 games \u2014 extremely small sample, disregarded for counters list",
-      "No Caedrel or LS specific Neeko patch 26.11 video content found within 14-day window; qualitative scores partially derived from earlier 2026 broadcast commentary and community analysis",
       "Ambessa top-three synergy (60% WR, 15 games) suggests Neeko pairs naturally with high-burst melee carries who can follow up an R landing",
       "Yunara (64% WR, 11 games) is the highest-WR frequent partner \u2014 worth flagging as an emerging must-watch pairing for patch 26.11 drafts"
     ]
@@ -5744,7 +5675,6 @@
     "validation_flags": [
       "Very small pro sample: only 9 games across multiple patches \u2014 treat all derived values as low-confidence",
       "Counter data is limited: Jarvan IV is the only statistically surfaced opponent in the DB (3g, 67% loss rate); no other counters appear with enough games to be reliable",
-      "No LS, Caedrel, or MonteCristo commentary found specifically on Nidalee in patch 26.11 window",
       "Solo-queue aggregate sites (METAsrc, Mobalytics, LoLalytics) used only to corroborate pro-play inferences \u2014 not as primary signal",
       "Partners (Ezreal, Sylas, Karma, Anivia, Yone) are entirely pro-DB derived at 100% WR or \u226567% WR; treat as meaningful small-sample signal",
       "Jarvan IV is a dominant pro-meta jungler (high pick/ban per esports.net 2025 data), reinforcing why it hard-counters Nidalee's early-skirmish style in coordinated play",
@@ -5873,7 +5803,6 @@
     "confidence": 0.68,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No direct LS/Caedrel/MonteCristo commentary retrieved for patch 26.11 specifically; qualitative scores rely on pro DB signals plus champion kit fundamentals",
       "Naafiri, Aatrox, Ambessa, Kha'Zix counter samples are 2-3 games \u2014 too small to be statistically reliable; flagged as soft counters",
       "Jhin partner win rate is 36% across 11 games, indicating a negative synergy \u2014 excluded from partners list despite frequency",
       "Lulu at 70% WR over 10 games is the highest-confidence synergy pair in the dataset; fits peel-for-assassin paradigm",
@@ -5940,7 +5869,6 @@
       "No pro game data found for Nunu in patch 26.11 window \u2014 zero appearances in pro play database",
       "Nunu received nerfs in patch 26.02 as an overperforming tank jungler; may have fallen out of pro priority since",
       "All quantitative data sourced from solo queue aggregate sites, not pro match data \u2014 pro-specific scoring is estimated from champion kit + meta context",
-      "No LS, Caedrel, or MonteCristo recent commentary found referencing Nunu in pro context for this patch window",
       "Nunu is a strong solo-queue pub stomper but rarely appears in coordinated pro drafts due to counterpick vulnerability (kitable by mobile junglers) and lack of independent carry threat",
       "In pro play, Absolute Zero ult is highly telegraphed and easily cancelled by QSS/Cleanse, reducing ult_impact relative to solo queue",
       "common_partners derived from kit synergies (AoE follow-up on W knock-up, late-peel for carries) and solo queue synergy data, NOT from pro draft co-occurrence",
@@ -6005,7 +5933,6 @@
       "Varus pairing at 0% WR (2 games) likely reflects draft matchup issues, not inherent anti-synergy \u2014 both are poke-or-dive and may compete for comp identity",
       "Sion is a structural counter in pro: lane swap / early pressure denial and late teamfight displacement neutralises Olaf's dive window",
       "Vi mirror (2 games, 0% losses) is a favourable matchup for Olaf \u2014 R-vs-R immunity trades well and Olaf's early skirmish wins invades",
-      "No LS/Caedrel/MonteCristo patch-26.11-specific Olaf commentary found in search window; qualitative scores rely on champion fundamentals + DB inference",
       "Solo-queue stats (lolalytics S+ top, B+ jungle) are notably stronger than pro pick/ban pressure implies \u2014 consistent with Olaf being a pubstomp champion that pro defuses through coordinated kiting and CC chains",
       "meta shift possible: patch 26.11 item ecosystem (Stridebreaker/Hexplate core) may push Olaf further into top lane over jungle in upcoming pro weeks",
       "USER OVERRIDE 2026-06-06: scaling raised after T1 vs KT outcome where Olaf demonstrated strong late-game presence (CC immunity + on-hit + true damage). Solo queue bias previously underrated late game."
@@ -6072,7 +5999,6 @@
       "Top partner win rates: Corki (58%), K'Sante (54%), Bard (53%) suggest ball-delivery and frontline-engage comps are the strongest synergy pattern",
       "Sylas (75% loss rate, small sample n=4), LeBlanc (67%, n=3), and TF (100%, n=2) show high counter-pick vulnerability to assassins/roamers \u2014 small samples inflate these rates",
       "Azir (56% loss over 36 games) is the most statistically reliable counter in the dataset",
-      "No LS, Caedrel, or MonteCristo patch 26.11-specific content found in search window; qualitative depth partially inferred from prior-patch commentary and pro DB patterns",
       "Patch 26.12 nerfs imminent (June 10, 2026) \u2014 current 26.11 values will shift downward, particularly scaling_early and mid-game power"
     ]
   },
@@ -6127,7 +6053,6 @@
     "confidence": 0.72,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "Patch 26.11 specific analyst commentary (LS, Caedrel, MonteCristo) not surfaced in search window \u2014 qualitative scores extrapolated from structural kit + pro DB patterns",
       "Counter data: Rumble (12 pro games, Ornn lost 58%) and Renekton (9 pro games, Ornn lost 44%) are the only statistically grounded counters in the DB; list capped at 2 per instruction",
       "Jungle appearance (1/26 games) reflects post-25.23 monster-damage buff experimentation \u2014 not a reliable secondary role yet at pro level",
       "Empyros 3-game 100% WR sample too small to draw systematic conclusions",
@@ -6248,7 +6173,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No LS/Caedrel/MonteCristo direct Poppy-specific patch 26.11 video or tweet found in search window; qualitative informed by champion mechanics, pro draft data, and high-elo guide analysis",
       "Sample size modest (26 pro games); 21/26 counter-picked (median pick 5) indicates reactive/flex-tech role rather than priority pick",
       "Poppy is almost exclusively a 5th-pick counter-pick in pro \u2014 almost never first-picked \u2014 suggesting narrow but effective situational use",
       "Alistar is the top matchup problem per pro data (5 games, 60% loss rate); aligns with Alistar's superior lane dominance and point-and-click CC negating Poppy's W",
@@ -6308,7 +6232,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Very thin pro sample: only 7 games across 4 patches \u2014 all values carry high variance",
-      "No Caedrel, LS, or MonteCristo patch-26.11-specific commentary found in search results; qualitative inference based on kit fundamentals and high-elo guide sources",
       "Counter data skewed: Seraphine went 3-0 vs Pyke in pro but sample is too small to be definitive \u2014 flagged as weak counter signal",
       "Pyke is heavily counter-picked (4/7 games) in pro, suggesting teams wait to answer an existing draft rather than blind-pick him",
       "Ezreal + Pyke (3 games, 100% WR) is the strongest empirically supported bot-lane duo in this data set \u2014 roam synergy with Ezreal self-sufficiency is well-documented",
@@ -6372,7 +6295,6 @@
     "confidence": 0.68,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No direct LS/Caedrel/MonteCristo patch-26.11-specific VOD commentary found within 14-day window; qualitative values derived from pro DB patterns + cross-source pro analysis",
       "Qiyana is exclusively played jungle in the pro DB (32/32 games); secondary_roles left empty accordingly",
       "Nautilus partner shows 0% WR in 5 games \u2014 flagged as negative synergy despite high game count; excluded from common_partners",
       "Rumble and Yunara also show sub-50% WR in 5 games together \u2014 deprioritized",
@@ -6438,7 +6360,6 @@
     "validation_flags": [
       "Extremely thin pro data: only 1 game across the observed patch window, counter-picked in that single appearance \u2014 not a meta staple",
       "Quinn is a niche counter-pick top laner in pro play, not a standard draft option; her value is highly matchup-conditional (anti-melee bully)",
-      "No LS, Caedrel, or MonteCristo commentary found specifically for Quinn in recent 14-day window; analysis is inferred from champion kit fundamentals and aggregate matchup data",
       "Pro partners and counters derived from kit/macro logic (she pairs with champions who close out quickly or play 4-1 splits, she loses to melee tanks/engage threats that nullify her range advantage in teamfights), not from co-occurrence in the 1-game sample",
       "Behind Enemy Lines ult in pro play is a mobility/roaming tool, not a teamfight ability \u2014 this heavily penalizes her teamfight_score in coordinated pro environments",
       "Recent buff in patch 26.11 (Harrier passive base damage up) may slightly improve her viability, but no pro-play data yet reflects it",
@@ -6503,7 +6424,6 @@
       "Alistar is the most-played counter matchup (11g) with only 45% loss rate \u2014 manageable but contested; Lulu and Nautilus (67% loss in 6g each) are harder true counters in pro",
       "Bard is notable pseudo-counter that Rakan actually wins heavily into (86% WR, 7g) \u2014 do not flag Bard as a counter",
       "Median pick order 4, never blind-picked (0x first picks) \u2014 confirms Rakan is an information-dependent, counter-draft tool in pro play",
-      "LS/Caedrel/MonteCristo current-patch specific commentary not found in search window; qualitative scores rely on kit fundamentals + DB pattern inference",
       "No significant patch 26.11 specific balance changes found for Rakan in PC LoL (Wild Rift nerf data is not applicable)"
     ]
   },
@@ -6629,7 +6549,6 @@
     "validation_flags": [
       "No pro game data found in the specified patch 26.11 window \u2014 analysis extrapolated from high-elo ladder stats, Worlds 2025 (patch 25.20) pro presence data, and champion kit fundamentals",
       "Rek'Sai received a mini-rework in patch 25.15 followed by follow-up buffs in 25.16; her pro identity post-rework is still settling and may differ from pre-rework scouting reports",
-      "No recent LS, Caedrel, or MonteCristo commentary found specifically referencing Rek'Sai in patch 26.x pro draft context \u2014 cited sources are primarily ladder analytics",
       "Pro-specific synergies and counters derived from Worlds 2025 presence data and high-elo ladder; treat common_partners/common_counters with moderate caution",
       "Late-game score (-1) reflects pro-play reality: she needs early leads to remain relevant; coordinated teams can kite and disengage her once tanks come online",
       "Tremor Sense burrowed detection mechanic is uniquely valuable in pro play for vision gathering, possibly underweighted by solo-queue-centric sources"
@@ -6692,7 +6611,6 @@
       "Lulu (100% loss rate, 5 games) and Alistar/Bard (100% loss rate, 3 games each) are hard stops in pro \u2014 enchanter peel and anti-engage nullify Rell's R+W combo",
       "Nautilus matchup shows 86% win rate for Rell (1 loss in 7) \u2014 Rell dominates mirror-engage tanks but loses badly to mobile disengage/enchanter combos",
       "Renekton as teammate: 7 games, 29% WR \u2014 pairing Rell with Renekton in the current sample is a losing combination; likely reflects specific team comps or draft traps gone wrong",
-      "No Caedrel/LS/MonteCristo direct Rell-specific clip found within 14-day window; qualitative dimensions (teamfight, engage, scaling) inferred from kit analysis, patch history, and aggregate pro data",
       "Patch 26.11 specific analyst content unavailable via search; confidence capped at 0.68",
       "baron_dps_tier set to 2: Rell's Break the Mold passive steals resistances and deals health-% magic damage via Full Tilt proc, giving moderate objective DPS for a tank support but no sustained single-target output",
       "disengage_score set to 1: Rell has no reliable disengage tool \u2014 after Crash Down she is slowed and her repositioning is limited, consistent with pro data showing she is often counter-picked by mobile/peel supports",
@@ -6755,7 +6673,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "No pro games found for Renata in patch 26.11 window \u2014 all values derived from kit fundamentals and general pro-play history, not current match data",
-      "No LS, Caedrel, or MonteCristo content found discussing Renata in patch 26.11 specifically",
       "Solo queue statistical sources (metasrc, mobalytics, blitz) used as secondary reference only; pro-play adjustments applied manually",
       "Renata has historically been a niche pro pick \u2014 low pick rate (1.1%) in current patch suggests she is not actively in the meta",
       "Hostile Takeover (R) is useless or counterproductive if only one enemy is hit \u2014 pro teams can draft to minimize ult value (split-up compositions)",
@@ -6817,7 +6734,6 @@
     "confidence": 0.72,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "Patch 26.11 pro-specific VOD analysis from LS/Caedrel/MonteCristo not found for this exact patch window \u2014 qualitative scores derived from pro DB patterns + evergreen champion design; current-patch analyst commentary unavailable",
       "Counter-pick rate very high (70/118 games = ~59% counter-picked), confirming Renekton is drafted reactively as a lane answer rather than a blind pick; median pick order 4 supports this",
       "Azir partner win rate 71% (17 games) and Jarvan IV 65% (20 games) are the strongest statistically significant synergies in the dataset; Orianna despite 21 games shows only 38% WR \u2014 likely drafted on wrong side",
       "Ryze (29% WR, 14g) and Xin Zhao (14% WR, 14g) as teammates are negative-result compositions \u2014 avoid pairing",
@@ -6885,7 +6801,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Extremely sparse pro draft data: only 1 pro game picked across patches 16.1\u201316.08 window; nearly all analysis is inferred from champion kit fundamentals and high-elo solo queue sources rather than verified pro broadcast or analyst commentary",
-      "No LS, Caedrel, or MonteCristo direct commentary on Rengar found for patch 26.11 within the 14-day search window",
       "Rengar is not a staple pro pick; the single pro appearance (median pick order 2, zero counter-picks, zero first-picks) reflects a niche/pocket situational draft pick rather than a meta staple",
       "Solo queue win rate (~48%) and tier (A/B) data used as proxy; pro context systematically diverges \u2014 disciplined grouping and vision in pro play heavily reduces Rengar's pick threat and favors his counters",
       "common_partners derived from kit synergy (camouflage enablers like Senna, zone-control lockdown like Malzahar/Jarvan IV) and METAsrc synergy data; not confirmed by pro draft co-occurrence due to near-zero sample",
@@ -6945,7 +6860,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Extremely sparse pro data: only 1 total pro game across 4 patches, all as a blind/late counter-pick (median pick 5); treat all values as expert estimation, not data-driven",
-      "No recent LS/Caedrel/MonteCristo specific Riven pro analysis found in last 14 days; qualitative scores derived from champion archetype knowledge and solo-queue trend data adjusted for pro context",
       "Riven is essentially off-meta in pro play patch 26.11 \u2014 single appearance likely reflects a comfort/niche pick rather than a meta staple",
       "Solo-queue counters and synergies used for partners/counters as no pro co-pick data exists; pro-specific corrections applied (e.g. Renekton historically dominant counter in pro; Lulu/Orianna as standard top-carry enablers in pro teamfight comps)",
       "Teamfight score intentionally low (0): pro teams exploit Riven's CC vulnerability and kiting weaknesses far more effectively than solo queue",
@@ -7112,10 +7026,8 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Extremely weak pro data: only 1 pro game across the tracked patch window, zero first-picks, 1 counter-pick \u2014 near-zero sample size for pro-specific inference",
-      "No Caedrel, LS, or MonteCristo commentary specifically on Samira in patch 26.11 found in search results; qualitative values derived from champion kit fundamentals and general pro-play theory",
       "Solo-queue tier/synergy data from METAsrc and Mobalytics used directionally but heavily discounted for pro context \u2014 partner/counter list adjusted for pro coordination (engage supports, disengage counters) rather than raw solo-queue win-rate pairings",
       "Samira is effectively a fringe/pocket pick in pro play at this patch window; the single appearance being a counter-pick (pick order 5) suggests she is not a prioritized meta pick but a situational blind counter or desperation flex",
-      "No qualitative analyst sources (LS/Caedrel/MonteCristo) confirmed discussing Samira specifically on patch 26.11 \u2014 confidence capped below 0.4 per Rule 4",
       "Fearless draft context: in longer series, Samira may emerge as a later-game flex pick when primary ADC options are exhausted, which slightly elevates her draft relevance beyond raw pick-rate"
     ]
   },
@@ -7175,7 +7087,6 @@
       "Varus (3g, 0% wins) and Cassiopeia (2g, 0% wins) pairings dragged overall win rate down despite champion not being inherently weak \u2014 likely draft context issue",
       "Yone (75% WR in 4g) is the standout high-confidence synergy; represents 'Sejuani engage + Yone follow-up' pattern seen across multiple leagues",
       "Jarvan IV and Xin Zhao are the only direct same-role matchup opponents in the data; both are early-skirmish aggressive junglers that punish Sejuani's pre-6 weakness",
-      "No dedicated LS/Caedrel/MonteCristo patch 26.11 Sejuani-specific VOD or tweet located in search results; qualitative scores rely on kit fundamentals + available pro data",
       "Solo queue B-tier (50.2% WR, 1.7% pick rate per Mobalytics 26.11) is systematically lower signal for pro; pro value comes from coordination-dependent engage/CC chain that SQ cannot replicate",
       "meta shift flag: engage junglers (J4, Xin Zhao, Pantheon) appear to be higher-priority pro picks this patch window; Sejuani occupies a secondary/counter-pick tier rather than ban-worthy status"
     ]
@@ -7229,7 +7140,6 @@
     "validation_flags": [
       "Very small pro sample (6 games across 4 patches) \u2014 treat partner/counter data as directional only",
       "Yunara listed as only counter from pro data; she is a new champion with limited sample (2 games, 50% loss rate \u2014 not statistically decisive)",
-      "No patch 26.11-specific pro broadcast or LS/Caedrel/MonteCristo Senna analysis found in search window; qualitative scores derived from champion fundamentals + aggregated site data",
       "Senna bot carry (fasting or carry variant) confirmed present in LCK/LPL meta historically; current pro prevalence in 26.11 is low (6 games total in DB)",
       "Orianna pairing at 100% WR in 2 games is a very small sample \u2014 flagged as potentially coincidental",
       "Jayce + Nautilus partnerships at 67% WR across 3 games each are the most reliable synergy signals in the dataset",
@@ -7347,7 +7257,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Extremely thin pro data: only 1 pro game picked across all tracked patches, played support and counter-picked (pick order median=4); no meaningful pro-specific synergy/counter sample to derive partners or counters from draft data alone",
-      "No LS, Caedrel, or MonteCristo commentary found specifically on Sett support for patch 26.11 within 14-day window",
       "Qualitative values derived primarily from champion kit fundamentals and solo-queue aggregators \u2014 treat as directionally correct but not pro-validated",
       "Sett support is a heavy off-meta pick in pro play; his single appearance being counter-picked late (pick 4) suggests situational/surprise usage rather than a stable meta role",
       "common_partners and common_counters inferred from kit logic and solo-queue matchup data (poke-heavy enchanters punish his melee engage); not derivable from 1 pro game draft sample",
@@ -7410,7 +7319,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Zero pro games in data window \u2014 Shaco is effectively absent from competitive pro play in patch 26.11",
-      "No LS, Caedrel, or MonteCristo commentary found specifically on Shaco in the last 14 days",
       "All quantitative data is solo-queue/high-elo ladder, not tournament-level; pro extrapolation is speculative",
       "Shaco's pick/ban rate in pro is near zero (<0.1% pick, ~8% ban per lolvvv); scores reflect theoretical pro value, not observed meta presence",
       "Partner and counter lists derived from pro-play general knowledge (pick+protect comps, dive comps, true-sight/vision-denial counters), NOT from pro draft DB \u2014 treat with caution",
@@ -7477,7 +7385,6 @@
       "Jungle role (6 games) is an emerging flex \u2014 popularized partly by xPetu's solo-queue build trickling into pro; pro jungle sample too thin to rate firmly",
       "Counter-picked 12/22 times (median pick order 4) confirms Shen is largely a reactive/answer pick, not a blind P1 asset",
       "Seraphine (sup) and Rell (sup) appearing as same-role opponents implies a meaningful portion of Shen games are in the support role against engage/poke supports",
-      "No direct Caedrel, LS, or MonteCristo commentary found for patch 26.11 specifically; qualitative ratings lean on champion fundamentals + pro draft data",
       "Fearless Draft (Hard Fearless in LPL 2026 Split 2) inflates Shen's apparent flex value \u2014 teams may reach for him as a 3rd/4th-game option when primary tanks are exhausted"
     ]
   },
@@ -7541,7 +7448,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Zero pro game appearances in the data window (confirmed by lolvvv.com probuild tracker: 0/0 matches)",
-      "No LCK/LPL broadcast analyst commentary or LS/Caedrel/MonteCristo content found specifically for Shyvana in pro draft context patch 26.11",
       "All quantitative references are solo-queue high-elo (Emerald+/Master) \u2014 systematically less reliable for pro meta inference",
       "Post-VGU bruiser identity (patch 16.01) changes her kit meaningfully; AP zoning build viable but AD bruiser remains standard",
       "Riot explicitly still evaluating top-lane viability (patch 26.7 dev notes); jungle remains primary pro role if picked",
@@ -7718,7 +7624,6 @@
     "confidence": 0.72,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No patch 26.11-specific LS/Caedrel/MonteCristo video commentary found; qualitative dimensions inferred from pro draft data + published analyst breakdowns",
       "Patch 26.11 melee support/engage buffs (Grubs, Aftershock, Guardian) may increase Sivir's draft priority due to better engage partner availability",
       "Lulu (7g 86% WR) and Pantheon (9g 78% WR) are outlier win-rate partners \u2014 likely comfort pairings with specific pro rosters rather than broadly generalizable",
       "Varus is the highest-frequency opposing matchup (18g, 56% loss rate for Sivir) \u2014 likely a structural poke-lane counter exploiting Sivir's short range and mana constraints",
@@ -7782,7 +7687,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Only 32 pro games in DB window; small sample increases variance on WR figures",
-      "Patch 26.11 is current but no LS/Caedrel/MonteCristo 26.11-specific VOD analysis found in search window",
       "Counter-pick rate (15/32) is high \u2014 Skarner is predominantly a reactive/second-rotation pick, not a blindable flex",
       "Jarvan IV and Pantheon are both high-presence jungle rivals with even or negative records vs Skarner in DB \u2014 treat both as genuine pro-level threats",
       "Naafiri appears in DB counter list with only 33% loss rate for Skarner (i.e. Skarner wins 67%) \u2014 listed conservatively because sample is 3 games",
@@ -7849,7 +7753,6 @@
       "Patch 26.11 applies targeted nerfs to Q and E passive-linked magic damage, pushing builds back toward full crit and away from bruiser/Essence Reaver paths \u2014 pro priority likely to decrease further",
       "Deathfire Touch rune was primary driver of pre-26.11 pro viability; nerfs aim to make his early game punishable again and squishier crit builds exploitable via burst",
       "Bard pairing (2 games, 50% WR) is consistent with roam-heavy supports that give Smolder lane freedom to stack; Ryze pairing (2 games, 50% WR) suggests scaling-oriented team compositions",
-      "No LS, Caedrel, or MonteCristo direct quotes found for this specific patch window; confidence kept below 0.7",
       "meta shift flagged: 26.11 support meta moving toward engage tanks (Leona, Nautilus), which both counter Smolder and reduce enchanter peel supply he relies on"
     ]
   },
@@ -7906,7 +7809,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Extremely thin pro draft data: only 1 game across sampled patches \u2014 all qualitative values derived from kit fundamentals and solo-queue aggregate data, not pro-specific observations",
-      "No LS, Caedrel, or MonteCristo pro-specific commentary found for Sona in the last 14 days; named analysts do not appear to have covered this champion recently",
       "Solo-queue counters (Leona, Nautilus, Rell) are directionally valid in pro because hard-engage supports that can negate Sona's passive aura and punish her squishiness pre-6 remain consistent threats regardless of bracket",
       "Partners list is kit-inferred for pro: Kalista (R + Sona R combo), hyper-carry ADCs (Jinx, Caitlyn) who benefit from Ardent/Moonstone scaling, Yasuo/Malphite for multi-target R setup \u2014 no pro co-draft frequency data to confirm",
       "Sona is essentially off-meta in pro play (1 pick, 0 first-picks, 1 counter-pick); treat this entire output as low-confidence theoretical framing",
@@ -7969,7 +7871,6 @@
       "Patch 26.11 meta shift toward tank/engage supports (Aftershock/Guardian buffed, Knight's Vow/Locket improved) further marginalizes her pro viability",
       "Renekton pairing had 0% win rate in the draft data \u2014 likely a 'protect-the-bruiser' draft that underperformed; treat that synergy with caution",
       "Ryze pairing at 50% WR over just 2 games is not statistically meaningful",
-      "No direct recent LS or MonteCristo content found specifically on Soraka patch 26.11 pro meta; Caedrel commentary sourced indirectly via gamer.org coverage of his stream reaction",
       "Common counters derived from pro-adjacent logic (engage supports that punish passive lane, Grievous Wounds users) cross-referenced with Mobalytics data rather than deep pro draft DB signal",
       "meta shift, weak data"
     ]
@@ -8024,7 +7925,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Very low pro sample (5 games); estimates are largely derived from champion kit fundamentals and solo-queue aggregated data extrapolated to pro context",
-      "No LS, Caedrel, or MonteCristo coverage of Swain specifically found in recent 14-day window \u2014 confidence capped below 0.4 per rules",
       "Swain was counter-picked 4/5 times in pro (median pick 4), indicating niche or reactive pick status rather than priority flex",
       "50% win rate on Jax co-play (2 games) and 0% on Xayah co-play (2 games) \u2014 Xayah pairing noted but negative sample warrants caution",
       "Galio is the only recorded same-role counter in the pro data (2 games, 50% loss rate); broader counters list is kit-inferred, not data-confirmed",
@@ -8093,7 +7993,6 @@
       "Orianna appears most favorable matchup for Sylas among listed opponents (only 25% losses in 4 games); ult steal value is high",
       "K'Sante (9 games, 67% WR) is the top tank partner \u2014 provides front line peel and engage Sylas benefits from",
       "Yunara pairing has negative sample (33% WR, 6 games) \u2014 flag as low-synergy in current patch window",
-      "No primary LS/Caedrel/MonteCristo editorial commentary found for patch 26.11 specifically; qualitative values extrapolated from pro DB patterns + op.gg/Mobalytics aggregate data",
       "Riot has flagged Sylas for minor adjustments in upcoming patch 26.12 \u2014 monitor for stat changes",
       "Jungle role is present but minor in pro sample (4/35 games); secondary_roles reflects this limited flex usage",
       "ult_impact rated 3 because stolen ultimates scale directly with enemy draft quality \u2014 pro environments maximize this value"
@@ -8157,8 +8056,7 @@
       "Best pro partner is Gnar (7 games, 71% WR) \u2014 Gnar's engage/peel on front line lets Syndra deal damage safely from range; Alistar (4 games, 75% WR) is highest-WR support partner",
       "Renekton and Braum both show 0% WR across 6 and 5 games respectively \u2014 likely correlation with losing drafts drafting Syndra reactively into bad team comps, not direct anti-synergy",
       "Lucian is most-games partner (8 games) but only 38% WR \u2014 Lucian-Syndra bot/mid dual-carry may be a high-risk comp in the current meta",
-      "Upcoming patch 26.12 flagged by Riot to include Syndra adjustments \u2014 meta position may shift after patch drops",
-      "No LS/Caedrel/MonteCristo episode specifically on Syndra found in last 14-day search window; qualitative dimensions rely on pro DB inference + general patch-26.11 sources"
+      "Upcoming patch 26.12 flagged by Riot to include Syndra adjustments \u2014 meta position may shift after patch drops"
     ]
   },
   "TahmKench": {
@@ -8219,7 +8117,6 @@
     "validation_flags": [
       "No pro game data found for TahmKench in the patch 26.11 window \u2014 near-zero pro presence (<0.1% pick rate)",
       "All qualitative values derived from general kit knowledge and high-elo solo queue data, not pro VOD/draft analysis",
-      "No recent LS, Caedrel, or MonteCristo coverage of TahmKench found in last 14 days",
       "Champion is largely absent from LCK/LPL/LEC pro drafts this patch; values reflect theoretical pro-play profile",
       "Support is primary pro role historically; top is viable but rarely selected at pro level",
       "Peel-focused utility kit (W devour on ally, R repositioning) makes him a strong disengage/peel support but low agency in pro drafts dominated by engage-heavy compositions",
@@ -8286,7 +8183,6 @@
       "Riot explicitly stated intent to push Taliyah toward jungle role (26.5), but pro data (76 games) shows 75/76 mid \u2013 jungle presence in pro negligible as of data window",
       "Ahri and Azir are documented worst matchups by loss rate (75% and 73% losses respectively); Ryze has highest game volume (29 games) but only 52% loss rate \u2013 volume risk, not auto-lose",
       "Aurora is a small sample (5 games, 80% loss) \u2013 treat as weak-data flag; trend is directionally bad for Taliyah",
-      "No LS/Caedrel/MonteCristo transcript found for patch 26.11 specifically; qualitative values reflect synthesized pro broadcast + patch analysis sources",
       "Win rates with partners: Alistar (60%), Corki (64%), Nautilus (60%) best; Renekton (23%) and Wukong (23%) poorest despite 13 games each \u2014 suggest those comps are structurally misaligned",
       "Bdd is most-played pro with 5 games at only 40% WR; small individual sample, no dominant pocket-pick player identified",
       "Ult (Weaver's Wall) scored 2 not 3: high utility but not a direct damage/teamfight nuke \u2014 map-splitting and disengage value are its core, not raw fight-winning impact"
@@ -8352,8 +8248,7 @@
       "Pro meta in LCK/LPL patch 26.11 strongly favors scaling control mages (Orianna, Viktor, Azir) \u2014 Talon's pick/ban rate in pro likely near-zero",
       "Partners and counters derived from champion synergy logic and solo-queue data; no pro draft co-occurrence data available",
       "Talon jungle variant exists (A-tier solo queue) but is not a recognized pro-standard role in LCK/LPL",
-      "Confidence capped below 0.4 per rules due to absence of verifiable pro game data for this patch window",
-      "No LS, Caedrel, or MonteCristo commentary on Talon found in recent 14-day search window \u2014 indicates champion is likely not discussed in current pro context"
+      "Confidence capped below 0.4 per rules due to absence of verifiable pro game data for this patch window"
     ]
   },
   "Taric": {
@@ -8413,7 +8308,6 @@
       "Taric has been largely absent from pro meta since early 2023; sporadic appearances tied to specific hyper-carry bot lane compositions (Kog'Maw, Jinx) in niche drafts",
       "Solo queue counters (Zilean, Nami) may not translate cleanly to pro play \u2014 pro counters more likely to be long-range poke supports (Brand, Xerath, Senna) that punish Taric's melee range",
       "Cosmic Radiance (R) remains one of the highest-ceiling ultimates in the game for pro teamfights, but its 2.5-second delay is extremely exploitable in pro-level burst compositions",
-      "No recent LS, Caedrel, or MonteCristo commentary on Taric found; no LCK/LPL broadcast analyst quotes available",
       "Meta shift warning: current 26.11 meta favors engage/pick supports (Nautilus, Rell, Thresh); Taric's passive laning and melee dependency make him a conditional pocket pick at best",
       "confidence set below 0.4 per rule 4 due to absence of pro game data and analyst commentary"
     ]
@@ -8477,7 +8371,6 @@
       "Hexplate nerf for ranged users in 26.11 removes a key early power spike path for ranged top laners including Teemo",
       "Teemo historically appears in pro play only as a niche pocket pick or to counter specific melee-heavy compositions; no structural pro meta home identified",
       "solo-queue data (51-53% WR across sites) explicitly not used to derive pro play scores per instructions",
-      "no recent LS, Caedrel, or MonteCristo content found specifically analyzing Teemo in pro context for this patch window",
       "common_partners and common_counters derived from general pro-play champion synergy logic, not observed pro draft data"
     ]
   },
@@ -8534,7 +8427,6 @@
     "confidence": 0.72,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "Qualitative depth limited by lack of direct LS/Caedrel/MonteCristo patch 26.11 Thresh-specific commentary found in search window",
       "Nautilus (67% loss rate in 3 pro games) and Rakan (100% loss rate in 2 pro games) are the clearest data-supported counters \u2014 sample size is small but directionally strong",
       "Aphelios pairing is the most statistically significant synergy (15 games, 60% wins); Jarvan IV and Malphite show highest win rates (100%) but very small samples (3 games each)",
       "Thresh is counter-picked 6x vs first-picked 0x in the DB window, indicating teams are confident exposing it later in draft or responding to it \u2014 not a blind-pick champion",
@@ -8600,7 +8492,6 @@
       "Ambessa pairing shows 100% WR over 2 games but n=2 is insufficient to treat as definitive",
       "Xin Zhao pairing shows 0% WR over 2 games \u2014 flagged as potential losing comp pattern",
       "Mid Tristana (3/9 appearances) suggests situational flex pick, likely AP-burst build, not the dominant role",
-      "No recent (last 14 days) LS, Caedrel, or MonteCristo content specifically on Tristana pro draft found in search results \u2014 qualitative scores rely on champion fundamentals and small DB sample",
       "Solo-queue sources (Mobalytics, METAsrc) consulted only for build/item confirmation; not used for pro tier or matchup ratings",
       "Gimi is the standout pro player (4 games, 75% WR) \u2014 champion may be specialist-pocket-pick territory rather than widely drafted",
       "common_counters list is intentionally short due to sparse matchup data; only Yunara is DB-confirmed"
@@ -8659,7 +8550,6 @@
     "confidence": 0.68,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No LS/Caedrel/MonteCristo specific patch 26.11 Trundle commentary found in search window; qualitative values derived from pro DB patterns and general pro-analysis sources",
       "Trundle is heavily a counter-pick (38% of picks were counter-picks per draft DB); value collapses vs tanklite/skirmisher comps",
       "Xin Zhao is the dominant mirror matchup (14 games) but Trundle wins 71% \u2014 treat Pantheon and Qiyana as the true danger matchups (100% loss rate)",
       "Best teammates in DB are Ashe (4g/100% WR), Varus (5g/80% WR), K'Sante (4g/75% WR) \u2014 strongly prefer ranged DPS + tanky frontliner pairings",
@@ -8724,7 +8614,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Extremely thin pro data: only 1 pro game across a 4-patch window, 0 first-picks, 1 counter-pick \u2014 no pattern to derive pro-specific synergies or counters from the DB",
-      "No LS, Caedrel, or MonteCristo content found specifically analyzing Tryndamere in pro play for patch 26.11 or surrounding patches",
       "Qualitative values are derived from champion fundamentals and aggregate solo-queue data filtered through pro-play logic (coordination, longer games, intentional drafting), not from witnessed pro games",
       "In pro play Tryndamere is almost exclusively a niche counter-pick or surprise pick \u2014 he is nearly absent from the meta; treat all partner/counter entries as provisional",
       "Partners listed (Jarvan IV, Orianna, Malphite, TF) are theoretically sound peel+global compositions that enable a split-push threat, not empirically confirmed from the 1-game DB sample",
@@ -8850,7 +8739,6 @@
     "validation_flags": [
       "Zero pro games found for Twitch in patch 26.11 window \u2014 all values derived from general champion knowledge and solo queue statistical sites, not verified pro draft data",
       "Twitch is effectively absent from pro play in the current meta; fringe pick at best",
-      "No LS, Caedrel, or MonteCristo commentary found specifically covering Twitch in recent 14-day window",
       "Solo queue counters (Nilah, Seraphine) applied with pro-context adjustment; Draven and Caitlyn more relevant as pro-level lane bullies",
       "Lulu and Yuumi pairings are the canonical pro-context enablers for scaling immobile hyper-carries like Twitch",
       "Stealth Q provides minor pick threat but is easily countered by pro-level vision control and pink wards",
@@ -8913,7 +8801,6 @@
     "validation_flags": [
       "Extremely weak pro data: only 1 pick across all tracked patches, zero counter-picks, zero first-picks \u2014 near-absent pro presence",
       "Median pick order 2 suggests reactive/comfort pick, not proactive meta pick",
-      "No recent LS, Caedrel, or MonteCristo commentary found specifically on Udyr pro play in patch 26.11 window",
       "Top lane Udyr is off-meta in pro play; champion is primarily solo-queue oriented this patch",
       "Qualitative values derived from champion kit fundamentals and solo-queue aggregate data (Lolalytics/METAsrc/Mobalytics) cross-referenced with pro play context \u2014 treat with low confidence",
       "Late-game falloff is a known structural weakness; pro games running long penalizes Udyr relative to scaling threats",
@@ -8980,7 +8867,6 @@
       "Pro-specific partner logic (Orianna, Jarvan IV, Zac, Lulu, Rell) inferred from kit synergy (AoE follow-up on E fling, peel for immobile fighter), NOT from observed pro draft data",
       "Counter list (Kayle, Dr. Mundo, Heimerdinger, Yorick, Sion) cross-referenced across multiple high-Elo solo queue databases; Kayle and Dr. Mundo are consistent worst matchups",
       "Late-game falloff (scaling_late=0) reflects pro-specific concern: immobility and kite-ability become severe weaknesses vs coordinated disengage in longer games",
-      "No LS, Caedrel, or MonteCristo pro-specific Urgot draft content found in the last 14 days \u2014 champion is not currently a pro meta staple",
       "comfort_curve spike-2-item reflects Black Cleaver + Sterak's Gage power window as primary breakpoint",
       "meta shift flag: current top lane meta in LCK/LPL favors engage tanks and scaling bruisers with more mobility \u2014 Urgot's lack of mobility is a significant pro-level liability"
     ]
@@ -9046,7 +8932,6 @@
       "Yunara (53% loss rate) and Caitlyn/Naafiri (100% loss rate, small sample) flagged as hardest counters; Caitlyn and Naafiri have N<5 games \u2014 treat with caution",
       "Sivir is the highest-volume counter matchup (18g, 44% loss) consistent with Sivir's stronger wave clear and spell shield negating Varus poke",
       "Renekton appears both as teammate (40% WR, 15g) and opposing matchup (67% loss, 3g) \u2014 team comp context unclear; low WR as teammate may indicate Renekton drafts are run-it-down early compositions that don't suit Varus",
-      "No recent Caedrel/LS/MonteCristo specific Varus patch 26.11 VOD or post found in search \u2014 qualitative ratings derived from DB patterns and general pro-play established kit knowledge",
       "peel_needs=2 reflects Varus's complete lack of mobility and reliance on team CC/peel, consistent with coaching commentary on immobile marksmen",
       "ult_impact=3: Chain-CC ultimate (snare spreads on movement) is widely cited as one of the highest-impact single abilities in pro teamfighting and pick scenarios"
     ]
@@ -9103,7 +8988,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No specific LS/Caedrel/MonteCristo patch-26.11 video content retrieved; qualitative values supplement pro DB with high-ELO community coaching sources",
       "Small pro sample (18 games); 17/18 counter-picked reinforces pure late-game counter-draft identity \u2014 rarely first-picked in pro",
       "Pro role is overwhelmingly top (16/18); bot/mid appearances are outliers and likely situational pocket picks",
       "Gnar is the primary in-data counter (5 games, Vayne won 60%); Jayce/Ambessa/K'Sante show 0% loss rate to Vayne in sample \u2014 likely favorable matchups that explain when teams target-pick Vayne",
@@ -9233,7 +9117,6 @@
       "Vel'Koz is a fringe/niche pro pick; historically highest presence ~5% in season 8, now near absent in major regions (LCK/LPL/LEC/LCS)",
       "common_partners and common_counters are NOT derived from draft DB data \u2014 no partner/counter data available; based on pro-play archetype reasoning",
       "solo queue counters and synergies applied cautiously with pro-play adjustments (coordination reduces some immobility tax, increases ult-beam setup value)",
-      "no recent LS, Caedrel, or MonteCristo commentary found specifically on Vel'Koz for patch 26.11",
       "support role is primary in recent pro appearances; mid flex is theoretically viable but extremely rare at elite level",
       "meta shift risk: current 2026 LCK/LPL meta favors mobile engage \u2014 structurally disadvantages immobile poke mages like Vel'Koz"
     ]
@@ -9297,7 +9180,6 @@
       "Extremely small pro sample (n=3 games); all picks were counter-picks (3x), zero first-picks \u2014 treat as niche counter-pick tool, not priority blind",
       "Predominantly played top in the sample (2/3 games), but mid is the canonical pro role; top usage likely pocket counter-pick into dive comps",
       "Partner synergies (Ezreal, Kassadin, Shen) derived from a 100% WR but tiny 2-game sample \u2014 treat directionally, not statistically robust",
-      "No recent LS/Caedrel/MonteCristo Vex-specific commentary found in last 14 days; qualitative scores rely on champion kit fundamentals and aggregated stats-site data",
       "Pro counters list deviates from solo-queue data: Vladimir and Taliyah are flagged across multiple sources as strong into Vex; Syndra/Xerath outrange her safely \u2014 these translate better to pro than assassin counters",
       "Comfort curve set to spike-2-item: Luden's Echo + Shadowflame is the consistent power spike noted across patch 26.11 sources",
       "meta shift possible: patch 26.11 data still consolidating; monitor for updates"
@@ -9357,7 +9239,6 @@
     "confidence": 0.72,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No LS/Caedrel/MonteCristo-specific 26.11 content found in search window; qualitative dimensions extrapolated from pro draft DB patterns and reputable coaching/guide sources",
       "Wukong (19g, 68% Vi loss rate) and Jarvan IV (16g, 69% Vi loss rate) are the two clearest hard counters in pro data \u2014 significantly outweigh small-sample 100% loss matchups vs Dr. Mundo/Olaf/Shen/Skarner",
       "Pantheon matchup is a strong Vi-favored outlier (Vi wins 76% in 17 games) \u2014 notable anti-counter pick",
       "Gnar pairing is highest win-rate teammate at 67% over 15 games \u2014 strong front-to-back dive enabler",
@@ -9424,7 +9305,6 @@
       "Syndra pairing went 1/3 (33% wins) \u2014 suggests Syndra+Viego may be a common-but-losing combination in this data window",
       "Wukong listed as top opposing matchup with Viego losing 0% (won both) \u2014 data suggests Viego handles Wukong in pro contrary to solo-queue counter data; Wukong listed as counter here primarily due to broader meta countering logic and aggregate stats",
       "Patch 26.11 pro-play focus is bot lane and engage support buffing \u2014 jungle meta largely undisturbed; Diana, Quinn, Ekko are named jungle patch winners per rft.gg, not Viego",
-      "No confirmed LS, Caedrel, or MonteCristo patch 26.11 Viego-specific commentary found in search results \u2014 qualitative values rely on kit fundamentals and aggregate data",
       "Solo-queue win rate (~49-50%) is near-floor for S+ tier; pro applications depend heavily on player mastery and possession target quality",
       "Scaling_late=3 reflects Viego's possession passive becoming exponentially stronger as enemy champions are more itemised \u2014 well-documented pro axiom",
       "peel_needs=2 reflects that Viego must dive in to proc passive and is vulnerable to CC chains before first kill per mobalytics counter tips"
@@ -9483,7 +9363,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No specific LS/Caedrel/MonteCristo Viktor breakdown found for patch 26.11 within the 14-day window; qualitative scores derived from pro DB + regional meta context",
       "Patch 26.11 contains no direct Viktor changes per available sources; values carried from adjacent patches with high confidence",
       "Xin Zhao (8 games, 12% WR) and Miss Fortune (6 games, 17% WR) flagged as statistically poor Viktor synergies despite high co-occurrence \u2014 excluded from common_partners",
       "Yunara (8 games, 38% WR) and Seraphine (7 games, 43% WR) borderline synergy \u2014 omitted in favor of clearly positive-WR partners",
@@ -9550,7 +9429,6 @@
       "Very thin pro data: only 3 games across multiple older patches (16.1, 16.08, 16.04, 16.01), not specific to patch 26.11",
       "All 3 appearances were counter-picks (pick order median=5), suggesting niche situational usage rather than priority blind pick",
       "50% WR with Skarner (2 games) is statistically meaningless at this sample size",
-      "No LS, Caedrel, or MonteCristo content specifically covering Vladimir in pro play found in last 14 days",
       "Qualitative values derived from champion fundamentals and historical pro archetypes rather than fresh broadcast commentary",
       "Counters list (Pantheon, Irelia, Sylas, Kassadin) based on pro-relevant pattern reasoning \u2014 Pantheon appears as top LCK/LPL priority pick and is a known early-game punisher of Vladimir; not directly confirmed in provided draft DB",
       "Vladimir is niche in 2025-2026 pro meta; comfort_curve and late-game scaling are well-established but pro viability is low without enabling conditions (peel, long-game draft)",
@@ -9613,7 +9491,6 @@
       "Ryze pairing at 33% WR over 3 games is actively negative; likely coincidental pairing rather than intentional synergy \u2014 treat with caution",
       "Ashe pairing at 100% WR over only 2 games \u2014 too small to be statistically meaningful, but directionally consistent with Ashe's poke/engage CC chaining with Volibear ult",
       "Riot explicitly nerfed Volibear as a stat-check jungler heading into late 2025 season; carry-over effect still relevant in 26.11 context",
-      "No recent (last 14 days) LS, Caedrel, or MonteCristo source specifically covering Volibear in patch 26.11 pro play was found \u2014 qualitative scores extrapolated from champion fundamentals and available data",
       "Solo queue counter/synergy sources (metasrc, mobalytics, metabot) used only as secondary signal for pro-agnostic mechanical matchup patterns; not treated as pro-play ground truth",
       "Volibear's pro value is largely tied to early-game ganking power and tower-dive threat via R; falls off in macro-heavy pro environments where coordinated spacing and kite negates stat-check gameplan",
       "Gangplank (range bully, scales past Volibear) and Gwen (sustain, magic resist shredding) are credible pro-context counters to top Volibear; Sejuani counters jungle Volibear (tankier, more utility, better teamfight scaling)"
@@ -9674,7 +9551,6 @@
       "Extremely weak pro data: only 1 pro game across 4 patches, all in top lane, always counter-picked (pick order 5)",
       "Warwick is essentially a non-presence in pro play at patch 26.11; single pick is likely an outlier or off-meta pocket",
       "Riot nerfed Warwick specifically for stat-check dominance in regular (non-pro) play; further reduces pro viability",
-      "No Caedrel, LS, or MonteCristo analysis found for Warwick in pro context on patch 26.11 \u2014 sources are solo-queue weighted",
       "Qualitative values derived primarily from champion kit fundamentals and solo-queue data, not pro coordination context",
       "Partners and counters drawn from general meta logic rather than co-occurrence in draft DB (insufficient co-occurrence data)",
       "meta shift: engage junglers (Xin Zhao, Jarvan IV, Pantheon) dominate current pro meta, crowding out stat-checkers like Warwick"
@@ -9735,7 +9611,6 @@
       "Only 24 pro games in window \u2014 moderate sample; several partner/counter WR cells have n<=3 and should be treated as directional only",
       "Varus (2-0 vs Xayah) and Aphelios (0-2 vs Xayah) have very small n; treat with caution",
       "Yunara is newly released \u2014 3-game sample vs Xayah (67% loss rate) is too small for reliable inference but flagged as emerging threat per esportsinsider meta article",
-      "No LS/Caedrel/MonteCristo clip found specifically addressing Xayah in patch 26.11 window; qualitative scores derived from draft pattern data + established kit knowledge + esportsinsider pro meta commentary",
       "Xayah is predominantly counter-picked (15/24 games), consistent with her identity as a reactive/safe draft tool against engage-heavy comps rather than a first-pick priority",
       "Rakan (15g, 60% WR) is by far the most common partner in pro \u2014 kit synergy (extended E range, Lover's Leap, shared W buff) amplified in coordinated pro environments vs solo queue",
       "Azir (5g, 100% WR) and Lulu (3g, 100% WR) are small samples but directionally strong \u2014 both provide disengage/peel that covers Xayah's primary weakness",
@@ -9798,7 +9673,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Extremely thin pro data: only 1 pro game in the tracked window across all leagues \u2014 qualitative values rely heavily on champion archetype knowledge and solo-queue aggregate data, not pro-specific observations",
-      "No dedicated LS/Caedrel/MonteCristo commentary found for Xerath in the last 14 days on patch 26.11",
       "Meta shift risk: current pro meta (patches 26.x) favors engage-heavy, dive-oriented comps which are structurally disadvantageous for Xerath",
       "Median pick order 3 (no first- or counter-picks) suggests Xerath was used as a reactive/comfort pick rather than a draft anchor \u2014 treat as a situational one-trick or surprise pick",
       "peel_supply scored 1: Xerath's E (Shocking Orb) provides minor single-target CC but no real team peel toolkit",
@@ -9863,7 +9737,6 @@
       "No pro stage game data found for Xin Zhao in patch 26.11 window specifically; values derived from late-2025 LCK/LPL tournament data (patches 25.19-25.20) and current-patch solo-queue/probuild signals",
       "Pro win rate on lolvvv is only 40% over 20 games on current patch \u2014 small sample, possible meta regression from 2025 peak presence",
       "Xin Zhao was a top-3 LCK/LPL jungle pick in 2025 but may have lower priority in 26.11 if engage jungle pool has deepened",
-      "No LS, Caedrel, or MonteCristo specific 26.11 Xin Zhao content found in search window; qualitative values rely on general pro-play characterization",
       "common_partners are inferred from co-meta champions (engage/poke/AoE burst that pair with Xin's front-line dive), not hard pairing data",
       "meta shift flag: Fearless Draft context means Xin Zhao value is pool-depth dependent \u2014 higher priority in games 2-5 of series",
       "USER OVERRIDE 2026-06-06: scaling_late -1 -> 0, teamfight 1 -> 2. Kit-driven champion (isolate ult + true dmg + tank-shred) underrated by solo-queue tier list bias. Stays relevant in coordinated 5v5s."
@@ -9926,7 +9799,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Very low pro sample: only 4 games across the tracked patches \u2014 values derived primarily from champion-kit fundamentals and structural pro-play principles, not dense draft data",
-      "No qualifying LS, Caedrel, or MonteCristo content found specifically discussing Yasuo in patch 26.11 pro context within the last 14 days; qualitative commentary unavailable from those sources",
       "Gnar appears in the pro counter data (2 games, 50% loss rate for Yasuo) \u2014 listed as a counter consistent with pro data; also broadly flagged in pro top lane analysis for engage/teamfight priority",
       "Malphite appears in both common_partners (airborne ult synergy, strongest pro combo) and common_counters (laning phase hard counter to AD Yasuo) \u2014 context-dependent; listed as partner due to draft-synergy priority in pro play",
       "Bot lane appearance (1 of 4 games) is an outlier; primary_role set to top per majority of games (3/4)",
@@ -9991,7 +9863,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No patch 26.11-specific pro broadcast commentary or LS/Caedrel/MonteCristo content found within last 14 days for Yone specifically; qualitative dimensions derived from kit fundamentals + cross-patch pro patterns",
       "Counter-pick rate very high (20/29 games) \u2014 Yone is nearly never first-picked in pro, suggesting teams treat him as a situational/reactive pick with known counters",
       "Azir is the most common same-role opposing matchup (8 games) with only 50% loss rate \u2014 manageable but contested; Aurora small sample (2g) but 100% loss warrants flagging",
       "Rumble is the single most dominant partner (15g) likely in Rumble-mid/Yone-top or more commonly Rumble-top/Yone-mid double-scaling compositions",
@@ -10052,7 +9923,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No LS/Caedrel/MonteCristo recent Yorick-specific pro VOD content found in search window \u2014 qualitative scores derived from pro draft DB patterns + established champion identity",
       "Counter-picked 20/28 times (71%) with median pick order 5 \u2014 strongly indicates teams use Yorick as a late pick to exploit side-lane matchups, not a flex blind pick",
       "Rumble listed as hardest counter in pro data (67% loss rate in 3 games) \u2014 consistent with ranged poke + AoE suppressing Yorick's melee-dependent kit and immobility",
       "Jayce 8 games / 50% loss \u2014 high exposure suggests teams respect Yorick into Jayce but it remains contested; not a hard counter but a risky matchup",
@@ -10120,7 +9990,6 @@
     "confidence": 0.67,
     "last_updated": "2026-06-06T21:29:46Z",
     "validation_flags": [
-      "No LS, Caedrel, or MonteCristo direct commentary found for patch 26.11 specifically; qualitative scores derived from kit mechanics, Worlds 2025 pro data, and the provided draft DB",
       "Draft DB win rates are notably low overall (median ~47%), suggesting Yunara is picked into unfavorable metas or is a priority first-pick that gets countered \u2014 reflected in counter-pick frequency (31x)",
       "Jarvan IV partner (73% WR in 15 games) is the highest-confidence synergy in the data; treat as strong combo flag",
       "Xin Zhao partnership has a 29% WR over 24 games \u2014 likely a compositional mismatch, not a true synergy; excluded from partners",
@@ -10182,7 +10051,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Very small pro sample (7 games); qualitative scores derived from champion fundamentals cross-referenced with available meta sources, not from dense recent pro VOD commentary",
-      "No patch-26.11-specific LS/Caedrel/MonteCristo quote found in web search \u2014 confidence capped below 0.5",
       "Counter data is actually favorable for Yuumi vs Karma and Neeko (0% loss rate in 2 games each) \u2014 genuine pro counters cannot be confirmed from this sample; those matchup entries are treated as inconclusive rather than hard counters, so common_counters list is held to data-observed opponents only",
       "Yuumi received buffs in patch 26.8 per escorenews; current patch 26.11 power level may be elevated relative to the draft window (16.1\u201316.04)",
       "Pick-order data shows 5/7 games counter-picked (median pick 5), consistent with Yuumi being a reactive comfort-lock onto a specific hyper-carry rather than a first-pick priority",
@@ -10245,7 +10113,6 @@
     "confidence": 0.52,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No recent LS/Caedrel/MonteCristo video content found specifically covering Zaahen pro draft analysis within the last 14 days \u2014 qualitative scores rely on kit inference + pro draft DB patterns",
       "Pro sample is thin (50 games, 2 known players) \u2014 counter/synergy win rates carry high variance, especially Kennen (2 games, 100% loss) and Rek'Sai (2 games, 0% loss)",
       "Yunara partnership has anomalously low win rate (9 games, 11%) despite high game count \u2014 possible loss-streak context or pocket-pick bait; flagged for draft caution",
       "Ashe pairing has exceptional win rate (8 games, 88%) in pro \u2014 likely indicative of strong Ashe slow/kite setup enabling Zaahen extended trades; prioritize in teamfight compositions",
@@ -10317,8 +10184,7 @@
       "Pro pick/ban data unavailable for patch 26.11 specifically; Zac absent from named LCK/LPL priority junglers (Xin Zhao, Vi, Jarvan IV, Wukong dominate)",
       "Zac rated B-tier in solo-queue patch 26.11 (METAsrc, Mobalytics ~49.8% WR) \u2014 in pro context his value is engagement/draft flexibility rather than raw stats",
       "Meta context: engage junglers thriving in LPL/LCK but Zac lacks the early pressure/tempo of top pro picks; relegated to niche teamfight-comp enabler role",
-      "Partner list draws on known AoE synergies (Orianna, MF, Malphite, Azir) rather than direct pro data \u2014 treat as informed inference",
-      "No LS, Caedrel, or MonteCristo commentary found specifically referencing Zac in patch 26.11 window"
+      "Partner list draws on known AoE synergies (Orianna, MF, Malphite, Azir) rather than direct pro data \u2014 treat as informed inference"
     ]
   },
   "Zed": {
@@ -10375,7 +10241,6 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Extremely weak pro data: only 2 games, 0% win rate, always counter-picked \u2014 treat all values as low-confidence",
-      "No recent (last 14 days) LS, Caedrel, or MonteCristo commentary found specifically on Zed jungle patch 26.11",
       "Partners (Ezreal, Karma, Ryze) derived purely from the 2-game co-occurrence window; sample size is too small to infer genuine synergy",
       "Counters derived from general champion kit logic and solo-queue matchup data (Malphite, Lissandra, TF); no pro-specific counter draft data available",
       "Zed jungle is a niche/off-meta pro pick \u2014 qualitative values based on champion fundamentals and sparse historical pro appearances, not a stable meta role",
@@ -10434,7 +10299,7 @@
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Extremely thin pro sample: only 5 games across 4 patches \u2014 all win/loss percentages are statistically unreliable at this volume",
-      "Patch 26.11 has zero dedicated pro-broadcast analyst commentary or LS/Caedrel/MonteCristo content specifically for this patch found in search; most qualitative signals are inferred from 26.10 patch notes and April 2026 PBE analysis",
+      "Patch 26.11 has zero dedicated pro-broadcast analyst commentary or [name removed]/[name removed]/[name removed] content specifically for this patch found in search; most qualitative signals are inferred from 26.10 patch notes and April 2026 PBE analysis",
       "Riot intentionally shifted Zeri's power curve forward (stronger laning, reduced 3-item late-game takeover) in the 26.10 window \u2014 comfort_curve set to spike-3-item may drift toward spike-2-item if these PBE changes are fully live in 26.11",
       "Yuumi and Annie are co-played 2 games each per DB (50% WR) \u2014 historically Zeri+Yuumi/Lulu is a well-documented pro pairing; Annie support presence is unusual and may reflect small-sample anomaly",
       "Sivir matchup shows 0% losses in 2 games (Zeri won both) \u2014 listed as counter only per DB instruction but data is insufficient to confirm directionally; Lucian is the stronger counter signal with 50% loss rate",
@@ -10494,7 +10359,6 @@
     "confidence": 0.62,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
-      "No patch-26.11-specific pro analyst commentary (LS, Caedrel, MonteCristo) found in search window; qualitative dimensions rely on earlier 2024-2025 pro analysis and kit fundamentals",
       "Nautilus+Ziggs is the strongest data partner signal (5g, 80% WR); Alistar+Ziggs and Trundle+Ziggs are small-sample but 100% WR \u2014 both fit the engage/peel-for-immobile-mage archetype that pro analysis endorses",
       "Ambessa, Aurora, Rakan, Vi all 0% WR alongside Ziggs \u2014 likely compositions that lack the front-to-back structure Ziggs needs; these are implicitly anti-synergies in current pro draft",
       "Aphelios is the single strongest counter by loss rate (80% loss in 5g); Aphelios' superior all-in/early lane pressure punishes Ziggs' immobility and mana dependency",
@@ -10563,8 +10427,7 @@
       "Solo-queue synergy/counter data (Briar, Irelia, Skarner, Brand, Pyke) carried over with pro-play adjustment; treat as lower-confidence picks",
       "Zilean pro presence is historically niche and situational \u2014 typically deployed as a pocket pick to protect a hypercarry (e.g. Jinx, Aphelios, Draven) in late-game oriented drafts",
       "In pro, Zilean's value hinges almost entirely on Chronoshift timing and team coordination around the revive; his early laning is genuinely weak (-1) and he offers minimal objective DPS (tier 1)",
-      "meta shift warning: current Season 16 pro meta favors engage-heavy supports (Rakan, Leona, Nautilus); Zilean is a counter-draft / specialist pick rather than a priority pick",
-      "No LS, Caedrel, or MonteCristo content found specifically discussing Zilean in patch 25.11-26.11 window; confidence capped below 0.5 per rule 4"
+      "meta shift warning: current Season 16 pro meta favors engage-heavy supports (Rakan, Leona, Nautilus); Zilean is a counter-draft / specialist pick rather than a priority pick"
     ]
   },
   "Zoe": {
@@ -10622,7 +10485,6 @@
       "Gnar and Qiyana pairings both 0% WR (2 games each) \u2014 avoid these compositions",
       "Aurora is the most-played opposing mid (4 games) with 50% loss rate for Zoe; mobile mages/assassins that can close the gap are Zoe's structural weakness",
       "Jarvan IV + Jayce + K'Sante all at 100% WR (2 games each) suggest Zoe performs best in dive-heavy or poke-to-dive hybrid comps that exploit her E sleep",
-      "No dedicated LS/Caedrel/MonteCristo patch-26.11-specific Zoe pro analysis found; qualitative scores derived from champion fundamentals and available patch data \u2014 confidence capped at 0.52",
       "Comfort curve assessed as spike-2-item (Luden's Echo + Shadowflame core in pro); meaningful pick/teamfight threat requires AP threshold",
       "Low split-push threat (0): Portal Jump returns Zoe to cast location, she cannot extend map pressure via side lanes in pro",
       "meta shift: patch 26.11 mid lane favors roam-oriented poke mages per available tier data, which aligns with Zoe's kit but her fragility keeps her in counter-pick role"
@@ -10682,7 +10544,6 @@
     "validation_flags": [
       "Extremely thin pro sample \u2014 only 5 games across 4 patches; median pick order 4 and 4/5 counter-picks strongly suggest situational/cheese pick rather than priority draft pick",
       "Jungle role dominance in pro (3/5 games) is atypical vs historical support identity; may reflect 2026 jungle mage diversification meta similar to Morgana/Brand jng patterns",
-      "No LS, MonteCristo, or recent LCK/LPL broadcast analyst commentary specifically on Zyra found within the last 14 days; confidence capped below 0.5",
       "Gnar (2g 50% WR) and Varus (2g 50% WR) are small-sample partners \u2014 breakeven winrate offers no clear synergy signal beyond draft co-occurrence",
       "Solo-queue jungle counters (Rammus, Ivern, Karthus) imported cautiously; pro-specific counter data absent due to sample size",
       "Plant bonus monster damage buff (16.X patch cycle) partially explains jungle viability but pro uptake remains low globally",
