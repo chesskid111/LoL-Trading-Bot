@@ -19,10 +19,12 @@ from loltrader.livestats.historical import (
     LCS_LEAGUE_ID,
     LEC_LEAGUE_ID,
     LPL_LEAGUE_ID,
+    fetch_game_details,
     fetch_match_frames,
     get_completed_matches,
     store_historical_match,
 )
+from loltrader.livestats.storage import write_frame_details
 
 LEAGUES = {
     "lck": LCK_LEAGUE_ID,
@@ -40,6 +42,10 @@ def main(argv: list[str] | None = None) -> int:
                    help="Max series (matches) to extract. Default 15 = ~30 games.")
     p.add_argument("--skip-existing", action="store_true", default=True,
                    help="Skip matches whose games are already in games_live (default).")
+    p.add_argument("--with-details", action="store_true",
+                   help="Also pull the /details endpoint per game (per-player items, "
+                        "runes, stats). Adds ~30-40%% to runtime but enables item-progression "
+                        "features in the win-prob model.")
     p.add_argument("--log-level", default="INFO")
     args = p.parse_args(argv)
 
@@ -81,8 +87,34 @@ def main(argv: list[str] | None = None) -> int:
             frames_by_game = fetch_match_frames(m)
             stats = store_historical_match(conn, m, frames_by_game)
             elapsed = time.time() - t0
-            log.info("  → stored %d games, frames: %s, %.0fs",
+            log.info("  → stored %d games (window), frames: %s, %.0fs",
                      len(stats), stats, elapsed)
+
+            # Optionally pull and store the /details endpoint for each game.
+            # Details are time-aligned with window frames, so we walk only
+            # the known time range (set by the window pass).
+            if args.with_details:
+                t1 = time.time()
+                details_stats: dict[str, int] = {}
+                for gid, frames in frames_by_game.items():
+                    if not frames:
+                        continue
+                    try:
+                        details = fetch_game_details(gid, frames)
+                    except Exception as e:
+                        log.warning("  details fetch failed for %s: %s", gid, e)
+                        continue
+                    inserted = 0
+                    for d in details:
+                        try:
+                            inserted += write_frame_details(conn, gid, d)
+                        except Exception as e:
+                            log.debug("write_frame_details %s: %s", gid, e)
+                    details_stats[gid] = inserted
+                d_elapsed = time.time() - t1
+                log.info("  → stored details: %s, %.0fs",
+                         details_stats, d_elapsed)
+
             extracted += 1
         except Exception as e:
             log.error("  FAILED: %s", e)

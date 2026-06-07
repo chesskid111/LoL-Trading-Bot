@@ -348,5 +348,5 @@ def test_integrate_state_handles_no_details(profiles_file, seeded_db):
 
 
 def test_feature_schema_size():
-    """Schema is the ~75-feature target."""
-    assert 60 <= len(FEATURE_SCHEMA) <= 90
+    """Schema is at the ~89-feature target after league + per-player + momentum adds."""
+    assert 80 <= len(FEATURE_SCHEMA) <= 100

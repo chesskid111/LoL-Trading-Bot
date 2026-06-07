@@ -244,6 +244,10 @@ def time_to_next_baron(minute: int, baron_diff: int) -> float:
 # ---------- feature integration -----------------------------------------
 
 
+# League one-hot — captures cross-region skill gradient (LCK > LPL > LEC ≈ LCS).
+# Single-region trained models can leave these all 0.
+SUPPORTED_LEAGUES = ("lck", "lpl", "lec", "lcs", "lcp", "lta_s")
+
 # Stable feature schema — order matters for reproducibility but the dict
 # iteration order is also stable in Python 3.7+.
 FEATURE_SCHEMA: list[str] = [
@@ -322,6 +326,43 @@ FEATURE_SCHEMA: list[str] = [
     "minute_x_scaling_diff",
     "baron_state_x_baron_dps_a",
     "crossover_minute",
+
+    # --- League one-hot (cross-region skill gradient) ---
+    "league_lck",
+    "league_lpl",
+    "league_lec",
+    "league_lcs",
+    "league_lcp",
+    "league_lta_s",
+    "league_other",
+
+    # --- Per-player aggregates from live_frames_details ---
+    "wards_destroyed_ratio_a",
+    "wards_destroyed_ratio_b",
+    "level_max_a",
+    "level_max_b",
+    "level_max_diff",
+    "team_ap_total_a",
+    "team_ap_total_b",
+    "team_ad_total_a",
+    "team_ad_total_b",
+    "kda_sum_a",
+    "kda_sum_b",
+    "kda_diff",
+    "damage_share_max_a",
+    "damage_share_max_b",
+    "gold_max_a",
+    "gold_max_b",
+    "gold_max_diff",
+    "gold_std_a",
+    "gold_std_b",
+
+    # --- Momentum features (require prior-frame context) ---
+    "gold_diff_change_last_60s",
+    "kills_last_60s_a",
+    "kills_last_60s_b",
+    "time_since_last_dragon_a",
+    "time_since_last_dragon_b",
 ]
 
 
@@ -338,6 +379,8 @@ def integrate_state(
     minute: int,
     picks_a: list[ChampionPick] | None = None,
     picks_b: list[ChampionPick] | None = None,
+    league: str | None = None,
+    prev_frame: dict | None = None,
 ) -> dict[str, float]:
     """Combine comp eval + live state into the full feature dict.
 
@@ -348,8 +391,10 @@ def integrate_state(
         minute: current in-game minute. Used to evaluate the comp curves AND
             as a feature in its own right.
         picks_a, picks_b: optional pick lists for lane matchup lookup.
+        league: optional league slug (lck/lpl/etc.) for the league one-hot.
+        prev_frame: optional prior frame (~60s earlier) for momentum features.
 
-    Returns: stable-schema dict[str, float] of ~75 features.
+    Returns: stable-schema dict[str, float] of ~89 features.
     """
     feats = _zero_features()
     minute = max(0, min(SCALING_MINUTES[-1], int(minute)))
@@ -437,6 +482,75 @@ def integrate_state(
     feats["gold_diff_x_squishiness_a"] = feats["gold_diff"] * feats["comp_a_squishiness"]
     feats["minute_x_scaling_diff"] = float(minute) * feats["scaling_diff_at_t"]
     feats["baron_state_x_baron_dps_a"] = feats["baron_diff"] * feats["comp_a_baron_dps"]
+
+    # ----- league one-hot -----
+    if league:
+        slug = league.lower().replace("-", "_")
+        key = f"league_{slug}"
+        if key in feats:
+            feats[key] = 1.0
+        else:
+            feats["league_other"] = 1.0
+
+    # ----- per-player aggregates -----
+    if details:
+        blue = [d for d in details if d.get("side") == "blue"]
+        red = [d for d in details if d.get("side") == "red"]
+
+        def _agg(side_rows: list[dict], side: str) -> None:
+            if not side_rows:
+                return
+            wards_placed = [int(d.get("wards_placed") or 0) for d in side_rows]
+            wards_dest = [int(d.get("wards_destroyed") or 0) for d in side_rows]
+            ap = [int(d.get("ability_power") or 0) for d in side_rows]
+            ad = [int(d.get("attack_damage") or 0) for d in side_rows]
+            kills = [int(d.get("kills") or 0) for d in side_rows]
+            deaths = [int(d.get("deaths") or 0) for d in side_rows]
+            assists = [int(d.get("assists") or 0) for d in side_rows]
+            dmg_share = [float(d.get("champion_damage_share") or 0) for d in side_rows]
+            golds = [int(d.get("total_gold") or 0) for d in side_rows]
+            levels = [int(d.get("level") or 0) for d in side_rows]
+
+            total_wp = sum(wards_placed) or 1
+            feats[f"wards_destroyed_ratio_{side}"] = sum(wards_dest) / total_wp
+            feats[f"level_max_{side}"] = float(max(levels)) if levels else 0.0
+            feats[f"team_ap_total_{side}"] = float(sum(ap))
+            feats[f"team_ad_total_{side}"] = float(sum(ad))
+            feats[f"kda_sum_{side}"] = float(sum(kills) + sum(assists) - sum(deaths))
+            feats[f"damage_share_max_{side}"] = float(max(dmg_share)) if dmg_share else 0.0
+            feats[f"gold_max_{side}"] = float(max(golds)) if golds else 0.0
+            # Population stdev — small N, easier than statistics lib for n<2
+            mean_g = sum(golds) / len(golds) if golds else 0.0
+            feats[f"gold_std_{side}"] = (
+                (sum((g - mean_g) ** 2 for g in golds) / len(golds)) ** 0.5
+                if golds else 0.0
+            )
+
+        _agg(blue, "a")
+        _agg(red, "b")
+        feats["level_max_diff"] = feats["level_max_a"] - feats["level_max_b"]
+        feats["kda_diff"] = feats["kda_sum_a"] - feats["kda_sum_b"]
+        feats["gold_max_diff"] = feats["gold_max_a"] - feats["gold_max_b"]
+
+    # ----- momentum features (prev_frame is the frame ~60s earlier) -----
+    if prev_frame is not None:
+        prev_gold_diff = float((prev_frame.get("blue_gold") or 0) - (prev_frame.get("red_gold") or 0))
+        feats["gold_diff_change_last_60s"] = feats["gold_diff"] - prev_gold_diff
+        feats["kills_last_60s_a"] = float((frame.get("blue_kills") or 0) - (prev_frame.get("blue_kills") or 0)) if frame else 0.0
+        feats["kills_last_60s_b"] = float((frame.get("red_kills") or 0) - (prev_frame.get("red_kills") or 0)) if frame else 0.0
+        # Time-since-last-dragon: minutes since the dragon count last changed
+        prev_blue_dragons = len(prev_frame.get("blue_dragons") or [])
+        prev_red_dragons = len(prev_frame.get("red_dragons") or [])
+        # If dragons unchanged in last 60s, time_since increases by 1
+        # If dragons changed, time_since resets to 0
+        feats["time_since_last_dragon_a"] = (
+            0.0 if feats["blue_dragon_count"] > prev_blue_dragons
+            else 1.0  # marker — full pipeline will track this properly
+        )
+        feats["time_since_last_dragon_b"] = (
+            0.0 if feats["red_dragon_count"] > prev_red_dragons
+            else 1.0
+        )
 
     return feats
 

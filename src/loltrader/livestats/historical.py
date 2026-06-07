@@ -216,6 +216,61 @@ def fetch_game_frames(
     return sorted(seen.values(), key=lambda f: f.get("rfc460Timestamp", ""))
 
 
+def fetch_game_details(
+    game_id: str,
+    frames: list[dict],
+) -> list[dict]:
+    """Walk the /details endpoint over the time range covered by ``frames``.
+
+    We re-use the timestamps from a prior ``fetch_game_frames`` window pass
+    so we know exactly when the game ran — no coarse-search needed. Each
+    detail frame is independent and time-keyed by rfc460Timestamp, so we
+    can request directly at each known frame timestamp.
+
+    Returns: list of detail frames (dedup'd by rfc460Timestamp).
+    """
+    if not frames:
+        return []
+    # Extract the game's time range from the window frames
+    try:
+        first_ts = datetime.strptime(frames[0].get("rfc460Timestamp", "")[:19],
+                                     "%Y-%m-%dT%H:%M:%S").replace(tzinfo=timezone.utc)
+        last_ts = datetime.strptime(frames[-1].get("rfc460Timestamp", "")[:19],
+                                    "%Y-%m-%dT%H:%M:%S").replace(tzinfo=timezone.utc)
+    except (ValueError, KeyError):
+        log.warning("could not parse frame timestamps for details fetch of %s", game_id)
+        return []
+
+    # Walk the same range at the same step. /details typically returns ~10s
+    # of frames per call, same as /window.
+    seen: dict[str, dict] = {}
+    cursor = _floor_to_step(first_ts, WALK_STEP_SEC)
+    end = last_ts + timedelta(seconds=30)
+    max_calls = 500  # generous safety cap
+
+    calls = 0
+    while cursor <= end and calls < max_calls:
+        ts = cursor.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+        try:
+            data = _api_get(f"{LIVE}/details/{game_id}",
+                             params={"startingTime": ts}, timeout=5)
+        except requests.RequestException as e:
+            log.debug("transport error for details %s at %s: %s", game_id, ts, e)
+            cursor += timedelta(seconds=WALK_STEP_SEC)
+            calls += 1
+            continue
+        if data:
+            for f in data.get("frames", []) or []:
+                ts_str = f.get("rfc460Timestamp")
+                if ts_str and ts_str not in seen:
+                    seen[ts_str] = f
+        cursor += timedelta(seconds=WALK_STEP_SEC)
+        calls += 1
+        time.sleep(0.02)
+
+    return sorted(seen.values(), key=lambda f: f.get("rfc460Timestamp", ""))
+
+
 def fetch_match_frames(match: HistoricalMatch) -> dict[str, list[dict]]:
     """Fetch frames for every completed game in a match.
 
