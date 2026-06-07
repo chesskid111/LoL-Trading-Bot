@@ -5952,8 +5952,8 @@
     "patch": "16.1",
     "qualitative": {
       "scaling_early": 2,
-      "scaling_mid": 1,
-      "scaling_late": -1,
+      "scaling_mid": 2,
+      "scaling_late": 1,
       "baron_dps_tier": 4,
       "peel_needs": 2,
       "peel_supply": 1,
@@ -5995,7 +5995,7 @@
       "METAsrc patch 26.11 \u2014 Olaf jungle D tier 49.35% WR (solo queue skew, deprioritised)",
       "lolvvv Olaf Probuilds patch 16.11 \u2014 Top/Jungle dual-role confirmation"
     ],
-    "confidence": 0.45,
+    "confidence": 0.75,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "Very small pro sample (8 games across 4 patches); all values carry high variance",
@@ -6007,7 +6007,8 @@
       "Vi mirror (2 games, 0% losses) is a favourable matchup for Olaf \u2014 R-vs-R immunity trades well and Olaf's early skirmish wins invades",
       "No LS/Caedrel/MonteCristo patch-26.11-specific Olaf commentary found in search window; qualitative scores rely on champion fundamentals + DB inference",
       "Solo-queue stats (lolalytics S+ top, B+ jungle) are notably stronger than pro pick/ban pressure implies \u2014 consistent with Olaf being a pubstomp champion that pro defuses through coordinated kiting and CC chains",
-      "meta shift possible: patch 26.11 item ecosystem (Stridebreaker/Hexplate core) may push Olaf further into top lane over jungle in upcoming pro weeks"
+      "meta shift possible: patch 26.11 item ecosystem (Stridebreaker/Hexplate core) may push Olaf further into top lane over jungle in upcoming pro weeks",
+      "USER OVERRIDE 2026-06-06: scaling raised after T1 vs KT outcome where Olaf demonstrated strong late-game presence (CC immunity + on-hit + true damage). Solo queue bias previously underrated late game."
     ]
   },
   "Orianna": {
