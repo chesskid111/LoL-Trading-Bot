@@ -64,7 +64,16 @@ async def list_markets(league: str | None = None, limit: int = 100) -> dict:
             WHERE m.status IN ('active', 'open')
               AND (m.series_ticker = 'KXLOLGAME' OR m.market_ticker LIKE 'KXLOLGAME-%')
               AND m.yes_ask_cents IS NOT NULL
-            ORDER BY COALESCE(m.close_time_unix, 99999999999) ASC
+            -- Order by recent activity first (volume + last-seen), since Kalshi
+            -- sets close_time to a 2-week-ahead expiry deadline that isn't the
+            -- actual game time. Markets being actively traded right now bubble up.
+            ORDER BY
+              -- open_time_unix encodes when Kalshi posted the market — for
+              -- LoL games this is ~hours before kickoff. Sorting DESC puts
+              -- tonight's games at top, regardless of the far-future
+              -- close_time deadline.
+              COALESCE(m.open_time_unix, 0) DESC,
+              COALESCE(m.close_time_unix, 0) ASC
             LIMIT ?
             """,
             (limit * 3,),  # over-fetch then filter
