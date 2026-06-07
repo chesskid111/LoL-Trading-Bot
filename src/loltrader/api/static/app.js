@@ -422,9 +422,11 @@ async function fetchMarkets() {
 }
 
 function groupByEvent() {
+    // Group by event_group (shared across series + map + total_maps for one match)
+    // not event_ticker (which differs between sub-markets of the same match).
     state.eventGroups = {};
     for (const m of state.markets) {
-        const ev = m.event_ticker;
+        const ev = m.event_group || m.event_ticker;
         if (!state.eventGroups[ev]) state.eventGroups[ev] = [];
         state.eventGroups[ev].push(m);
     }
@@ -479,10 +481,47 @@ function renderEventCard(ev, markets, now) {
         card.appendChild(renderGameStrip(game));
     }
 
-    for (const m of markets) {
-        card.appendChild(renderMarketSide(m));
+    // Split sub-markets by type for nested rendering
+    const series = markets.filter(m => m.market_type === 'series');
+    const maps = markets.filter(m => m.market_type === 'map');
+    const totalMaps = markets.filter(m => m.market_type === 'total_maps');
+    const other = markets.filter(m =>
+        !['series', 'map', 'total_maps'].includes(m.market_type));
+
+    // Series rows at top, no sub-header (the card title is already the series)
+    for (const m of series) card.appendChild(renderMarketSide(m));
+
+    // Maps — group by map_number, sub-header for each
+    if (maps.length > 0) {
+        const byMap = {};
+        for (const m of maps) {
+            const k = m.map_number || 0;
+            if (!byMap[k]) byMap[k] = [];
+            byMap[k].push(m);
+        }
+        for (const mapNum of Object.keys(byMap).sort((a, b) => +a - +b)) {
+            card.appendChild(makeSubHeader(`Map ${mapNum}`));
+            for (const m of byMap[mapNum]) card.appendChild(renderMarketSide(m));
+        }
     }
+
+    // Total maps over/under
+    if (totalMaps.length > 0) {
+        card.appendChild(makeSubHeader('Maps Over/Under'));
+        for (const m of totalMaps) card.appendChild(renderMarketSide(m));
+    }
+
+    // Any other markets (shouldn't happen but be safe)
+    for (const m of other) card.appendChild(renderMarketSide(m));
+
     return card;
+}
+
+function makeSubHeader(text) {
+    const h = document.createElement('div');
+    h.className = 'sub-section-header';
+    h.textContent = text;
+    return h;
 }
 
 function renderGameStrip(g) {

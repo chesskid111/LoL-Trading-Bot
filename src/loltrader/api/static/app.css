@@ -644,3 +644,19 @@ footer {
 .winprob-strip .winprob-edge-na { color: var(--text-muted, #666); font-style: italic; }
 .winprob-strip .winprob-stale { color: #f59e0b; font-size: 0.85em; }
 .winprob-strip .winprob-min { margin-left: auto; color: var(--text-muted, #aaa); }
+
+/* --- Sub-section headers within nested event cards ----------------------- */
+
+.sub-section-header {
+    display: block;
+    padding: 6px 10px;
+    margin: 8px 0 4px 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted, #888);
+    border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
+    background: var(--bg-tertiary, rgba(255,255,255,0.02));
+    border-radius: 4px;
+}
