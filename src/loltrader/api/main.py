@@ -78,19 +78,69 @@ def _parse_game_start_unix(ticker: str) -> int | None:
         return None
 
 
+def _classify_market_type(ticker: str) -> tuple[str, int | None]:
+    """Return (market_type, map_number) where type is one of:
+       'series' | 'map' | 'total_maps' | 'other'
+    """
+    if ticker.startswith("KXLOLGAME-"):
+        return ("series", None)
+    if ticker.startswith("KXLOLMAP-"):
+        # KXLOLMAP-26JUN070400DKKT-1-DK -> map 1
+        parts = ticker.split("-")
+        if len(parts) >= 3 and parts[2].isdigit():
+            return ("map", int(parts[2]))
+        return ("map", None)
+    if ticker.startswith("KXLOLTOTALMAPS-"):
+        return ("total_maps", None)
+    return ("other", None)
+
+
+def _ticker_group_key(ticker: str) -> str:
+    """Return the event-level key shared by all sub-markets of a series.
+
+    KXLOLGAME-26JUN070400DKKT-DK -> 26JUN070400DKKT
+    KXLOLMAP-26JUN070400DKKT-1-DK -> 26JUN070400DKKT
+    KXLOLTOTALMAPS-26JUN070400DKKT-4 -> 26JUN070400DKKT
+    """
+    parts = ticker.split("-")
+    if len(parts) >= 2:
+        return parts[1]
+    return ticker
+
+
 @app.get("/api/markets")
-async def list_markets(league: str | None = None, limit: int = 100) -> dict:
+async def list_markets(league: str | None = None, limit: int = 100,
+                       include_maps: bool = True) -> dict:
     """List active LoL markets, optionally filtered by league.
 
     Sorted by game start time (parsed from ticker), with currently-live games
     first, then upcoming soonest, then recently-finished. Kalshi's close_time
     is a 2-week-ahead expiry deadline and not useful for ordering.
+
+    When include_maps=True (default), per-map (KXLOLMAP-*) and over/under
+    (KXLOLTOTALMAPS-*) markets are included alongside the series-level markets.
+    Each record carries ``market_type`` ('series', 'map', 'total_maps') and
+    ``map_number`` for map markets, plus ``event_group`` shared across
+    sub-markets of the same series for client-side grouping.
     """
     from loltrader.ui.leagues import league_for_match
 
+    if include_maps:
+        ticker_filter = """
+            (m.series_ticker IN ('KXLOLGAME', 'KXLOLMAP', 'KXLOLTOTALMAPS')
+             OR m.market_ticker LIKE 'KXLOLGAME-%'
+             OR m.market_ticker LIKE 'KXLOLMAP-%'
+             OR m.market_ticker LIKE 'KXLOLTOTALMAPS-%')
+        """
+    else:
+        ticker_filter = """
+            (m.series_ticker = 'KXLOLGAME'
+             OR m.market_ticker LIKE 'KXLOLGAME-%')
+        """
+
     with connect() as c:
         rows = c.execute(
-            """
+            f"""
             SELECT m.market_ticker, m.event_ticker, m.title AS market_title,
                    m.status, m.yes_bid_cents, m.yes_ask_cents, m.last_price_cents,
                    m.close_time_unix, m.open_time_unix, m.volume_24h,
@@ -98,12 +148,12 @@ async def list_markets(league: str | None = None, limit: int = 100) -> dict:
             FROM kalshi_markets m
             LEFT JOIN kalshi_events e ON e.event_ticker = m.event_ticker
             WHERE m.status IN ('active', 'open')
-              AND (m.series_ticker = 'KXLOLGAME' OR m.market_ticker LIKE 'KXLOLGAME-%')
+              AND {ticker_filter}
               AND m.yes_ask_cents IS NOT NULL
             ORDER BY COALESCE(m.open_time_unix, 0) DESC
             LIMIT ?
             """,
-            (max(limit * 3, 200),),  # over-fetch for sort + filter
+            (max(limit * 5, 500),),  # over-fetch for sort + filter
         ).fetchall()
 
     now_unix = int(time.time())
@@ -120,23 +170,31 @@ async def list_markets(league: str | None = None, limit: int = 100) -> dict:
         if league and d["league"] != league:
             continue
 
-        game_start = _parse_game_start_unix(d["market_ticker"])
+        ticker = d["market_ticker"]
+        mtype, map_num = _classify_market_type(ticker)
+        d["market_type"] = mtype
+        d["map_number"] = map_num
+        d["event_group"] = _ticker_group_key(ticker)
+
+        game_start = _parse_game_start_unix(ticker)
         d["game_start_unix"] = game_start
         if game_start is None:
-            d["_sort_key"] = (3, 0)
+            time_bucket = (3, 0)
         elif now_unix - LIVE_WINDOW_BACK <= game_start <= now_unix:
-            # Live or very recently kicked off — top priority
-            d["_sort_key"] = (0, -game_start)
+            time_bucket = (0, -game_start)            # live
         elif now_unix < game_start <= now_unix + LIVE_WINDOW_FWD:
-            # Upcoming — sort by soonest first
-            d["_sort_key"] = (1, game_start)
+            time_bucket = (1, game_start)             # upcoming
         else:
-            d["_sort_key"] = (2, abs(game_start - now_unix))
+            time_bucket = (2, abs(game_start - now_unix))
+
+        # Within a series, order series-level first, then maps in order,
+        # then total_maps. Sort key: (time_bucket, market_type_rank, map_num)
+        type_rank = {"series": 0, "map": 1, "total_maps": 2}.get(mtype, 9)
+        d["_sort_key"] = (time_bucket, type_rank, map_num or 0)
 
         out.append(d)
 
     out.sort(key=lambda x: x["_sort_key"])
-    # Strip helper before returning
     for d in out:
         d.pop("_sort_key", None)
     out = out[:limit]

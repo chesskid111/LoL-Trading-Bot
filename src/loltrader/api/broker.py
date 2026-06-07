@@ -255,7 +255,10 @@ class MarketBroker:
                 """
                 SELECT market_ticker FROM kalshi_markets
                 WHERE status IN ('active', 'open')
-                  AND (series_ticker = 'KXLOLGAME' OR market_ticker LIKE 'KXLOLGAME-%')
+                  AND (series_ticker IN ('KXLOLGAME', 'KXLOLMAP', 'KXLOLTOTALMAPS')
+                    OR market_ticker LIKE 'KXLOLGAME-%'
+                    OR market_ticker LIKE 'KXLOLMAP-%'
+                    OR market_ticker LIKE 'KXLOLTOTALMAPS-%')
                 """
             ).fetchall()
         return [r["market_ticker"] for r in rows]
