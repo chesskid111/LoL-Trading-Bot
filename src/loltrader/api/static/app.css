@@ -660,3 +660,15 @@ footer {
     background: var(--bg-tertiary, rgba(255,255,255,0.02));
     border-radius: 4px;
 }
+
+/* --- Last-trade fallback / wide-spread indicators ------------------------ */
+.bid-ask .last-only {
+    color: var(--text-muted, #aaa);
+    font-style: italic;
+}
+.bid-ask .last-hint {
+    color: var(--text-muted, #888);
+    font-size: 0.85em;
+    margin-left: 6px;
+    font-style: italic;
+}

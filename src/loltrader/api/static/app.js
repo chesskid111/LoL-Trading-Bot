@@ -566,9 +566,18 @@ function renderMarketSide(m) {
     side.dataset.ticker = m.market_ticker;
 
     const team = m.market_ticker.split('-').pop();
-    const bid = m.yes_bid_cents || 0;
-    const ask = m.yes_ask_cents || 0;
+    const bidRaw = m.yes_bid_cents;
+    const askRaw = m.yes_ask_cents;
+    const lastRaw = m.last_price_cents;
+    // Fallback ladder: prefer bid/ask if present, else last trade price for
+    // both display and order pricing on thin markets.
+    const bid = bidRaw != null ? bidRaw : (lastRaw != null ? lastRaw : 0);
+    const ask = askRaw != null ? askRaw : (lastRaw != null ? lastRaw : 0);
     const noPrice = bid > 0 ? 100 - bid : 0;
+    // Flag for the UI when prices come from last-trade rather than live book
+    const usingLast = (bidRaw == null || askRaw == null) && lastRaw != null;
+    // Flag wide spreads (>15¢) so user knows displayed bid/ask isn't consensus
+    const wideSpread = (askRaw != null && bidRaw != null && (askRaw - bidRaw) > 15);
 
     const pred = state.predictions[m.market_ticker];
     let modelStr = '<span class="model-na">—</span>';
@@ -584,9 +593,19 @@ function renderMarketSide(m) {
         if (pred.edge_buy_no != null && pred.edge_buy_no < -0.05) edgeNoCls = ' edge-neg';
     }
 
+    // Price label: show bid/ask, with last-trade hint if the book is thin/wide
+    let priceLabel;
+    if (usingLast) {
+        priceLabel = `<span class="bid-ask"><span class="last-only" title="no live book — using last trade">last ${lastRaw}¢</span></span>`;
+    } else if (wideSpread && lastRaw != null) {
+        priceLabel = `<span class="bid-ask"><span class="bid bid-val">${bid}¢</span>/<span class="ask ask-val">${ask}¢</span> <span class="last-hint" title="wide spread — last trade ${lastRaw}¢">last ${lastRaw}¢</span></span>`;
+    } else {
+        priceLabel = `<span class="bid-ask"><span class="bid bid-val">${bid}¢</span> / <span class="ask ask-val">${ask}¢</span></span>`;
+    }
+
     side.innerHTML = `
         <span class="team-label">${escapeHtml(team)}</span>
-        <span class="bid-ask"><span class="bid bid-val">${bid}¢</span> / <span class="ask ask-val">${ask}¢</span></span>
+        ${priceLabel}
         <span class="model-cell">${modelStr}</span>
         <button class="book-toggle">📊 book</button>
         <button class="btn-buy-yes${edgeYesCls}" data-ticker="${m.market_ticker}" data-side="YES" data-price="${ask}" ${ask <= 0 ? 'disabled' : ''}>BUY YES @ ${ask}¢</button>
