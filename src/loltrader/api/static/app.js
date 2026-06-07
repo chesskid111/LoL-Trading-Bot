@@ -611,9 +611,12 @@ function renderMarketSide(m) {
         if (pred.edge_buy_no != null && pred.edge_buy_no < -0.05) edgeNoCls = ' edge-neg';
     }
 
-    // Price label: show bid/ask, with last-trade hint if the book is thin/wide
+    // Price label: graceful handling for empty / wide-spread / fallback states
     let priceLabel;
-    if (usingLast) {
+    const hasAnyPrice = bidRaw != null || askRaw != null || lastRaw != null;
+    if (!hasAnyPrice) {
+        priceLabel = `<span class="bid-ask"><span class="no-quotes" title="no quotes available">no quotes</span></span>`;
+    } else if (usingLast) {
         priceLabel = `<span class="bid-ask"><span class="last-only" title="no live book — using last trade">last ${lastRaw}¢</span></span>`;
     } else if (wideSpread && lastRaw != null) {
         priceLabel = `<span class="bid-ask"><span class="bid bid-val">${bid}¢</span>/<span class="ask ask-val">${ask}¢</span> <span class="last-hint" title="wide spread — last trade ${lastRaw}¢">last ${lastRaw}¢</span></span>`;

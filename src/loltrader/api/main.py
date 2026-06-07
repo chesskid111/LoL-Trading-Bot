@@ -149,13 +149,10 @@ async def list_markets(league: str | None = None, limit: int = 100,
             LEFT JOIN kalshi_events e ON e.event_ticker = m.event_ticker
             WHERE m.status IN ('active', 'open')
               AND {ticker_filter}
-              -- Include if ANY price signal exists (bid OR ask OR last trade).
-              -- Side markets often have one half of the book empty while the
-              -- other side has activity; we still want to display them with
-              -- whatever price data we have.
-              AND (m.yes_bid_cents IS NOT NULL
-                OR m.yes_ask_cents IS NOT NULL
-                OR m.last_price_cents IS NOT NULL)
+              -- Show all active sub-markets, even with no price data. This
+              -- keeps both teams visible per map so the user can see the
+              -- complete match structure. Empty markets render with '—'
+              -- placeholders client-side.
             ORDER BY COALESCE(m.open_time_unix, 0) DESC
             LIMIT ?
             """,
