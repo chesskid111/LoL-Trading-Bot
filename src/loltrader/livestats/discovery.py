@@ -25,7 +25,10 @@ LIVE = "https://feed.lolesports.com/livestats/v1"
 DEFAULT_TIMEOUT = 5
 
 # Adaptive-delay safety rails (spec §6.1).
-MIN_DELAY_SEC = 30
+# 2026-06-07: lowered from 30 to 15 after empirical probe showed Riot's actual
+# embargo is ~20s, not 30s. Probe walks up by 5s until a working delay is
+# found, so we naturally land at the minimum each game allows.
+MIN_DELAY_SEC = 15
 MAX_DELAY_SEC = 600
 
 
@@ -173,12 +176,16 @@ def get_window(game_id: str, starting_time_utc: datetime) -> dict[str, Any] | No
 def probe_minimum_delay(game_id: str) -> int | None:
     """Probe the smallest delay that returns at least one in_game frame.
 
-    Walks through standard candidates [30, 45, 60, 75, 90, 120, 180, 300, 600].
-    Returns the smallest that works; None if even 600s returns nothing
+    Walks through standard candidates from MIN_DELAY_SEC upward.
+    Returns the smallest that works; None if even MAX_DELAY_SEC returns nothing
     (meaning the game probably hasn't actually started yet, despite the
     persisted/getLive endpoint saying it has).
+
+    2026-06-07: walked from 30→15 minimum and added 5s granularity at the low
+    end so games with shorter embargoes (~20s, empirically verified) land
+    at their actual minimum instead of being floored at 30.
     """
-    for delay in [MIN_DELAY_SEC, 45, 60, 75, 90, 120, 180, 300, MAX_DELAY_SEC]:
+    for delay in [MIN_DELAY_SEC, 20, 25, 30, 45, 60, 75, 90, 120, 180, 300, MAX_DELAY_SEC]:
         d = datetime.now(timezone.utc) - timedelta(seconds=delay)
         try:
             data = _get_json(
