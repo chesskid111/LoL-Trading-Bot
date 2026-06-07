@@ -1,19 +1,31 @@
-/* LoL Trader v3 — dark theme tuned for long trading sessions */
+/* LoL Trader v3 — modern dark theme, tuned for long trading sessions */
 
 :root {
-    --bg-primary: #0d1117;
-    --bg-secondary: #161b22;
-    --bg-tertiary: #1f2530;
-    --border: #2a3140;
-    --text-primary: #e6edf3;
-    --text-muted: #8b95a5;
-    --text-faint: #5b6470;
-    --accent-blue: #3b82f6;
-    --accent-green: #10b981;
-    --accent-red: #ef4444;
-    --accent-orange: #f59e0b;
-    --accent-purple: #8b5cf6;
-    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+    /* Palette: slate-based (cooler / more muted than GitHub-style) */
+    --bg-primary: #0a0e15;
+    --bg-secondary: #121826;
+    --bg-tertiary: #1a2235;
+    --bg-elevated: #1e2940;
+    --border: rgba(255, 255, 255, 0.06);
+    --border-strong: rgba(255, 255, 255, 0.12);
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-faint: #64748b;
+    --accent-blue: #60a5fa;
+    --accent-blue-bg: rgba(96, 165, 250, 0.12);
+    --accent-green: #34d399;
+    --accent-green-bg: rgba(52, 211, 153, 0.12);
+    --accent-red: #f87171;
+    --accent-red-bg: rgba(248, 113, 113, 0.12);
+    --accent-orange: #fbbf24;
+    --accent-purple: #a78bfa;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
 }
 
 * {
@@ -26,10 +38,25 @@ html, body {
     height: 100%;
     background: var(--bg-primary);
     color: var(--text-primary);
-    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-    font-size: 14px;
-    line-height: 1.4;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+
+/* Subtle radial accent in the background for visual depth */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(96, 165, 250, 0.04), transparent),
+        radial-gradient(ellipse 80% 50% at 100% 100%, rgba(167, 139, 250, 0.03), transparent);
+    pointer-events: none;
+    z-index: 0;
+}
+body > * { position: relative; z-index: 1; }
 
 body {
     display: flex;
@@ -40,13 +67,24 @@ body {
 /* --- Header --- */
 
 header {
-    background: var(--bg-secondary);
+    background: rgba(18, 24, 38, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    padding: 12px 20px;
+    padding: 16px 32px;
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 32px;
     flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header h1, header .logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 header h1 {
@@ -143,8 +181,8 @@ header h1 .version {
 
 main {
     flex: 1;
-    padding: 16px 20px;
-    max-width: 1600px;
+    padding: 28px 32px;
+    max-width: 1700px;
     width: 100%;
     margin: 0 auto;
 }
@@ -152,14 +190,19 @@ main {
 .filter-bar {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding: 14px 18px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
     flex-wrap: wrap;
 }
 
 .filter-bar label {
     color: var(--text-muted);
     font-size: 0.85rem;
+    font-weight: 500;
 }
 
 .filter-bar select,
@@ -220,32 +263,39 @@ button:disabled {
 .market-card {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 16px;
-    margin-bottom: 12px;
-    transition: border-color 0.2s;
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
 }
 
 .market-card:hover {
-    border-color: var(--accent-blue);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
 }
 
 .market-header {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
 }
 
 .league-badge {
     display: inline-block;
-    background: var(--accent-purple);
-    color: white;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.75rem;
+    background: var(--accent-blue-bg);
+    color: var(--accent-blue);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid rgba(96, 165, 250, 0.2);
 }
 
 .market-title {
@@ -253,21 +303,34 @@ button:disabled {
     font-size: 1.05rem;
     color: var(--text-primary);
     flex: 1;
+    letter-spacing: -0.01em;
 }
 
 .close-time {
     color: var(--text-muted);
     font-size: 0.85rem;
-    font-family: monospace;
+    font-feature-settings: 'tnum';
+    padding: 4px 10px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
 }
 
 .market-side {
     display: grid;
-    grid-template-columns: 80px 110px 130px 80px 1fr 1fr;
+    grid-template-columns: 90px 140px 130px 90px 1fr 1fr;
     align-items: center;
-    gap: 10px;
-    padding: 8px 0;
+    gap: 14px;
+    padding: 12px 0;
     border-top: 1px solid var(--border);
+    transition: background-color 0.15s ease;
+}
+
+.market-side:first-of-type {
+    border-top: none;
+}
+
+.market-side:hover {
+    background-color: rgba(255, 255, 255, 0.015);
 }
 
 .model-cell {
@@ -307,51 +370,56 @@ button:disabled {
 }
 
 .team-label {
-    font-weight: 600;
-    color: var(--accent-blue);
-    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 1rem;
+    letter-spacing: -0.01em;
 }
 
 .bid-ask {
-    font-family: monospace;
+    font-feature-settings: 'tnum';
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
-.bid-ask .bid { color: var(--accent-green); }
-.bid-ask .ask { color: var(--accent-red); }
+.bid-ask .bid { color: var(--accent-green); font-weight: 600; }
+.bid-ask .ask { color: var(--accent-red); font-weight: 600; }
 
 .btn-buy-yes,
 .btn-buy-no {
-    padding: 6px 10px;
+    padding: 9px 14px;
     font-weight: 600;
-    font-size: 0.85rem;
-    border-radius: 6px;
+    font-size: 0.88rem;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    border: 1px solid var(--border);
-    transition: all 0.15s;
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+    font-feature-settings: 'tnum';
+    letter-spacing: -0.01em;
+}
+
+.btn-buy-yes:hover:not(:disabled),
+.btn-buy-no:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-buy-yes:active:not(:disabled),
+.btn-buy-no:active:not(:disabled) {
+    transform: translateY(0);
 }
 
 .btn-buy-yes {
-    background: rgba(16, 185, 129, 0.1);
+    background: var(--accent-green-bg);
     color: var(--accent-green);
-    border-color: var(--accent-green);
-}
-
-.btn-buy-yes:hover:not(:disabled) {
-    background: var(--accent-green);
-    color: white;
+    border-color: rgba(52, 211, 153, 0.25);
 }
 
 .btn-buy-no {
-    background: rgba(239, 68, 68, 0.1);
+    background: var(--accent-red-bg);
     color: var(--accent-red);
-    border-color: var(--accent-red);
-}
-
-.btn-buy-no:hover:not(:disabled) {
-    background: var(--accent-red);
-    color: white;
+    border-color: rgba(248, 113, 113, 0.25);
 }
 
 /* --- Live game strip --- */
@@ -359,14 +427,15 @@ button:disabled {
 .game-strip {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 8px 10px;
-    margin: 0 0 8px 0;
+    gap: 16px;
+    padding: 12px 16px;
+    margin: 0 0 14px 0;
     background: var(--bg-tertiary);
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-family: monospace;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-feature-settings: 'tnum';
     flex-wrap: wrap;
+    border: 1px solid var(--border);
 }
 
 .game-state {
@@ -620,20 +689,23 @@ footer {
 .winprob-strip {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 6px 10px;
-    margin: 0 0 6px 0;
+    gap: 14px;
+    padding: 10px 14px;
+    margin: 0 0 12px 0;
     background: var(--bg-tertiary);
-    border-radius: 6px;
-    font-size: 0.78rem;
-    font-family: monospace;
-    border-left: 3px solid var(--text-muted, #666);
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-feature-settings: 'tnum';
+    border-left: 3px solid var(--text-faint);
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .winprob-strip.winprob-alert {
-    border-left-color: var(--accent-blue, #3b82f6);
-    background: rgba(59, 130, 246, 0.08);
-    box-shadow: 0 0 8px rgba(59, 130, 246, 0.15) inset;
+    border-left-color: var(--accent-blue);
+    background: var(--accent-blue-bg);
+    box-shadow: 0 0 16px rgba(96, 165, 250, 0.2) inset;
 }
 
 .winprob-strip .winprob-model b { color: var(--text-primary, #fff); }
@@ -649,16 +721,16 @@ footer {
 
 .sub-section-header {
     display: block;
-    padding: 6px 10px;
-    margin: 8px 0 4px 0;
-    font-size: 0.75rem;
-    font-weight: 600;
+    padding: 10px 14px;
+    margin: 16px 0 8px 0;
+    font-size: 0.72rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted, #888);
-    border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
-    background: var(--bg-tertiary, rgba(255,255,255,0.02));
-    border-radius: 4px;
+    letter-spacing: 0.1em;
+    color: var(--accent-purple);
+    background: linear-gradient(90deg, rgba(167, 139, 250, 0.08) 0%, transparent 100%);
+    border-left: 3px solid var(--accent-purple);
+    border-radius: var(--radius-sm);
 }
 
 /* --- Last-trade fallback / wide-spread indicators ------------------------ */

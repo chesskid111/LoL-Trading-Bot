@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoL Trader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+    <header>
+        <h1>LoL Trader <span class="version">v3</span></h1>
+        <div class="conn-status">
+            <span id="ws-indicator" class="indicator disconnected"></span>
+            <span id="ws-text">connecting…</span>
+            <span class="separator">·</span>
+            <span id="market-count">0 markets</span>
+            <span class="separator">·</span>
+            <span id="tick-time">—</span>
+        </div>
+        <div class="mode-toggle">
+            <label class="switch">
+                <input type="checkbox" id="live-mode-toggle">
+                <span class="slider"></span>
+            </label>
+            <span id="mode-label" class="mode-paper">📝 PAPER</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="filter-bar">
+            <label for="league-filter">League:</label>
+            <select id="league-filter">
+                <option value="">All</option>
+                <option value="LCK">LCK</option>
+                <option value="LCS">LCS</option>
+                <option value="LEC">LEC</option>
+                <option value="LPL">LPL</option>
+                <option value="LCP">LCP</option>
+                <option value="LTA-S">LTA-S</option>
+                <option value="LJL">LJL</option>
+                <option value="International">International</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="default-contracts">Contracts:</label>
+            <input type="number" id="default-contracts" value="50" min="1" max="10000">
+
+            <label for="limit-padding">Limit padding (¢):</label>
+            <input type="number" id="limit-padding" value="10" min="0" max="50">
+
+            <button id="refresh-btn">🔄 Refresh markets</button>
+        </section>
+
+        <section id="markets-container">
+            <div class="empty-state">Loading markets…</div>
+        </section>
+
+        <section id="trades-panel" class="trades-panel">
+            <div class="trades-header">
+                <h2>Recent trades</h2>
+                <div class="pnl-summary">
+                    <span class="pnl-label">Realized</span>
+                    <span id="pnl-realized" class="pnl-val">—</span>
+                    <span class="pnl-label">Unrealized</span>
+                    <span id="pnl-unrealized" class="pnl-val">—</span>
+                    <span class="pnl-label">Total</span>
+                    <span id="pnl-total" class="pnl-val pnl-total">—</span>
+                </div>
+            </div>
+            <div id="trades-list" class="trades-list">
+                <div class="empty-state">No trades yet.</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>FastAPI + vanilla JS · sub-200ms updates · port 8502</span>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
