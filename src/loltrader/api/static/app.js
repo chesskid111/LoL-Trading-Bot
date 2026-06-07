@@ -112,7 +112,88 @@ function handleWsMessage(msg) {
         updateOrderbookInUI(msg);
     } else if (msg.type === 'game_frame') {
         updateGameFrameInUI(msg.frame);
+    } else if (msg.type === 'winprob_update') {
+        updateWinprobInUI(msg.prediction);
     }
+}
+
+// --- Phase 5: live win-prob rendering -----------------------------------
+
+// Minimum edge (in cents) to highlight a market card as "actionable"
+const EDGE_HIGHLIGHT_CENTS = 5;
+// Maximum ensemble band-width (in cents) above which a prediction is treated
+// as too uncertain to flag
+const MAX_BAND_FOR_ALERT = 20;
+
+if (!state.winprobByGameId) state.winprobByGameId = {};
+
+function updateWinprobInUI(pred) {
+    // Cache the latest prediction by game_id
+    state.winprobByGameId[pred.game_id] = pred;
+
+    // Find market cards whose teams match this game
+    const teamCodes = [pred.blue_team_code, pred.red_team_code].filter(Boolean);
+    if (teamCodes.length === 0) return;
+
+    for (const card of document.querySelectorAll('.market-card')) {
+        const codes = [...card.querySelectorAll('.team-label')].map(e => e.textContent);
+        if (!codes.some(c => teamCodes.includes(c))) continue;
+
+        // Determine which side this market's YES contract resolves to. We try
+        // to read it from a data-side attribute (set by the card renderer);
+        // fall back to assuming YES = blue team for v1.
+        const yesIsBlue = card.dataset.yesSide
+            ? card.dataset.yesSide === 'blue'
+            : true;
+        const modelP = yesIsBlue ? pred.p_blue : (1.0 - pred.p_blue);
+        const bandPct = Math.round(pred.band_width * 100);
+
+        // Pull current market ask (YES) from the card to compute edge
+        const askEl = card.querySelector('.ask-val');
+        const askText = askEl ? askEl.textContent.replace('¢', '').trim() : '';
+        const marketAsk = parseInt(askText, 10);  // NaN if no ask yet
+
+        const modelPct = Math.round(modelP * 100);
+        const edgeCents = Number.isFinite(marketAsk) ? (modelPct - marketAsk) : null;
+
+        renderEdgeStrip(card, modelPct, bandPct, marketAsk, edgeCents, pred);
+    }
+}
+
+function renderEdgeStrip(card, modelPct, bandPct, marketAsk, edgeCents, pred) {
+    let strip = card.querySelector('.winprob-strip');
+    if (!strip) {
+        strip = document.createElement('div');
+        strip.className = 'winprob-strip';
+        const header = card.querySelector('.market-header');
+        const gameStrip = card.querySelector('.game-strip');
+        // Insert AFTER game-strip if present, otherwise after header
+        (gameStrip || header).after(strip);
+    }
+
+    const isStale = !pred.has_full_features;
+    const bandTag = isStale
+        ? '<span class="winprob-stale" title="picks not resolved — features incomplete">(degraded)</span>'
+        : '';
+
+    let edgeHtml = '<span class="winprob-edge-na">no ask</span>';
+    let alertClass = '';
+    if (edgeCents !== null) {
+        const sign = edgeCents >= 0 ? '+' : '';
+        edgeHtml = `<span class="winprob-edge edge-${edgeCents >= 0 ? 'pos' : 'neg'}">edge ${sign}${edgeCents}¢</span>`;
+        if (Math.abs(edgeCents) >= EDGE_HIGHLIGHT_CENTS && bandPct <= MAX_BAND_FOR_ALERT) {
+            alertClass = ' winprob-alert';
+        }
+    }
+
+    strip.className = `winprob-strip${alertClass}`;
+    strip.innerHTML = `
+        <span class="winprob-model">model: <b>${modelPct}¢</b> <span class="band">±${(bandPct/2).toFixed(0)}¢</span></span>
+        <span class="winprob-mkt">mkt: ${Number.isFinite(marketAsk) ? marketAsk + '¢' : '—'}</span>
+        ${edgeHtml}
+        ${bandTag}
+        <span class="winprob-min">m${pred.minute}</span>
+    `;
 }
 
 function updateGameFrameInUI(frame) {

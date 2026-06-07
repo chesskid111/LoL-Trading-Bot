@@ -51,6 +51,10 @@ class MarketBroker:
         self.clients: list[ConnectedClient] = []
         self._lock = asyncio.Lock()
         self._stop = asyncio.Event()
+        # Phase 5: live win-prob service. Lazy-loaded so a missing model file
+        # doesn't break the broker — it just disables winprob_update messages.
+        from loltrader.winprob.serve import WinprobService
+        self.winprob = WinprobService()
 
     # --- client management -------------------------------------------------
 
@@ -201,6 +205,23 @@ class MarketBroker:
                 await self._broadcast(payload)
                 last_frame_id = int(d["frame_id"])
 
+                # Phase 5: compute + push a calibrated win-prob alongside the
+                # frame. Uses the latest frame in the DB (which is the one we
+                # just pushed). Cheap — model.predict is <10ms.
+                if self.winprob.is_ready:
+                    try:
+                        with connect() as wp_conn:
+                            pred = self.winprob.predict(wp_conn, d["game_id"])
+                        if pred is not None:
+                            wp_payload = {
+                                "type": "winprob_update",
+                                "prediction": self.winprob.to_wire(pred),
+                                "ts": int(time.time() * 1000),
+                            }
+                            await self._broadcast(wp_payload)
+                    except Exception as e:
+                        log.debug("winprob push failed for %s: %s", d["game_id"], e)
+
     async def _periodic_refresh(self) -> None:
         """Re-query active markets list every REFRESH_MARKETS_SEC."""
         last = 0.0
@@ -242,8 +263,12 @@ class MarketBroker:
     # --- startup / shutdown -----------------------------------------------
 
     async def startup(self) -> None:
-        """Bootstrap: refresh markets, connect to Kalshi WS."""
+        """Bootstrap: refresh markets, load win-prob model, connect to Kalshi WS."""
         log.info("Broker startup")
+        # Load the live win-prob model (Phase 5). Best-effort — if no model
+        # file exists, the broker still serves frames without predictions.
+        self.winprob.load()
+
         with connect() as c:
             n = fast_refresh_active_lol_markets(self.rest, c)
         log.info("Bootstrap refresh: %d markets", n)
