@@ -9813,13 +9813,13 @@
     "qualitative": {
       "scaling_early": 3,
       "scaling_mid": 1,
-      "scaling_late": -1,
+      "scaling_late": 0,
       "baron_dps_tier": 3,
       "peel_needs": 1,
       "peel_supply": 1,
       "split_push_threat": 1,
       "pick_threat": 2,
-      "teamfight_score": 1,
+      "teamfight_score": 2,
       "engage_score": 3,
       "disengage_score": 2,
       "wave_clear": 1,
@@ -9857,7 +9857,7 @@
       "blitz.gg \u2013 Xin Zhao Build Guide 26.11 (early-game aggression, kited by mobile champions, falls off without lead, R as disengage tool)",
       "mobalytics.gg \u2013 Xin Zhao Patch 26.11 (S-tier in solo queue, Conqueror keystone, Titanic Hydra / Dusk and Dawn core)"
     ],
-    "confidence": 0.52,
+    "confidence": 0.75,
     "last_updated": "2026-06-06T13:53:50Z",
     "validation_flags": [
       "No pro stage game data found for Xin Zhao in patch 26.11 window specifically; values derived from late-2025 LCK/LPL tournament data (patches 25.19-25.20) and current-patch solo-queue/probuild signals",
@@ -9865,7 +9865,8 @@
       "Xin Zhao was a top-3 LCK/LPL jungle pick in 2025 but may have lower priority in 26.11 if engage jungle pool has deepened",
       "No LS, Caedrel, or MonteCristo specific 26.11 Xin Zhao content found in search window; qualitative values rely on general pro-play characterization",
       "common_partners are inferred from co-meta champions (engage/poke/AoE burst that pair with Xin's front-line dive), not hard pairing data",
-      "meta shift flag: Fearless Draft context means Xin Zhao value is pool-depth dependent \u2014 higher priority in games 2-5 of series"
+      "meta shift flag: Fearless Draft context means Xin Zhao value is pool-depth dependent \u2014 higher priority in games 2-5 of series",
+      "USER OVERRIDE 2026-06-06: scaling_late -1 -> 0, teamfight 1 -> 2. Kit-driven champion (isolate ult + true dmg + tank-shred) underrated by solo-queue tier list bias. Stays relevant in coordinated 5v5s."
     ]
   },
   "Yasuo": {
