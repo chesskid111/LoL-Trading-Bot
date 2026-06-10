@@ -42,7 +42,27 @@ MIN_WR_THRESHOLD = 0.55             # below this, no boost
 MIN_GAMES = 10                       # below this, too noisy
 GD_EARLY_THRESHOLD = 300             # +GD@15 above this = early pair
 GD_SCALING_THRESHOLD = 100           # +GD@15 below this (with high WR) = scaling
-WR_REGRESSION_FACTOR = 0.70          # pull WR 30% toward 50%
+
+# Bayesian shrinkage parameters.
+# Replaces the old constant WR regression with a sample-size-aware shrinkage:
+# small-N pairs (10-15 games) get pulled aggressively toward 50%, large-N pairs
+# (100+ games) keep most of their measured edge.
+# Formula: effective_wr = (N*sample_wr + PRIOR_N*0.5) / (N + PRIOR_N)
+# At N=10:  effective ≈ 0.25*sample + 0.375 (heavily damped)
+# At N=30:  effective ≈ 0.50*sample + 0.250 (half-damped)
+# At N=100: effective ≈ 0.77*sample + 0.115 (mostly trusted)
+# At N=200: effective ≈ 0.87*sample + 0.065 (well-trusted)
+PRIOR_N = 30                         # equivalent-strength prior toward 50%
+PRIOR_WR = 0.5                       # baseline assumption
+
+# Boost multiplier — turns effective edge (post-shrinkage) into a feature boost.
+# At multiplier=10: 5% edge → +0.5 boost; 10% edge → +1.0; 15% edge → +1.5 (cap).
+# Lower than the previous *20 so meaningful differentiation isn't lost to capping.
+BOOST_EDGE_MULTIPLIER = 10
+
+# Cap on per-pair boost magnitude — even at high WR with large N, we don't
+# want a single synergy to dominate the comp signal.
+MAX_BOOST_PER_PAIR = 1.5
 
 # Champion name normalization — gol.gg uses display names ("Lee Sin"),
 # our profiles use DataDragon names ("LeeSin").
@@ -229,18 +249,24 @@ def dedup_synergies(all_rows: Iterable[GolGGSynergyRow]) -> dict[str, dict]:
 def classify_synergy(agg: dict) -> tuple[str, dict[str, float]]:
     """Classify a synergy + assign boost values.
 
+    Uses Bayesian shrinkage based on sample size so noisy small-N pairs
+    don't get full-magnitude boosts. A 90% WR over 10 games gets shrunk
+    much harder than a 70% WR over 100 games.
+
     Returns: (synergy_type, boost_dict).
-    boost_dict keys: scaling_early/mid/late_boost, teamfight/engage/pick_threat_boost.
     """
     wr = agg["winrate"]
+    n = agg["n_games_total"]
     gd = agg["avg_duo_gd_15"]
 
-    # Conservative WR adjustment: pull toward 50%
-    effective_wr = 0.5 + (wr - 0.5) * (1 - WR_REGRESSION_FACTOR)
+    # Bayesian shrinkage toward 50% baseline
+    # weight on the data = N / (N + PRIOR_N), weight on prior = PRIOR_N / (N + PRIOR_N)
+    effective_wr = (n * wr + PRIOR_N * PRIOR_WR) / (n + PRIOR_N)
+
     # Boost magnitude scales with effective edge above 50%
     edge = max(0, effective_wr - 0.5)
-    # Map: 5% edge → +1.0 boost; 10% edge → +2.0 boost (capped)
-    boost_strength = min(2.0, edge * 20)
+    # Linear: 5% effective edge → 0.5 boost; capped at MAX_BOOST_PER_PAIR
+    boost_strength = min(MAX_BOOST_PER_PAIR, edge * BOOST_EDGE_MULTIPLIER)
 
     boosts = {k: 0.0 for k in (
         "scaling_early_boost", "scaling_mid_boost", "scaling_late_boost",

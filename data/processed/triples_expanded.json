@@ -14,12 +14,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 2.0,
-    "teamfight_boost": 1.0,
+    "scaling_late_boost": 1.2788372093023248,
+    "teamfight_boost": 0.6394186046511624,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Ashe:bot|Seraphine:support|Viktor:mid": {
     "triple_key": "Ashe:bot|Seraphine:support|Viktor:mid",
@@ -35,13 +35,13 @@
     "avg_duo_csd_15": 12.0,
     "synergy_type": "mid_game",
     "scaling_early_boost": 0.0,
-    "scaling_mid_boost": 2.0,
+    "scaling_mid_boost": 0.9999999999999998,
     "scaling_late_boost": 0.0,
     "teamfight_boost": 0.0,
     "engage_boost": 0.0,
-    "pick_threat_boost": 1.0,
+    "pick_threat_boost": 0.4999999999999999,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Ashe:bot|Rumble:top|Seraphine:support": {
     "triple_key": "Ashe:bot|Rumble:top|Seraphine:support",
@@ -58,12 +58,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 1.8779999999999997,
-    "teamfight_boost": 0.9389999999999998,
+    "scaling_late_boost": 1.0886956521739133,
+    "teamfight_boost": 0.5443478260869566,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Ashe:bot|Pantheon:jungle|Seraphine:support": {
     "triple_key": "Ashe:bot|Pantheon:jungle|Seraphine:support",
@@ -80,12 +80,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 1.6979999999999995,
-    "teamfight_boost": 0.8489999999999998,
+    "scaling_late_boost": 1.2281132075471701,
+    "teamfight_boost": 0.6140566037735851,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Ashe:bot|Aurora:mid|XinZhao:jungle": {
     "triple_key": "Ashe:bot|Aurora:mid|XinZhao:jungle",
@@ -102,12 +102,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 1.6139999999999999,
-    "teamfight_boost": 0.8069999999999999,
+    "scaling_late_boost": 0.8132558139534884,
+    "teamfight_boost": 0.4066279069767442,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Ashe:bot|Ryze:mid|Seraphine:support": {
     "triple_key": "Ashe:bot|Ryze:mid|Seraphine:support",
@@ -124,12 +124,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 1.3319999999999999,
-    "teamfight_boost": 0.6659999999999999,
+    "scaling_late_boost": 0.8324999999999994,
+    "teamfight_boost": 0.4162499999999997,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Bard:support|Caitlyn:bot|Pantheon:jungle": {
     "triple_key": "Bard:support|Caitlyn:bot|Pantheon:jungle",
@@ -146,12 +146,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 1.2840000000000007,
-    "teamfight_boost": 0.6420000000000003,
+    "scaling_late_boost": 0.6809090909090909,
+    "teamfight_boost": 0.34045454545454545,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Cassiopeia:mid|Lucian:bot|Milio:support": {
     "triple_key": "Cassiopeia:mid|Lucian:bot|Milio:support",
@@ -168,12 +168,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 1.200000000000001,
-    "teamfight_boost": 0.6000000000000005,
+    "scaling_late_boost": 0.5000000000000004,
+    "teamfight_boost": 0.2500000000000002,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Ashe:bot|Seraphine:support|XinZhao:jungle": {
     "triple_key": "Ashe:bot|Seraphine:support|XinZhao:jungle",
@@ -190,12 +190,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 1.037999999999999,
-    "teamfight_boost": 0.5189999999999995,
+    "scaling_late_boost": 1.073037974683544,
+    "teamfight_boost": 0.536518987341772,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Bard:support|Caitlyn:bot|Skarner:jungle": {
     "triple_key": "Bard:support|Caitlyn:bot|Skarner:jungle",
@@ -211,13 +211,13 @@
     "avg_duo_csd_15": 15.2,
     "synergy_type": "mid_game",
     "scaling_early_boost": 0.0,
-    "scaling_mid_boost": 1.0020000000000007,
+    "scaling_mid_boost": 0.4771428571428571,
     "scaling_late_boost": 0.0,
     "teamfight_boost": 0.0,
     "engage_boost": 0.0,
-    "pick_threat_boost": 0.5010000000000003,
+    "pick_threat_boost": 0.23857142857142855,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Corki:bot|Gnar:top|Nami:support": {
     "triple_key": "Corki:bot|Gnar:top|Nami:support",
@@ -234,12 +234,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 0.8820000000000006,
-    "teamfight_boost": 0.4410000000000003,
+    "scaling_late_boost": 0.5317021276595746,
+    "teamfight_boost": 0.2658510638297873,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Aurora:mid|Seraphine:support|XinZhao:jungle": {
     "triple_key": "Aurora:mid|Seraphine:support|XinZhao:jungle",
@@ -256,12 +256,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 0.858000000000001,
-    "teamfight_boost": 0.4290000000000005,
+    "scaling_late_boost": 0.45500000000000096,
+    "teamfight_boost": 0.22750000000000048,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Corki:bot|Nami:support|Renekton:top": {
     "triple_key": "Corki:bot|Nami:support|Renekton:top",
@@ -278,12 +278,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 0.858000000000001,
-    "teamfight_boost": 0.4290000000000005,
+    "scaling_late_boost": 0.45500000000000096,
+    "teamfight_boost": 0.22750000000000048,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Ashe:bot|MonkeyKing:jungle|Seraphine:support": {
     "triple_key": "Ashe:bot|MonkeyKing:jungle|Seraphine:support",
@@ -300,12 +300,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 0.8160000000000012,
-    "teamfight_boost": 0.4080000000000006,
+    "scaling_late_boost": 0.36487804878048813,
+    "teamfight_boost": 0.18243902439024406,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Ahri:mid|Ashe:bot|Seraphine:support": {
     "triple_key": "Ahri:mid|Ashe:bot|Seraphine:support",
@@ -321,13 +321,13 @@
     "avg_duo_csd_15": 9.9,
     "synergy_type": "mid_game",
     "scaling_early_boost": 0.0,
-    "scaling_mid_boost": 0.8160000000000012,
+    "scaling_mid_boost": 0.36487804878048813,
     "scaling_late_boost": 0.0,
     "teamfight_boost": 0.0,
     "engage_boost": 0.0,
-    "pick_threat_boost": 0.4080000000000006,
+    "pick_threat_boost": 0.18243902439024406,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Corki:bot|Nami:support|Ryze:mid": {
     "triple_key": "Corki:bot|Nami:support|Ryze:mid",
@@ -344,12 +344,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 0.7499999999999996,
-    "teamfight_boost": 0.3749999999999998,
+    "scaling_late_boost": 0.4347826086956519,
+    "teamfight_boost": 0.21739130434782594,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Ashe:bot|Naafiri:jungle|Seraphine:support": {
     "triple_key": "Ashe:bot|Naafiri:jungle|Seraphine:support",
@@ -366,12 +366,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 0.6899999999999995,
-    "teamfight_boost": 0.34499999999999975,
+    "scaling_late_boost": 0.347674418604651,
+    "teamfight_boost": 0.1738372093023255,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Corki:bot|Nami:support|XinZhao:jungle": {
     "triple_key": "Corki:bot|Nami:support|XinZhao:jungle",
@@ -388,12 +388,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 0.6899999999999995,
-    "teamfight_boost": 0.34499999999999975,
+    "scaling_late_boost": 0.347674418604651,
+    "teamfight_boost": 0.1738372093023255,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Gnar:top|Lucian:bot|Milio:support": {
     "triple_key": "Gnar:top|Lucian:bot|Milio:support",
@@ -408,14 +408,14 @@
     "avg_duo_gd_15": 386.0,
     "avg_duo_csd_15": -14.0,
     "synergy_type": "early_game",
-    "scaling_early_boost": 0.6659999999999999,
+    "scaling_early_boost": 0.4162499999999991,
     "scaling_mid_boost": 0.0,
     "scaling_late_boost": 0.0,
     "teamfight_boost": 0.0,
-    "engage_boost": 0.33299999999999996,
+    "engage_boost": 0.20812499999999956,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Ashe:bot|Gnar:top|Seraphine:support": {
     "triple_key": "Ashe:bot|Gnar:top|Seraphine:support",
@@ -431,13 +431,13 @@
     "avg_duo_csd_15": 2.7,
     "synergy_type": "mid_game",
     "scaling_early_boost": 0.0,
-    "scaling_mid_boost": 0.653999999999999,
+    "scaling_mid_boost": 0.4730188679245284,
     "scaling_late_boost": 0.0,
     "teamfight_boost": 0.0,
     "engage_boost": 0.0,
-    "pick_threat_boost": 0.3269999999999995,
+    "pick_threat_boost": 0.2365094339622642,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Lucian:bot|Milio:support|TwistedFate:mid": {
     "triple_key": "Lucian:bot|Milio:support|TwistedFate:mid",
@@ -452,14 +452,14 @@
     "avg_duo_gd_15": 613.1,
     "avg_duo_csd_15": 8.3,
     "synergy_type": "early_game",
-    "scaling_early_boost": 0.6000000000000005,
+    "scaling_early_boost": 0.2500000000000002,
     "scaling_mid_boost": 0.0,
     "scaling_late_boost": 0.0,
     "teamfight_boost": 0.0,
-    "engage_boost": 0.30000000000000027,
+    "engage_boost": 0.1250000000000001,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Ahri:mid|Rumble:top|Vi:jungle": {
     "triple_key": "Ahri:mid|Rumble:top|Vi:jungle",
@@ -474,14 +474,14 @@
     "avg_duo_gd_15": 381.8,
     "avg_duo_csd_15": 10.8,
     "synergy_type": "early_game",
-    "scaling_early_boost": 0.6000000000000005,
+    "scaling_early_boost": 0.2500000000000002,
     "scaling_mid_boost": 0.0,
     "scaling_late_boost": 0.0,
     "teamfight_boost": 0.0,
-    "engage_boost": 0.30000000000000027,
+    "engage_boost": 0.1250000000000001,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Ashe:bot|Azir:mid|Seraphine:support": {
     "triple_key": "Ashe:bot|Azir:mid|Seraphine:support",
@@ -498,12 +498,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 0.6000000000000005,
-    "teamfight_boost": 0.30000000000000027,
+    "scaling_late_boost": 0.2500000000000002,
+    "teamfight_boost": 0.1250000000000001,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "KSante:top|Seraphine:support|XinZhao:jungle": {
     "triple_key": "KSante:top|Seraphine:support|XinZhao:jungle",
@@ -520,12 +520,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 0.6000000000000005,
-    "teamfight_boost": 0.30000000000000027,
+    "scaling_late_boost": 0.2500000000000002,
+    "teamfight_boost": 0.1250000000000001,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Bard:support|Caitlyn:bot|Ryze:mid": {
     "triple_key": "Bard:support|Caitlyn:bot|Ryze:mid",
@@ -542,12 +542,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 0.49800000000000066,
-    "teamfight_boost": 0.24900000000000033,
+    "scaling_late_boost": 0.23714285714285688,
+    "teamfight_boost": 0.11857142857142844,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Bard:support|Caitlyn:bot|JarvanIV:jungle": {
     "triple_key": "Bard:support|Caitlyn:bot|JarvanIV:jungle",
@@ -564,12 +564,12 @@
     "synergy_type": "late_game",
     "scaling_early_boost": 0.0,
     "scaling_mid_boost": 0.0,
-    "scaling_late_boost": 0.49800000000000066,
-    "teamfight_boost": 0.24900000000000033,
+    "scaling_late_boost": 0.23714285714285688,
+    "teamfight_boost": 0.11857142857142844,
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   },
   "Ahri:mid|Lulu:support|Yunara:bot": {
     "triple_key": "Ahri:mid|Lulu:support|Yunara:bot",
@@ -584,13 +584,13 @@
     "avg_duo_gd_15": 311.9,
     "avg_duo_csd_15": -1.2,
     "synergy_type": "early_game",
-    "scaling_early_boost": 0.37800000000000056,
+    "scaling_early_boost": 0.2191304347826084,
     "scaling_mid_boost": 0.0,
     "scaling_late_boost": 0.0,
     "teamfight_boost": 0.0,
-    "engage_boost": 0.18900000000000028,
+    "engage_boost": 0.1095652173913042,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:31:30.637185+00:00"
+    "imported_at": "2026-06-10T00:39:00.353423+00:00"
   }
 }
