@@ -18,9 +18,15 @@ class GolGGSynergyRow(BaseModel):
     """One row from the gol.gg Champion Synergy table after copy-to-clipboard.
 
     Source columns: CHAMPION 1, CHAMPION 2, # GAMES, WINRATE, DUO GD@15, DUO CSD@15
+
+    gol.gg appends the role to each champion name ('Pantheon JUNGLE'), which we
+    parse + preserve — off-meta variants (Sett support vs Sett top) have
+    completely different play patterns and shouldn't be merged.
     """
     champion_1: str
+    role_1: Optional[Literal["top", "jungle", "mid", "bot", "support"]] = None
     champion_2: str
+    role_2: Optional[Literal["top", "jungle", "mid", "bot", "support"]] = None
     n_games: int = Field(..., ge=1)
     winrate: float = Field(..., ge=0.0, le=1.0)
     duo_gd_15: float          # raw value (can be negative)
@@ -171,10 +177,17 @@ class DPMPlayerStats(BaseModel):
 
 
 class ExpandedSynergy(BaseModel):
-    """Single entry in data/processed/synergies_expanded.json."""
-    pair_key: str                # "Caitlyn|LeeSin" (sorted)
+    """Single entry in data/processed/synergies_expanded.json.
+
+    pair_key includes both champion AND role so off-meta picks
+    (Sett support vs Sett top) stay distinct.
+    Format: "Champ1:role1|Champ2:role2" (sorted alphabetically).
+    """
+    pair_key: str                # "Caitlyn:bot|LeeSin:jungle"
     champion_1: str
+    role_1: Optional[Literal["top", "jungle", "mid", "bot", "support"]] = None
     champion_2: str
+    role_2: Optional[Literal["top", "jungle", "mid", "bot", "support"]] = None
     n_games_total: int
     winrate: float = Field(..., ge=0.0, le=1.0)
     avg_duo_gd_15: float

@@ -68,13 +68,40 @@ DDRAGON_NAME_MAP = {
 }
 
 
-def normalize_champion(name: str) -> str:
-    """Map gol.gg display name → DataDragon canonical name."""
+_ROLE_SUFFIX_RE = re.compile(
+    r"\s+(?:TOP|JUNGLE|JGL?|MID|MIDDLE|BOT|BOTTOM|ADC|SUPPORT|SUPP?|SUP)\s*$",
+    re.IGNORECASE,
+)
+
+
+def extract_role_suffix(name: str) -> tuple[str, str | None]:
+    """If gol.gg appended ' JUNGLE' / ' MID' / etc., split into (champ, role)."""
     s = (name or "").strip()
-    if s in DDRAGON_NAME_MAP:
-        return DDRAGON_NAME_MAP[s]
+    m = _ROLE_SUFFIX_RE.search(s)
+    if not m:
+        return s, None
+    role_token = m.group(0).strip().upper()
+    role_map = {
+        "TOP": "top",
+        "JUNGLE": "jungle", "JGL": "jungle", "JG": "jungle",
+        "MID": "mid", "MIDDLE": "mid",
+        "BOT": "bot", "BOTTOM": "bot", "ADC": "bot",
+        "SUPPORT": "support", "SUPP": "support", "SUP": "support",
+    }
+    return s[:m.start()].strip(), role_map.get(role_token)
+
+
+def normalize_champion(name: str) -> str:
+    """Map gol.gg display name → DataDragon canonical name.
+
+    Handles gol.gg's role suffix convention (' Pantheon JUNGLE') by stripping
+    the suffix before lookup. Also normalizes leading/trailing whitespace.
+    """
+    base, _ = extract_role_suffix(name)
+    if base in DDRAGON_NAME_MAP:
+        return DDRAGON_NAME_MAP[base]
     # Strip apostrophes + spaces as a fallback
-    return re.sub(r"['\s.]", "", s)
+    return re.sub(r"['\s.]", "", base)
 
 
 def parse_tsv(path: Path) -> list[GolGGSynergyRow]:
@@ -112,13 +139,18 @@ def parse_tsv(path: Path) -> list[GolGGSynergyRow]:
                 def _num(s: str) -> float:
                     return float(s.replace(",", "").replace("%", "").strip())
 
-                c1 = normalize_champion(raw[0])
-                c2 = normalize_champion(raw[1])
-                if not c1 or not c2 or c1 == c2:
+                # Extract role suffix (preserve!) — Sett SUPPORT != Sett TOP
+                c1_raw, r1 = extract_role_suffix(raw[0])
+                c2_raw, r2 = extract_role_suffix(raw[1])
+                c1 = normalize_champion(c1_raw)
+                c2 = normalize_champion(c2_raw)
+                if not c1 or not c2 or (c1 == c2 and r1 == r2):
                     continue
                 row = GolGGSynergyRow(
                     champion_1=c1,
+                    role_1=r1,
                     champion_2=c2,
+                    role_2=r2,
                     n_games=int(_num(raw[2])),
                     winrate=_num(raw[3]),
                     duo_gd_15=_num(raw[4]),
@@ -132,15 +164,34 @@ def parse_tsv(path: Path) -> list[GolGGSynergyRow]:
     return rows
 
 
-def dedup_synergies(all_rows: Iterable[GolGGSynergyRow]) -> dict[str, dict]:
-    """Combine multiple file passes that contain the same pair.
+def _pair_key(champ_1: str, role_1: str | None,
+               champ_2: str, role_2: str | None) -> tuple[str, str, str | None, str, str | None]:
+    """Build a sorted (key, c1, r1, c2, r2) tuple.
 
-    A pair like (Caitlyn, LeeSin) may appear in:
+    Pair key includes roles so Sett:support|Yasuo:mid != Sett:top|Yasuo:mid.
+    """
+    a = (champ_1, role_1)
+    b = (champ_2, role_2)
+    # Sort by (champ, role) so dedup is stable
+    if (a[0], a[1] or "") > (b[0], b[1] or ""):
+        a, b = b, a
+    key = f"{a[0]}:{a[1] or '?'}|{b[0]}:{b[1] or '?'}"
+    return key, a[0], a[1], b[0], b[1]
+
+
+def dedup_synergies(all_rows: Iterable[GolGGSynergyRow]) -> dict[str, dict]:
+    """Combine multiple file passes that contain the same (champ+role) pair.
+
+    A pair like (Caitlyn:bot, LeeSin:jungle) may appear in:
       - pairs_s16_spring.tsv (general)
       - pairs_bot_duos.tsv (role-specific)
     We sum the games and weight-average the stats.
 
-    Returns: {pair_key: {champion_1, champion_2, n_games_total, winrate, gd, csd}}
+    Off-meta variants (Sett:support vs Sett:top) stay distinct because
+    they're keyed separately.
+
+    Returns: {pair_key: {champion_1, role_1, champion_2, role_2,
+                        n_games_total, winrate, gd, csd}}
     """
     aggregator: dict[str, dict] = defaultdict(lambda: {
         "n_games_total": 0,
@@ -148,16 +199,20 @@ def dedup_synergies(all_rows: Iterable[GolGGSynergyRow]) -> dict[str, dict]:
         "weighted_gd_sum": 0.0,
         "weighted_csd_sum": 0.0,
         "champion_1": "",
+        "role_1": None,
         "champion_2": "",
+        "role_2": None,
     })
 
     for row in all_rows:
-        # Pair key is sorted so (A,B) and (B,A) become the same entry
-        c1, c2 = sorted([row.champion_1, row.champion_2])
-        key = f"{c1}|{c2}"
+        key, c1, r1, c2, r2 = _pair_key(
+            row.champion_1, row.role_1, row.champion_2, row.role_2,
+        )
         agg = aggregator[key]
         agg["champion_1"] = c1
+        agg["role_1"] = r1
         agg["champion_2"] = c2
+        agg["role_2"] = r2
         # Use n_games as the weight
         agg["n_games_total"] += row.n_games
         agg["weighted_wr_sum"] += row.winrate * row.n_games
@@ -172,7 +227,9 @@ def dedup_synergies(all_rows: Iterable[GolGGSynergyRow]) -> dict[str, dict]:
             continue
         finalized[key] = {
             "champion_1": agg["champion_1"],
+            "role_1": agg["role_1"],
             "champion_2": agg["champion_2"],
+            "role_2": agg["role_2"],
             "n_games_total": n,
             "winrate": agg["weighted_wr_sum"] / n,
             "avg_duo_gd_15": agg["weighted_gd_sum"] / n,
@@ -243,7 +300,9 @@ def build_expanded_synergies(tsv_paths: list[Path]) -> list[ExpandedSynergy]:
         expanded.append(ExpandedSynergy(
             pair_key=key,
             champion_1=agg["champion_1"],
+            role_1=agg["role_1"],
             champion_2=agg["champion_2"],
+            role_2=agg["role_2"],
             n_games_total=agg["n_games_total"],
             winrate=agg["winrate"],
             avg_duo_gd_15=agg["avg_duo_gd_15"],
