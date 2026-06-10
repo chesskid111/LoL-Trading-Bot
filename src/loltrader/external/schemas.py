@@ -42,6 +42,60 @@ class GolGGSynergyRow(BaseModel):
         return v
 
 
+class GolGGTripleRow(BaseModel):
+    """One row from gol.gg's 3-champion synergy table.
+
+    Source: Number of champions = 3 in the Champion synergy filter.
+    Captures wombo trios like Sion+Annie+Rell that pair data misses.
+    """
+    champion_1: str
+    role_1: Optional[Literal["top", "jungle", "mid", "bot", "support"]] = None
+    champion_2: str
+    role_2: Optional[Literal["top", "jungle", "mid", "bot", "support"]] = None
+    champion_3: str
+    role_3: Optional[Literal["top", "jungle", "mid", "bot", "support"]] = None
+    n_games: int = Field(..., ge=1)
+    winrate: float = Field(..., ge=0.0, le=1.0)
+    duo_gd_15: float
+    duo_csd_15: float
+
+    @field_validator("winrate", mode="before")
+    @classmethod
+    def normalize_winrate(cls, v):
+        v = float(v)
+        return v / 100.0 if v > 1.0 else v
+
+
+class ExpandedTriple(BaseModel):
+    """Single entry in data/processed/triples_expanded.json.
+
+    Triple key: 'Champ1:role1|Champ2:role2|Champ3:role3' (sorted).
+    Boosts apply ONLY when ALL 3 champions appear in the comp (with roles).
+    """
+    triple_key: str
+    champion_1: str
+    role_1: Optional[Literal["top", "jungle", "mid", "bot", "support"]] = None
+    champion_2: str
+    role_2: Optional[Literal["top", "jungle", "mid", "bot", "support"]] = None
+    champion_3: str
+    role_3: Optional[Literal["top", "jungle", "mid", "bot", "support"]] = None
+    n_games_total: int
+    winrate: float = Field(..., ge=0.0, le=1.0)
+    avg_duo_gd_15: float
+    avg_duo_csd_15: float
+    synergy_type: Literal["early_game", "mid_game", "late_game", "neutral"]
+
+    scaling_early_boost: float = 0.0
+    scaling_mid_boost: float = 0.0
+    scaling_late_boost: float = 0.0
+    teamfight_boost: float = 0.0
+    engage_boost: float = 0.0
+    pick_threat_boost: float = 0.0
+
+    source: str = "gol.gg"
+    imported_at: str
+
+
 class GolGGChampionStatRow(BaseModel):
     """One row from gol.gg Champions ranking table.
 

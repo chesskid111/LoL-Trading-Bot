@@ -17,7 +17,7 @@
     "engage_boost": 0.8489999999999998,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Rakan:support|Xayah:bot": {
     "pair_key": "Rakan:support|Xayah:bot",
@@ -37,7 +37,7 @@
     "engage_boost": 0.6570000000000009,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Bard:support|Caitlyn:bot": {
     "pair_key": "Bard:support|Caitlyn:bot",
@@ -57,7 +57,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Ashe:bot|Seraphine:support": {
     "pair_key": "Ashe:bot|Seraphine:support",
@@ -77,7 +77,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Lucian:bot|Nami:support": {
     "pair_key": "Lucian:bot|Nami:support",
@@ -97,7 +97,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Bard:support|Ezreal:bot": {
     "pair_key": "Bard:support|Ezreal:bot",
@@ -117,7 +117,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Annie:mid|Pantheon:jungle": {
     "pair_key": "Annie:mid|Pantheon:jungle",
@@ -137,7 +137,7 @@
     "engage_boost": 0.9000000000000008,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Pantheon:jungle|Seraphine:support": {
     "pair_key": "Pantheon:jungle|Seraphine:support",
@@ -157,7 +157,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Caitlyn:bot|Rumble:top": {
     "pair_key": "Caitlyn:bot|Rumble:top",
@@ -177,7 +177,7 @@
     "engage_boost": 0.6810000000000005,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Ashe:bot|Pantheon:jungle": {
     "pair_key": "Ashe:bot|Pantheon:jungle",
@@ -197,7 +197,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Bard:support|Gnar:top": {
     "pair_key": "Bard:support|Gnar:top",
@@ -217,7 +217,7 @@
     "engage_boost": 0.6600000000000006,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Corki:bot|Renekton:top": {
     "pair_key": "Corki:bot|Renekton:top",
@@ -237,7 +237,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.6420000000000003,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Ashe:bot|Rumble:top": {
     "pair_key": "Ashe:bot|Rumble:top",
@@ -257,7 +257,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Annie:mid|Gnar:top": {
     "pair_key": "Annie:mid|Gnar:top",
@@ -277,7 +277,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Ahri:mid|Gnar:top": {
     "pair_key": "Ahri:mid|Gnar:top",
@@ -297,7 +297,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Caitlyn:bot|Sion:top": {
     "pair_key": "Caitlyn:bot|Sion:top",
@@ -317,7 +317,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.6000000000000005,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Rumble:top|Seraphine:support": {
     "pair_key": "Rumble:top|Seraphine:support",
@@ -337,7 +337,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Ashe:bot|Ryze:mid": {
     "pair_key": "Ashe:bot|Ryze:mid",
@@ -357,7 +357,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Bard:support|Sion:top": {
     "pair_key": "Bard:support|Sion:top",
@@ -377,7 +377,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Bard:support|Rumble:top": {
     "pair_key": "Bard:support|Rumble:top",
@@ -397,7 +397,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.5010000000000003,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Caitlyn:bot|Ryze:mid": {
     "pair_key": "Caitlyn:bot|Ryze:mid",
@@ -417,7 +417,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.4620000000000002,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Ryze:mid|Seraphine:support": {
     "pair_key": "Ryze:mid|Seraphine:support",
@@ -437,7 +437,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Bard:support|Skarner:jungle": {
     "pair_key": "Bard:support|Skarner:jungle",
@@ -457,7 +457,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Nami:support|Sion:top": {
     "pair_key": "Nami:support|Sion:top",
@@ -477,7 +477,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Nami:support|Ryze:mid": {
     "pair_key": "Nami:support|Ryze:mid",
@@ -497,7 +497,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Gnar:top|Ryze:mid": {
     "pair_key": "Gnar:top|Ryze:mid",
@@ -517,7 +517,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Ashe:bot|Gnar:top": {
     "pair_key": "Ashe:bot|Gnar:top",
@@ -537,7 +537,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Ashe:bot|XinZhao:jungle": {
     "pair_key": "Ashe:bot|XinZhao:jungle",
@@ -557,7 +557,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Nami:support|XinZhao:jungle": {
     "pair_key": "Nami:support|XinZhao:jungle",
@@ -577,7 +577,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Annie:mid|LeeSin:jungle": {
     "pair_key": "Annie:mid|LeeSin:jungle",
@@ -597,7 +597,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.3749999999999998,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Gnar:top|Lucian:bot": {
     "pair_key": "Gnar:top|Lucian:bot",
@@ -617,7 +617,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.35699999999999954,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Ahri:mid|Vi:jungle": {
     "pair_key": "Ahri:mid|Vi:jungle",
@@ -637,7 +637,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.3510000000000002,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Caitlyn:bot|JarvanIV:jungle": {
     "pair_key": "Caitlyn:bot|JarvanIV:jungle",
@@ -657,7 +657,7 @@
     "engage_boost": 0.34499999999999975,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Annie:mid|Seraphine:support": {
     "pair_key": "Annie:mid|Seraphine:support",
@@ -677,7 +677,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Nautilus:support|Rumble:top": {
     "pair_key": "Nautilus:support|Rumble:top",
@@ -697,7 +697,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.30000000000000027,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "JarvanIV:jungle|KSante:top": {
     "pair_key": "JarvanIV:jungle|KSante:top",
@@ -717,7 +717,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Ahri:mid|Rumble:top": {
     "pair_key": "Ahri:mid|Rumble:top",
@@ -737,7 +737,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.30000000000000027,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Rakan:support|Vi:jungle": {
     "pair_key": "Rakan:support|Vi:jungle",
@@ -757,7 +757,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Gnar:top|Nami:support": {
     "pair_key": "Gnar:top|Nami:support",
@@ -777,7 +777,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Lucian:bot|MonkeyKing:jungle": {
     "pair_key": "Lucian:bot|MonkeyKing:jungle",
@@ -797,7 +797,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.30000000000000027,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Ryze:mid|XinZhao:jungle": {
     "pair_key": "Ryze:mid|XinZhao:jungle",
@@ -817,7 +817,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.2849999999999997,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Annie:mid|Ezreal:bot": {
     "pair_key": "Annie:mid|Ezreal:bot",
@@ -837,7 +837,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Ahri:mid|Lulu:support": {
     "pair_key": "Ahri:mid|Lulu:support",
@@ -857,7 +857,7 @@
     "engage_boost": 0.2729999999999999,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "JarvanIV:jungle|Seraphine:support": {
     "pair_key": "JarvanIV:jungle|Seraphine:support",
@@ -877,7 +877,7 @@
     "engage_boost": 0.2639999999999998,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "JarvanIV:jungle|Sion:top": {
     "pair_key": "JarvanIV:jungle|Sion:top",
@@ -897,7 +897,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Bard:support|Pantheon:jungle": {
     "pair_key": "Bard:support|Pantheon:jungle",
@@ -917,7 +917,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Bard:support|Ryze:mid": {
     "pair_key": "Bard:support|Ryze:mid",
@@ -937,7 +937,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "LeeSin:jungle|Ryze:mid": {
     "pair_key": "LeeSin:jungle|Ryze:mid",
@@ -957,7 +957,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Rumble:top|Vi:jungle": {
     "pair_key": "Rumble:top|Vi:jungle",
@@ -977,7 +977,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.24299999999999988,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Caitlyn:bot|Pantheon:jungle": {
     "pair_key": "Caitlyn:bot|Pantheon:jungle",
@@ -997,7 +997,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.2310000000000001,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "KSante:top|XinZhao:jungle": {
     "pair_key": "KSante:top|XinZhao:jungle",
@@ -1017,7 +1017,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Rumble:top|Skarner:jungle": {
     "pair_key": "Rumble:top|Skarner:jungle",
@@ -1037,7 +1037,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Seraphine:support|XinZhao:jungle": {
     "pair_key": "Seraphine:support|XinZhao:jungle",
@@ -1057,7 +1057,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Rumble:top|Yone:mid": {
     "pair_key": "Rumble:top|Yone:mid",
@@ -1077,7 +1077,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.19499999999999962,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Corki:bot|Gnar:top": {
     "pair_key": "Corki:bot|Gnar:top",
@@ -1097,7 +1097,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Aurora:mid|XinZhao:jungle": {
     "pair_key": "Aurora:mid|XinZhao:jungle",
@@ -1117,7 +1117,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Azir:mid|Ezreal:bot": {
     "pair_key": "Azir:mid|Ezreal:bot",
@@ -1137,7 +1137,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Gnar:top|JarvanIV:jungle": {
     "pair_key": "Gnar:top|JarvanIV:jungle",
@@ -1157,7 +1157,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.16800000000000037,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Gnar:top|Seraphine:support": {
     "pair_key": "Gnar:top|Seraphine:support",
@@ -1177,7 +1177,7 @@
     "engage_boost": 0.15600000000000058,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "KSante:top|Yunara:bot": {
     "pair_key": "KSante:top|Yunara:bot",
@@ -1197,7 +1197,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Orianna:mid|Sion:top": {
     "pair_key": "Orianna:mid|Sion:top",
@@ -1217,7 +1217,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.15000000000000013,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Ryze:mid|Sion:top": {
     "pair_key": "Ryze:mid|Sion:top",
@@ -1237,7 +1237,7 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Naafiri:jungle|Sion:top": {
     "pair_key": "Naafiri:jungle|Sion:top",
@@ -1257,7 +1257,7 @@
     "engage_boost": 0.15000000000000013,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   },
   "Annie:mid|Milio:support": {
     "pair_key": "Annie:mid|Milio:support",
@@ -1277,6 +1277,6 @@
     "engage_boost": 0.0,
     "pick_threat_boost": 0.0,
     "source": "gol.gg",
-    "imported_at": "2026-06-10T00:25:02.599034+00:00"
+    "imported_at": "2026-06-10T00:31:30.634980+00:00"
   }
 }
