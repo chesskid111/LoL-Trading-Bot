@@ -152,10 +152,16 @@ def synergies_file(tmp_path: Path) -> Path:
 
 
 def _patch_synergy_cache(monkeypatch, synergies_path: Path):
-    """Clear the module cache so the test's synergies are loaded."""
+    """Clear the module caches and patch loaders so only the test's hand-curated
+    legacy synergies are visible. Measured (gol.gg) synergies are stubbed empty.
+    """
     import loltrader.comp.aggregator as agg
     monkeypatch.setattr(agg, "_SYNERGY_CACHE", None)
+    monkeypatch.setattr(agg, "_MEASURED_PAIR_CACHE", None)
+    monkeypatch.setattr(agg, "_MEASURED_TRIPLE_CACHE", None)
     monkeypatch.setattr(agg, "_load_synergies", lambda path=None: json.loads(synergies_path.read_text()))
+    monkeypatch.setattr(agg, "_load_measured_pairs", lambda path=None: {})
+    monkeypatch.setattr(agg, "_load_measured_triples", lambda path=None: {})
 
 
 # ---------- scaling curve tests -----------------------------------------
@@ -255,6 +261,69 @@ def test_synergy_bonus_applies(profiles_file, synergies_file, monkeypatch):
     assert any("Caitlyn|Lulu" in s for s in profile.synergy_bonuses)
     assert any("Annie|Pantheon" in s for s in profile.synergy_bonuses)
     assert any("Rumble" in s and "Karma" in s for s in profile.synergy_bonuses) is False
+
+
+def test_measured_role_aware_synergies_fire(profiles_file, monkeypatch):
+    """Role-aware measured synergies from gol.gg fire when (champ, role) keys match.
+
+    Verifies the role distinction: Caitlyn:bot+Lulu:support fires, but the same
+    Lulu played mid would not match the bot|support synergy.
+    """
+    import loltrader.comp.aggregator as agg
+    monkeypatch.setattr(agg, "_SYNERGY_CACHE", None)
+    monkeypatch.setattr(agg, "_MEASURED_PAIR_CACHE", None)
+    monkeypatch.setattr(agg, "_MEASURED_TRIPLE_CACHE", None)
+    monkeypatch.setattr(agg, "_load_synergies", lambda path=None: {})
+    monkeypatch.setattr(agg, "_load_measured_pairs", lambda path=None: {
+        "Caitlyn:bot|Lulu:support": {
+            "scaling_early_boost": 1.5, "engage_boost": 0.75,
+            "teamfight_boost": 0.0, "pick_threat_boost": 0.0,
+            "scaling_mid_boost": 0.0, "scaling_late_boost": 0.0,
+        },
+    })
+    monkeypatch.setattr(agg, "_load_measured_triples", lambda path=None: {})
+
+    # Correct role assignment — synergy should fire
+    correct = [
+        ChampionPick("Caitlyn", "bot"),
+        ChampionPick("Lulu", "support"),
+        ChampionPick("Rumble", "top"),
+        ChampionPick("Annie", "mid"),
+        ChampionPick("Pantheon", "jungle"),
+    ]
+    prof_correct = evaluate_comp(correct, profiles_path=profiles_file)
+    assert any("Caitlyn:bot|Lulu:support" in s for s in prof_correct.synergy_bonuses), \
+        f"expected synergy not in {prof_correct.synergy_bonuses}"
+
+
+def test_measured_triples_fire_when_all_3_present(profiles_file, monkeypatch):
+    """A 3-champion triple synergy fires only when all 3 specific picks match."""
+    import loltrader.comp.aggregator as agg
+    monkeypatch.setattr(agg, "_SYNERGY_CACHE", None)
+    monkeypatch.setattr(agg, "_MEASURED_PAIR_CACHE", None)
+    monkeypatch.setattr(agg, "_MEASURED_TRIPLE_CACHE", None)
+    monkeypatch.setattr(agg, "_load_synergies", lambda path=None: {})
+    monkeypatch.setattr(agg, "_load_measured_pairs", lambda path=None: {})
+    monkeypatch.setattr(agg, "_load_measured_triples", lambda path=None: {
+        "Caitlyn:bot|Lulu:support|Pantheon:jungle": {
+            "scaling_late_boost": 1.0,
+            "teamfight_boost": 0.5,
+            "scaling_early_boost": 0.0, "scaling_mid_boost": 0.0,
+            "engage_boost": 0.0, "pick_threat_boost": 0.0,
+        },
+    })
+
+    # All 3 present → triple fires
+    picks = [
+        ChampionPick("Caitlyn", "bot"),
+        ChampionPick("Pantheon", "jungle"),
+        ChampionPick("Lulu", "support"),
+        ChampionPick("Annie", "mid"),
+        ChampionPick("Rumble", "top"),
+    ]
+    profile = evaluate_comp(picks, profiles_path=profiles_file)
+    assert any("triple:" in s and "Caitlyn" in s for s in profile.synergy_bonuses), \
+        f"triple should fire: {profile.synergy_bonuses}"
 
 
 def test_confidence_is_min_of_picks(profiles_file):

@@ -135,14 +135,26 @@ def _team_scaling_curve(profiles: list[ChampionProfile]) -> dict[int, float]:
 
 
 _SYNERGY_CACHE: dict[str, dict[str, dict[str, float]]] | None = None
+_MEASURED_PAIR_CACHE: dict[str, dict] | None = None
+_MEASURED_TRIPLE_CACHE: dict[str, dict] | None = None
+
+# Maps gol.gg boost dimension names → our CompProfile dimension names.
+# gol.gg synergies emit 6 boost dimensions; not all map 1:1 to our existing
+# comp dimensions. Unmapped entries are ignored.
+_BOOST_TO_COMP_DIM = {
+    "scaling_early_boost": "scaling_early",
+    "scaling_mid_boost": "scaling_mid",
+    "scaling_late_boost": "scaling_late",
+    "teamfight_boost": "teamfight_score",
+    "engage_boost": "engage_score",
+    "pick_threat_boost": "pick_threat",
+}
 
 
 def _load_synergies(path: str | Path = "data/synergies.json") -> dict:
-    """Synergy table:
+    """Legacy hand-curated synergy table:
         {"ChampA|ChampB": {"teamfight_score": +1, "scaling_late": +1}, ...}
-
-    Keys are sorted-alphabetically champion pair strings joined by "|" so we
-    don't need to think about order. Returns empty dict if file is missing.
+    Returns empty dict if file is missing.
     """
     global _SYNERGY_CACHE
     if _SYNERGY_CACHE is not None:
@@ -156,25 +168,122 @@ def _load_synergies(path: str | Path = "data/synergies.json") -> dict:
     return raw
 
 
+def _load_measured_pairs(
+    path: str | Path = "data/processed/synergies_expanded.json",
+) -> dict[str, dict]:
+    """Measured synergies from gol.gg (Bayesian-shrunken, role-aware).
+
+    Keys: 'Champion:role|Champion:role' sorted. Values include n_games_total,
+    winrate, GD@15, synergy_type, and six boost dimensions.
+    """
+    global _MEASURED_PAIR_CACHE
+    if _MEASURED_PAIR_CACHE is not None:
+        return _MEASURED_PAIR_CACHE
+    p = Path(path)
+    if not p.exists():
+        _MEASURED_PAIR_CACHE = {}
+        return _MEASURED_PAIR_CACHE
+    _MEASURED_PAIR_CACHE = json.loads(p.read_text(encoding="utf-8"))
+    return _MEASURED_PAIR_CACHE
+
+
+def _load_measured_triples(
+    path: str | Path = "data/processed/triples_expanded.json",
+) -> dict[str, dict]:
+    """3-champion measured synergies — apply only when all 3 picks match."""
+    global _MEASURED_TRIPLE_CACHE
+    if _MEASURED_TRIPLE_CACHE is not None:
+        return _MEASURED_TRIPLE_CACHE
+    p = Path(path)
+    if not p.exists():
+        _MEASURED_TRIPLE_CACHE = {}
+        return _MEASURED_TRIPLE_CACHE
+    _MEASURED_TRIPLE_CACHE = json.loads(p.read_text(encoding="utf-8"))
+    return _MEASURED_TRIPLE_CACHE
+
+
 def _pair_key(a: str, b: str) -> str:
     return "|".join(sorted([a, b]))
+
+
+def _role_pair_key(c1: str, r1: str, c2: str, r2: str) -> str:
+    """Build the 'Champion:role|Champion:role' key used by measured synergies."""
+    a = f"{c1}:{r1}"
+    b = f"{c2}:{r2}"
+    return "|".join(sorted([a, b]))
+
+
+def _role_triple_key(picks: list[tuple[str, str]]) -> str:
+    """Build the sorted 3-champion triple key from [(champ, role), ...]."""
+    entries = sorted(picks, key=lambda x: (x[0], x[1] or ""))
+    return "|".join(f"{c}:{r}" for c, r in entries)
+
+
+def _apply_boost_dict(boosts: dict, deltas: dict[str, float]) -> None:
+    """Translate gol.gg boost fields → our comp dimensions and add into deltas."""
+    for boost_key, comp_dim in _BOOST_TO_COMP_DIM.items():
+        val = boosts.get(boost_key, 0.0)
+        if val:
+            deltas[comp_dim] = deltas.get(comp_dim, 0.0) + float(val)
 
 
 def _apply_synergies(
     picks: list[ChampionPick],
 ) -> tuple[list[str], dict[str, float]]:
-    """Look up every pair against the synergy table; return (names, deltas)."""
-    table = _load_synergies()
+    """Look up every pair (and triple) against both synergy tables; return (names, deltas).
+
+    Priority:
+      1. Measured pair from gol.gg (role-aware) — preferred when present
+      2. Legacy hand-curated pair (champion-only)
+      3. Measured triple — added on top when all 3 picks match
+    """
+    legacy_table = _load_synergies()
+    measured_pairs = _load_measured_pairs()
+    measured_triples = _load_measured_triples()
+
     fired: list[str] = []
     deltas: dict[str, float] = {}
+
+    # Pair lookups
     for i in range(len(picks)):
         for j in range(i + 1, len(picks)):
-            key = _pair_key(picks[i].champion, picks[j].champion)
-            if key in table:
-                fired.append(key)
-                for dim, val in table[key].items():
-                    deltas[dim] = deltas.get(dim, 0.0) + float(val)
+            pi, pj = picks[i], picks[j]
+            measured_key = _role_pair_key(pi.champion, pi.role, pj.champion, pj.role)
+
+            if measured_key in measured_pairs:
+                fired.append(measured_key)
+                _apply_boost_dict(measured_pairs[measured_key], deltas)
+            else:
+                # Fall back to legacy hand-curated (champion-only)
+                legacy_key = _pair_key(pi.champion, pj.champion)
+                if legacy_key in legacy_table:
+                    fired.append(legacy_key)
+                    for dim, val in legacy_table[legacy_key].items():
+                        deltas[dim] = deltas.get(dim, 0.0) + float(val)
+
+    # Triple lookups — every combo of 3 picks
+    if measured_triples and len(picks) >= 3:
+        for i in range(len(picks)):
+            for j in range(i + 1, len(picks)):
+                for k in range(j + 1, len(picks)):
+                    triple_key = _role_triple_key([
+                        (picks[i].champion, picks[i].role),
+                        (picks[j].champion, picks[j].role),
+                        (picks[k].champion, picks[k].role),
+                    ])
+                    if triple_key in measured_triples:
+                        fired.append(f"triple:{triple_key}")
+                        _apply_boost_dict(measured_triples[triple_key], deltas)
+
     return fired, deltas
+
+
+def _reset_synergy_caches() -> None:
+    """Reset cached synergy data (test helper)."""
+    global _SYNERGY_CACHE, _MEASURED_PAIR_CACHE, _MEASURED_TRIPLE_CACHE
+    _SYNERGY_CACHE = None
+    _MEASURED_PAIR_CACHE = None
+    _MEASURED_TRIPLE_CACHE = None
 
 
 # ---------- player×champion comfort overrides ---------------------------
