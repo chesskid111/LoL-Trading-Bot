@@ -180,62 +180,47 @@ def _pair_key(champ_1: str, role_1: str | None,
 
 
 def dedup_synergies(all_rows: Iterable[GolGGSynergyRow]) -> dict[str, dict]:
-    """Combine multiple file passes that contain the same (champ+role) pair.
+    """Dedup pairs that appear in multiple filter passes of the same data.
 
-    A pair like (Caitlyn:bot, LeeSin:jungle) may appear in:
-      - pairs_s16_spring.tsv (general)
-      - pairs_bot_duos.tsv (role-specific)
-    We sum the games and weight-average the stats.
+    The user extracts multiple TSVs at different filter scopes:
+      - pairs_general.tsv (min 20, all roles)
+      - pairs_bot_duos.tsv (min 20, bot+support only)
+      - pairs_deepcut.tsv (min 10, all roles)
+      - etc.
+
+    A pair like (Caitlyn:bot, Lux:support) often appears in MULTIPLE of these
+    because gol.gg is just filtering the same underlying games differently.
+    We don't want to double-count the games.
+
+    Strategy: for the same (champ+role) pair_key, keep the row with the
+    LARGEST n_games (most complete sample). If a pair appears only in one
+    file, we use that. If it appears in multiple with identical stats
+    (same observation), we keep one.
 
     Off-meta variants (Sett:support vs Sett:top) stay distinct because
     they're keyed separately.
-
-    Returns: {pair_key: {champion_1, role_1, champion_2, role_2,
-                        n_games_total, winrate, gd, csd}}
     """
-    aggregator: dict[str, dict] = defaultdict(lambda: {
-        "n_games_total": 0,
-        "weighted_wr_sum": 0.0,
-        "weighted_gd_sum": 0.0,
-        "weighted_csd_sum": 0.0,
-        "champion_1": "",
-        "role_1": None,
-        "champion_2": "",
-        "role_2": None,
-    })
+    best: dict[str, dict] = {}
 
     for row in all_rows:
         key, c1, r1, c2, r2 = _pair_key(
             row.champion_1, row.role_1, row.champion_2, row.role_2,
         )
-        agg = aggregator[key]
-        agg["champion_1"] = c1
-        agg["role_1"] = r1
-        agg["champion_2"] = c2
-        agg["role_2"] = r2
-        # Use n_games as the weight
-        agg["n_games_total"] += row.n_games
-        agg["weighted_wr_sum"] += row.winrate * row.n_games
-        agg["weighted_gd_sum"] += row.duo_gd_15 * row.n_games
-        agg["weighted_csd_sum"] += row.duo_csd_15 * row.n_games
-
-    # Finalize weighted averages
-    finalized: dict[str, dict] = {}
-    for key, agg in aggregator.items():
-        n = agg["n_games_total"]
-        if n == 0:
-            continue
-        finalized[key] = {
-            "champion_1": agg["champion_1"],
-            "role_1": agg["role_1"],
-            "champion_2": agg["champion_2"],
-            "role_2": agg["role_2"],
-            "n_games_total": n,
-            "winrate": agg["weighted_wr_sum"] / n,
-            "avg_duo_gd_15": agg["weighted_gd_sum"] / n,
-            "avg_duo_csd_15": agg["weighted_csd_sum"] / n,
+        candidate = {
+            "champion_1": c1,
+            "role_1": r1,
+            "champion_2": c2,
+            "role_2": r2,
+            "n_games_total": row.n_games,
+            "winrate": row.winrate,
+            "avg_duo_gd_15": row.duo_gd_15,
+            "avg_duo_csd_15": row.duo_csd_15,
         }
-    return finalized
+        existing = best.get(key)
+        if existing is None or row.n_games > existing["n_games_total"]:
+            best[key] = candidate
+
+    return best
 
 
 def classify_synergy(agg: dict) -> tuple[str, dict[str, float]]:
