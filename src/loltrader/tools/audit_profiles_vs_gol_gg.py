@@ -25,6 +25,8 @@ from pathlib import Path
 
 from loltrader.external.gol_gg_champions import (
     parse_all_tsvs,
+    parse_per_league_tsvs,
+    detect_regional_divergence,
     audit_profiles,
     save_profile_validation,
 )
@@ -64,6 +66,16 @@ def main(argv: list[str] | None = None) -> int:
     stats_by_role = parse_all_tsvs(input_dir)
     total = sum(len(c) for c in stats_by_role.values())
     log.info("parsed %d champion stats across %d roles", total, len(stats_by_role))
+
+    # Per-league parsing — surfaces regional divergence
+    per_league = parse_per_league_tsvs(input_dir)
+    divergence_flags = detect_regional_divergence(per_league)
+    if divergence_flags:
+        log.info("\n=== Regional divergence flags (WR varies ≥10pp across leagues) ===")
+        for f in divergence_flags[:10]:
+            log.info(f"  {f['champion']:<14} ({f['role']:<7})  swing={f['max_swing_pp']:.1f}pp")
+            for lg, stats in f["regions"].items():
+                log.info(f"    {lg:<5}: N={stats['n_games']:<4} WR={stats['winrate']:.1%}")
 
     flags = audit_profiles(stats_by_role, Path(args.profiles))
 

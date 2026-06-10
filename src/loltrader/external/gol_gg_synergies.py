@@ -66,6 +66,28 @@ MAX_BOOST_PER_PAIR = 1.5
 
 # Champion name normalization — gol.gg uses display names ("Lee Sin"),
 # our profiles use DataDragon names ("LeeSin").
+LEAGUE_CODES = {"lck", "lpl", "lec", "lcs", "lcp", "lta", "ltan",
+                 "msi", "worlds", "iem", "ewc", "msc"}
+
+
+def parse_synergy_filename(filename: str) -> tuple[str | None, str | None]:
+    """Parse league and scope from a synergy filename.
+
+    Conventions:
+      pairs_general.tsv           → league=None (combined), scope=general
+      pairs_general_lck.tsv       → league=lck, scope=general
+      pairs_lck_general.tsv       → league=lck, scope=general
+      pairs_lec_bot_duos.tsv      → league=lec, scope=bot_duos
+      triples_lpl.tsv             → league=lpl, scope=triples
+    """
+    stem = filename.replace(".tsv", "").lower()
+    parts = stem.split("_")
+    league = next((p for p in parts if p in LEAGUE_CODES), None)
+    scope_parts = [p for p in parts if p not in LEAGUE_CODES]
+    scope = "_".join(scope_parts) if scope_parts else None
+    return league, scope
+
+
 DDRAGON_NAME_MAP = {
     "Lee Sin": "LeeSin",
     "Jarvan IV": "JarvanIV",
@@ -493,3 +515,60 @@ def save_triples(expanded: list[ExpandedTriple], path: Path) -> None:
     payload = {t.triple_key: json.loads(t.model_dump_json()) for t in expanded}
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     log.info("wrote %d triples to %s", len(expanded), path)
+
+
+# ---------- per-league pair tracking + divergence ------------------------
+
+
+def parse_per_league_pairs(tsv_paths: list[Path]) -> dict[str | None, dict[str, dict]]:
+    """Parse each TSV and group by league. Returns {league: {pair_key: agg}}."""
+    by_league_pair: dict[str | None, dict[str, dict]] = defaultdict(dict)
+
+    for path in tsv_paths:
+        if is_triple_tsv(path):
+            continue
+        league, _scope = parse_synergy_filename(path.name)
+        rows = parse_tsv(path)
+        # Dedup within this file alone — keeps largest-N per pair
+        aggregated = dedup_synergies(rows)
+        for pair_key, agg in aggregated.items():
+            existing = by_league_pair[league].get(pair_key)
+            if existing is None or agg["n_games_total"] > existing["n_games_total"]:
+                by_league_pair[league][pair_key] = agg
+
+    return dict(by_league_pair)
+
+
+def detect_synergy_divergence(
+    by_league_pair: dict[str | None, dict[str, dict]],
+    min_games_per_league: int = 15,
+    divergence_threshold_pp: float = 10.0,
+) -> list[dict]:
+    """Flag pairs where regional WRs differ by ≥ divergence_threshold_pp."""
+    # Index by pair_key → {league: agg}
+    by_pair: dict[str, dict[str | None, dict]] = defaultdict(dict)
+    for league, pairs in by_league_pair.items():
+        if league is None:
+            continue
+        for pair_key, agg in pairs.items():
+            by_pair[pair_key][league] = agg
+
+    flags: list[dict] = []
+    for pair_key, by_league in by_pair.items():
+        big = {lg: a for lg, a in by_league.items()
+               if a["n_games_total"] >= min_games_per_league}
+        if len(big) < 2:
+            continue
+        wrs = [(lg, a["n_games_total"], a["winrate"]) for lg, a in big.items()]
+        max_wr = max(w for _, _, w in wrs)
+        min_wr = min(w for _, _, w in wrs)
+        swing_pp = (max_wr - min_wr) * 100
+        if swing_pp >= divergence_threshold_pp:
+            flags.append({
+                "pair_key": pair_key,
+                "regions": {lg: {"n_games": n, "winrate": w} for lg, n, w in wrs},
+                "max_swing_pp": swing_pp,
+            })
+
+    flags.sort(key=lambda f: -f["max_swing_pp"])
+    return flags

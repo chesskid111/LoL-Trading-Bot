@@ -24,6 +24,8 @@ from loltrader.external.gol_gg_synergies import (
     save_synergies,
     save_triples,
     is_triple_tsv,
+    parse_per_league_pairs,
+    detect_synergy_divergence,
 )
 
 
@@ -100,6 +102,19 @@ def main(argv: list[str] | None = None) -> int:
                          f"GD@15={t.avg_duo_gd_15:+.0f}  type={t.synergy_type}")
             triples_output = Path(args.output).parent / "triples_expanded.json"
             save_triples(triples, triples_output)
+
+    # Regional divergence detection — only fires when per-league files present
+    if pair_paths:
+        per_league = parse_per_league_pairs(pair_paths)
+        leagues_seen = [lg for lg in per_league.keys() if lg is not None]
+        if len(leagues_seen) >= 2:
+            divergence = detect_synergy_divergence(per_league)
+            if divergence:
+                log.info("\n=== Regional synergy divergence (≥10pp swing) ===")
+                for f in divergence[:15]:
+                    log.info(f"  {f['pair_key']}  swing={f['max_swing_pp']:.1f}pp")
+                    for lg, stats in f["regions"].items():
+                        log.info(f"    {lg:<5}: N={stats['n_games']:<4} WR={stats['winrate']:.1%}")
 
     log.info("DONE.")
     return 0

@@ -49,6 +49,35 @@ ROLE_NORM = {
     "support": "support", "sup": "support", "supp": "support",
 }
 
+# Known league codes — used for filename detection
+LEAGUE_CODES = {"lck", "lpl", "lec", "lcs", "lcp", "lta", "ltan",
+                 "msi", "worlds", "iem", "ewc", "msc"}
+
+
+def parse_filename_metadata(filename: str) -> tuple[str | None, str | None, str | None]:
+    """Parse role, league, and patch from filename.
+
+    Conventions supported:
+      top_s16.tsv           → role=top, league=None (combined), patch=s16
+      top_lck_s16.tsv       → role=top, league=lck, patch=s16
+      top_lck_26_11.tsv     → role=top, league=lck, patch=26_11
+      mid_lpl_s16.tsv       → role=mid, league=lpl, patch=s16
+    """
+    stem = filename.replace(".tsv", "").lower()
+    parts = stem.split("_")
+    if not parts:
+        return None, None, None
+    role = ROLE_NORM.get(parts[0])
+    league = None
+    patch_parts = []
+    for p in parts[1:]:
+        if p in LEAGUE_CODES:
+            league = p
+        else:
+            patch_parts.append(p)
+    patch = "_".join(patch_parts) if patch_parts else None
+    return role, league, patch
+
 
 def parse_tsv(path: Path, role_hint: str | None = None) -> list[GolGGChampionStatRow]:
     """Parse a per-role gol.gg Champions TSV.
@@ -152,8 +181,7 @@ def parse_all_tsvs(input_dir: Path) -> dict[str, dict[str, GolGGChampionStatRow]
     """Read all TSVs in input_dir, group by (role, champion).
 
     When the same (role, champion) appears in multiple files (e.g., season
-    vs current-patch), keep the row with the largest sample size — that's
-    the most statistically reliable signal for profile audit purposes.
+    vs current-patch), keep the row with the largest sample size.
 
     Returns: {role: {champion: row}}
     """
@@ -166,6 +194,73 @@ def parse_all_tsvs(input_dir: Path) -> dict[str, dict[str, GolGGChampionStatRow]
             if existing is None or r.n_games > existing.n_games:
                 by_role_champ[r.role][r.champion] = r
     return dict(by_role_champ)
+
+
+def parse_per_league_tsvs(input_dir: Path) -> dict[tuple[str, str | None], dict[str, GolGGChampionStatRow]]:
+    """Read all TSVs and group by (role, league) → {champion: row}.
+
+    When filename has a league code (top_lck_s16.tsv), the data is
+    tracked per-league. Otherwise it's marked as combined (league=None).
+
+    Returns: {(role, league): {champion: largest-N row}}
+    """
+    by_role_league: dict[tuple[str, str | None], dict[str, GolGGChampionStatRow]] = defaultdict(dict)
+    for tsv in sorted(input_dir.glob("*.tsv")):
+        role, league, _patch = parse_filename_metadata(tsv.name)
+        rows = parse_tsv(tsv, role_hint=role)
+        log.info("parsed %d rows from %s (role=%s, league=%s)",
+                 len(rows), tsv.name, role, league or "combined")
+        for r in rows:
+            key = (r.role, league)
+            existing = by_role_league[key].get(r.champion)
+            if existing is None or r.n_games > existing.n_games:
+                by_role_league[key][r.champion] = r
+    return dict(by_role_league)
+
+
+def detect_regional_divergence(
+    per_league_data: dict[tuple[str, str | None], dict[str, GolGGChampionStatRow]],
+    min_games_per_league: int = 20,
+    divergence_threshold_pp: float = 10.0,
+) -> list[dict]:
+    """Flag champions where regional WRs differ by >= divergence_threshold_pp.
+
+    Example: 'Ashe ADC wins 75% in LEC, 57.5% in LCK' (17.5pp swing).
+
+    Returns: list of {champion, role, regions: {league: (n, wr)}, max_swing_pp}
+    sorted by max_swing_pp descending.
+    """
+    # Index by (role, champion) → {league: row}
+    by_champion: dict[tuple[str, str], dict[str | None, GolGGChampionStatRow]] = defaultdict(dict)
+    for (role, league), champ_rows in per_league_data.items():
+        if league is None:
+            continue  # only consider per-league data for divergence
+        for champ, row in champ_rows.items():
+            by_champion[(role, champ)][league] = row
+
+    flags: list[dict] = []
+    for (role, champ), by_league in by_champion.items():
+        # Only consider champions with sufficient sample in ≥2 leagues
+        big_samples = {lg: r for lg, r in by_league.items()
+                       if r.n_games >= min_games_per_league}
+        if len(big_samples) < 2:
+            continue
+        wrs = [(lg, r.n_games, r.winrate) for lg, r in big_samples.items()]
+        max_wr = max(w for _, _, w in wrs)
+        min_wr = min(w for _, _, w in wrs)
+        swing_pp = (max_wr - min_wr) * 100
+        if swing_pp >= divergence_threshold_pp:
+            flags.append({
+                "champion": champ,
+                "role": role,
+                "regions": {lg: {"n_games": n, "winrate": w} for lg, n, w in wrs},
+                "max_swing_pp": swing_pp,
+                "issue": f"WR varies {swing_pp:.1f}pp across regions",
+                "suggestion": "consider region-specific profile override OR add region-aware feature",
+            })
+
+    flags.sort(key=lambda f: -f["max_swing_pp"])
+    return flags
 
 
 def audit_profiles(stats_by_role: dict[str, dict[str, GolGGChampionStatRow]],

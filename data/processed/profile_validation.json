@@ -1,11 +1,23 @@
 {
-  "audited_at": "2026-06-10T01:04:13.536770+00:00",
-  "total_flags": 3,
+  "audited_at": "2026-06-10T02:04:04.602824+00:00",
+  "total_flags": 8,
   "by_severity": {
-    "high": 2,
-    "medium": 1
+    "high": 5,
+    "medium": 3
   },
   "flags": [
+    {
+      "champion": "Ambessa",
+      "role": "jungle",
+      "severity": "high",
+      "issue": "profile claims scaling_late=2 but empirical WR is 23.5% (-26.5% vs baseline)",
+      "profile_scaling_late": 2,
+      "profile_confidence": 0.72,
+      "empirical_winrate": 0.235,
+      "n_games": 17,
+      "suggested": "consider lowering scaling_late from 2 to 1",
+      "audited_at": "2026-06-10T02:04:04.601727+00:00"
+    },
     {
       "champion": "Ambessa",
       "role": "top",
@@ -16,7 +28,7 @@
       "empirical_winrate": 0.413,
       "n_games": 138,
       "suggested": "consider lowering scaling_late from 2 to 1",
-      "audited_at": "2026-06-10T01:04:13.535558+00:00"
+      "audited_at": "2026-06-10T02:04:04.601727+00:00"
     },
     {
       "champion": "Anivia",
@@ -28,7 +40,43 @@
       "empirical_winrate": 0.414,
       "n_games": 29,
       "suggested": "consider lowering scaling_late from 3 to 2",
-      "audited_at": "2026-06-10T01:04:13.535558+00:00"
+      "audited_at": "2026-06-10T02:04:04.601727+00:00"
+    },
+    {
+      "champion": "Vi",
+      "role": "jungle",
+      "severity": "high",
+      "issue": "profile claims scaling_late=0 but empirical WR is 57.2% (+7.2% vs baseline)",
+      "profile_scaling_late": 0,
+      "profile_confidence": 0.72,
+      "empirical_winrate": 0.5720000000000001,
+      "n_games": 187,
+      "suggested": "consider raising scaling_late from 0 to 1",
+      "audited_at": "2026-06-10T02:04:04.601727+00:00"
+    },
+    {
+      "champion": "LeeSin",
+      "role": "jungle",
+      "severity": "high",
+      "issue": "profile claims scaling_late=-2 but empirical WR is 57.0% (+7.0% vs baseline)",
+      "profile_scaling_late": -2,
+      "profile_confidence": 0.52,
+      "empirical_winrate": 0.57,
+      "n_games": 121,
+      "suggested": "consider raising scaling_late from -2 to -1",
+      "audited_at": "2026-06-10T02:04:04.601727+00:00"
+    },
+    {
+      "champion": "Maokai",
+      "role": "jungle",
+      "severity": "medium",
+      "issue": "profile claims scaling_late=2 but empirical WR is 44.0% (-6.0% vs baseline)",
+      "profile_scaling_late": 2,
+      "profile_confidence": 0.52,
+      "empirical_winrate": 0.44,
+      "n_games": 25,
+      "suggested": "consider lowering scaling_late from 2 to 1",
+      "audited_at": "2026-06-10T02:04:04.601727+00:00"
     },
     {
       "champion": "KSante",
@@ -40,7 +88,19 @@
       "empirical_winrate": 0.44799999999999995,
       "n_games": 163,
       "suggested": "consider lowering scaling_late from 2 to 1",
-      "audited_at": "2026-06-10T01:04:13.535558+00:00"
+      "audited_at": "2026-06-10T02:04:04.601727+00:00"
+    },
+    {
+      "champion": "DrMundo",
+      "role": "jungle",
+      "severity": "medium",
+      "issue": "profile claims scaling_late=3 but empirical WR is 45.5% (-4.5% vs baseline)",
+      "profile_scaling_late": 3,
+      "profile_confidence": 0.42,
+      "empirical_winrate": 0.455,
+      "n_games": 22,
+      "suggested": "consider lowering scaling_late from 3 to 2",
+      "audited_at": "2026-06-10T02:04:04.601727+00:00"
     }
   ]
 }
