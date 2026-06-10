@@ -1,0 +1,46 @@
+{
+  "audited_at": "2026-06-10T01:04:13.536770+00:00",
+  "total_flags": 3,
+  "by_severity": {
+    "high": 2,
+    "medium": 1
+  },
+  "flags": [
+    {
+      "champion": "Ambessa",
+      "role": "top",
+      "severity": "high",
+      "issue": "profile claims scaling_late=2 but empirical WR is 41.3% (-8.7% vs baseline)",
+      "profile_scaling_late": 2,
+      "profile_confidence": 0.72,
+      "empirical_winrate": 0.413,
+      "n_games": 138,
+      "suggested": "consider lowering scaling_late from 2 to 1",
+      "audited_at": "2026-06-10T01:04:13.535558+00:00"
+    },
+    {
+      "champion": "Anivia",
+      "role": "top",
+      "severity": "high",
+      "issue": "profile claims scaling_late=3 but empirical WR is 41.4% (-8.6% vs baseline)",
+      "profile_scaling_late": 3,
+      "profile_confidence": 0.72,
+      "empirical_winrate": 0.414,
+      "n_games": 29,
+      "suggested": "consider lowering scaling_late from 3 to 2",
+      "audited_at": "2026-06-10T01:04:13.535558+00:00"
+    },
+    {
+      "champion": "KSante",
+      "role": "top",
+      "severity": "medium",
+      "issue": "profile claims scaling_late=2 but empirical WR is 44.8% (-5.2% vs baseline)",
+      "profile_scaling_late": 2,
+      "profile_confidence": 0.38,
+      "empirical_winrate": 0.44799999999999995,
+      "n_games": 163,
+      "suggested": "consider lowering scaling_late from 2 to 1",
+      "audited_at": "2026-06-10T01:04:13.535558+00:00"
+    }
+  ]
+}

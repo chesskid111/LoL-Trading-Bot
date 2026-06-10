@@ -114,13 +114,31 @@ def extract_role_suffix(name: str) -> tuple[str, str | None]:
     return s[:m.start()].strip(), role_map.get(role_token)
 
 
+def _maybe_dedupe_doubled(name: str) -> str:
+    """gol.gg's Champions ranking page shows names twice ('Gnar Gnar',
+    'Lee Sin Lee Sin', 'Twisted Fate Twisted Fate') because the icon
+    label and the text label render together when copied. Dedupe."""
+    parts = name.strip().split()
+    if not parts:
+        return name
+    n = len(parts)
+    # Even-length palindrome check: first half == second half
+    if n >= 2 and n % 2 == 0:
+        half = n // 2
+        if parts[:half] == parts[half:]:
+            return " ".join(parts[:half])
+    return name
+
+
 def normalize_champion(name: str) -> str:
     """Map gol.gg display name → DataDragon canonical name.
 
-    Handles gol.gg's role suffix convention (' Pantheon JUNGLE') by stripping
-    the suffix before lookup. Also normalizes leading/trailing whitespace.
+    Handles two gol.gg conventions:
+      - Champion synergy page: ' Pantheon JUNGLE' (role suffix to strip)
+      - Champions ranking page: 'Gnar Gnar' (doubled name from icon+text)
     """
     base, _ = extract_role_suffix(name)
+    base = _maybe_dedupe_doubled(base)
     if base in DDRAGON_NAME_MAP:
         return DDRAGON_NAME_MAP[base]
     # Strip apostrophes + spaces as a fallback

@@ -151,6 +151,10 @@ def parse_tsv(path: Path, role_hint: str | None = None) -> list[GolGGChampionSta
 def parse_all_tsvs(input_dir: Path) -> dict[str, dict[str, GolGGChampionStatRow]]:
     """Read all TSVs in input_dir, group by (role, champion).
 
+    When the same (role, champion) appears in multiple files (e.g., season
+    vs current-patch), keep the row with the largest sample size — that's
+    the most statistically reliable signal for profile audit purposes.
+
     Returns: {role: {champion: row}}
     """
     by_role_champ: dict[str, dict[str, GolGGChampionStatRow]] = defaultdict(dict)
@@ -158,7 +162,9 @@ def parse_all_tsvs(input_dir: Path) -> dict[str, dict[str, GolGGChampionStatRow]
         rows = parse_tsv(tsv)
         log.info("parsed %d rows from %s", len(rows), tsv.name)
         for r in rows:
-            by_role_champ[r.role][r.champion] = r
+            existing = by_role_champ[r.role].get(r.champion)
+            if existing is None or r.n_games > existing.n_games:
+                by_role_champ[r.role][r.champion] = r
     return dict(by_role_champ)
 
 
