@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from loltrader.trader.exits import (
-    PositionState, assess_exit, game_leverage, size_from_prices,
+    PositionState, assess_exit, game_leverage, size_from_prices, risk_signals,
 )
 
 
@@ -127,6 +127,33 @@ def test_hold_when_edge_present_low_leverage():
                     frame=frame, position=pos)
     assert a.action == "hold"
     assert a.edge > 0
+
+
+# ---------- position-agnostic risk signals (dashboard badge) ----------
+
+def test_risk_signals_coinflip_zone():
+    frame = _frame(minute=34, gold_diff=200, soul_blue=1)
+    rs = risk_signals(p_blue=0.51, frame=frame)
+    assert rs.coinflip_zone is True
+    assert "COINFLIP" in rs.headline
+
+
+def test_risk_signals_not_coinflip_when_favored():
+    frame = _frame(minute=34, gold_diff=200, soul_blue=1)
+    rs = risk_signals(p_blue=0.62, frame=frame)   # favored, not ~50%
+    assert rs.coinflip_zone is False
+
+
+def test_risk_signals_per_side_triggers():
+    # blue lost an inhib, red took baron, blue swung down hard
+    frame = _frame(minute=30, inhib_diff=-1, baron_diff=-1,
+                   gold_diff_change_last_60s=-1500)
+    rs = risk_signals(p_blue=0.45, frame=frame)
+    assert "own_inhibitor_lost" in rs.triggers_blue
+    assert "opponent_baron_active" in rs.triggers_blue
+    assert "adverse_swing_60s" in rs.triggers_blue
+    # red's perspective: red took the baron (not "opponent baron" for red)
+    assert "opponent_baron_active" not in rs.triggers_red
 
 
 # ---------- sizing ----------

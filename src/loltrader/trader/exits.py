@@ -103,6 +103,63 @@ def game_leverage(frame: dict) -> float:
     return min(1.0, score)
 
 
+@dataclass
+class RiskSignals:
+    """Position-agnostic risk view for the live dashboard.
+
+    Computed from game state + model fair alone (no position/market needed),
+    so it can render as an always-on badge during any game. The full
+    assess_exit() takes over once the user enters their actual position.
+    """
+    leverage: float
+    coinflip_zone: bool          # near-50% AND high leverage (the danger zone)
+    triggers_blue: list[str]     # structural triggers from blue's perspective
+    triggers_red: list[str]      # ...and red's
+    headline: str                # one-line UI summary
+
+
+def risk_signals(p_blue: float, frame: dict) -> RiskSignals:
+    """Always-on risk badge: leverage, coinflip-zone, per-side structural triggers.
+
+    Edge (fair vs market) isn't included here because the dashboard has the
+    market price separately; this is the state-fragility half of the picture.
+    """
+    lev = game_leverage(frame)
+    near_coin = abs(p_blue - 0.5) < COINFLIP_BAND
+    coinflip_zone = near_coin and lev >= HIGH_LEVERAGE
+
+    tb: list[str] = []
+    tr: list[str] = []
+    inhib = float(frame.get("inhib_diff", 0) or 0)
+    if inhib < 0:
+        tb.append("own_inhibitor_lost")
+    elif inhib > 0:
+        tr.append("own_inhibitor_lost")
+    baron = float(frame.get("baron_diff", 0) or 0)
+    if baron < 0:
+        tb.append("opponent_baron_active")
+    elif baron > 0:
+        tr.append("opponent_baron_active")
+    vel = float(frame.get("gold_diff_change_last_60s", 0) or 0)
+    if vel <= ADVERSE_VELOCITY:           # blue lost ground fast
+        tb.append("adverse_swing_60s")
+    elif -vel <= ADVERSE_VELOCITY:        # red lost ground fast
+        tr.append("adverse_swing_60s")
+
+    if coinflip_zone:
+        headline = (f"COINFLIP ZONE — ~50% at {lev:.0%} leverage. If you hold "
+                    f"either side with no edge, exit (variance, no compensation).")
+    elif lev >= HIGH_LEVERAGE:
+        headline = f"High leverage ({lev:.0%}) — one fight can end it. Size down."
+    elif lev >= 0.4:
+        headline = f"Rising leverage ({lev:.0%}) — start laddering profits."
+    else:
+        headline = f"Low leverage ({lev:.0%}) — edge plays can hold."
+
+    return RiskSignals(leverage=lev, coinflip_zone=coinflip_zone,
+                       triggers_blue=tb, triggers_red=tr, headline=headline)
+
+
 def assess_exit(
     model_fair_blue: float,
     market_price_blue_cents: float,

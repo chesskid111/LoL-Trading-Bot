@@ -54,6 +54,7 @@ class LivePrediction:
     red_team_code: str | None
     model_version: str | None     # which model produced this (timestamp)
     has_full_features: bool       # False if picks couldn't be resolved
+    risk: dict | None = None      # position-agnostic risk badge (leverage/triggers)
 
 
 class _GameState:
@@ -277,6 +278,23 @@ class WinprobService:
             log.exception("model.predict failed for %s", game_id)
             return None
 
+        # Position-agnostic risk badge (leverage / coinflip-zone / triggers).
+        # Computed from the same integrated features so the dashboard can show
+        # the exit-discipline alert without the user entering a position.
+        try:
+            from loltrader.trader.exits import risk_signals
+            rs = risk_signals(float(pred.p_blue), features)
+            risk = {
+                "leverage": rs.leverage,
+                "coinflip_zone": rs.coinflip_zone,
+                "triggers_blue": rs.triggers_blue,
+                "triggers_red": rs.triggers_red,
+                "headline": rs.headline,
+            }
+        except Exception:
+            log.exception("risk_signals failed for %s", game_id)
+            risk = None
+
         return LivePrediction(
             game_id=game_id,
             minute=minute,
@@ -290,6 +308,7 @@ class WinprobService:
             red_team_code=st.red_team_code,
             model_version=self._model_version,
             has_full_features=has_full,
+            risk=risk,
         )
 
     def to_wire(self, pred: LivePrediction) -> dict[str, Any]:
