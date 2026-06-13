@@ -67,39 +67,99 @@ def test_scaling_comp_even_late_is_NOT_coinflip():
     assert a.action != "exit"   # we have edge AND we're favored — hold
 
 
-# ---------- structural triggers ----------
+# ---------- structural triggers: edge sets direction, leverage sets size ----------
 
-def test_own_inhibitor_lost_urgent_exit_blue():
-    frame = _frame(minute=30, inhib_diff=-1)  # blue down an inhib
-    pos = PositionState(side="blue", entry_price_cents=60, contracts=50)
-    a = assess_exit(0.55, 58, frame, pos)
+def test_inhib_lost_with_fat_edge_does_not_exit():
+    """Blue lost an inhib, but the MARKET overreacted: model 30%, market 15%.
+    The comeback is underpriced. Must NOT exit — hold (fat edge, high leverage)."""
+    frame = _frame(minute=30, inhib_diff=-1)
+    pos = PositionState(side="blue", entry_price_cents=15, contracts=100)
+    a = assess_exit(model_fair_blue=0.30, market_price_blue_cents=15,
+                    frame=frame, position=pos)
     assert "own_inhibitor_lost" in a.triggers
+    assert a.action != "exit"          # the model says comeback is live + underpriced
+    assert a.action in ("hold",)       # fat edge but high leverage -> hold, don't add
+
+
+def test_inhib_lost_no_edge_reduces_not_exits():
+    """Blue lost an inhib, market agrees with model (no edge), high leverage.
+    Reduce to manage un-reactable variance — but NOT a blanket exit."""
+    frame = _frame(minute=30, inhib_diff=-1)
+    pos = PositionState(side="blue", entry_price_cents=28, contracts=100)
+    a = assess_exit(model_fair_blue=0.26, market_price_blue_cents=28,
+                    frame=frame, position=pos)
+    assert "own_inhibitor_lost" in a.triggers
+    # edge = 0.26 - 0.28 = -0.02 (no meaningful edge), not deep enough to flip
+    assert a.action == "reduce"
+
+
+def test_terminal_aced_with_inhib_late_exits():
+    """The narrow real exit: aced (catastrophic swing) AND base cracked (inhib)
+    late — settles before any comeback can occur."""
+    frame = _frame(minute=32, inhib_diff=-1, gold_diff_change_last_60s=-3000)
+    pos = PositionState(side="blue", entry_price_cents=20, contracts=80)
+    a = assess_exit(0.10, 12, frame, pos)
     assert a.action == "exit" and a.urgency == "urgent"
+    assert "terminal" in a.reason
 
 
-def test_own_inhibitor_lost_orients_to_red_side():
-    # inhib_diff = +1 means RED lost an inhib (blue-minus-red positive).
-    # If I'm long RED, that's MY inhibitor lost.
-    frame = _frame(minute=30, inhib_diff=+1)
-    pos = PositionState(side="red", entry_price_cents=60, contracts=50)
-    a = assess_exit(0.45, 42, frame, pos)  # fair_blue 0.45 -> red fair 0.55
-    assert "own_inhibitor_lost" in a.triggers
-    assert a.action == "exit"
-
-
-def test_catastrophic_swing_urgent_exit():
-    frame = _frame(minute=28, gold_diff_change_last_60s=-3000)  # got aced
-    pos = PositionState(side="blue", entry_price_cents=55, contracts=80)
-    a = assess_exit(0.5, 50, frame, pos)
+def test_catastrophic_swing_alone_not_terminal():
+    """Aced but base intact (no inhib lost) + model still favors you -> not a
+    terminal exit; comeback window is live."""
+    frame = _frame(minute=28, gold_diff_change_last_60s=-3000)  # aced, base safe
+    pos = PositionState(side="blue", entry_price_cents=45, contracts=80)
+    a = assess_exit(model_fair_blue=0.58, market_price_blue_cents=45,
+                    frame=frame, position=pos)
     assert "catastrophic_swing_60s" in a.triggers
-    assert a.action == "exit" and a.urgency == "urgent"
+    assert a.action != "exit"          # fair 58% > market 45% -> edge, don't fold
 
 
-def test_opponent_baron_reduce_when_levered():
+def test_opponent_baron_no_edge_reduces():
+    # Clearly favored (62%, not a coinflip) but opponent took baron and there's
+    # no edge vs market -> reduce the un-reactable variance, don't exit.
     frame = _frame(minute=29, baron_diff=-1, gold_diff=1500)  # red has baron
-    pos = PositionState(side="blue", entry_price_cents=55, contracts=50)
-    a = assess_exit(0.56, 54, frame, pos)
+    pos = PositionState(side="blue", entry_price_cents=58, contracts=50)
+    a = assess_exit(0.62, 60, frame, pos)   # edge +0.02 (thin), not coinflip
     assert "opponent_baron_active" in a.triggers
+    assert a.action == "reduce"
+
+
+# ---------- buy the overreaction ----------
+
+def test_buy_overreaction_when_leverage_manageable():
+    """Market dumped past fair in a still-manageable game -> ADD (buy the dip)."""
+    frame = _frame(minute=20, gold_diff=-1500)  # behind but not late/levered
+    pos = PositionState(side="blue", entry_price_cents=40, contracts=50)
+    a = assess_exit(model_fair_blue=0.50, market_price_blue_cents=38,
+                    frame=frame, position=pos)
+    assert a.action == "add"
+
+
+def test_fat_edge_but_high_leverage_holds_not_adds():
+    frame = _frame(minute=33, inhib_diff=-1)   # high leverage
+    pos = PositionState(side="blue", entry_price_cents=30, contracts=50)
+    a = assess_exit(model_fair_blue=0.45, market_price_blue_cents=30,
+                    frame=frame, position=pos)
+    assert a.action == "hold"          # edge +15 but can't react -> don't add
+
+
+def test_deep_tail_requires_fatter_edge():
+    """In the deep-underdog zone the model is over-optimistic; a thin edge is
+    NOT enough to add (avoids catching a falling knife on a bad model number)."""
+    frame = _frame(minute=20, gold_diff=-3000)
+    pos = PositionState(side="blue", entry_price_cents=15, contracts=50)
+    # model 18%, market 15% -> edge +3% — below the 14% deep-tail threshold
+    a = assess_exit(model_fair_blue=0.18, market_price_blue_cents=15,
+                    frame=frame, position=pos)
+    assert a.action != "add"
+
+
+def test_overpriced_side_reduces():
+    """Market over-rates your side (model below market) -> reduce/exit."""
+    frame = _frame(minute=22, gold_diff=-500)
+    pos = PositionState(side="blue", entry_price_cents=55, contracts=50)
+    a = assess_exit(model_fair_blue=0.42, market_price_blue_cents=55, frame=frame,
+                    position=pos)  # edge -0.13
     assert a.action in ("reduce", "exit")
 
 
@@ -120,11 +180,12 @@ def test_take_profit_ladders_into_leverage():
 
 # ---------- hold ----------
 
-def test_hold_when_edge_present_low_leverage():
+def test_hold_when_thin_edge_present():
+    """Thin positive edge (above LOW_EDGE, below the add threshold) -> hold."""
     frame = _frame(minute=14, gold_diff=1800)  # early, buffered
-    pos = PositionState(side="blue", entry_price_cents=45, contracts=50)
-    a = assess_exit(model_fair_blue=0.60, market_price_blue_cents=48,
-                    frame=frame, position=pos)
+    pos = PositionState(side="blue", entry_price_cents=48, contracts=50)
+    a = assess_exit(model_fair_blue=0.53, market_price_blue_cents=48,
+                    frame=frame, position=pos)   # edge +0.05
     assert a.action == "hold"
     assert a.edge > 0
 

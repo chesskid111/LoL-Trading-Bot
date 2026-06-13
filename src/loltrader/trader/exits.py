@@ -36,11 +36,14 @@ from typing import Literal, Optional
 # --- thresholds (tunable; defaults reasoned in the module docstring) ---
 COINFLIP_BAND = 0.10          # |fair - 0.5| < this  => near coinflip
 LOW_EDGE = 0.04               # |fair - market| < this => no remaining edge
+EDGE_ADD = 0.08               # edge above this (manageable lev) => add / buy overreaction
+EDGE_ADD_TAIL = 0.14          # deep-underdog edge needed to act (model over-optimistic there)
+DEEP_TAIL = 0.25              # fair_mine below this = deep-underdog zone (weak calibration)
 LATE_GAME_MIN = 28            # minute at/after which leverage is structurally high
 MID_LATE_MIN = 24
 GOLD_BUFFER = 2500            # |gold_diff| < this (mid-late) => a fight can swing it
 ADVERSE_VELOCITY = -1200      # my-side gold change over last 60s worse than this
-COLLAPSE_VELOCITY = -2500     # catastrophic swing (likely ace) => urgent exit
+COLLAPSE_VELOCITY = -2500     # catastrophic swing (likely ace)
 TAKE_PROFIT_GAIN_C = 15       # up >= 15c into rising leverage => ladder out
 HIGH_LEVERAGE = 0.6
 
@@ -57,7 +60,7 @@ class PositionState:
 
 @dataclass
 class ExitAssessment:
-    action: Literal["hold", "take_profit", "reduce", "exit"]
+    action: Literal["hold", "add", "take_profit", "reduce", "exit"]
     urgency: Literal["none", "advisory", "urgent"]
     triggers: list[str]
     coinflip: bool
@@ -195,49 +198,83 @@ def assess_exit(
     elif vel <= ADVERSE_VELOCITY:
         triggers.append("adverse_swing_60s")
 
-    # ---- coinflip detector (A ∧ B ∧ C) ----
+    # ---- signal decomposition ----
+    # The model's win prob already prices comebacks (inhib/baron are features,
+    # trained on 698 games where teams came back). So `edge` = fair - market is
+    # the truth about whether the market has OVER- or UNDER-reacted. We let edge
+    # set DIRECTION and leverage set SIZE — structural events are not auto-exits.
     near_coin = abs(fair_mine - 0.5) < COINFLIP_BAND
     high_lev = lev >= HIGH_LEVERAGE
     low_edge = abs(edge) < LOW_EDGE
     coinflip = near_coin and high_lev and low_edge
 
-    # ---- unrealized PnL (if a position is set) ----
+    # Deep-underdog calibration caveat: the model is over-optimistic about the
+    # comeback in the low tail (holdout 10-20% bucket off ~10%), so require a
+    # FATTER edge there before trusting an "add the overreaction" call.
+    add_threshold = EDGE_ADD_TAIL if fair_mine < DEEP_TAIL else EDGE_ADD
+
+    # Terminal: the game ends before you could realize any comeback. Narrow —
+    # an aced team with its base cracked late, not merely "an inhibitor is down".
+    terminal = ("catastrophic_swing_60s" in triggers
+                and "own_inhibitor_lost" in triggers
+                and float(frame.get("minute", 0) or 0) >= LATE_GAME_MIN)
+
     pnl = None
     if position.contracts and position.entry_price_cents:
         pnl = (market_mine * 100 - position.entry_price_cents) * position.contracts
+    in_profit_c = (market_mine * 100 - position.entry_price_cents)
 
-    # ---- decide ----
     action: str = "hold"
     urgency: str = "none"
-    reason = "no exit signal"
+    reason = "no signal"
     ladder: list[tuple[int, float]] = []
+    trig_str = ", ".join(triggers) if triggers else "none"
 
-    if "catastrophic_swing_60s" in triggers or "own_inhibitor_lost" in triggers:
+    if terminal:
         action, urgency = "exit", "urgent"
-        reason = ("structural collapse (" + ", ".join(triggers) +
-                  ") — game can end before you react; exit now")
+        reason = ("terminal: aced with base cracked late — settles before you "
+                  "can act, no time for a comeback. Exit.")
     elif coinflip:
         action, urgency = "exit", "urgent"
-        reason = (f"coinflip + max leverage + ~0 edge: fair {fair_mine:.0%}, "
-                  f"market {market_mine:.0%}, leverage {lev:.0%} — pure variance, "
-                  f"no compensation. Exit (the game-1 lesson).")
-    elif triggers and lev >= HIGH_LEVERAGE:
-        action, urgency = "reduce", "advisory"
-        reason = ("structural risk (" + ", ".join(triggers) +
-                  f") at {lev:.0%} leverage — cut size")
-    elif (pnl is not None
-          and (market_mine * 100 - position.entry_price_cents) >= TAKE_PROFIT_GAIN_C
-          and lev >= 0.5):
+        reason = (f"coinflip + ~0 edge + max leverage: fair {fair_mine:.0%}, "
+                  f"market {market_mine:.0%}, lev {lev:.0%} — pure variance, no "
+                  f"compensation. Exit (the game-1 lesson).")
+    elif edge >= add_threshold:
+        # Market has overreacted PAST the model's comeback-inclusive fair.
+        tail = " [deep-tail: model over-optimistic here, only acting on a fat edge]" \
+               if fair_mine < DEEP_TAIL else ""
+        if high_lev:
+            action, urgency = "hold", "advisory"
+            reason = (f"fat edge {edge:+.0%} (market overreaction, fair {fair_mine:.0%} "
+                      f"vs {market_mine:.0%}) BUT {lev:.0%} leverage — hold, don't add "
+                      f"into variance you can't react to.{tail} Triggers: {trig_str}")
+        else:
+            action, urgency = "add", "advisory"
+            reason = (f"market overreaction: fair {fair_mine:.0%} vs market "
+                      f"{market_mine:.0%}, edge {edge:+.0%} at manageable leverage "
+                      f"{lev:.0%} — add / buy the dip.{tail}")
+    elif edge <= -add_threshold:
+        # Your side is now OVERpriced vs the model — the market over-rates you.
+        action, urgency = ("exit" if high_lev else "reduce"), "advisory"
+        reason = (f"your side overpriced: fair {fair_mine:.0%} < market "
+                  f"{market_mine:.0%} (edge {edge:+.0%}) — {action}.")
+    elif pnl is not None and in_profit_c >= TAKE_PROFIT_GAIN_C and lev >= 0.5:
         action, urgency = "take_profit", "advisory"
-        gain = market_mine * 100 - position.entry_price_cents
-        reason = (f"up {gain:.0f}c into rising leverage ({lev:.0%}) — ladder out "
-                  f"with resting sells rather than risk a swing")
+        reason = (f"up {in_profit_c:.0f}c into rising leverage ({lev:.0%}), edge "
+                  f"gone — ladder out with resting sells rather than risk a swing")
         base = int(round(market_mine * 100))
         ladder = [(min(95, base + 5), 0.34),
                   (min(97, base + 12), 0.33),
                   (min(99, base + 20), 0.33)]
-    elif edge > LOW_EDGE and lev < HIGH_LEVERAGE:
-        reason = (f"edge {edge:+.0%} still present at {lev:.0%} leverage — hold")
+    elif triggers and high_lev:
+        # Structural risk with NO edge to justify the un-reactable variance.
+        # Reduce (manage size) — NOT a full exit; direction still the model's.
+        action, urgency = "reduce", "advisory"
+        reason = (f"structural risk ({trig_str}) at {lev:.0%} leverage with no edge "
+                  f"(fair {fair_mine:.0%} vs {market_mine:.0%}) — cut size to manage "
+                  f"variance you can't react to; the model isn't calling it a loss.")
+    elif edge > LOW_EDGE:
+        reason = f"edge {edge:+.0%} present at {lev:.0%} leverage — hold"
 
     return ExitAssessment(
         action=action, urgency=urgency, triggers=triggers, coinflip=coinflip,
