@@ -111,30 +111,12 @@ def parse_tsv(path: Path, role_hint: str | None = None) -> list[GolGGChampionSta
 
             if header is None:
                 header = [c.strip().lower() for c in raw]
-                # Find canonical columns
-                for i, h in enumerate(header):
-                    if "champion" in h and "champion" not in col_idx:
-                        col_idx["champion"] = i
-                    elif "games" in h or "matches" in h:
-                        col_idx.setdefault("n_games", i)
-                    elif "winrate" in h or h == "wr":
-                        col_idx.setdefault("winrate", i)
-                    elif "pickrate" in h or "presence" in h:
-                        col_idx.setdefault("pickrate", i)
-                    elif "banrate" in h or "ban rate" in h:
-                        col_idx.setdefault("banrate", i)
-                    elif h == "kda" or "kda" in h:
-                        col_idx.setdefault("kda", i)
-                    elif "gold @15" in h or "gold@15" in h or "gd@15" in h:
-                        col_idx.setdefault("gold_at_15", i)
-                    elif "cs @15" in h or "cs@15" in h or "csd@15" in h:
-                        col_idx.setdefault("cs_at_15", i)
-                    elif "dmg" in h and "min" in h:
-                        col_idx.setdefault("dmg_per_min", i)
+                col_idx = _map_columns(header)
                 continue
 
             try:
-                def _num_opt(idx: Optional[int]) -> Optional[float]:
+                def _num_opt(key: str) -> Optional[float]:
+                    idx = col_idx.get(key)
                     if idx is None or idx >= len(raw):
                         return None
                     s = raw[idx].strip().replace(",", "").replace("%", "")
@@ -150,24 +132,51 @@ def parse_tsv(path: Path, role_hint: str | None = None) -> list[GolGGChampionSta
                     continue
                 champion = normalize_champion(champ_raw)
 
-                n_games_val = _num_opt(col_idx.get("n_games"))
+                # Resolve n_games: prefer explicit #games, else Picks, else Wins+Losses
+                n_games_val = _num_opt("n_games")
+                if n_games_val is None:
+                    n_games_val = _num_opt("picks")
+                if n_games_val is None:
+                    w = _num_opt("wins")
+                    losses = _num_opt("losses")
+                    if w is not None and losses is not None:
+                        n_games_val = w + losses
                 if n_games_val is None or n_games_val < 1:
                     continue
-                wr_val = _num_opt(col_idx.get("winrate"))
+
+                wr_val = _num_opt("winrate")
+                if wr_val is None:
+                    # Derive from wins/losses if winrate column missing
+                    w = _num_opt("wins")
+                    losses = _num_opt("losses")
+                    if w is not None and (w + (losses or 0)) > 0:
+                        wr_val = 100.0 * w / (w + losses)
                 if wr_val is None:
                     continue
+
+                picks_val = _num_opt("picks")
+                bans_val = _num_opt("bans")
 
                 row = GolGGChampionStatRow(
                     champion=champion,
                     role=role,
                     n_games=int(n_games_val),
                     winrate=wr_val,
-                    pickrate=_num_opt(col_idx.get("pickrate")),
-                    banrate=_num_opt(col_idx.get("banrate")),
-                    kda=_num_opt(col_idx.get("kda")),
-                    gold_at_15=_num_opt(col_idx.get("gold_at_15")),
-                    cs_at_15=_num_opt(col_idx.get("cs_at_15")),
-                    dmg_per_min=_num_opt(col_idx.get("dmg_per_min")),
+                    picks=int(picks_val) if picks_val is not None else None,
+                    bans=int(bans_val) if bans_val is not None else None,
+                    prio_score=_num_opt("prio_score"),
+                    blind_pick_pct=_num_opt("blind_pick_pct"),
+                    avg_ban_time=_num_opt("avg_ban_time"),
+                    avg_pick_round=_num_opt("avg_pick_round"),
+                    kda=_num_opt("kda"),
+                    csm=_num_opt("csm"),
+                    dpm=_num_opt("dpm"),
+                    gpm=_num_opt("gpm"),
+                    avg_game_time_min=_parse_game_time(raw, col_idx.get("game_time")),
+                    gd_15=_num_opt("gd_15"),
+                    csd_15=_num_opt("csd_15"),
+                    xpd_15=_num_opt("xpd_15"),
+                    dmg_per_min=_num_opt("dmg_per_min"),
                 )
                 rows.append(row)
             except (ValueError, KeyError) as e:
@@ -175,6 +184,87 @@ def parse_tsv(path: Path, role_hint: str | None = None) -> list[GolGGChampionSta
                 continue
 
     return rows
+
+
+def _map_columns(header: list[str]) -> dict[str, int]:
+    """Map header strings → canonical column keys, handling both gol.gg formats.
+
+    Order matters: check more-specific patterns before generic ones (e.g.
+    'gd@15' before 'dpm', 'prioscore' before 'pickrate').
+    """
+    col_idx: dict[str, int] = {}
+    for i, h in enumerate(header):
+        h = h.strip()
+        # Champion (first match wins)
+        if "champion" in h and "champion" not in col_idx:
+            col_idx["champion"] = i
+        # Draft signals
+        elif h == "picks":
+            col_idx.setdefault("picks", i)
+        elif h == "bans":
+            col_idx.setdefault("bans", i)
+        elif "prioscore" in h or "prio score" in h:
+            col_idx.setdefault("prio_score", i)
+        elif h == "bp%" or "blind" in h:
+            col_idx.setdefault("blind_pick_pct", i)
+        elif "avg bt" in h or h == "bt":
+            col_idx.setdefault("avg_ban_time", i)
+        elif "avg rp" in h or h == "rp":
+            col_idx.setdefault("avg_pick_round", i)
+        # Outcomes
+        elif "# games" in h or h == "games" or "matches" in h or "nb games" in h:
+            col_idx.setdefault("n_games", i)
+        elif h == "wins":
+            col_idx.setdefault("wins", i)
+        elif h == "losses":
+            col_idx.setdefault("losses", i)
+        elif "winrate" in h or h == "wr" or "win rate" in h:
+            col_idx.setdefault("winrate", i)
+        elif h == "kda" or "kda" in h:
+            col_idx.setdefault("kda", i)
+        # Lane phase diffs — check @15 BEFORE perf metrics
+        elif "gd@15" in h or "gd @15" in h:
+            col_idx.setdefault("gd_15", i)
+        elif "csd@15" in h or "csd @15" in h:
+            col_idx.setdefault("csd_15", i)
+        elif "xpd@15" in h or "xpd @15" in h:
+            col_idx.setdefault("xpd_15", i)
+        # Performance
+        elif h == "csm" or ("cs" in h and "min" in h):
+            col_idx.setdefault("csm", i)
+        elif h == "dpm":
+            col_idx.setdefault("dpm", i)
+        elif h == "gpm":
+            col_idx.setdefault("gpm", i)
+        elif h == "gt" or "game time" in h:
+            col_idx.setdefault("game_time", i)
+        elif "dmg" in h and "min" in h:
+            col_idx.setdefault("dmg_per_min", i)
+        # Legacy
+        elif "pickrate" in h or "presence" in h:
+            col_idx.setdefault("pickrate", i)
+        elif "banrate" in h or "ban rate" in h:
+            col_idx.setdefault("banrate", i)
+    return col_idx
+
+
+def _parse_game_time(raw: list[str], idx: Optional[int]) -> Optional[float]:
+    """Parse a 'MM:SS' game-time cell into decimal minutes."""
+    if idx is None or idx >= len(raw):
+        return None
+    s = raw[idx].strip()
+    if not s or s == "-":
+        return None
+    if ":" in s:
+        try:
+            mm, ss = s.split(":")
+            return int(mm) + int(ss) / 60.0
+        except (ValueError, IndexError):
+            return None
+    try:
+        return float(s)
+    except ValueError:
+        return None
 
 
 def parse_all_tsvs(input_dir: Path) -> dict[str, dict[str, GolGGChampionStatRow]]:
@@ -263,12 +353,32 @@ def detect_regional_divergence(
     return flags
 
 
+# Bayesian shrinkage for audit winrates — same machinery as synergies.
+# A 64% WR over 200 games is trustworthy; over 15 games it's noise. Shrink
+# toward 0.5 by sample size before comparing to the profile.
+AUDIT_PRIOR_N = 40
+# GD@15 thresholds for inferring a champion's game-stage identity.
+GD15_EARLY = 200       # strong early lead → early-game champ
+GD15_SCALING = -150    # negative lead but wins → scaling champ
+
+
+def _shrink_wr(wr: float, n: int, prior_n: int = AUDIT_PRIOR_N) -> float:
+    """Bayesian-shrink a winrate toward 0.5 by sample size."""
+    return (n * wr + prior_n * 0.5) / (n + prior_n)
+
+
 def audit_profiles(stats_by_role: dict[str, dict[str, GolGGChampionStatRow]],
                     profiles_path: Path) -> list[dict]:
     """Compare profile qualitative ratings to empirical gol.gg data.
 
-    Returns: list of audit flags sorted by suspected error magnitude.
-    Each flag includes: champion, profile values, empirical signals, suggestion.
+    Improvements over the first version:
+      - Bayesian shrinkage on WR so small-sample champions aren't over-flagged
+      - PrioScore (pick+ban %) as a confidence multiplier — high-priority meta
+        picks have been stress-tested, so flags on them are more trustworthy
+      - GD@15 cross-check: validates scaling-direction independently of WR
+        (strong +GD@15 = early champ; -GD@15 with high WR = scaling champ)
+
+    Returns: list of flags sorted by (severity, confidence-weighted magnitude).
     """
     with open(profiles_path, "r", encoding="utf-8") as f:
         profiles = json.load(f)
@@ -278,72 +388,108 @@ def audit_profiles(stats_by_role: dict[str, dict[str, GolGGChampionStatRow]],
 
     for role, champs in stats_by_role.items():
         for champ_name, stat in champs.items():
-            # Filter low-sample
             if stat.n_games < MIN_GAMES_FOR_AUDIT:
                 continue
-            if stat.pickrate is not None and stat.pickrate < MIN_PICKRATE_FOR_AUDIT:
+            # Use prio_score (preferred) or pickrate to skip niche picks
+            prio = stat.prio_score if stat.prio_score is not None else stat.pickrate
+            if prio is not None and prio < MIN_PICKRATE_FOR_AUDIT:
                 continue
 
             profile = profiles.get(champ_name)
             if profile is None:
                 flags.append({
-                    "champion": champ_name,
-                    "role": role,
+                    "champion": champ_name, "role": role,
                     "severity": "missing_profile",
                     "issue": "champion not in profiles",
-                    "n_games": stat.n_games,
-                    "winrate": stat.winrate,
-                    "suggested": "Add profile (Phase 1.4 missed this champion)",
+                    "n_games": stat.n_games, "winrate": stat.winrate,
+                    "prio_score": prio,
+                    "suggested": "Add profile (bootstrap missed this champion)",
                     "audited_at": now,
                 })
                 continue
 
             qual = profile.get("qualitative", {})
             conf = profile.get("confidence", 0.5)
-
-            # Check 1: Empirical winrate vs implied scaling
-            # If a champion has +3 scaling_late, we'd expect above-baseline winrate
-            # If a champion has -2 scaling_late, we'd expect below-baseline winrate
             late = qual.get("scaling_late", 0)
-            wr_delta = stat.winrate - WINRATE_BASELINE
+            early = qual.get("scaling_early", 0)
 
-            # Flag if profile claims strong scaling but empirical is mediocre
-            if late >= 2 and stat.winrate < WINRATE_BASELINE - WINRATE_DELTA_THRESHOLD/2:
+            # Shrink the WR by sample size — this is what we compare on
+            wr_shrunk = _shrink_wr(stat.winrate, stat.n_games)
+            wr_delta = wr_shrunk - WINRATE_BASELINE
+
+            # Confidence weight: high prio + high sample = trust the flag more.
+            # Scales severity, not the threshold.
+            prio_weight = min(1.0, (prio or 0.15) / 0.30)   # 30%+ prio = full weight
+            sample_weight = min(1.0, stat.n_games / 100.0)
+            trust = 0.5 * prio_weight + 0.5 * sample_weight
+
+            def _sev(delta_abs: float) -> str:
+                # High only if both the deviation AND our trust in it are high
+                if delta_abs > WINRATE_DELTA_THRESHOLD and trust > 0.6:
+                    return "high"
+                if delta_abs > WINRATE_DELTA_THRESHOLD / 2:
+                    return "medium"
+                return "low"
+
+            # Check 1: scaling_late claim vs shrunk WR
+            if late >= 2 and wr_delta < -WINRATE_DELTA_THRESHOLD / 2:
                 flags.append({
-                    "champion": champ_name,
-                    "role": role,
-                    "severity": "high" if abs(wr_delta) > WINRATE_DELTA_THRESHOLD else "medium",
-                    "issue": f"profile claims scaling_late={late} but empirical WR is {stat.winrate:.1%} ({wr_delta:+.1%} vs baseline)",
-                    "profile_scaling_late": late,
-                    "profile_confidence": conf,
-                    "empirical_winrate": stat.winrate,
-                    "n_games": stat.n_games,
-                    "suggested": f"consider lowering scaling_late from {late} to {max(0, late-1)}",
+                    "champion": champ_name, "role": role,
+                    "severity": _sev(abs(wr_delta)),
+                    "issue": (f"profile scaling_late={late} but shrunk WR {wr_shrunk:.1%} "
+                              f"({wr_delta:+.1%} vs baseline, raw {stat.winrate:.0%} over {stat.n_games})"),
+                    "profile_scaling_late": late, "profile_confidence": conf,
+                    "empirical_winrate": stat.winrate, "shrunk_winrate": wr_shrunk,
+                    "n_games": stat.n_games, "prio_score": prio, "gd_15": stat.gd_15,
+                    "suggested": f"consider lowering scaling_late {late}->{max(-3, late-1)}",
+                    "audited_at": now,
+                })
+            if late <= 0 and wr_delta > WINRATE_DELTA_THRESHOLD:
+                flags.append({
+                    "champion": champ_name, "role": role,
+                    "severity": _sev(abs(wr_delta)),
+                    "issue": (f"profile scaling_late={late} but shrunk WR {wr_shrunk:.1%} "
+                              f"({wr_delta:+.1%} vs baseline, raw {stat.winrate:.0%} over {stat.n_games})"),
+                    "profile_scaling_late": late, "profile_confidence": conf,
+                    "empirical_winrate": stat.winrate, "shrunk_winrate": wr_shrunk,
+                    "n_games": stat.n_games, "prio_score": prio, "gd_15": stat.gd_15,
+                    "suggested": f"consider raising scaling_late {late}->{min(3, late+1)}",
                     "audited_at": now,
                 })
 
-            # Flag if profile claims weak late but empirical strong
-            if late <= 0 and stat.winrate > WINRATE_BASELINE + WINRATE_DELTA_THRESHOLD:
-                flags.append({
-                    "champion": champ_name,
-                    "role": role,
-                    "severity": "high" if abs(wr_delta) > WINRATE_DELTA_THRESHOLD else "medium",
-                    "issue": f"profile claims scaling_late={late} but empirical WR is {stat.winrate:.1%} ({wr_delta:+.1%} vs baseline)",
-                    "profile_scaling_late": late,
-                    "profile_confidence": conf,
-                    "empirical_winrate": stat.winrate,
-                    "n_games": stat.n_games,
-                    "suggested": f"consider raising scaling_late from {late} to {min(3, late+1)}",
-                    "audited_at": now,
-                })
+            # Check 2: GD@15 cross-check on scaling-direction (independent of WR)
+            if stat.gd_15 is not None and stat.n_games >= 30:
+                # Strong early gold lead but profile says weak early
+                if stat.gd_15 > GD15_EARLY and early <= 0:
+                    flags.append({
+                        "champion": champ_name, "role": role,
+                        "severity": "medium",
+                        "issue": (f"GD@15={stat.gd_15:+.0f} (strong early) but profile "
+                                  f"scaling_early={early}"),
+                        "profile_scaling_early": early, "profile_confidence": conf,
+                        "gd_15": stat.gd_15, "n_games": stat.n_games, "prio_score": prio,
+                        "suggested": f"consider raising scaling_early {early}->{min(3, early+1)}",
+                        "audited_at": now,
+                    })
+                # Negative early lead but wins anyway + profile says weak late
+                elif stat.gd_15 < GD15_SCALING and wr_delta > 0 and late <= 0:
+                    flags.append({
+                        "champion": champ_name, "role": role,
+                        "severity": "medium",
+                        "issue": (f"GD@15={stat.gd_15:+.0f} (loses lane) yet WR {wr_shrunk:.1%} "
+                                  f">baseline — classic scaling profile, but scaling_late={late}"),
+                        "profile_scaling_late": late, "profile_confidence": conf,
+                        "gd_15": stat.gd_15, "shrunk_winrate": wr_shrunk,
+                        "n_games": stat.n_games, "prio_score": prio,
+                        "suggested": f"consider raising scaling_late {late}->{min(3, late+1)}",
+                        "audited_at": now,
+                    })
 
-    # Sort: high severity first, then by absolute winrate delta
-    severity_order = {"high": 0, "missing_profile": 1, "medium": 2}
+    severity_order = {"high": 0, "missing_profile": 1, "medium": 2, "low": 3}
     flags.sort(key=lambda f: (
         severity_order.get(f["severity"], 9),
-        -abs(f.get("empirical_winrate", 0.5) - WINRATE_BASELINE),
+        -abs(f.get("shrunk_winrate", f.get("empirical_winrate", 0.5)) - WINRATE_BASELINE),
     ))
-
     return flags
 
 

@@ -99,20 +99,51 @@ class ExpandedTriple(BaseModel):
 class GolGGChampionStatRow(BaseModel):
     """One row from gol.gg Champions ranking table.
 
-    The exact column set varies — this is the common subset we expect.
+    Supports two gol.gg formats:
+      - Premium "betting stats": Champion, #Games, Wins, Losses, Winrate, KDA,
+        Avg K+A, Kills involved, Total kills, Team FB/FD/FRH/FT %
+      - Normal "Champions" table: Champion, Picks, Bans, PrioScore, Wins,
+        Losses, Winrate, KDA, Avg BT, Avg RP, BP%, GT, CSM, DPM, GPM,
+        CSD@15, GD@15, XPD@15
+
+    The Normal table is richer (draft signals + lane phase) and preferred.
     """
     champion: str
     role: Literal["top", "jungle", "mid", "bot", "support"]
     n_games: int = Field(..., ge=1)
     winrate: float = Field(..., ge=0.0, le=1.0)
+
+    # Draft signals (Normal table)
+    picks: Optional[int] = Field(None, ge=0)
+    bans: Optional[int] = Field(None, ge=0)
+    prio_score: Optional[float] = Field(None, ge=0.0, le=1.0)   # pick OR ban %
+    blind_pick_pct: Optional[float] = Field(None, ge=0.0, le=1.0)  # BP%
+    avg_ban_time: Optional[float] = None       # Avg BT — lower = priority threat
+    avg_pick_round: Optional[float] = None     # Avg RP — lower = early commit
+
+    # Legacy / generic
     pickrate: Optional[float] = Field(None, ge=0.0, le=1.0)
     banrate: Optional[float] = Field(None, ge=0.0, le=1.0)
     kda: Optional[float] = Field(None, ge=0.0)
+
+    # Performance (Normal table)
+    csm: Optional[float] = None                # CS per minute
+    dpm: Optional[float] = None                # damage per minute
+    gpm: Optional[float] = None                # gold per minute
+    avg_game_time_min: Optional[float] = None  # GT (decimal minutes)
+
+    # Lane-phase differentials (Normal table) — these are DIFFS not absolutes
+    gd_15: Optional[float] = None              # gold diff @15
+    csd_15: Optional[float] = None             # CS diff @15
+    xpd_15: Optional[float] = None             # XP diff @15
+
+    # Legacy absolute fields (premium format) — kept for back-compat
     gold_at_15: Optional[float] = None
     cs_at_15: Optional[float] = None
     dmg_per_min: Optional[float] = Field(None, ge=0.0)
 
-    @field_validator("winrate", "pickrate", "banrate", mode="before")
+    @field_validator("winrate", "pickrate", "banrate", "prio_score",
+                       "blind_pick_pct", mode="before")
     @classmethod
     def normalize_pct(cls, v):
         if v is None:
