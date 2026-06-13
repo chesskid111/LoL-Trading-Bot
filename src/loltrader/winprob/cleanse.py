@@ -87,13 +87,19 @@ def has_coverage_moderate(minutes: set[int]) -> bool:
 
 
 def cleanse_dataframe(df, profiles_path: str | Path,
-                       coverage_mode: CoverageMode = "moderate") -> tuple:
+                       coverage_mode: CoverageMode = "moderate",
+                       dedup_cadence: str = "minute") -> tuple:
     """Apply all cleansing filters; return (cleaned_df, CleanseStats).
 
     Args:
         df: pandas DataFrame from build_winprob_dataset.
         profiles_path: path to champion_profiles.json (for confidence lookup).
         coverage_mode: "strict" or "moderate".
+        dedup_cadence: "minute" (default, 1 row/game-minute) or "30s"
+            (keep the :00 and ~:30 frames per minute → ~2 rows/game-minute,
+            a strict superset of the minute baseline). The 10s base frames
+            share an integer `minute`, so 30s is implemented by within-minute
+            row position rather than a seconds column.
 
     Returns:
         (cleaned_df, stats) — cleaned_df has only kept rows + 'weight' column
@@ -169,9 +175,16 @@ def cleanse_dataframe(df, profiles_path: str | Path,
         df = df[df["kill_diff"].abs() <= MAX_KILL_DIFF]
     stats.rows_dropped_impossible_state = before - len(df)
 
-    # Dedup
+    # Dedup — collapse the 10s base frames down to the target cadence.
     before = len(df)
-    df = df.drop_duplicates(subset=["game_id", "minute", "side"], keep="first")
+    if dedup_cadence == "30s":
+        # Keep the :00 and ~:30 frames per (game, minute). Rows arrive in
+        # build time order, so cumcount within a minute is the frame index.
+        pos = df.groupby(["game_id", "minute"]).cumcount()
+        cnt = df.groupby(["game_id", "minute"])["minute"].transform("size")
+        df = df[(pos == 0) | (pos == (cnt // 2))]
+    else:
+        df = df.drop_duplicates(subset=["game_id", "minute", "side"], keep="first")
     stats.rows_dropped_duplicate = before - len(df)
 
     # ----- Sample weight: downweight low-confidence comps -----
