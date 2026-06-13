@@ -4263,7 +4263,7 @@
     "qualitative": {
       "scaling_early": 3,
       "scaling_mid": 1,
-      "scaling_late": 0,
+      "scaling_late": -1,
       "baron_dps_tier": 2,
       "peel_needs": 2,
       "peel_supply": 2,
@@ -4309,7 +4309,7 @@
       "counterstats.net patch 16.11 Lee Sin counter matchup community notes"
     ],
     "confidence": 0.52,
-    "last_updated": "2026-06-13T05:23:14.290589+00:00",
+    "last_updated": "2026-06-13T05:28:43.182871+00:00",
     "validation_flags": [
       "No pro game data found for Lee Sin in the provided window (patch 26.11); analysis derived from general pro-play knowledge, historical pro tendencies, and supplemental web sources",
       "lolvvv.com reports a 44.4% pro win rate across only 36 matches, indicating low-volume pro presence this patch — Lee Sin may be a comfort/pocket pick rather than meta staple",
@@ -4319,7 +4319,8 @@
       "Dragon's Rage (ult_impact: 3) remains the primary reason he is drafted in pro — Flash-kick into team is a decisive win condition requiring team coordination",
       "Comfort_curve set to spike-2-item: Eclipse + Sundered Sky core gives him the burst and sustain needed to reliably execute combos in pro skirmishes",
       "meta shift flag: patch 26.11 jungle pool heavily contested; Viego, Bel'Veth, and scaling junglers depress Lee Sin's pick rate by outscaling his early tempo wins",
-      "gol.gg audit 2026-06-13: scaling_late -2->0 (S16 pro WR, Bayesian-shrunk)"
+      "gol.gg audit 2026-06-13: scaling_late -2->0 (S16 pro WR, Bayesian-shrunk)",
+      "gol.gg audit 2026-06-13: scaling_late 0->-1 (revised from 0 per user; early-snowball driven, falls off late)"
     ]
   },
   "Leona": {
