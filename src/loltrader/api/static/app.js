@@ -175,7 +175,54 @@ function updateWinprobInUI(pred) {
         const edgeCents = Number.isFinite(marketAsk) ? (modelPct - marketAsk) : null;
 
         renderEdgeStrip(card, modelPct, bandPct, marketAsk, edgeCents, pred);
+        renderRiskBadge(card, pred, yesIsBlue);
     }
+}
+
+// Human labels for structural triggers from exits.py
+const TRIGGER_LABELS = {
+    own_inhibitor_lost: 'inhib',
+    opponent_baron_active: 'baron',
+    adverse_swing_60s: 'swing−',
+};
+
+// Position-agnostic risk badge: leverage meter, coinflip-zone flag, and the
+// structural triggers — oriented to THIS card's YES side. "your" triggers are
+// against the side you'd buy; "opp" triggers signal the enemy is in trouble
+// (i.e. context for a possible overreaction/comeback buy).
+function renderRiskBadge(card, pred, yesIsBlue) {
+    const r = pred.risk;
+    let badge = card.querySelector('.winprob-risk');
+    if (!r) { if (badge) badge.remove(); return; }   // no risk data (degraded)
+
+    if (!badge) {
+        badge = document.createElement('div');
+        badge.className = 'winprob-risk';
+        const strip = card.querySelector('.winprob-strip');
+        if (strip) strip.after(badge); else return;
+    }
+
+    const lev = Math.round((r.leverage || 0) * 100);
+    const levClass = lev >= 60 ? 'lev-hi' : (lev >= 40 ? 'lev-mid' : 'lev-lo');
+
+    const yourTrig = (yesIsBlue ? r.triggers_blue : r.triggers_red) || [];
+    const oppTrig = (yesIsBlue ? r.triggers_red : r.triggers_blue) || [];
+    const chip = (t, cls) => `<span class="risk-trig ${cls}">${TRIGGER_LABELS[t] || t}</span>`;
+    const yourChips = yourTrig.map(t => chip(t, 'trig-bad')).join('');
+    const oppChips = oppTrig.map(t => chip(t, 'trig-opp')).join('');
+
+    const coinflip = r.coinflip_zone
+        ? '<span class="risk-coinflip" title="~50% at high leverage — exit if you hold with no edge">⚠ COINFLIP</span>'
+        : '';
+
+    badge.className = `winprob-risk ${levClass}${r.coinflip_zone ? ' risk-alert' : ''}`;
+    badge.title = r.headline || '';
+    badge.innerHTML = `
+        <span class="risk-lev ${levClass}">lev ${lev}%</span>
+        ${coinflip}
+        ${yourChips}
+        ${oppChips ? `<span class="risk-opp-label">opp:</span>${oppChips}` : ''}
+    `;
 }
 
 function renderEdgeStrip(card, modelPct, bandPct, marketAsk, edgeCents, pred) {
