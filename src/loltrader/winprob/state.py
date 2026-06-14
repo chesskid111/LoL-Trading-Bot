@@ -165,13 +165,19 @@ def compute_objective_state(frame: dict) -> dict[str, Any]:
     blue_d_count = len(blue_dragons)
     red_d_count = len(red_dragons)
 
-    # Soul: a team gets the soul when they take their 4th dragon of any kind.
-    # Approximation: ≥3 dragons indicates approaching soul; ≥4 means they have it.
+    # Soul: a team gets the soul when they take their 4th dragon.
     soul_state = "none"
     if blue_d_count >= 4:
         soul_state = "blue"
     elif red_d_count >= 4:
         soul_state = "red"
+
+    # Soul TYPE matters a lot by comp (Ocean=sustain favours teamfight/scaling;
+    # Infernal=damage favours bursty; Mountain=tank favours frontline; etc.).
+    # The rift element is shared, so the soul type is the dominant element
+    # across both teams' dragons (ignore elder). Derived from the data — no
+    # manual encoding needed (dragon JSON carries the element names).
+    soul_type = _dominant_dragon_element(blue_dragons + red_dragons)
 
     baron_blue = int(frame.get("blue_barons") or 0)
     baron_red = int(frame.get("red_barons") or 0)
@@ -182,10 +188,27 @@ def compute_objective_state(frame: dict) -> dict[str, Any]:
         "red_dragon_count": red_d_count,
         "dragon_diff": blue_d_count - red_d_count,
         "soul_state": soul_state,         # categorical: "blue"/"red"/"none"
+        "soul_type": soul_type,           # ocean/infernal/mountain/cloud/hextech/chemtech/none
         "blue_barons": baron_blue,
         "red_barons": baron_red,
         "baron_diff": baron_diff,
     }
+
+
+# Known elemental dragon/soul types (lowercased as they appear in the JSON).
+SOUL_TYPES = ("ocean", "infernal", "mountain", "cloud", "hextech", "chemtech")
+
+
+def _dominant_dragon_element(dragons: list) -> str:
+    """The rift's soul element = most common elemental dragon (excl. elder)."""
+    counts: dict[str, int] = {}
+    for d in dragons:
+        e = str(d).lower().strip()
+        if e in SOUL_TYPES:
+            counts[e] = counts.get(e, 0) + 1
+    if not counts:
+        return "none"
+    return max(counts, key=counts.get)
 
 
 def compute_item_progression(details: list[dict]) -> dict[str, Any]:
@@ -266,6 +289,15 @@ FEATURE_SCHEMA: list[str] = [
     "time_to_next_baron",
     "soul_blue",
     "soul_red",
+    # Signed soul-TYPE features: +1 if blue holds that soul, -1 if red holds it,
+    # 0 otherwise. Lets the model learn soul-type x comp interactions (e.g.
+    # Ocean sustain favours a teamfight/scaling comp).
+    "soul_ocean",
+    "soul_infernal",
+    "soul_mountain",
+    "soul_cloud",
+    "soul_hextech",
+    "soul_chemtech",
     "is_pregame",
 
     # --- Comp features ---
@@ -419,8 +451,13 @@ def integrate_state(
         feats["time_to_next_baron"] = float(time_to_next_baron(minute, obj["baron_diff"]))
         feats["soul_blue"] = 1.0 if obj["soul_state"] == "blue" else 0.0
         feats["soul_red"] = 1.0 if obj["soul_state"] == "red" else 0.0
-
-    # ----- comp features -----
+        # Signed soul-type features: +1 blue / -1 red / 0 none, only for the
+        # soul that's actually held (soul_type is the rift element).
+        soul_side = obj["soul_state"]
+        soul_type = obj.get("soul_type", "none")
+        if soul_side in ("blue", "red") and soul_type in SOUL_TYPES:
+            sign = 1.0 if soul_side == "blue" else -1.0
+            feats[f"soul_{soul_type}"] = sign
     feats["comp_a_scaling_at_t"] = comp_a.scaling_curve[minute]
     feats["comp_b_scaling_at_t"] = comp_b.scaling_curve[minute]
     feats["scaling_diff_at_t"] = feats["comp_a_scaling_at_t"] - feats["comp_b_scaling_at_t"]

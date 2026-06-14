@@ -730,6 +730,12 @@ footer {
 .winprob-strip .winprob-edge.edge-neg { color: #ef4444; font-weight: 600; }
 .winprob-strip .winprob-edge-na { color: var(--text-muted, #666); font-style: italic; }
 .winprob-strip .winprob-stale { color: #f59e0b; font-size: 0.85em; }
+.winprob-strip.winprob-degraded {
+    border-left-color: var(--accent-orange);
+    background: rgba(251, 191, 36, 0.06);
+    opacity: 0.85;
+}
+.winprob-strip.winprob-degraded .winprob-stale { font-weight: 600; }
 .winprob-strip .winprob-min { margin-left: auto; color: var(--text-muted, #aaa); }
 
 /* --- Risk badge (leverage / coinflip / structural triggers) -------------- */

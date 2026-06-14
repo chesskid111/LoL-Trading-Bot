@@ -141,7 +141,9 @@ class WinprobService:
             (game_id,),
         ).fetchone()
         if not g:
-            st.resolved = True
+            # games_live row not written yet (race: frames can land before the
+            # row). DON'T give up permanently — leave unresolved so the next
+            # throttled attempt retries once the row appears.
             return st
 
         st.league = (g["league"] or "other").lower() if g["league"] else None
@@ -297,21 +299,24 @@ class WinprobService:
             return None
 
         # Position-agnostic risk badge (leverage / coinflip-zone / triggers).
-        # Computed from the same integrated features so the dashboard can show
-        # the exit-discipline alert without the user entering a position.
-        try:
-            from loltrader.trader.exits import risk_signals
-            rs = risk_signals(float(pred.p_blue), features)
-            risk = {
-                "leverage": rs.leverage,
-                "coinflip_zone": rs.coinflip_zone,
-                "triggers_blue": rs.triggers_blue,
-                "triggers_red": rs.triggers_red,
-                "headline": rs.headline,
-            }
-        except Exception:
-            log.exception("risk_signals failed for %s", game_id)
-            risk = None
+        # ONLY when the prediction is comp-informed. In degraded mode (picks
+        # unresolved) the win-prob is a state-only guess, so surfacing edge/risk
+        # would invite trading a blind number — suppress it.
+        risk = None
+        if has_full:
+            try:
+                from loltrader.trader.exits import risk_signals
+                rs = risk_signals(float(pred.p_blue), features)
+                risk = {
+                    "leverage": rs.leverage,
+                    "coinflip_zone": rs.coinflip_zone,
+                    "triggers_blue": rs.triggers_blue,
+                    "triggers_red": rs.triggers_red,
+                    "headline": rs.headline,
+                }
+            except Exception:
+                log.exception("risk_signals failed for %s", game_id)
+                risk = None
 
         return LivePrediction(
             game_id=game_id,

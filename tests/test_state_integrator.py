@@ -348,5 +348,45 @@ def test_integrate_state_handles_no_details(profiles_file, seeded_db):
 
 
 def test_feature_schema_size():
-    """Schema is at the ~89-feature target after league + per-player + momentum adds."""
-    assert 80 <= len(FEATURE_SCHEMA) <= 100
+    """Schema grew with league + per-player + momentum + soul-type features."""
+    assert 95 <= len(FEATURE_SCHEMA) <= 110
+
+
+def test_soul_type_derived_from_dragons():
+    """Soul type comes from the dominant dragon element — no manual encoding."""
+    from loltrader.winprob.state import _dominant_dragon_element, compute_objective_state
+    assert _dominant_dragon_element(["hextech", "ocean", "ocean", "ocean"]) == "ocean"
+    assert _dominant_dragon_element(["infernal", "infernal"]) == "infernal"
+    assert _dominant_dragon_element([]) == "none"
+    # red holds Ocean Soul -> soul_ocean feature is -1 (blue-minus-red sign)
+    obj = compute_objective_state({
+        "blue_dragons": ["infernal"],
+        "red_dragons": ["hextech", "ocean", "ocean", "ocean"],
+        "blue_barons": 0, "red_barons": 0,
+    })
+    assert obj["soul_state"] == "red"
+    assert obj["soul_type"] == "ocean"
+
+
+def test_soul_type_feature_signed_by_side(profiles_file):
+    """soul_<type> is +1 when blue holds it, -1 when red holds it, else 0."""
+    picks_a = [ChampionPick("Caitlyn", "bot"), ChampionPick("Senna", "bot"),
+               ChampionPick("Lulu", "support"), ChampionPick("Sion", "top"),
+               ChampionPick("Annie", "mid")]
+    picks_b = [ChampionPick("Pantheon", "jungle"), ChampionPick("Naafiri", "jungle"),
+               ChampionPick("LeeSin", "jungle"), ChampionPick("Karma", "support"),
+               ChampionPick("Bard", "support")]
+    a = evaluate_comp(picks_a, profiles_path=profiles_file)
+    b = evaluate_comp(picks_b, profiles_path=profiles_file)
+    # red holds Ocean Soul (4 oceans)
+    frame = {
+        "blue_gold": 50000, "red_gold": 50000, "blue_kills": 0, "red_kills": 0,
+        "blue_towers": 0, "red_towers": 0, "blue_inhibitors": 0, "red_inhibitors": 0,
+        "blue_barons": 0, "red_barons": 0,
+        "blue_dragons": ["infernal"],
+        "red_dragons": ["ocean", "ocean", "ocean", "ocean"],
+    }
+    feats = integrate_state(a, b, frame, [], minute=30,
+                            picks_a=picks_a, picks_b=picks_b)
+    assert feats["soul_ocean"] == -1.0      # red holds it
+    assert feats["soul_infernal"] == 0.0    # nobody holds infernal soul

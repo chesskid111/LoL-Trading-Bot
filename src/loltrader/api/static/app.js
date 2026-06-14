@@ -296,9 +296,19 @@ function renderEdgeStrip(card, modelPct, bandPct, marketAsk, edgeCents, pred) {
     }
 
     const isStale = !pred.has_full_features;
-    const bandTag = isStale
-        ? '<span class="winprob-stale" title="picks not resolved — features incomplete">(degraded)</span>'
-        : '';
+
+    if (isStale) {
+        // Degraded: picks unresolved -> the win-prob is a state-only guess.
+        // Hide model number + edge entirely so it can't be traded as a signal.
+        strip.className = 'winprob-strip winprob-degraded';
+        strip.innerHTML = `
+            <span class="winprob-stale" title="champion picks not resolved yet — model is state-only, not tradeable">
+                ⚠ model degraded (picks unresolved) — edge hidden</span>
+            <span class="winprob-mkt">mkt: ${Number.isFinite(marketAsk) ? marketAsk + '¢' : '—'}</span>
+            <span class="winprob-min">m${pred.minute}</span>
+        `;
+        return;
+    }
 
     let edgeHtml = '<span class="winprob-edge-na">no ask</span>';
     let alertClass = '';
@@ -315,7 +325,6 @@ function renderEdgeStrip(card, modelPct, bandPct, marketAsk, edgeCents, pred) {
         <span class="winprob-model">model: <b>${modelPct}¢</b> <span class="band">±${(bandPct/2).toFixed(0)}¢</span></span>
         <span class="winprob-mkt">mkt: ${Number.isFinite(marketAsk) ? marketAsk + '¢' : '—'}</span>
         ${edgeHtml}
-        ${bandTag}
         <span class="winprob-min">m${pred.minute}</span>
     `;
 }
