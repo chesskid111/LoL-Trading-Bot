@@ -123,7 +123,7 @@ async def list_markets(league: str | None = None, limit: int = 100,
     ``map_number`` for map markets, plus ``event_group`` shared across
     sub-markets of the same series for client-side grouping.
     """
-    from loltrader.ui.leagues import league_for_match
+    from loltrader.ui.leagues import league_for_match, TIER1_DEFAULT
 
     if include_maps:
         ticker_filter = """
@@ -170,7 +170,15 @@ async def list_markets(league: str | None = None, limit: int = 100,
         d = dict(r)
         d["league"] = league_for_match(d.get("event_title") or d.get("market_title") or "",
                                        d.get("event_sub"))
-        if league and d["league"] != league:
+        # Filtering: "all" shows everything; a specific league filters to it;
+        # the default (empty) shows only tier-1 majors — hides LJL/CBLOL/ERL/
+        # academy/Other clutter the user doesn't trade.
+        if league == "all":
+            pass
+        elif league:
+            if d["league"] != league:
+                continue
+        elif d["league"] not in TIER1_DEFAULT:
             continue
 
         ticker = d["market_ticker"]

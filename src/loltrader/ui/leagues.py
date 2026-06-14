@@ -9,6 +9,8 @@ like MSI / Worlds / EWC), we classify it as 'International'.
 """
 from __future__ import annotations
 
+import re
+
 # Major-league team rosters (full names + common abbreviations as they appear
 # in Kalshi event titles). Keep these in sync with current splits.
 
@@ -141,17 +143,39 @@ LEAGUE_TEAMS: dict[str, set[str]] = {
 # Order in which to display leagues in UI filters
 LEAGUE_DISPLAY_ORDER = ["LCK", "LCS", "LEC", "LPL", "LCP", "LTA-S", "CBLOL", "LJL", "International", "Other"]
 
+# Tier-1 leagues shown by default (the ones actually traded). Hides LJL/CBLOL/
+# ERL/academy/Other clutter unless the user explicitly asks for "all" or a
+# specific minor league via the dropdown.
+TIER1_DEFAULT = {"LCK", "LPL", "LEC", "LCS", "LTA-S", "International"}
+
 
 def _extract_teams_from_title(title: str) -> tuple[str, str] | None:
-    """Parse 'Team A vs. Team B' from a title. Returns (a, b) or None."""
+    """Parse the two team names from a market title. Returns (a, b) or None.
+
+    Kalshi titles look like:
+        "Will {winner} win the {Team A} vs. {Team B} League of Legends match?"
+    We must strip the "Will … win the " prefix and the trailing
+    " League of Legends match?" suffix, or the team names carry garbage that
+    breaks exact-match classification.
+    """
     if not title:
         return None
-    # Common formats: "Team A vs. Team B" or "Team A vs Team B"
-    for sep in (" vs. ", " vs ", " VS "):
-        if sep in title:
-            parts = title.split(sep, 1)
-            if len(parts) == 2:
-                return parts[0].strip(), parts[1].strip()
+    s = title.strip()
+    # Strip trailing "League of Legends match?" / "match?" / "?"
+    s = re.sub(r"(?i)\s+league of legends match\??\s*$", "", s)
+    s = re.sub(r"(?i)\s+match\??\s*$", "", s)
+    s = s.rstrip("?").strip()
+    # The "{A} vs. {B}" core always follows the last " the " — handles all
+    # Kalshi formats: "...win the A vs. B", "...win map 1 in the A vs. B",
+    # "...maps be played in the A vs. B". Greedy .* grabs the LAST "the".
+    m = re.search(r"(?i)^.*\bthe\s+(.+?\s+vs\.?\s+.+)$", s)
+    core = m.group(1) if m else s
+    for sep in (" vs. ", " vs ", " VS ", " v. "):
+        if sep in core:
+            a, b = core.split(sep, 1)
+            a, b = a.strip(), b.strip()
+            if a and b:
+                return a, b
     return None
 
 
@@ -171,9 +195,17 @@ def league_for_match(title: str, sub_title: str | None = None) -> str:
     STOP_WORDS = {"esports", "gaming", "team", "the", "of", "league", "legends",
                   "club", "academy", "challengers", "esport", "pro"}
 
+    # Academy / Challenger / development squads are NOT their parent org's
+    # tier-1 roster — e.g. "KT Rolster Challengers" must not classify as LCK
+    # via "KT Rolster". Mark them so they don't inherit the parent league.
+    ACADEMY_MARKERS = ("challenger", "challengers", "academy", "youth",
+                       "developmental", " jr", "junior")
+
     def _league_of(team: str) -> str | None:
         team_lower = team.lower().strip()
         if not team_lower:
+            return None
+        if any(mark in team_lower for mark in ACADEMY_MARKERS):
             return None
         team_words = set(team_lower.split()) - STOP_WORDS
 
@@ -183,7 +215,9 @@ def league_for_match(title: str, sub_title: str | None = None) -> str:
                 if m and m.lower() == team_lower:
                     return league
 
-        # Pass 2: distinctive-word match (skip generic words like "Esports")
+        # Pass 2: distinctive-word match (skip generic words like "Esports").
+        # NOTE: deliberately no fuzzy substring pass — it produced false
+        # positives (ERL/minor teams spuriously tagged LCK/International).
         for league, members in LEAGUE_TEAMS.items():
             for m in members:
                 if not m:
@@ -192,14 +226,6 @@ def league_for_match(title: str, sub_title: str | None = None) -> str:
                 if team_words & m_words:
                     return league
 
-        # Pass 3: full-name substring (full team name appears inside the other)
-        for league, members in LEAGUE_TEAMS.items():
-            for m in members:
-                if not m or len(m) < 3:
-                    continue
-                ml = m.lower()
-                if ml in team_lower or team_lower in ml:
-                    return league
         return None
 
     la = _league_of(team_a)
