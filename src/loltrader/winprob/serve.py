@@ -38,6 +38,10 @@ from loltrader.winprob.state import integrate_state
 
 log = logging.getLogger(__name__)
 
+# How long to wait between pick-resolution retries for a game whose draft
+# isn't published yet (min 0). Picks usually appear 1-2 min in.
+PICK_RETRY_INTERVAL_SEC = 20.0
+
 
 @dataclass(frozen=True)
 class LivePrediction:
@@ -60,7 +64,8 @@ class LivePrediction:
 class _GameState:
     """Per-game cached state: picks + comp profiles + last prediction."""
     __slots__ = ("blue_picks", "red_picks", "blue_comp", "red_comp",
-                 "league", "blue_team_code", "red_team_code", "resolved")
+                 "league", "blue_team_code", "red_team_code", "resolved",
+                 "last_attempt")
 
     def __init__(self) -> None:
         self.blue_picks: list[ChampionPick] | None = None
@@ -70,7 +75,8 @@ class _GameState:
         self.league: str | None = None
         self.blue_team_code: str | None = None
         self.red_team_code: str | None = None
-        self.resolved = False     # have we attempted pick resolution yet?
+        self.resolved = False     # True only once picks/comps are RESOLVED
+        self.last_attempt = 0.0   # monotonic ts of last (failed) resolve attempt
 
 
 class WinprobService:
@@ -120,6 +126,15 @@ class WinprobService:
             st = _GameState()
             self._games[game_id] = st
 
+        # Picks aren't available at min 0 (draft not yet published to the API).
+        # Retry on later frames until they resolve, but throttle so we don't
+        # hit the pick API every 250ms frame. Only mark `resolved` once we
+        # actually have picks — otherwise the comp/draft/risk features would be
+        # stuck in degraded mode for the whole game.
+        if (_time.monotonic() - st.last_attempt) < PICK_RETRY_INTERVAL_SEC:
+            return st
+        st.last_attempt = _time.monotonic()
+
         g = conn.execute(
             """SELECT league, blue_team_code, red_team_code, game_start_ts_unix
                FROM games_live WHERE game_id = ?""",
@@ -151,8 +166,11 @@ class WinprobService:
                 log.exception("comp eval failed for %s", game_id)
                 st.blue_comp = None
                 st.red_comp = None
-
-        st.resolved = True
+            st.resolved = True          # success — stop retrying
+            log.info("picks resolved for %s (%s vs %s)", game_id,
+                     st.blue_team_code, st.red_team_code)
+        # else: leave resolved=False so the next frame (after the throttle)
+        # retries — picks publish a minute or two into the game.
         return st
 
     def _load_frame_and_details(
