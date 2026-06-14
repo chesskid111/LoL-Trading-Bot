@@ -1,31 +1,32 @@
 /* LoL Trader v3 — modern dark theme, tuned for long trading sessions */
 
 :root {
-    /* Palette: slate-based (cooler / more muted than GitHub-style) */
-    --bg-primary: #0a0e15;
-    --bg-secondary: #121826;
-    --bg-tertiary: #1a2235;
-    --bg-elevated: #1e2940;
-    --border: rgba(255, 255, 255, 0.06);
-    --border-strong: rgba(255, 255, 255, 0.12);
-    --text-primary: #f1f5f9;
+    /* Palette: "Clean Modern" — deeper page, lifted cards for clear contrast */
+    --bg-primary: #0d1019;        /* page */
+    --bg-secondary: #171d2c;      /* cards — lifted off the page for contrast */
+    --bg-tertiary: #212a3d;       /* inset chips / strips */
+    --bg-elevated: #283450;
+    --border: rgba(255, 255, 255, 0.07);
+    --border-strong: rgba(255, 255, 255, 0.14);
+    --text-primary: #f8fafc;      /* near-white headings */
     --text-secondary: #cbd5e1;
-    --text-muted: #94a3b8;
+    --text-muted: #93a0b4;
     --text-faint: #64748b;
     --accent-blue: #60a5fa;
-    --accent-blue-bg: rgba(96, 165, 250, 0.12);
+    --accent-blue-bg: rgba(96, 165, 250, 0.14);
     --accent-green: #34d399;
-    --accent-green-bg: rgba(52, 211, 153, 0.12);
+    --accent-green-bg: rgba(52, 211, 153, 0.14);
     --accent-red: #f87171;
-    --accent-red-bg: rgba(248, 113, 113, 0.12);
+    --accent-red-bg: rgba(248, 113, 113, 0.14);
     --accent-orange: #fbbf24;
     --accent-purple: #a78bfa;
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
-    --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 14px;
+    /* Softer, more spread shadows = the "designed" Style-B feel */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.25);
+    --shadow-md: 0 8px 28px rgba(0,0,0,0.30);
+    --shadow-lg: 0 16px 44px rgba(0,0,0,0.45);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
 }
 
 * {
@@ -264,24 +265,24 @@ button:disabled {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 20px 24px;
-    margin-bottom: 16px;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.2s ease;
+    padding: 24px 28px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow-md);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .market-card:hover {
     border-color: var(--border-strong);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
 }
 
 .market-header {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: 16px;
-    padding-bottom: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
     border-bottom: 1px solid var(--border);
 }
 
@@ -299,11 +300,11 @@ button:disabled {
 }
 
 .market-title {
-    font-weight: 600;
-    font-size: 1.05rem;
+    font-weight: 700;
+    font-size: 1.18rem;
     color: var(--text-primary);
     flex: 1;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
 }
 
 .close-time {
@@ -354,15 +355,27 @@ button:disabled {
     color: var(--text-faint);
 }
 
-.btn-buy-yes.edge-pos,
+/* Edge present -> the actionable button becomes a loud SOLID fill so the
+   one trade worth taking is unmistakable amid the rows. */
+.btn-buy-yes.edge-pos {
+    background: var(--accent-green);
+    color: #06281a;
+    border-color: transparent;
+    font-weight: 700;
+    box-shadow: 0 0 18px rgba(52, 211, 153, 0.45);
+}
 .btn-buy-no.edge-pos {
-    box-shadow: 0 0 12px rgba(16, 185, 129, 0.55);
-    border-width: 2px;
+    background: var(--accent-red);
+    color: #3a0d0d;
+    border-color: transparent;
+    font-weight: 700;
+    box-shadow: 0 0 18px rgba(248, 113, 113, 0.45);
 }
 
+/* No edge -> recede so it doesn't compete for attention. */
 .btn-buy-yes.edge-neg,
 .btn-buy-no.edge-neg {
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 .market-side .orderbook {
@@ -388,10 +401,10 @@ button:disabled {
 
 .btn-buy-yes,
 .btn-buy-no {
-    padding: 9px 14px;
+    padding: 10px 16px;
     font-weight: 600;
     font-size: 0.88rem;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     cursor: pointer;
     border: 1px solid transparent;
     transition: all 0.15s ease;
@@ -410,16 +423,18 @@ button:disabled {
     transform: translateY(0);
 }
 
+/* Default (no edge): muted/ghosted so the grid stays calm — these are
+   "available actions", not signals. Saturation is reserved for edge-pos. */
 .btn-buy-yes {
-    background: var(--accent-green-bg);
+    background: rgba(52, 211, 153, 0.06);
     color: var(--accent-green);
-    border-color: rgba(52, 211, 153, 0.25);
+    border-color: rgba(52, 211, 153, 0.16);
 }
 
 .btn-buy-no {
-    background: var(--accent-red-bg);
+    background: rgba(248, 113, 113, 0.06);
     color: var(--accent-red);
-    border-color: rgba(248, 113, 113, 0.25);
+    border-color: rgba(248, 113, 113, 0.16);
 }
 
 /* --- Live game strip --- */
