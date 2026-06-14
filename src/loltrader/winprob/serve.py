@@ -314,3 +314,25 @@ class WinprobService:
     def to_wire(self, pred: LivePrediction) -> dict[str, Any]:
         """Serialize a LivePrediction for WS / JSON output."""
         return asdict(pred)
+
+    def draft_breakdown(self, conn: sqlite3.Connection, game_id: str) -> dict | None:
+        """Plain-English draft read for ``game_id`` (picks + comps + dynamics).
+
+        Static for the game (computed from the locked draft), so the dashboard
+        can fetch it once. Returns None if picks/comps couldn't be resolved.
+        """
+        st = self._ensure_game_state(conn, game_id)
+        if st.blue_comp is None or st.red_comp is None or not st.blue_picks:
+            return None
+        from loltrader.comp.draft_read import build_draft_read
+        from dataclasses import asdict as _asdict
+        read = build_draft_read(
+            st.blue_comp, st.red_comp, st.blue_picks, st.red_picks,
+            blue_team=st.blue_team_code, red_team=st.red_team_code,
+        )
+        # DraftSide dataclasses -> dicts for JSON
+        read["blue"] = _asdict(read["blue"])
+        read["red"] = _asdict(read["red"])
+        read["game_id"] = game_id
+        read["league"] = st.league
+        return read

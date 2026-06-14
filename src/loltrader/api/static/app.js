@@ -176,7 +176,66 @@ function updateWinprobInUI(pred) {
 
         renderEdgeStrip(card, modelPct, bandPct, marketAsk, edgeCents, pred);
         renderRiskBadge(card, pred, yesIsBlue);
+        renderDraftPanel(card, pred.game_id);
     }
+}
+
+// Cache of draft breakdowns by game_id (static for the game once drafted).
+if (!state.draftByGameId) state.draftByGameId = {};
+
+// Fetch + render the draft breakdown panel for a card. Loads once per game;
+// retries on later calls if picks haven't resolved yet (404).
+async function renderDraftPanel(card, gameId) {
+    if (!gameId) return;
+    let read = state.draftByGameId[gameId];
+    if (read === undefined) {
+        state.draftByGameId[gameId] = null;  // mark in-flight to avoid dupes
+        try {
+            const res = await fetch(`/api/draft/${gameId}`);
+            if (!res.ok) { delete state.draftByGameId[gameId]; return; }  // retry later
+            read = await res.json();
+            state.draftByGameId[gameId] = read;
+        } catch (e) { delete state.draftByGameId[gameId]; return; }
+    }
+    if (!read) return;
+    if (card.querySelector('.draft-panel')) return;  // already rendered
+
+    const sideCol = (s, label) => {
+        const picks = (s.picks || []).map(p =>
+            `<span class="dp-pick"><b>${p.champion}</b><i>${(p.role||'').slice(0,3)}</i></span>`).join('');
+        const syn = (s.synergies || []).length
+            ? `<div class="dp-syn">synergies: ${s.synergies.length}</div>` : '';
+        return `<div class="dp-side">
+            <div class="dp-team">${s.team || label} <span class="dp-arch">${s.archetype}</span></div>
+            <div class="dp-picks">${picks}</div>
+            <div class="dp-scale">scaling <span>E ${s.scaling_early}</span><span>M ${s.scaling_mid}</span><span>L ${s.scaling_late}</span></div>
+            <div class="dp-dims">tf ${s.teamfight} · eng ${s.engage} · pick ${s.pick_threat}</div>
+            ${syn}
+            ${s.win_condition ? `<div class="dp-wc">${s.win_condition}</div>` : ''}
+        </div>`;
+    };
+
+    const dyn = (read.dynamics || []).map(d => `<li>${d}</li>`).join('');
+    const panel = document.createElement('div');
+    panel.className = 'draft-panel';
+    panel.innerHTML = `
+        <div class="dp-head">🧠 ${read.headline || 'Draft'}</div>
+        ${dyn ? `<ul class="dp-dyn">${dyn}</ul>` : ''}
+        <button class="dp-toggle">comp details ▾</button>
+        <div class="dp-details" hidden>
+            <div class="dp-grid">${sideCol(read.blue, 'Blue')}${sideCol(read.red, 'Red')}</div>
+            <div class="dp-disc">${read.disclaimer || ''}</div>
+        </div>`;
+    const header = card.querySelector('.market-header');
+    if (header) header.after(panel); else card.prepend(panel);
+
+    const btn = panel.querySelector('.dp-toggle');
+    const det = panel.querySelector('.dp-details');
+    btn.addEventListener('click', () => {
+        const open = det.hasAttribute('hidden');
+        if (open) { det.removeAttribute('hidden'); btn.textContent = 'comp details ▴'; }
+        else { det.setAttribute('hidden', ''); btn.textContent = 'comp details ▾'; }
+    });
 }
 
 // Human labels for structural triggers from exits.py

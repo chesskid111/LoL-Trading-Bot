@@ -785,6 +785,76 @@ footer {
 }
 .winprob-risk .risk-opp-label { color: var(--text-muted, #888); font-size: 0.72rem; }
 
+/* --- Draft breakdown panel ---------------------------------------------- */
+
+.draft-panel {
+    margin: 0 0 16px 0;
+    padding: 14px 18px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent-purple);
+    border-radius: var(--radius-md);
+}
+.draft-panel .dp-head {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+.draft-panel .dp-dyn {
+    margin: 8px 0 4px;
+    padding-left: 18px;
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+    line-height: 1.55;
+}
+.draft-panel .dp-dyn li { margin: 2px 0; }
+.draft-panel .dp-toggle {
+    margin-top: 6px;
+    background: transparent;
+    border: none;
+    color: var(--accent-purple);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 2px 0;
+}
+.draft-panel .dp-toggle:hover { color: var(--text-primary); }
+
+.draft-panel .dp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 10px;
+}
+.draft-panel .dp-side {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    font-size: 0.82rem;
+}
+.draft-panel .dp-team { font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+.draft-panel .dp-arch {
+    font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--accent-purple);
+    background: rgba(167,139,250,0.12); padding: 2px 7px; border-radius: 999px;
+    margin-left: 6px;
+}
+.draft-panel .dp-picks { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.draft-panel .dp-pick {
+    display: inline-flex; align-items: baseline; gap: 4px;
+    background: var(--bg-tertiary); border-radius: var(--radius-sm); padding: 2px 7px;
+}
+.draft-panel .dp-pick b { color: var(--text-primary); font-weight: 600; }
+.draft-panel .dp-pick i { color: var(--text-faint); font-style: normal; font-size: 0.72rem; }
+.draft-panel .dp-scale { color: var(--text-muted); margin: 4px 0; font-feature-settings: 'tnum'; }
+.draft-panel .dp-scale span { margin-right: 8px; color: var(--text-secondary); }
+.draft-panel .dp-dims { color: var(--text-muted); font-feature-settings: 'tnum'; }
+.draft-panel .dp-syn { color: var(--accent-green); font-size: 0.76rem; margin-top: 4px; }
+.draft-panel .dp-wc { color: var(--text-secondary); font-style: italic; margin-top: 6px; font-size: 0.78rem; }
+.draft-panel .dp-disc { color: var(--text-faint); font-size: 0.72rem; margin-top: 10px; font-style: italic; }
+
 /* --- Sub-section headers within nested event cards ----------------------- */
 
 .sub-section-header {

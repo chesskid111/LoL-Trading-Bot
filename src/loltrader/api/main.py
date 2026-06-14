@@ -453,6 +453,24 @@ async def live_winprob(game_id: str) -> dict:
     return broker.winprob.to_wire(pred)
 
 
+@app.get("/api/draft/{game_id}")
+async def draft_breakdown(game_id: str) -> dict:
+    """Return the plain-English draft breakdown for ``game_id``.
+
+    Static for the game (computed from the locked draft): both comps, archetype,
+    scaling timeline, synergies, and the generated read (who's favored on comp
+    alone + key dynamics). 404 until picks/comps resolve.
+    """
+    broker: MarketBroker = app.state.broker
+    if not broker.winprob.is_ready:
+        raise HTTPException(503, "winprob model not loaded")
+    with connect() as c:
+        read = broker.winprob.draft_breakdown(c, game_id)
+    if read is None:
+        raise HTTPException(404, f"no draft breakdown available for {game_id}")
+    return read
+
+
 @app.get("/api/health")
 async def health() -> dict:
     """Quick liveness check: how many markets, how many clients connected."""
